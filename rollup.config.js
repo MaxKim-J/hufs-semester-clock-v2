@@ -27,8 +27,10 @@ export default {
     format: "es",
     entryFileNames: '[name].js',
     sourcemap: false, // 이부분도 dev와 prod에 따라 다르게
+    manualChunks: {
+      framework: ['react', 'react-dom']
+    },
   },
-  compact:true,
   preserveEntrySignatures: false,
   plugins: [
     nodeResolve({
