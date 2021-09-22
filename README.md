@@ -2,22 +2,31 @@
 
 ## TODO
 
-- [ ] figma로 대충 디자인하기
+### 개발 전 작업
+
+- [ ] figma로 디자인하기
+
+### 프로젝트 세팅 작업
+
 - [ ] Rollup + React + Chrome Extension boilerplate
-  - [ ] index html, asset, manifest까지 dist에 같이 올려주는 작업
-  - [ ] 번들 해쉬(이거 필요하긴 한가? 웹이랑 좀 상이해서 모르겠네..)
-  - [x] tsc typescript compile
-  - [ ] uglify(terser?)
-  - [ ] tree shaking
-  - [ ] alias
-  - [x] 크롬에 붙였을때도 핫리로딩 잘되는지 테스트: 따로 뭐 필요없이 그냥 크롬에 갖다놓기만 하면 되네 신기..
-  - [ ] eslint, prettier 세팅
-- [ ] React + TypeScript Setup
+- [ ] Webpack + React + HMR + Chrome Extension boilerplate
+- [ ] typescript(tsc)
+- [ ] eslint, prettier
+- [ ] CI/CD
+- [ ] test setup
 - [ ] Axios modulization + React Query setup
 - [ ] Fundamental Styled Components
-- [ ] 기능추가
-  - [ ] firebase database sdk를 제거하고 REST API로 전환
-  - [ ] 크롤러 로직 손보기
-  - [ ] 확성기 기능 추가
-- [ ] Test Setup
-- [ ] CI/CD
+
+### 백엔드 작업(firebase)
+
+- [ ] REST API 작업
+- [ ] 크롤러 정상 작동하도록 손보기(코로나, 학사일정, 날씨)
+
+### 기능 개발 작업
+
+왠만하면 TDD로 진행
+
+- [ ] 레이아웃 잡기 + 모달
+- [ ] 시계 기능
+- [ ] 날짜 기능(입학일로부터, 종강일)
+- [ ] 즐겨찾기 기능
