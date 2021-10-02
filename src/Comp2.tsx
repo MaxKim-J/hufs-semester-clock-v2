@@ -1,16 +1,16 @@
-import React, {Suspense} from 'react';
+import React, { Suspense, ReactElement } from 'react';
+
 const Comp = React.lazy(() => import('./Comp'));
 
-function Comp2() {
-
+function Comp2(): ReactElement {
   return (
     <>
       <div>나는 컴2</div>
       <Suspense fallback={<div>loading..</div>}>
-        <Comp/>
+        <Comp />
       </Suspense>
     </>
-  )
+  );
 }
 
-export default Comp2
+export default Comp2;
