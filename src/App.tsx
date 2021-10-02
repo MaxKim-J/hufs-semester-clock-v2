@@ -1,18 +1,14 @@
 import React, {useState, Suspense} from 'react';
-
-const Comp = React.lazy(() => import('./Comp'));
+import Comp2 from './Comp2'
 
 function App() {
-  const load = () => {
-    console.log('dd')
-  }
+  const [isShow, setIsShow] = useState(false)
 
   return(
     <>
-    <Suspense fallback={<div>loading..</div>}>
-      <h1 onClick={load}>외대 종강시계 V2</h1>
-        <Comp/>
-      </Suspense>
+      <h1>외대 종강시계 V2!!</h1>
+      <button onClick={() => {setIsShow((s) => !s)}}>날 눌러바</button>
+      { isShow ? (<Comp2/>) : null}
     </>
   )
 }
