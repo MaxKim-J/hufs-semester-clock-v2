@@ -21,21 +21,17 @@
     "@babel/preset-react": "^7.14.5",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^20.0.0",
-    "@rollup/plugin-html": "^0.2.3",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-replace": "^3.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
     "@svgr/rollup": "^5.5.0",
     "rollup": "^2.56.3",
     "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-dotenv": "^0.3.0",
-    "rollup-plugin-generate-html-template": "^1.7.0",
     "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-serve": "^1.1.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-uglify": "^6.0.4",
     "rollup-plugin-url": "^3.0.1",
     "rollup-plugin-visualizer": "^5.5.2",
+    "tslib": "^2.3.1",
     "typescript": "^4.4.3"
   }
 }
