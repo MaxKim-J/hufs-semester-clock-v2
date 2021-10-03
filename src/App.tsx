@@ -6,7 +6,7 @@ function App(): ReactElement {
 
   return (
     <>
-      <h1>외대 종강시계 V2!!</h1>
+      <h1>외대 종강시계 V2</h1>
       <button
         type="button"
         onClick={() => {

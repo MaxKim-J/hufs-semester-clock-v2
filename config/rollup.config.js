@@ -9,7 +9,6 @@ import svgr from '@svgr/rollup';
 import url from 'rollup-plugin-url';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { terser } from 'rollup-plugin-terser';
-import eslint from '@rollup/plugin-eslint';
 import fs from 'fs';
 import constants from './constants';
 
@@ -28,7 +27,7 @@ const reactBundleConfig = {
     entryFileNames: '[name].js',
     sourcemap: false,
     manualChunks: {
-      framework: ['react', 'react-dom'],
+      framework: ['react', 'react-dom', 'styled-components'],
     },
   },
   preserveEntrySignatures: false,
@@ -55,7 +54,6 @@ const reactBundleConfig = {
     svgr(),
     commonjs(),
     terser(),
-    eslint(),
   ],
 };
 
