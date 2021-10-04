@@ -20,16 +20,23 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
-    chunkFilename: 'js/chunk-[contenthash].js',
-    filename: (pathData) => {
-      console.log(pathData.chunk.name);
-      return pathData.chunk.name === 'background'
+    chunkFilename: 'bundle/[id]-chunk-[contenthash].js',
+    filename: (pathData) =>
+      pathData.chunk.name === 'background'
         ? '[name].js'
-        : 'js/bundle-[contenthash].js';
-    },
+        : 'bundle/bundle-[contenthash].js',
   },
   optimization: {
-    minimize: true, // 라이센스 분리하기
+    minimize: true,
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial',
+          priority: 1,
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -66,7 +73,7 @@ const config = {
       patterns: [
         {
           from: path.resolve(__dirname, '../', 'src/assets/icons'),
-          to: 'icons',
+          to: 'assets/icons',
           toType: 'dir',
         },
         {
