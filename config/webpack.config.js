@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const constants = require('./constants.cjs');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
@@ -27,13 +28,18 @@ const config = {
   },
   optimization: {
     minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      }),
+    ],
     splitChunks: {
       cacheGroups: {
         default: false,
         defaultVendors: false,
         frameWorks: {
           chunks: 'all',
-          filename: 'bundle/[name]-[contenthash].js',
+          filename: 'bundle/frameworks-[contenthash].js',
           test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
           priority: 3,
           enforce: true,
@@ -41,6 +47,7 @@ const config = {
         initialChunk: {
           chunks: 'initial',
           filename: 'bundle/initial-chunk-[contenthash].js',
+          test: /[\\/]node_modules[\\/]/,
           priority: 2,
           enforce: true,
         },
