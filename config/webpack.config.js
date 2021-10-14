@@ -20,7 +20,6 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
-    chunkFilename: 'bundle/[id]-chunk-[contenthash].js',
     filename: (pathData) =>
       pathData.chunk.name === 'background'
         ? '[name].js'
@@ -30,10 +29,26 @@ const config = {
     minimize: true,
     splitChunks: {
       cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
+        default: false,
+        defaultVendors: false,
+        frameWorks: {
+          chunks: 'all',
+          filename: 'bundle/[name]-[contenthash].js',
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          priority: 3,
+          enforce: true,
+        },
+        initialChunk: {
           chunks: 'initial',
+          filename: 'bundle/initial-chunk-[contenthash].js',
+          priority: 2,
+          enforce: true,
+        },
+        asyncChunk: {
+          chunks: 'async',
+          filename: 'bundle/async-chunk-[contenthash].js',
           priority: 1,
+          enforce: true,
         },
       },
     },

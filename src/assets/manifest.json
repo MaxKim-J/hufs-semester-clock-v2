@@ -5,8 +5,8 @@
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://auth.firebase.com https://*.firebaseio.com https://cdn.firebase.com https://www.googleapis.com; object-src 'self'",
   "icons": {
-    "48": "icons/icon_48.png",
-    "128": "icons/icon_128.png"
+    "48": "assets/icons/icon_48.png",
+    "128": "assets/icons/icon_128.png"
   },
   "background": {
     "scripts": ["background.js"]
