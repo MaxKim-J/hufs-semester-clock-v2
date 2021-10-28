@@ -1,22 +1,30 @@
-import React, { ReactElement, Suspense } from 'react';
-import CompA from './CompA';
-import CompB from './CompB';
-
-const CompD = React.lazy(() => import('./CompD'));
-const CompC = React.lazy(() => import('./CompC'));
+import React, { ReactElement, useEffect } from 'react';
+import ApiClient from './services/api';
+import StorageClient from './services/storage';
 
 function App(): ReactElement {
+  useEffect(() => {
+    const getSemester = async () => {
+      const { data } = await ApiClient.getBackground({ campus: 'global' });
+      StorageClient.setItem({
+        a: 'b',
+        b: {
+          c: 'd',
+          d: 'e',
+        },
+      });
+      const storedData = await StorageClient.getItem('e');
+      console.log(storedData, 'ㅇ');
+
+      return data;
+    };
+
+    getSemester();
+  }, []);
+
   return (
     <>
       <h1>외대 종강시계 V2</h1>
-      <CompA />
-      <CompB />
-      <Suspense fallback={<div>로딩</div>}>
-        <CompC />
-      </Suspense>
-      <Suspense fallback={<div>로딩</div>}>
-        <CompD />
-      </Suspense>
     </>
   );
 }

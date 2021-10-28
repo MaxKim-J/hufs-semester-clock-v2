@@ -1,11 +1,13 @@
 const constants = {
   dev: {
     'process.env.ENV': "'development'",
-    'process.env.BASE_URL': "'localHost'",
+    'process.env.BASE_URL':
+      "'https://us-central1-hufssemesterclockfirebase.cloudfunctions.net'",
   },
   prod: {
     'process.env.ENV': "'production'",
-    'process.env.BASE_URL': "'firebase'",
+    'process.env.BASE_URL':
+      "'https://us-central1-hufssemesterclockfirebase.cloudfunctions.net'",
   },
 };
 
