@@ -12,18 +12,21 @@ class StorageClient {
         }
       });
     }).catch((error) => ({
-      operation: 'set',
+      operation: 'get',
       result: 'fail',
-      error: error.message,
+      error: error.message ?? 'unknown error',
     }));
 
   static setItem = (obj: Record<string, any>): StorageClientResult => {
     try {
       chrome.storage.local.set(obj);
       return { operation: 'set', result: 'success', value: obj };
-    } catch (error) {
-      console.log(error);
-      return { operation: 'set', result: 'fail' };
+    } catch (error: any) {
+      return {
+        operation: 'set',
+        result: 'fail',
+        error: error.message ?? 'unknown error',
+      };
     }
   };
 
@@ -31,9 +34,12 @@ class StorageClient {
     try {
       chrome.storage.local.remove(key);
       return { operation: 'remove', result: 'success', value: key };
-    } catch (error) {
-      console.log(error);
-      return { operation: 'remove', result: 'fail' };
+    } catch (error: any) {
+      return {
+        operation: 'remove',
+        result: 'fail',
+        error: error.message ?? 'unknown error',
+      };
     }
   };
 }

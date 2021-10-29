@@ -31,10 +31,6 @@ class ApiClient {
   static getBackground(params: {
     campus: 'seoul' | 'global';
   }): Promise<AxiosResponse<BackgroundImages>> {
-    if (params === undefined) {
-      throw Error('올바른 campus 파라미터를 넣어주세요');
-    }
-
     const { campus } = params;
     return axiosClient.get('/background', {
       params: { campus },

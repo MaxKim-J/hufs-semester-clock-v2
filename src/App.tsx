@@ -15,6 +15,8 @@ function App(): ReactElement {
       });
       const storedData = await StorageClient.getItem('e');
       console.log(storedData, 'ㅇ');
+      const result = StorageClient.removeItem('a');
+      console.log(result);
 
       return data;
     };
