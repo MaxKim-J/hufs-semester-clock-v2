@@ -1,17 +1,9 @@
 type StorageOperation = 'get' | 'set' | 'remove' | 'clear';
+type StorageResult = 'success' | 'fail';
 
-type StorageClientSuccessResult = {
+export type StorageClientResult = {
   operation: StorageOperation;
-  result: 'success';
-  value: Record<string, any> | string;
-};
-
-type StorageClientFailResult = {
-  operation: StorageOperation;
-  result: 'fail';
+  result: StorageResult;
   error?: string;
+  value?: Record<string, any>;
 };
-
-export type StorageClientResult =
-  | StorageClientSuccessResult
-  | StorageClientFailResult;

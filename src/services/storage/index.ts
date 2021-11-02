@@ -33,7 +33,7 @@ class StorageClient {
   static removeItem = (key: string): StorageClientResult => {
     try {
       chrome.storage.local.remove(key);
-      return { operation: 'remove', result: 'success', value: key };
+      return { operation: 'remove', result: 'success' };
     } catch (error: any) {
       return {
         operation: 'remove',

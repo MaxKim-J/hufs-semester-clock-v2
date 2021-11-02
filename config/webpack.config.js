@@ -17,7 +17,7 @@ const config = {
   mode: process.env.NODE_ENV,
   entry: {
     background: path.resolve(__dirname, '../', 'src/assets/background.js'),
-    bundle: path.resolve(__dirname, '../', 'src/index.ts'),
+    bundle: path.resolve(__dirname, '../', 'src/index.tsx'),
   },
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
