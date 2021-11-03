@@ -3,11 +3,11 @@ import { AxiosError } from 'axios';
 import { BackgroundImages } from '@/services/api/types';
 import ApiClient from '@/services/api';
 
-const useWeatherQuery = (
-  campus: 'global' | 'seoul' | 'error'
+const useBackgroundImagesQuery = (
+  campus: 'global' | 'seoul'
 ): BackgroundImages | undefined => {
   const { data: backgroundData } = useQuery<BackgroundImages, AxiosError>({
-    queryKey: 'semester',
+    queryKey: 'background',
     queryFn: async () => {
       const { data } = await ApiClient.getBackground({ campus });
       return data as BackgroundImages;
@@ -16,4 +16,4 @@ const useWeatherQuery = (
   return backgroundData;
 };
 
-export default useWeatherQuery;
+export default useBackgroundImagesQuery;

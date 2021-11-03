@@ -29,7 +29,7 @@ class ApiClient {
   }
 
   static getBackground(params: {
-    campus: 'seoul' | 'global' | 'error';
+    campus: 'seoul' | 'global';
   }): Promise<AxiosResponse<BackgroundImages>> {
     const { campus } = params;
     return axiosClient.get('/background', {
