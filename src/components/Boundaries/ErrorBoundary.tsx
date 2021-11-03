@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react';
 
-// 아니 진짜 에러타입 어떻게해야함?
-type RenderFallbackParams = {
-  error: string;
-  reset: (...args: unknown[]) => void;
+export type RenderFallbackParams = {
+  error: any;
+  reset?: (...args: unknown[]) => void;
 };
 
 export type ErrorBoundaryProps = {
@@ -14,7 +13,7 @@ export type ErrorBoundaryProps = {
 
 type ErrorBoundaryState = {
   hasError: boolean;
-  error: string | null;
+  error: any;
 };
 
 class ErrorBoundary extends React.Component<
@@ -31,8 +30,9 @@ class ErrorBoundary extends React.Component<
   }
 
   resetErrorBoundary = () => {
-    const { state } = this;
-    this.setState({ ...state, hasError: false });
+    const { reset } = this.props;
+    this.setState({ error: null, hasError: false });
+    reset();
   };
 
   render() {

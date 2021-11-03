@@ -13,7 +13,6 @@ const useWeatherQuery = (
       return data as BackgroundImages;
     },
   });
-
   return backgroundData;
 };
 
