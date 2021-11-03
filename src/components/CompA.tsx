@@ -1,15 +1,13 @@
 import React, { ReactElement } from 'react';
-// import styled from 'styled-components';
-
-// const StyledDiv = styled.div`
-//   color: red;
-// `;
+import useWeatherQuery from '@/hooks/query/useWeahterQuery';
 
 function CompA(): ReactElement {
+  const data = useWeatherQuery('error');
+  console.log(data);
   return (
     <>
       <div>나는 컴포넌트 A라네!!!</div>
-      {/* <StyledDiv>나는 컴포넌트D 라네!</StyledDiv> */}
+      {data !== undefined ? <div>{data.dayImageUrl}</div> : null}
     </>
   );
 }

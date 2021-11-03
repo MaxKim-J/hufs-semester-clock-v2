@@ -122,6 +122,9 @@ const config = {
     }),
   ],
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../', 'src'),
+    },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
 };
