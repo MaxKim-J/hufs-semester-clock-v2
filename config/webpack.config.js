@@ -44,13 +44,6 @@ const config = {
           priority: 3,
           enforce: true,
         },
-        initialChunk: {
-          chunks: 'initial',
-          filename: 'bundle/initial-chunk-[contenthash].js',
-          test: /[\\/]node_modules[\\/]/,
-          priority: 2,
-          enforce: true,
-        },
         asyncChunk: {
           chunks: 'async',
           filename: 'bundle/async-chunk-[contenthash].js',

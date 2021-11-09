@@ -29,8 +29,9 @@
 - [x] Suspense+ErrorBoundary 추상화 컴포넌트 만들기
 - [x] Sentry 연동해서 에러 모니터링 세팅 - 추후 Error 처리법 좀 더 연구하기
 - [ ] 스타일 컴포넌트 전역 세팅(폰트, 텍스트, 마진, 패딩, 색깔)
-- [ ] fundamental 컴포넌트들 만들기(Text, Loading, Input, Button, FeatureLayout, MenuController, AttachedModal, Modal)
-- [ ] Jest + Jest GUI로 테스트 세팅
+- [ ] fundamental 컴포넌트들과 storybook addons 만들기(Text, Loading, Input, Button, FeatureLayout, MenuController, 
+  AttachedModal, Modal)
+- [ ] Jest로 테스트 세팅
 
 ### 기능 개발 작업
 
