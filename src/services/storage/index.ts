@@ -17,9 +17,11 @@ class StorageClient {
       error: error.message ?? 'unknown error',
     }));
 
-  static setItem = (obj: Record<string, any>): StorageClientResult => {
+  static setItem = async (
+    obj: Record<string, any>
+  ): Promise<StorageClientResult> => {
     try {
-      chrome.storage.local.set(obj);
+      await chrome.storage.local.set(obj);
       return { operation: 'set', result: 'success', value: obj };
     } catch (error: any) {
       return {
@@ -30,9 +32,9 @@ class StorageClient {
     }
   };
 
-  static removeItem = (key: string): StorageClientResult => {
+  static removeItem = async (key: string): Promise<StorageClientResult> => {
     try {
-      chrome.storage.local.remove(key);
+      await chrome.storage.local.remove(key);
       return { operation: 'remove', result: 'success' };
     } catch (error: any) {
       return {
