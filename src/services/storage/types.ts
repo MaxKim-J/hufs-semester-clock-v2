@@ -5,5 +5,8 @@ export type StorageClientResult = {
   operation: StorageOperation;
   result: StorageResult;
   error?: string;
-  value?: Record<string, any>;
 };
+
+export type StorageClientGetItemResult<ValueType> = {
+  value?: ValueType | null;
+} & StorageClientResult;

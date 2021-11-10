@@ -2,7 +2,7 @@
 
 type SemesterAct = '종강' | '개강';
 type SemesterKey = 'current' | 'next' | 'seasonal';
-type SemesterValue = {
+export type SemesterValue = {
   act: SemesterAct;
   due: string;
   id: string;

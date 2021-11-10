@@ -1,19 +1,26 @@
 /* eslint-disable no-undef */
-import { StorageClientResult } from './types';
+import { StorageClientGetItemResult, StorageClientResult } from './types';
 
 class StorageClient {
-  static getItem = (key: string): Promise<StorageClientResult> =>
-    new Promise<StorageClientResult>((resolve, reject) => {
-      chrome.storage.local.get(key, (result) => {
-        if (Object.keys(result).length === 0) {
+  static getItem = <ValueType>(
+    key: string
+  ): Promise<StorageClientGetItemResult<ValueType>> =>
+    new Promise<StorageClientGetItemResult<ValueType>>((resolve, reject) => {
+      chrome.storage.local.get([key], (result) => {
+        if (result[key] === undefined) {
           reject(new Error(`${key}에 해당하는 값이 스토리지에 없습니다.`));
         } else {
-          resolve({ operation: 'get', result: 'success', value: result });
+          resolve({
+            operation: 'get',
+            result: 'success',
+            value: result[key] as ValueType,
+          });
         }
       });
     }).catch((error) => ({
       operation: 'get',
       result: 'fail',
+      value: null,
       error: error.message ?? 'unknown error',
     }));
 
@@ -22,7 +29,7 @@ class StorageClient {
   ): Promise<StorageClientResult> => {
     try {
       await chrome.storage.local.set(obj);
-      return { operation: 'set', result: 'success', value: obj };
+      return { operation: 'set', result: 'success' };
     } catch (error: any) {
       return {
         operation: 'set',

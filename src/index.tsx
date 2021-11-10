@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import * as Sentry from '@sentry/react';
+import { RecoilRoot } from 'recoil';
 import { Integrations } from '@sentry/tracing';
 import App from './App';
 
@@ -18,13 +19,17 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
+      notifyOnChangeProps: ['data', 'error'],
+      refetchOnWindowFocus: false,
     },
   },
 });
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
     {process.env.ENV === 'development' ? (
       <ReactQueryDevtools initialIsOpen={false} />
     ) : null}
