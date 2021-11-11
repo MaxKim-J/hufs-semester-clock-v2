@@ -7,7 +7,6 @@ export const chromeStorageEffect = <AtomDataType>(key: string) => {
     setSelf,
     onSet,
   }) => {
-    console.log('effect');
     StorageClient.getItem<AtomDataType>(key).then(({ result, value }) => {
       if (result === 'success' && value !== undefined) {
         setSelf({ status: 'initialized', value });
@@ -17,10 +16,10 @@ export const chromeStorageEffect = <AtomDataType>(key: string) => {
     });
 
     onSet(async (newValue) => {
-      if (newValue === null) {
+      if (newValue.value === null) {
         await StorageClient.removeItem(key);
       } else {
-        await StorageClient.setItem(newValue);
+        await StorageClient.setItem({ [key]: newValue.value });
       }
     });
   };
