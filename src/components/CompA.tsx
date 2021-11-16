@@ -9,11 +9,11 @@ function CompA(): ReactElement {
   );
 
   const data = useSemesterQuery(semesterInfo);
+  console.log(data);
 
   const [some, setSome] = useState(false);
 
   const storageAgain = () => {
-    // 이거는 보기 흉하니까 세터를 하나 만들자
     setSemesterInfo((semester: any) => ({
       ...semester,
       value: { due: 1, id: 0 },
@@ -44,7 +44,6 @@ function CompA(): ReactElement {
       >
         그냥버튼
       </button>
-      <div>{data}</div>
       <div>{some.toString()}</div>
     </>
   );
