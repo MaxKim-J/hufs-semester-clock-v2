@@ -16,11 +16,11 @@ const constantKey = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 const config = {
   mode: process.env.NODE_ENV,
   entry: {
-    background: path.resolve(__dirname, '../', 'src/assets/background.js'),
-    bundle: path.resolve(__dirname, '../', 'src/index.tsx'),
+    background: path.resolve(__dirname, 'src/assets/background.js'),
+    bundle: path.resolve(__dirname, 'src/index.tsx'),
   },
   output: {
-    path: path.resolve(__dirname, '../', 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: (pathData) =>
       pathData.chunk.name === 'background'
         ? '[name].js'
@@ -87,12 +87,12 @@ const config = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, '../', 'src/assets/icons'),
+          from: path.resolve(__dirname, 'src/assets/icons'),
           to: 'assets/icons',
           toType: 'dir',
         },
         {
-          from: path.resolve(__dirname, '../', 'src/assets/manifest.json'),
+          from: path.resolve(__dirname, 'src/assets/manifest.json'),
           to: 'manifest.json',
         },
       ],
@@ -116,7 +116,7 @@ const config = {
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../', 'src'),
+      '@': path.resolve(__dirname, 'src'),
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },

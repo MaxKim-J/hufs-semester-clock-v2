@@ -1,18 +1,11 @@
-import React, { ReactElement } from 'react';
-import { format } from 'date-fns';
+import React from 'react';
+import camelcase from 'lodash.camelcase';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
-  color: red;
+  color: blue;
 `;
 
-function CompD(): ReactElement {
-  return (
-    <div>
-      <StyledDiv>나는 컴포넌트C 라네!</StyledDiv>
-      <div>{format(new Date(2021, 9, 20), 'yyyy')}</div>
-    </div>
-  );
-}
+const CompC = () => <StyledDiv>{camelcase('im_component_C')}</StyledDiv>;
 
-export default CompD;
+export default CompC;

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import useSemesterQuery from '@/hooks/query/useSemesterQuery';
 import Atoms from '@/atoms';
@@ -10,7 +10,7 @@ function CompA(): ReactElement {
 
   const data = useSemesterQuery(semesterInfo);
 
-  console.log(data, semesterInfo);
+  const [some, setSome] = useState(false);
 
   const storageAgain = () => {
     // 이거는 보기 흉하니까 세터를 하나 만들자
@@ -36,6 +36,16 @@ function CompA(): ReactElement {
       <button type="button" onClick={storageAgain}>
         이거 누르면 스토리지 쿼리 리패칭
       </button>
+      <button
+        type="button"
+        onClick={() => {
+          setSome((state) => !state);
+        }}
+      >
+        그냥버튼
+      </button>
+      <div>{data}</div>
+      <div>{some.toString()}</div>
     </>
   );
 }

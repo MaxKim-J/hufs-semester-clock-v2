@@ -1,11 +1,13 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { format } from 'date-fns';
+import styled from 'styled-components';
 
-function CompB(): ReactElement {
-  return (
-    <>
-      <div>나는 컴포넌트 2라네</div>
-    </>
-  );
-}
+const StyledDiv = styled.div`
+  color: red;
+`;
+
+const CompB = () => (
+  <StyledDiv>{format(new Date(1996, 8, 20), 'yyyy')}</StyledDiv>
+);
 
 export default CompB;
