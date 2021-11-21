@@ -139,6 +139,7 @@ if (!PRODUCTION) {
   config.devtool = 'inline-cheap-source-map';
   config.devServer = {
     hot: true,
+    compress: true,
     overlay: {
       warnings: false,
       errors: true,

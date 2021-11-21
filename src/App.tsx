@@ -2,13 +2,9 @@ import React, { ReactElement, lazy, Suspense } from 'react';
 import CompA from './components/CompA';
 import AsyncBoundaryWithQuery from './components/Boundaries/AsyncBoundaryWithQuery';
 
-const CompB = lazy(
-  /* webpackChunkName: "C" */ () => import('./components/CompB')
-);
+const CompB = lazy(() => import('./components/CompB'));
 
-const CompC = lazy(
-  /* webpackChunkName: "D" */ () => import('./components/CompC')
-);
+const CompC = lazy(() => import('./components/CompC'));
 
 function App(): ReactElement {
   return (

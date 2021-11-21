@@ -35,7 +35,7 @@ function CompA(): ReactElement {
       </button>
       <div>
         {data !== undefined
-          ? Object.values(data).map((d) => <div key={d.id}>{d.due}</div>)
+          ? Object.values(data).map((d) => <div>{d.due}</div>)
           : null}
       </div>
     </>
