@@ -21,16 +21,32 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: (pathData) =>
-      pathData.chunk.name === 'background'
-        ? '[name].js'
-        : 'bundle/bundle-[contenthash].js',
+    filename: (pathData) => {
+      if (pathData.chunk.name === 'background') {
+        return '[name].js';
+      }
+      return PRODUCTION
+        ? 'bundle/[name].[contenthash:8].js'
+        : 'bundle/[name].js';
+    },
+    chunkFilename: PRODUCTION
+      ? 'bundle/chunk.[name].[contenthash:8].js'
+      : 'bundle/chunk.[name].js',
   },
   optimization: {
     minimize: true,
     minimizer: [
       new TerserPlugin({
         extractComments: false,
+        terserOptions: {
+          keep_classnames: !PRODUCTION,
+          keep_fnames: !PRODUCTION,
+          output: {
+            ecma: 5,
+            comments: false,
+            ascii_only: true,
+          },
+        },
       }),
     ],
     splitChunks: {
@@ -39,14 +55,15 @@ const config = {
         defaultVendors: false,
         frameWorks: {
           chunks: 'all',
-          filename: 'bundle/frameworks-[contenthash].js',
+          filename: PRODUCTION
+            ? 'bundle/frameworks.[name].[contenthash:8].js'
+            : 'bundle/frameworks.js',
           test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
           priority: 3,
           enforce: true,
         },
         asyncChunk: {
           chunks: 'async',
-          filename: 'bundle/async-chunk-[contenthash].js',
           priority: 1,
           enforce: true,
         },
@@ -55,6 +72,16 @@ const config = {
   },
   module: {
     rules: [
+      {
+        test: /background\.js$/i,
+        use: ['babel-loader'],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/i,
+        use: ['babel-loader', 'ts-loader'],
+        exclude: /node_modules/,
+      },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
@@ -65,20 +92,6 @@ const config = {
             },
           },
         ],
-      },
-      {
-        test: /\.(tsx?)|(js)$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-react'],
-          },
-        },
-      },
-      {
-        test: /\.tsx?$/i,
-        use: ['ts-loader'],
-        exclude: /node_modules/,
       },
     ],
   },
@@ -108,7 +121,7 @@ const config = {
         removeComments: true,
         minifyJS: true,
       },
-      hash: true,
+      hash: false,
     }),
     new ESLintPlugin({
       extensions: ['ts', 'tsx'],

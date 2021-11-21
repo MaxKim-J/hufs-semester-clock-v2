@@ -1,6 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, lazy, Suspense } from 'react';
 import CompA from './components/CompA';
 import AsyncBoundaryWithQuery from './components/Boundaries/AsyncBoundaryWithQuery';
+
+const CompB = lazy(
+  /* webpackChunkName: "C" */ () => import('./components/CompB')
+);
+
+const CompC = lazy(
+  /* webpackChunkName: "D" */ () => import('./components/CompC')
+);
 
 function App(): ReactElement {
   return (
@@ -9,6 +17,10 @@ function App(): ReactElement {
       <AsyncBoundaryWithQuery pendingFallback={<div>로딩</div>}>
         <CompA />
       </AsyncBoundaryWithQuery>
+      <Suspense fallback={<div>로딩</div>}>
+        <CompB />
+        <CompC />
+      </Suspense>
     </>
   );
 }

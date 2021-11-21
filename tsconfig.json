@@ -1,27 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react",
+    "moduleResolution": "node",
     "allowJs": true,
     "checkJs": true,
-    "jsx": "react",
+    "sourceMap": true,
     "isolatedModules": true,
     "strict": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "experimentalDecorators": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
     "typeRoots": ["node_modules/@types", "@types"],
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "src/assets"]
