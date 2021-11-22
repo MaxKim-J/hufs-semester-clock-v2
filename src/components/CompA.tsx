@@ -1,14 +1,11 @@
 import React, { ReactElement } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import useSemesterQuery from '@/hooks/query/useSemesterQuery';
-import Atoms from '@/atoms';
+import { userSemesterInfo } from '@/atoms';
 
 function CompA(): ReactElement {
-  const [semesterInfo, setSemesterInfo] = useRecoilState(
-    Atoms.userSemesterInfo
-  );
-
-  const data = useSemesterQuery(semesterInfo);
+  const setSemesterInfo = useSetRecoilState(userSemesterInfo);
+  const data = useSemesterQuery();
 
   const storageAgain = () => {
     setSemesterInfo((semester: any) => ({

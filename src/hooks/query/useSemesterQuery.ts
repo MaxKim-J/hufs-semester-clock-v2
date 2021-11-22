@@ -1,13 +1,12 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
+import { useRecoilValue } from 'recoil';
 import ApiClient from '@/services/api';
 import { Semester } from '@/services/api/types';
-import { StorageAtom } from '@/atoms/types';
+import { userSemesterInfo } from '@/atoms';
 
-const useSemesterQuery = (
-  semesterInfo: StorageAtom<Semester>
-): Semester | undefined => {
-  const { status, value } = semesterInfo;
+const useSemesterQuery = (): Semester | undefined => {
+  const { status, value } = useRecoilValue(userSemesterInfo);
 
   const { data: semesterData } = useQuery<Semester, AxiosError>({
     queryKey: [
@@ -16,12 +15,13 @@ const useSemesterQuery = (
     ],
     queryFn: async () => {
       if (value !== null) {
-        return value as Semester;
+        return value;
       }
       const { data } = await ApiClient.getSemester();
-      return data as Semester;
+      return data;
     },
     enabled: status === 'initialized',
+    staleTime: 10000,
   });
 
   return semesterData;

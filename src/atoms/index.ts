@@ -3,7 +3,7 @@ import { chromeStorageEffect } from './utils';
 import { Semester } from '@/services/api/types';
 import { StorageAtom } from './types';
 
-const userSemesterInfo = atom<StorageAtom<Semester>>({
+export const userSemesterInfo = atom<StorageAtom<Semester>>({
   key: 'userSemesterInfo',
   default: {
     status: 'idle',
@@ -11,7 +11,3 @@ const userSemesterInfo = atom<StorageAtom<Semester>>({
   },
   effects_UNSTABLE: [chromeStorageEffect<Semester>('userSemesterInfo')],
 });
-
-export default {
-  userSemesterInfo,
-};
