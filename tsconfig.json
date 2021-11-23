@@ -19,5 +19,7 @@
     "allowSyntheticDefaultImports": true,
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "src/assets"]
+  "exclude": ["node_modules", "dist",
+    "src/_shared/assets"
+  ]
 }

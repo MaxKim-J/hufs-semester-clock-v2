@@ -41,8 +41,3 @@ export type Notification = {
   link: string;
   title: string;
 };
-
-export type BackgroundImages = {
-  dayImageUrl: string;
-  nightImageUrl: string;
-};

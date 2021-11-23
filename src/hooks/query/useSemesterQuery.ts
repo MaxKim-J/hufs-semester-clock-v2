@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
 import { useRecoilValue } from 'recoil';
-import ApiClient from '@/services/api';
-import { Semester } from '@/services/api/types';
-import { userSemesterInfo } from '@/atoms';
+import { getSemester } from '@/_shared/services/api';
+import { Semester } from '@/_shared/services/api/types';
+import { userSemesterInfo } from '@/_shared/atoms';
 
 const useSemesterQuery = (): Semester | undefined => {
   const { status, value } = useRecoilValue(userSemesterInfo);
@@ -17,7 +17,7 @@ const useSemesterQuery = (): Semester | undefined => {
       if (value !== null) {
         return value;
       }
-      const { data } = await ApiClient.getSemester();
+      const { data } = await getSemester();
       return data;
     },
     enabled: status === 'initialized',

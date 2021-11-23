@@ -1,5 +1,5 @@
 import { AtomEffect } from 'recoil';
-import StorageClient from '@/services/storage';
+import { getItem, removeItem, setItem } from '@/_shared/services/storage';
 import { StorageAtom } from './types';
 
 export const chromeStorageEffect = <AtomDataType>(key: string) => {
@@ -7,7 +7,7 @@ export const chromeStorageEffect = <AtomDataType>(key: string) => {
     setSelf,
     onSet,
   }) => {
-    StorageClient.getItem<AtomDataType>(key).then(({ result, value }) => {
+    getItem<AtomDataType>(key).then(({ result, value }) => {
       if (result === 'success' && value !== undefined) {
         setSelf({ status: 'initialized', value });
       } else {
@@ -17,9 +17,9 @@ export const chromeStorageEffect = <AtomDataType>(key: string) => {
 
     onSet(async (newValue) => {
       if (newValue.value === null) {
-        await StorageClient.removeItem(key);
+        await removeItem(key);
       } else {
-        await StorageClient.setItem({ [key]: newValue.value });
+        await setItem({ [key]: newValue.value });
       }
     });
   };

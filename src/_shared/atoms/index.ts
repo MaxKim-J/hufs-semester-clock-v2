@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 import { chromeStorageEffect } from './utils';
-import { Semester } from '@/services/api/types';
+import { Semester } from '@/_shared/services/api/types';
 import { StorageAtom } from './types';
 
 export const userSemesterInfo = atom<StorageAtom<Semester>>({

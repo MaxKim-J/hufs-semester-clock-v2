@@ -1,6 +1,6 @@
 import React from 'react';
 import { AxiosResponse } from 'axios';
-import { RenderFallbackParams } from '@/components/Boundaries/ErrorBoundary';
+import { RenderFallbackParams } from '@/_shared/components/boundries/ErrorBoundary';
 
 function AsyncRequestError({ error, reset }: RenderFallbackParams) {
   const { status } = error.response as AxiosResponse;

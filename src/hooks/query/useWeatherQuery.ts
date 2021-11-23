@@ -1,13 +1,13 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
-import { Weather } from '@/services/api/types';
-import ApiClient from '@/services/api';
+import { Weather } from '@/_shared/services/api/types';
+import { getWeather } from '@/_shared/services/api';
 
 const useWeatherQuery = (): Weather[] | undefined => {
   const { data: weatherData } = useQuery<Weather[], AxiosError>({
     queryKey: 'weather',
     queryFn: async () => {
-      const { data } = await ApiClient.getWeather();
+      const { data } = await getWeather();
       return data as Weather[];
     },
   });
