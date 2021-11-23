@@ -3,12 +3,13 @@
     [
       "@babel/preset-env",
       {
+        "targets": {"chrome": "58"},
         "modules": false,
         "loose": true
       }
     ]
   ],
   "plugins": [
-    "@babel/plugin-transform-runtime"
+    ["@babel/plugin-transform-runtime", {"corejs":3}]
   ]
 }
