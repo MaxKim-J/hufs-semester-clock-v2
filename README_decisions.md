@@ -1,6 +1,6 @@
 # 외대 종강시계 고민했던 부분들
 
-## `Chrome.storage` vs `localStorage` - chrome.storage
+## 1. `Chrome.storage` vs `localStorage` - chrome.storage
 - 학번, 이름, 종강시간 정보, 커스텀 배경화면 등은 브라우저의 스토리지를 이용하여 저장하고, 서비스하고 있다.
 
 ### Chrome.Storage
@@ -25,7 +25,7 @@ Chrome.Storage를 사용한다.
 - 현재 배경화면을 base64로 인코딩하여 스토리지에 넣고 서빙하고 있어 1MB가 넘는 데이터를 스토리지에 저장해야 하는 일도 있다. 더 빠른 쪽을 선택하는게 좋지 않을까 싶다.
 - 뒤에서도 또 설명할거 같긴 한데 E2E테스트를 도입하지 않고 Storybook을 이용할 것 같아 굳이 웹에서 프로그램을 돌릴지 잘 모르겠다. => 혹시 나중에 ChromeStorage를 LocalStorage로 스위치할 수 있게끔 개발하면 좋지 않을까..?
 
-## webpack vs rollup - webpack
+## 2. webpack vs rollup - webpack
 
 - 일단 fully configurable한 프로젝트를 위해서 번들링하는 보일러 플레이트부터 만들 예정이었다.
 - 롤업이 트리 쉐이킹에 유리하고(ESM 번들링), 번들 크기가 웹팩보다 더 적은 편이라고 알고 있어서 롤업으로 리액트 + 크롬 익스텐션 보일러 플레이트를 세팅해 먼저 만들어보고, 후에 웹팩으로도 만들어봐서 사용성이나 프로젝트 확장 가능성 등을 비교해보고자 했다.
@@ -40,14 +40,14 @@ Chrome.Storage를 사용한다.
 - **SplitChunks 옵션이 더 좋음** : 롤업에도 manualChunks라고 번들링 결과물을 나눠주는 기능이 있기는 한데 SplitChunks옵션보다 추상화 단계가 낮은 느낌이 있다. 함수와 모듈에 대한 메타 정보를 토대로 내 입맛에 맞게 번들 스플리팅을 할 수 있을듯 싶었음. 공통 모듈을 빼주는 기능을 코드로 구현할 수 있겠지만 Webpack을 사용하면 간단하게 몇가지 옵션만으로 가능해서 굳이 manualChunks를 커스텀하는데 리소스를 써야 할까 싶었다.
 - Bundle Analyzer : 번들 아날라이저가 웹팩 쪽이 더 보기가 편했음
 
-## Code Splitting Strategy
+## 3. Code Splitting Strategy
 
 - 내가 만드려는 번들의 목표 : 프레임워크, 가장 최초로 불러와지는 메인 번들 하나, 탭 코드 스플리팅(2개), 모드 변경 코드 스플리팅(1개)
 - 코드 스플리팅하면 여러개의 번들이 만들어질텐데, 이때 splitchunks 옵션이 없으면 동적 임포트된 번들들은 각각 같은 라이브러리를 포함하고 있을 수 있음!
 - 코드 스플리팅된 여러개의 번들 중 공통 번들은 다른 번들로 분리하여 한번만 가져올 수 있도록 하면 될 것 같다.
 - 이렇게 생각을 해보니, 정말 앱의 속성에 따라 번들링 전략은 많이 달라질수도 있겠다.. 하늘 아래 같은 웹팩 세팅이 있을까 하는 생각도 들었다.
 
-## Client State, Server State - React Query, Recoil
+## 4. Client State, Server State - React Query, Recoil
 
 - React Query와 함께 Recoil을 같이 쓸 것이다. Server State에 직접 접근해야 할 때는 useQuery를 이용하고, Client State 관리는 Recoil로 한다.
 - Recoil의 Effect가 상당히 인상적이다. 정말 적은 코드로 Chrome.storage를 Recoil의 Atom들과 정말 쉽고 간편하게 integration 할 수 있다는 점이 넘 훌륭하다...
@@ -56,7 +56,7 @@ Chrome.Storage를 사용한다.
     - 동시에 사용되는 유저 데이터의 변경이 일어난다면, 그게 모든 컴포넌트에 반영되어야 한다.
 - 물론 Recoil 하나만으로도 비동기 쿼리를 작성할 수 있고 Suspense랑도 연동된다. 하지만 Query Refresh, Fresh/Stale 상태로 하는 캐싱 제어, Server State와 Client State를 잘 분리할 수 있다는 장점이 있기 때문에 React Query를 사용할 것이다. 
 
-## 4. 테스트 전략 - Jest(유닛, 통합 테스팅), Storybook(UI 테스팅)
+## 5. 테스트 전략 - Jest(유닛, 통합 테스팅), Storybook(UI 테스팅)
 
 뷰를 이루는 모듈들의 동작이 완벽하면 뷰도 완벽할 것이다! 아마도..?
 
@@ -77,10 +77,52 @@ Chrome.Storage를 사용한다.
     - User Interaction : 유저 인터렉션에 따라 페이지에서 뷰가 달라지는 부분들에 대해서만 페이지 스토리를 작성한다. Storybook 작성이 쉽지 않은 컴포넌트도 있을 텐데 그거는 해보면서 대책을 강구하자
 - 스토리북은 따로 배포해두고, 포트폴리오의 한 부분으로 같이 가져갈 수 있었음 좋겠다.
 
-## 5. CSS-in-JS - Emotion
+## 6. CSS-in-JS - Emotion
 
 - Styled Component보다 Emotion의 CSS Props를 사용해보면 어떨까 생각했다.
 - emotion이 더 개발자 친화적인 느낌이 든다는데에 동의한다.
 - Styled Component를 작성하면서 맘에 안 들었던 것이 바로 Styled Component도 이름이 필요하다는 것이었는데..이것 때문에 전 회사에서는 컨벤션을 정하기도 하고, 같은 스코프에 같은 이름을 쓰는 것은 또 안 되었다. CSS Props는 그런 지점을 해결해주는 듯 보인다.
 - 그리고 원래 무슨 태그인지 네이밍을 가리지 않기 때문에 어떤 태그인지 더 잘 보인다.
 - 일단 Emotion이 번들이 더 작고 기능별로 분리되어 있어 확장성이 좋다. 필요한 경우 styled도 사용할 수 있다는 점에서도 유연하다.
+- [성능 면](https://www.youtube.com/watch?v=MN3RWhGudvw)에서 Emotion이 Styled Component랑은 큰 차이가 없는 듯 하다.
+
+## 7. Theming - CSS Variable
+
+- Emotion이든 Styled Components든 Theming을 공급해줄 수 있는 ThemeProvider와 같은 기능을 제공한다.
+- Theme을 JS 객체 등으로 관리하고 Provider을 통해 모든 컴포넌트에 Theme을 공급해줄 수 있다.
+- ThemeProvider에 공급하는 Theme객체를 바꿔줌으로써 다크모드 등을 쉽게 적용할 수 있도록 만들어주기도 한다.
+- 근데 내가 종강시계에는 딱히 그런 기능이 필요 없으므로 ThemeProvider을 굳이 사용할 필요는 없을 것 같다.
+- 사전에 정의한 font-size나 Color등은 CSS Variable로 관리하면 좋을 듯 하다. 사실 [CSS Variable만 사용해서 Theme을 토글하는 것도 가능하긴 하다. 그리고 더 빠르다](https://epicreact.dev/css-variables/) => 즉 사실 굳이 Provider등을 사용해 관리할 필요는 없는 듯
+- 기존에 Theme 사용할때 불편했던 점 
+    - Theme을 사용할 Provider 컴포넌트로 감싸야 하고, 리렌더링시 Theme을 참조하는 Styled Component들이 모두 다시 변화하기 때문에 느리다.
+    - Typescript에서는 ThemeType이 필요하다.
+    - 템플릿 리터럴 내부의 함수 표현식을 통해 참조하는게 귀찮았다 `({theme}) => {...}`
+    ```jsx
+    const StyledTabNavigator = styled.View<ThemeProps>`
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: ${({ theme }) => theme.color.primary};
+    `;
+
+    // 아니면 이런식(Black)
+    const PrimaryText = styled.div(({theme}) => ({
+        padding: 20,
+        color: theme.colors.primary,
+        backgroundColor: theme.colors.background,
+    }))
+
+    function App() {
+        const [theme, setTheme] = React.useState('light')
+        return (
+            <ThemeProvider theme={themes[theme]}>
+            <PrimaryText>This text is the primary color</PrimaryText>
+            <ThemeToggler
+                theme={theme}
+                onClick={(nextTheme) => setTheme(nextTheme)}
+            />
+            </ThemeProvider>
+        )
+    }
+    ```
+- 나중에 Theme을 적용할 일이 생기더라도 CSS Variable을 사용하면 Theme을 적용하더라도 비교적 더 가볍게, Provider로 감싼 스타일 컴포넌트들의 리렌더링 없이 CSS만 바꿔주는 방식으로 Theme 적용이 가능해 더 빠르다고 할 수 있다. 
