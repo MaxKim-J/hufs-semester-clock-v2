@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import * as Sentry from '@sentry/react';
 import { RecoilRoot } from 'recoil';
 import { Integrations } from '@sentry/tracing';
+import GlobalStyle from '@/_shared/styles/GlobalStyle';
 import App from './App';
 
 if (process.env.ENV === 'production') {
@@ -28,6 +29,7 @@ const queryClient = new QueryClient({
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <RecoilRoot>
+      <GlobalStyle />
       <App />
     </RecoilRoot>
     {process.env.ENV === 'development' ? (
