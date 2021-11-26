@@ -35,7 +35,7 @@
 - [x] Recoil 세팅과 chrome.storage와의 Interaction 구현
 - [x] Storybook 세팅
 - [x] Jest로 테스트 세팅
-- [ ] CSS 변수, emotion 전역 세팅(폰트, 텍스트, 마진, 패딩, 색깔)
+- [x] CSS 변수, emotion 전역 세팅(폰트, 텍스트, 마진, 패딩, 색깔)
 - [ ] fundamental 컴포넌트들과 storybook addons 만들기(Text, Loading, Input, Button, FeatureLayout, MenuController, 
   AttachedModal, Modal)
 
