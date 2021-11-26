@@ -2,12 +2,14 @@ import { AnchorHTMLAttributes } from 'react';
 import { textStyle } from './styles';
 import { TextCommonProps } from './types';
 
-export type LinkProps = TextCommonProps &
+export type LinkProps = {
+  href: string;
+} & TextCommonProps &
   AnchorHTMLAttributes<HTMLAnchorElement>;
 
-function Link({ size, color, children, ...props }: LinkProps) {
+function Link({ size, color, children, href, ...props }: LinkProps) {
   return (
-    <a css={textStyle(size, color)} {...props}>
+    <a href={href} css={textStyle(size, color)} {...props}>
       {children}
     </a>
   );
