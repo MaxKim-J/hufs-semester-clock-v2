@@ -81,48 +81,34 @@ Chrome.Storage를 사용한다.
 
 - Styled Component보다 Emotion의 CSS Props를 사용해보면 어떨까 생각했다.
 - emotion이 더 개발자 친화적인 느낌이 든다는데에 동의한다.
-- Styled Component를 작성하면서 맘에 안 들었던 것이 바로 Styled Component도 이름이 필요하다는 것이었는데..이것 때문에 전 회사에서는 컨벤션을 정하기도 하고, 같은 스코프에 같은 이름을 쓰는 것은 또 안 되었다. CSS Props는 그런 지점을 해결해주는 듯 보인다.
+- Styled Component를 작성하면서 맘에 안 들었던 것이 바로 Styled Component도 이름이 필요하다는 것이었는데..
+이것 때문에 전 회사에서는 컨벤션을 정하기도 하고, 같은 스코프에 같은 이름을 쓰는 것은 또 안 되었다.
+CSS Props는 그런 지점을 해결해주는 듯 보인다.
 - 그리고 원래 무슨 태그인지 네이밍을 가리지 않기 때문에 어떤 태그인지 더 잘 보인다.
+- 디버깅에 유리한 점도 마음에 든다. Emotion은 개발 모드에서 기존 CSS-props의 이름을 실제 렌더링되는 태그에 노출시킨다.
 - 일단 Emotion이 번들이 더 작고 기능별로 분리되어 있어 확장성이 좋다. 필요한 경우 styled도 사용할 수 있다는 점에서도 유연하다.
 - [성능 면](https://www.youtube.com/watch?v=MN3RWhGudvw)에서 Emotion이 Styled Component랑은 큰 차이가 없는 듯 하다.
 
-## 7. Theming - CSS Variable
+## 7. Semantic Tag, Web Accesibility
 
-- Emotion이든 Styled Components든 Theming을 공급해줄 수 있는 ThemeProvider와 같은 기능을 제공한다.
-- Theme을 JS 객체 등으로 관리하고 Provider을 통해 모든 컴포넌트에 Theme을 공급해줄 수 있다.
-- ThemeProvider에 공급하는 Theme객체를 바꿔줌으로써 다크모드 등을 쉽게 적용할 수 있도록 만들어주기도 한다.
-- 근데 내가 종강시계에는 딱히 그런 기능이 필요 없으므로 ThemeProvider을 굳이 사용할 필요는 없을 것 같다.
-- 사전에 정의한 font-size나 Color등은 CSS Variable로 관리하면 좋을 듯 하다. 사실 [CSS Variable만 사용해서 Theme을 토글하는 것도 가능하긴 하다. 그리고 더 빠르다](https://epicreact.dev/css-variables/) => 즉 사실 굳이 Provider등을 사용해 관리할 필요는 없는 듯
-- 기존에 Theme 사용할때 불편했던 점 
-    - Theme을 사용할 Provider 컴포넌트로 감싸야 하고, 리렌더링시 Theme을 참조하는 Styled Component들이 모두 다시 변화하기 때문에 느리다.
-    - Typescript에서는 ThemeType이 필요하다.
-    - 템플릿 리터럴 내부의 함수 표현식을 통해 참조하는게 귀찮았다 `({theme}) => {...}`
-    ```jsx
-    const StyledTabNavigator = styled.View<ThemeProps>`
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        background-color: ${({ theme }) => theme.color.primary};
-    `;
+스크린리더 사용자가 앱을 사용하는데 불편함이 없도록 웹 접근성을 고려한 마크업을 작성한다.
+사용할 Tag들, 웹 접근성을 보장하기 위한 전략들은 다음과 같다.
 
-    // 아니면 이런식(Black)
-    const PrimaryText = styled.div(({theme}) => ({
-        padding: 20,
-        color: theme.colors.primary,
-        backgroundColor: theme.colors.background,
-    }))
-
-    function App() {
-        const [theme, setTheme] = React.useState('light')
-        return (
-            <ThemeProvider theme={themes[theme]}>
-            <PrimaryText>This text is the primary color</PrimaryText>
-            <ThemeToggler
-                theme={theme}
-                onClick={(nextTheme) => setTheme(nextTheme)}
-            />
-            </ThemeProvider>
-        )
-    }
-    ```
-- 나중에 Theme을 적용할 일이 생기더라도 CSS Variable을 사용하면 Theme을 적용하더라도 비교적 더 가볍게, Provider로 감싼 스타일 컴포넌트들의 리렌더링 없이 CSS만 바꿔주는 방식으로 Theme 적용이 가능해 더 빠르다고 할 수 있다. 
+- p : 기본적인 문단은 p 태그로 표시한다.
+- a : 링크, 클릭해서 다른 화면으로 넘어갈 수 있는 경우 무조건 a 태그를 사용해야 한다. 그래야 스크린리더가 링크라고 읽기 때문
+- button : 버튼, UI적인 변화나 혹은 인터랙션을 유발할 수 있는 부분은 무조건 button 태그를 사용해야 한다. 그래야 스크린리더가 버튼이라고 읽기 때문
+- section : 섹션 구획을 나눌때 사용하고, 적절한 role, aria-label 설정으로 어떤 Section인지 설명할 수 있도록 한다.
+- article : 섹션 내부에 독립된 기능단위 UI를 만들 때 사용하고 적절한 aria-label 설정을 해준다.
+- list : ol, li 같은 태그를 사용해 같은 리스트 안의 내용들이 인식될 수 있도록 만든다
+- form : 유저 입력이 있는 부분은 form 태그로 감싸 어디서부터 어디까지 폼 형식인지 표현하고, input 태그와 같은 경우는 title
+을 설정하여 어떤 입력란인지 설명하도록 한다.
+- alert role : form을 입력할 때 유저 에러를 명시적으로 표시하고, 이런 메시지를 alert role로 설정하여 스크린리더가 인식할 수
+있도록 만든다.
+- heading : section 안에는 기본적으로 헤딩 태그를 꼭 포함하여 헤딩 태그로 건너뛸 수 있도록 한다. heading 태그가 디자인상
+꼭 필요하지 않을 경우 CSS를 통해 시각적으로는 없애지만 마크업 내부에는 존재할 수 있도록 만든다.
+- main : 스크린리더는 바로 main태그를 찾아 넘어가는 기능이 있는 경우도 있기 때문에 가장 중요한 부분을 main으로 감싼다
+- aria-hidden의 적절한 이용 : 종강시계 앱은 페이지가 딱 하나고 스크롤로 다른 기능으로 넘어가는 UI가 있기 때문에, 스크롤로
+같은 페이지의 다른 View로 넘어갔을 때 view 바깥의 요소에 스크린리더가 접근할 수 없도록 aria-hidden 태그를 동적으로 적용한다
+탭 같은 경우도 탭을 열었을 때 다른 태그들에 접근할 수 없도록 aria-hidden을 이용해 다른 컨텐츠로 넘어가는 것을 방지한다.
+- img alt : 이미지에 대체 택스트를 적용하여 src를 읽는 경우를 방지한다. 별 의미없는 이미지의 경우 alt에 '', 빈값을 적용한다.
+- 태그 중첩에 신경쓴다.
