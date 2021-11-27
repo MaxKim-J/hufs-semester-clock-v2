@@ -1,7 +1,8 @@
 import { ReactChild } from 'react';
-import { ColorType, TextType } from '@/_shared/styles/variables';
+import { ColorType, TextType, WeightType } from '@/_shared/styles/variables';
 
 export type TextCommonProps = {
+  weight?: WeightType;
   size?: TextType;
   color?: ColorType;
   children: ReactChild;

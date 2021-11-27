@@ -31,3 +31,11 @@ export const colorTable = {
 };
 
 export type ColorType = keyof typeof colorTable;
+
+export const weightTable = {
+  normal: 400,
+  semiBold: 500,
+  bold: 700,
+};
+
+export type WeightType = keyof typeof weightTable;
