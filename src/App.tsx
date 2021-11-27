@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { getItem } from '@/_shared/services/storage';
 import { Link, Text, Heading } from '@/_shared/components/fundamentals/Text';
 import Spacer from '@/_shared/components/fundamentals/Spacer';
+import Divider from '@/_shared/components/fundamentals/Divider';
 
 function App(): ReactElement {
   useEffect(() => {
@@ -19,6 +20,7 @@ function App(): ReactElement {
       <h2>메뉴</h2>
       <Link href="/">링크 컴포넌트</Link>
       <Spacer size="xLarge" />
+      <Divider margin="normal" color="darkGray" />
       <Text color="darkGray">안뇽</Text>
       <Heading tag="h1" color="gray">
         dd
