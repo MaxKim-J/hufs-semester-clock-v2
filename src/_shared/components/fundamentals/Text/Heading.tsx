@@ -7,7 +7,7 @@ type HeadingRange = 1 | 2 | 3 | 4 | 5 | 6;
 
 export type HeadingProps = {
   tag: `h${HeadingRange}`;
-} & Omit<TextCommonProps, 'size'> &
+} & Omit<TextCommonProps, 'size' | 'weight'> &
   HTMLAttributes<HTMLHeadingElement>;
 
 function Heading({ color, tag, children, ...props }: HeadingProps) {

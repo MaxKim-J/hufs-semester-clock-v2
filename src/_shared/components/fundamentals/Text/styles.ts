@@ -13,13 +13,11 @@ export const textStyle = (
   color?: ColorType,
   weight?: WeightType
 ) => css`
-  font-size: ${size !== undefined ? textTable[size] : textTable.normal};
-  color: ${color !== undefined ? colorTable[color] : colorTable.black};
-  font-weight: ${weight !== undefined
-    ? weightTable[weight]
-    : weightTable.normal};
+  font-size: ${textTable[size !== undefined ? size : 'normal']};
+  color: ${colorTable[color !== undefined ? color : 'black']};
+  font-weight: ${weightTable[weight !== undefined ? weight : 'normal']};
 `;
 
 export const headingStyle = (color?: ColorType) => css`
-  color: ${color !== undefined ? colorTable[color] : colorTable.black};
+  color: ${colorTable[color !== undefined ? color : 'black']};
 `;

@@ -11,13 +11,13 @@ export const textTable = {
 export type TextType = keyof typeof textTable;
 
 export const spaceTable = {
-  xxSmall: '0.25rem',
   xSmall: '0.5rem',
-  small: '0.75rem',
-  normal: '1rem',
-  large: '1.25rem',
-  xLarge: '1.5rem',
-  xxLarge: '1.75rem',
+  small: '1rem',
+  normal: '2rem',
+  large: '3rem',
+  xLarge: '4rem',
+  xxLarge: '5rem',
+  xxxLarge: '6rem',
 };
 
 export type SpaceType = keyof typeof spaceTable;
