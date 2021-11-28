@@ -9,7 +9,12 @@ type SwitchProps = {
   disabled?: boolean;
 };
 
-function Switch({ disabled = false, checked, onToggle, title }: SwitchProps) {
+function SwitchInput({
+  disabled = false,
+  checked,
+  onToggle,
+  title,
+}: SwitchProps) {
   const handleChange = (e: MouseEvent<HTMLDivElement>) => {
     if (disabled) {
       e.preventDefault();
@@ -23,7 +28,7 @@ function Switch({ disabled = false, checked, onToggle, title }: SwitchProps) {
       role="checkbox"
       css={switchBackgroundStyle(checked)}
       aria-checked={checked}
-      aria-labelledby={title}
+      aria-label={title}
       onClick={handleChange}
     >
       <div
@@ -64,4 +69,4 @@ const disabledSwitchCursorStyle = (isChecked: boolean) => css`
   background-color: ${colorTable.gray}
 `;
 
-export default Switch;
+export default SwitchInput;

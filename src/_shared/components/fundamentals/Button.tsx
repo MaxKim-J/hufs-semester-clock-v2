@@ -5,12 +5,11 @@ import { colorTable, spaceTable } from '@/_shared/styles/variables';
 type ButtonProps = {
   children: ReactChild;
   onClick: () => void;
-  type: 'button' | 'submit';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-function Button({ children, onClick, type, ...props }: ButtonProps) {
+function Button({ children, onClick, ...props }: ButtonProps) {
   return (
-    <button css={buttonStyle} type={type} onClick={onClick} {...props}>
+    <button css={buttonStyle} onClick={onClick} {...props}>
       {children}
     </button>
   );
