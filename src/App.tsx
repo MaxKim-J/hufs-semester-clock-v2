@@ -1,25 +1,24 @@
-import React, { ReactElement, useEffect } from 'react';
-import { getItem } from '@/_shared/services/storage';
+import React, { ReactElement } from 'react';
 import { Link, Text, Heading } from '@/_shared/components/fundamentals/Text';
 import Spacer from '@/_shared/components/fundamentals/Spacer';
 import Divider from '@/_shared/components/fundamentals/Divider';
+import Button from '@/_shared/components/fundamentals/Button';
 
 function App(): ReactElement {
-  useEffect(() => {
-    b();
-  }, []);
-
-  const b = async () => {
-    const a = await getItem('dd');
-    return a;
-  };
-
   return (
     <main aria-label="Dd">
       <h1>외대 종강시계 V2</h1>
       <h2>메뉴</h2>
       <Link href="/">링크 컴포넌트</Link>
       <Spacer size="xLarge" />
+      <Button
+        type="button"
+        onClick={() => {
+          console.log('ddd');
+        }}
+      >
+        안뇽
+      </Button>
       <Divider margin="normal" color="darkGray" />
       <Text color="darkGray">안뇽</Text>
       <Heading tag="h1" color="gray">
