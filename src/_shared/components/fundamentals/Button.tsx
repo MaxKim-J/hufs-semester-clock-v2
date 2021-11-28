@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactChild } from 'react';
+import { ButtonHTMLAttributes, ReactChild } from 'react';
 import { css } from '@emotion/react';
 import { colorTable, spaceTable } from '@/_shared/styles/variables';
 
@@ -6,7 +6,7 @@ type ButtonProps = {
   children: ReactChild;
   onClick: () => void;
   type: 'button' | 'submit';
-} & HTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 function Button({ children, onClick, type, ...props }: ButtonProps) {
   return (
@@ -25,6 +25,10 @@ const buttonStyle = css`
   &:hover {
     background-color: ${colorTable.white};
     color: ${colorTable.black};
+  }
+  &:disabled {
+    pointer-events: none;
+    background-color: ${colorTable.darkGray};
   }
 `;
 

@@ -1,17 +1,28 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Link, Text, Heading } from '@/_shared/components/fundamentals/Text';
 import Spacer from '@/_shared/components/fundamentals/Spacer';
 import Divider from '@/_shared/components/fundamentals/Divider';
 import Button from '@/_shared/components/fundamentals/Button';
+import Switch from '@/_shared/components/fundamentals/Switch';
 
 function App(): ReactElement {
+  const [isOn, setIsOn] = useState(false);
   return (
     <main aria-label="Dd">
       <h1>외대 종강시계 V2</h1>
       <h2>메뉴</h2>
       <Link href="/">링크 컴포넌트</Link>
       <Spacer size="xLarge" />
+      <Switch
+        checked={isOn}
+        onToggle={(a) => {
+          setIsOn(a);
+          console.log(a);
+        }}
+        title="음음"
+      />
       <Button
+        disabled
         type="button"
         onClick={() => {
           console.log('ddd');

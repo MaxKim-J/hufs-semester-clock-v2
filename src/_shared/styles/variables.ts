@@ -28,6 +28,7 @@ export const colorTable = {
   gray: '#c4c4c4',
   darkGray: '#747474',
   black: '#000000',
+  lightBlue: '#3899f4',
 };
 
 export type ColorType = keyof typeof colorTable;
