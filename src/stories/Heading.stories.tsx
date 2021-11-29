@@ -16,4 +16,5 @@ export const HeadingText = Template.bind({});
 HeadingText.args = {
   children: '헤딩 텍스트',
   tag: 'h1',
+  color: 'white',
 };

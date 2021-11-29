@@ -14,7 +14,7 @@ export const textStyle = (
   weight?: WeightType
 ) => css`
   font-size: ${textTable[size ?? 'normal']};
-  color: ${colorTable[color ?? 'black']};
+  color: ${colorTable[color ?? 'white']};
   font-weight: ${weightTable[weight ?? 'normal']};
 `;
 

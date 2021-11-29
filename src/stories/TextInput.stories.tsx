@@ -15,4 +15,5 @@ export const InputText = Template.bind({});
 
 InputText.args = {
   value: '',
+  maxLength: 5,
 };

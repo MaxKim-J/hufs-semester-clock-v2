@@ -14,4 +14,5 @@ export const LinkText = Template.bind({});
 LinkText.args = {
   children: '링크 텍스트',
   href: '/',
+  color: 'white',
 };

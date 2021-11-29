@@ -4,6 +4,7 @@ import Divider from '@/_shared/components/fundamentals/Divider';
 import Button from '@/_shared/components/fundamentals/Button';
 import SwitchInput from '@/_shared/components/fundamentals/Input/SwitchInput';
 import SelectInput from '@/_shared/components/fundamentals/Input/SelectInput';
+import { TextInput } from '@/_shared/components/fundamentals/Input';
 
 function App(): ReactElement {
   const [isOn, setIsOn] = useState(false);
