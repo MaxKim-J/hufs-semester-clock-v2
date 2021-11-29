@@ -6,16 +6,15 @@ type TextInputType = {
   title: string;
 };
 
-function TextInput({ value, onChange, title }: TextInputType) {
+function TextInput({ onChange, ...props }: TextInputType) {
   return (
     <input
       type="text"
-      title={title}
-      value={value}
       css={textInputStyle}
       onChange={(e) => {
         onChange(e.target.value);
       }}
+      {...props}
     />
   );
 }
