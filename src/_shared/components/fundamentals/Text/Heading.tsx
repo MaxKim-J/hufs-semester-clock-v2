@@ -10,7 +10,7 @@ export type HeadingProps = {
 } & Omit<TextCommonProps, 'size' | 'weight'> &
   HTMLAttributes<HTMLHeadingElement>;
 
-function Heading({ color, tag, children, ...props }: HeadingProps) {
+function Heading({ color = 'white', tag, children, ...props }: HeadingProps) {
   return jsxWithEmotion(tag, {
     ...props,
     children,

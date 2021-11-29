@@ -14,4 +14,6 @@ export const GeneralText = Template.bind({});
 GeneralText.args = {
   children: '일반 텍스트',
   color: 'white',
+  weight: 'normal',
+  size: 'normal',
 };

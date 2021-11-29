@@ -8,16 +8,21 @@ import {
   WeightType,
 } from '@/_shared/styles/variables';
 
-export const textStyle = (
-  size?: TextType,
-  color?: ColorType,
-  weight?: WeightType
-) => css`
-  font-size: ${textTable[size ?? 'normal']};
-  color: ${colorTable[color ?? 'white']};
-  font-weight: ${weightTable[weight ?? 'normal']};
+type TextStyleArgs = [TextType, ColorType, WeightType];
+
+export const linkStyle = (...args: TextStyleArgs) => css`
+  ${textStyle(...args)}
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
-export const headingStyle = (color?: ColorType) => css`
-  color: ${colorTable[color ?? 'black']};
+export const textStyle = (...[size, color, weight]: TextStyleArgs) => css`
+  font-size: ${textTable[size]};
+  color: ${colorTable[color]};
+  font-weight: ${weightTable[weight]};
+`;
+
+export const headingStyle = (color: ColorType) => css`
+  color: ${colorTable[color]};
 `;

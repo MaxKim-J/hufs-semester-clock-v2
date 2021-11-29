@@ -12,3 +12,9 @@ const Template: ComponentStory<typeof SwitchInput> = (args) => (
 );
 
 export const InputSwitch = Template.bind({});
+
+InputSwitch.args = {
+  title: '스크린리더가 이 텍스트를 읽어요',
+  checked: false,
+  disabled: false,
+};

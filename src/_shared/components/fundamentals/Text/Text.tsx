@@ -4,7 +4,13 @@ import { TextCommonProps } from './types';
 
 export type TextProps = TextCommonProps & HTMLAttributes<HTMLParagraphElement>;
 
-function Text({ size, weight, color, children, ...props }: TextProps) {
+function Text({
+  size = 'normal',
+  color = 'white',
+  weight = 'normal',
+  children,
+  ...props
+}: TextProps) {
   return (
     <p css={textStyle(size, color, weight)} {...props}>
       {children}
