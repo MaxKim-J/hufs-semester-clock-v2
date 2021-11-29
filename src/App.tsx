@@ -1,10 +1,10 @@
-import React, { ReactElement, useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { Link, Text, Heading } from '@/_shared/components/fundamentals/Text';
 import Divider from '@/_shared/components/fundamentals/Divider';
 import Button from '@/_shared/components/fundamentals/Button';
 import SwitchInput from '@/_shared/components/fundamentals/Input/SwitchInput';
 import SelectInput from '@/_shared/components/fundamentals/Input/SelectInput';
-import { TextInput } from '@/_shared/components/fundamentals/Input';
+import Tab from '@/_shared/components/fundamentals/Tab';
 
 function App(): ReactElement {
   const [isOn, setIsOn] = useState(false);
@@ -12,6 +12,7 @@ function App(): ReactElement {
 
   return (
     <main aria-label="Dd">
+      <Tab />
       <h1>외대 종강시계 V2</h1>
       <h2>메뉴</h2>
       <Link href="/">링크 컴포넌트</Link>
