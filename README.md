@@ -49,6 +49,7 @@
   - [x] SelectInput
   - [x] SwitchInput
   - [ ] Button
+  - [ ] DotSwitch
 
 ### 기능 개발 작업
 
