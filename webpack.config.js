@@ -16,7 +16,7 @@ const constantKey = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 const config = {
   mode: process.env.NODE_ENV,
   entry: {
-    background: path.resolve(__dirname, 'src/_shared/assets/background.js'),
+    background: path.resolve(__dirname, 'src/assets/background.js'),
     bundle: path.resolve(__dirname, 'src/index.tsx'),
   },
   output: {
@@ -88,7 +88,9 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/images/[name].[hash].[ext]',
+              name: `assets/images/${
+                PRODUCTION ? '[hash].[ext]' : '[name].[ext]'
+              }`,
             },
           },
         ],
@@ -100,12 +102,12 @@ const config = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/_shared/assets/icons'),
+          from: path.resolve(__dirname, 'src/assets/icons'),
           to: 'assets/icons',
           toType: 'dir',
         },
         {
-          from: path.resolve(__dirname, 'src/_shared/assets/manifest.json'),
+          from: path.resolve(__dirname, 'src/assets/manifest.json'),
           to: 'manifest.json',
         },
       ],
@@ -115,7 +117,7 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       excludeChunks: ['background'],
-      template: './src/_shared/assets/index.html',
+      template: './src/assets/index.html',
       minify: {
         collapseWhitespace: true,
         removeComments: true,

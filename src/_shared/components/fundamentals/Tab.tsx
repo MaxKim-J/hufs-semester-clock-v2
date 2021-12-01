@@ -3,14 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { css } from '@emotion/react';
 import { Text } from './Text';
 import Spacer from './Spacer';
-import Close from '@/_shared/images/close-white.svg';
+import CloseWhite from '@/_shared/images/close-white.svg';
 
 type TabProps = {
   title: string;
   children: ReactChild;
+  direction?: 'left' | 'right';
 };
 
-function Tab({ title, children }: TabProps) {
+function Tab({ title, children, direction = 'left' }: TabProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,21 +19,21 @@ function Tab({ title, children }: TabProps) {
       <AnimatePresence>
         {isOpen && (
           <motion.dialog
-            css={dialogStyle}
+            css={dialogStyle(direction)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             open
           >
             <div css={dialogHeader}>
-              <Text>{title}</Text>
+              <Text weight="bold">{title}</Text>
               <button
                 type="button"
                 onClick={() => {
                   setIsOpen(false);
                 }}
               >
-                <img src={Close} alt="닫기" />
+                <img css={closeImg} src={CloseWhite} alt="닫기" />
               </button>
             </div>
             <Spacer height="small" />
@@ -40,14 +41,13 @@ function Tab({ title, children }: TabProps) {
           </motion.dialog>
         )}
       </AnimatePresence>
-
       <button
         type="button"
         onClick={() => {
           setIsOpen((state) => !state);
         }}
       >
-        {title}
+        <Text>{title}</Text>
       </button>
     </div>
   );
@@ -55,6 +55,9 @@ function Tab({ title, children }: TabProps) {
 
 const dialogContainerStyle = css`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
 const dialogHeader = css`
@@ -65,17 +68,20 @@ const dialogHeader = css`
   z-index: 20;
 `;
 
-const dialogStyle = css`
+const dialogStyle = (direction: 'left' | 'right') => css`
   position: absolute;
-  margin: 0;
+  margin-left: ${direction === 'left' ? '0' : 'auto'};
   bottom: 3rem;
   border: none;
-  min-width: 10rem;
-  min-height: 10rem;
+  width: 20rem;
   padding: 1rem;
   border-radius: 16px;
   background-color: rgb(0, 0, 0, 0.5);
-  transition: display 2s;
+`;
+
+const closeImg = css`
+  width: 1rem;
+  height: 1rem;
 `;
 
 export default Tab;

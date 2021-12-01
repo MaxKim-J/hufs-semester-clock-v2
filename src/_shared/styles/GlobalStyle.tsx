@@ -32,6 +32,10 @@ const globalStyle = css`
     width: auto;
     height: auto;
   }
+
+  dialog {
+    margin: 0;
+  }
 `;
 
 export default GlobalStyle;
