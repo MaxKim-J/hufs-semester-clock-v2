@@ -16,7 +16,6 @@ function Button({ children, onClick, ...props }: ButtonProps) {
 }
 
 const buttonStyle = css`
-  background-color: transparent;
   border: 1px solid ${colorTable.white};
   color: ${colorTable.white};
   padding: 0.25rem ${spaceTable.xSmall};

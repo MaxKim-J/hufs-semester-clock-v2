@@ -20,6 +20,18 @@ const globalStyle = css`
     text-decoration: none;
     color: black;
   }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  img {
+    width: auto;
+    height: auto;
+  }
 `;
 
 export default GlobalStyle;

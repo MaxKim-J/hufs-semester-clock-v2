@@ -1,8 +1,9 @@
 import { ReactChild, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { css } from '@emotion/react';
 import { Text } from './Text';
-import Button from './Button';
 import Spacer from './Spacer';
+import Close from '@/_shared/images/close-white.svg';
 
 type TabProps = {
   title: string;
@@ -14,31 +15,40 @@ function Tab({ title, children }: TabProps) {
 
   return (
     <div css={dialogContainerStyle}>
-      {isOpen && (
-        <dialog css={dialogStyle} open>
-          <div css={dialogHeader}>
-            <Text>{title}</Text>
-            <Button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              X
-            </Button>
-          </div>
-          <Spacer height="small" />
-          {children}
-        </dialog>
-      )}
-      <Button
+      <AnimatePresence>
+        {isOpen && (
+          <motion.dialog
+            css={dialogStyle}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            open
+          >
+            <div css={dialogHeader}>
+              <Text>{title}</Text>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+              >
+                <img src={Close} alt="닫기" />
+              </button>
+            </div>
+            <Spacer height="small" />
+            {children}
+          </motion.dialog>
+        )}
+      </AnimatePresence>
+
+      <button
         type="button"
         onClick={() => {
           setIsOpen((state) => !state);
         }}
       >
         {title}
-      </Button>
+      </button>
     </div>
   );
 }
