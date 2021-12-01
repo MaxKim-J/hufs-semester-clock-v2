@@ -1,9 +1,10 @@
-import { ReactChild, useState } from 'react';
+import { ReactChild, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { css } from '@emotion/react';
 import { Text } from './Text';
 import Spacer from './Spacer';
 import CloseWhite from '@/_shared/images/close-white.svg';
+import { fadeInAndOut } from '@/_shared/styles/animation';
 
 type TabProps = {
   title: string;
@@ -13,17 +14,26 @@ type TabProps = {
 
 function Tab({ title, children, direction = 'left' }: TabProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const dialogRef = useRef(null);
 
   return (
     <div css={dialogContainerStyle}>
+      <button
+        type="button"
+        onClick={() => {
+          setIsOpen((state) => !state);
+        }}
+      >
+        <Text>{title}</Text>
+      </button>
       <AnimatePresence>
         {isOpen && (
           <motion.dialog
-            css={dialogStyle(direction)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            aria-modal
             open
+            ref={dialogRef}
+            css={dialogStyle(direction)}
+            {...fadeInAndOut}
           >
             <div css={dialogHeader}>
               <Text weight="bold">{title}</Text>
@@ -41,14 +51,6 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
           </motion.dialog>
         )}
       </AnimatePresence>
-      <button
-        type="button"
-        onClick={() => {
-          setIsOpen((state) => !state);
-        }}
-      >
-        <Text>{title}</Text>
-      </button>
     </div>
   );
 }
