@@ -58,20 +58,6 @@ function App(): ReactElement {
       </BoxLayout>
       <Spacer height="xxxLarge" />
       <Spacer height="xxxLarge" />
-      <div
-        css={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: '1rem',
-        }}
-      >
-        <Tab title="설정">
-          <div>알맹알맹이!</div>
-        </Tab>
-        <Tab title="개발자소개" direction="right">
-          <div>알맹알맹이!</div>
-        </Tab>
-      </div>
     </main>
   );
 }

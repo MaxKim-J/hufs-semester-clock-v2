@@ -7,14 +7,22 @@ module.exports = {
     options.presets.push('@emotion/babel-preset-css-prop');
     return options;
   },
-  webpackFinal: async (config) => ({
-    ...config,
-    resolve: {
-      ...config.resolve,
-      alias: {
-        ...config.resolve.alias,
-        '@': path.resolve(__dirname, '../src/'),
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@': path.resolve(__dirname, '../src/'),
+        },
       },
-    },
-  }),
+    };
+  },
 };

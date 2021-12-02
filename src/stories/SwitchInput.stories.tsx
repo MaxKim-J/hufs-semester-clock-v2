@@ -1,6 +1,6 @@
 import React from 'react';
-import SwitchInput from '../_shared/components/fundamentals/Input/SwitchInput';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import SwitchInput from '../_shared/components/fundamentals/Input/SwitchInput';
 
 export default {
   title: 'Fundamentals/Input',

@@ -31,6 +31,7 @@ function DotSwitch({ tooltip, onClick, activateId, id }: DotSwitchProps) {
   return (
     <button
       aria-labelledby={tooltip}
+      type="button"
       css={dotSwitchStyle}
       onClick={activateDot}
       onMouseEnter={() => setIsShowTooltip(true)}
@@ -50,6 +51,7 @@ function DotSwitch({ tooltip, onClick, activateId, id }: DotSwitchProps) {
 
 const dotSwitchStyle = css`
   position: relative;
+  min-width: 10rem;
 `;
 
 const tooltipStyle = css`
@@ -58,8 +60,8 @@ const tooltipStyle = css`
 `;
 
 const dotStyle = (isActive: boolean) => css`
-  width: 1rem;
-  height: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
   opacity: 0.7;
   background-color: ${isActive ? colorTable.white : colorTable.darkGray};

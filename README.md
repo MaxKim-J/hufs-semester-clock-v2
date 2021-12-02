@@ -42,14 +42,14 @@
   - [x] HeadingText
   - [x] Spacer
   - [x] Divider
-  - [ ] Tab
+  - [x] Tab
   - [ ] ToolTip
-  - [ ] BoxLayout
+  - [x] BoxLayout
   - [x] TextInput
   - [x] SelectInput
   - [x] SwitchInput
-  - [ ] Button
-  - [ ] DotSwitch
+  - [x] Button
+  - [x] DotSwitch
 
 ### 기능 개발 작업
 
