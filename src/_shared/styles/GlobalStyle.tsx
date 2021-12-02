@@ -3,6 +3,22 @@ import { css, Global } from '@emotion/react';
 const GlobalStyle = () => <Global styles={globalStyle} />;
 
 const globalStyle = css`
+  @font-face {
+    font-family: 'netmarbleM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleM.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'netmarbleB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleB.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   p,
   h1,
   h2,
@@ -13,6 +29,10 @@ const globalStyle = css`
   body {
     margin: 0;
     padding: 0;
+  }
+
+  body {
+    font-family: 'netmarbleM', serif;
   }
 
   a {
@@ -26,6 +46,7 @@ const globalStyle = css`
     border: none;
     cursor: pointer;
     padding: 0;
+    font-family: inherit;
   }
 
   img {
