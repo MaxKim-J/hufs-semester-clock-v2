@@ -1,5 +1,6 @@
 import React from 'react';
 import GlobalStyle from '../src/_shared/styles/GlobalStyle';
+import { transparentTable, spaceTable } from '@/_shared/styles/variables';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -28,8 +29,7 @@ export const decorators = [
       >
         <div
           css={{
-            backgroundColor: 'black',
-            opacity: 0.5,
+            backgroundColor: transparentTable.black50,
             width: '100%',
             height: '500px',
           }}

@@ -11,13 +11,13 @@ export const textTable = {
 export type TextType = keyof typeof textTable;
 
 export const spaceTable = {
-  xSmall: '0.5rem',
-  small: '1rem',
-  normal: '2rem',
-  large: '3rem',
-  xLarge: '4rem',
-  xxLarge: '5rem',
-  xxxLarge: '6rem',
+  xSmall: '0.25rem',
+  small: '0.5rem',
+  normal: '1rem',
+  large: '2rem',
+  xLarge: '3rem',
+  xxLarge: '4rem',
+  xxxLarge: '5rem',
 };
 
 export type SpaceType = keyof typeof spaceTable;
@@ -40,3 +40,12 @@ export const weightTable = {
 };
 
 export type WeightType = keyof typeof weightTable;
+
+export const transparentTable = {
+  white30: 'rgba(255, 255, 255, 0.3)',
+  white50: 'rgba(255, 255, 255, 0.5)',
+  white70: 'rgba(255, 255, 255, 0.7)',
+  black30: 'rgba(0, 0, 0, 0.3)',
+  black50: 'rgba(0, 0, 0, 0.5)',
+  black70: 'rgba(0, 0, 0, 0.7)',
+};
