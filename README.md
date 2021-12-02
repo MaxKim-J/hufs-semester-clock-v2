@@ -36,14 +36,13 @@
 - [x] Storybook 세팅
 - [x] Jest로 테스트 세팅
 - [x] CSS 변수, emotion 전역 세팅(폰트, 텍스트, 마진, 패딩, 색깔)
-- [ ] fundamental 컴포넌트들과 story만들기
+- [x] fundamental 컴포넌트들과 story만들기
   - [x] Text
   - [x] LinkText
   - [x] HeadingText
   - [x] Spacer
   - [x] Divider
   - [x] Tab
-  - [ ] ToolTip
   - [x] BoxLayout
   - [x] TextInput
   - [x] SelectInput
