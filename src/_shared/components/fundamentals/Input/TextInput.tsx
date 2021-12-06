@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colorTable, TextType, textTable } from '@/_shared/styles/variables';
+import { colorTable, TextType, textTable } from '@style/variables';
 
 export type TextInputType = {
   value: string;

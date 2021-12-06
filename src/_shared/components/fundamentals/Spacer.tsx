@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { SpaceType, spaceTable } from '@/_shared/styles/variables';
+import { SpaceType, spaceTable } from '@style/variables';
 
 type SpacerProps = {
   height?: SpaceType;

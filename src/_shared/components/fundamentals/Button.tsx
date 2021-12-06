@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactChild } from 'react';
 import { css } from '@emotion/react';
-import { colorTable, spaceTable } from '@/_shared/styles/variables';
+import { colorTable, spaceTable } from '@style/variables';
 
 type ButtonProps = {
   children: ReactChild;

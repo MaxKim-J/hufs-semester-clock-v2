@@ -6,7 +6,7 @@ import {
   TextType,
   weightTable,
   WeightType,
-} from '@/_shared/styles/variables';
+} from '@style/variables';
 
 type TextStyleArgs = [TextType, ColorType, WeightType];
 

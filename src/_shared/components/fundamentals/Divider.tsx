@@ -1,10 +1,5 @@
 import { css } from '@emotion/react';
-import {
-  SpaceType,
-  ColorType,
-  spaceTable,
-  colorTable,
-} from '@/_shared/styles/variables';
+import { SpaceType, ColorType, spaceTable, colorTable } from '@style/variables';
 
 type DividerProps = {
   margin?: SpaceType;

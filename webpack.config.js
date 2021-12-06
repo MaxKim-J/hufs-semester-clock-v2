@@ -132,6 +132,9 @@ const config = {
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
+      '@shared': path.resolve(__dirname, 'src/_shared'),
+      '@components': path.resolve(__dirname, 'src/_shared/components'),
+      '@style': path.resolve(__dirname, 'src/_shared/styles'),
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },

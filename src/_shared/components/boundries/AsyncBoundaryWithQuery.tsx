@@ -2,7 +2,7 @@ import React, { ReactChild, ReactNode } from 'react';
 import { useQueryErrorResetBoundary } from 'react-query';
 import AsyncBoundary from './AsyncBoundary';
 import { ErrorBoundaryProps } from './ErrorBoundary';
-import AsyncRequestError from '@/_shared/components/error/AsyncRequestError';
+import AsyncRequestError from '@components/error/AsyncRequestError';
 
 type QueryBoundaryProps = {
   children: ReactNode;

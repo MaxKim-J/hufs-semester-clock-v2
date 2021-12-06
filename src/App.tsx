@@ -1,8 +1,8 @@
 import { ReactElement, useState } from 'react';
-import Spacer from '@/_shared/components/fundamentals/Spacer';
-import BoxLayout from '@/_shared/components/fundamentals/BoxLayout';
-import DotSwitch from '@/_shared/components/fundamentals/DotSwitch';
-import TextAreaInput from '@/_shared/components/fundamentals/Input/TextAreaInput';
+import Spacer from '@components/fundamentals/Spacer';
+import BoxLayout from '@components/fundamentals/BoxLayout';
+import DotSwitch from '@components/fundamentals/DotSwitch';
+import TextAreaInput from '@components/fundamentals/Input/TextAreaInput';
 
 function App(): ReactElement {
   const [pointer, setPointer] = useState(0);

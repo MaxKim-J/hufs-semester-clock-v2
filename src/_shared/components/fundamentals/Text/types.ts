@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ColorType, TextType, WeightType } from '@/_shared/styles/variables';
+import { ColorType, TextType, WeightType } from '@style/variables';
 
 export type TextCommonProps = {
   weight?: WeightType;

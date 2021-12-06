@@ -1,6 +1,6 @@
 import { MouseEvent } from 'react';
 import { css } from '@emotion/react';
-import { colorTable } from '@/_shared/styles/variables';
+import { colorTable } from '@style/variables';
 
 type SwitchProps = {
   checked: boolean;

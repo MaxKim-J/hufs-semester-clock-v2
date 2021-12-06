@@ -1,6 +1,6 @@
 import React from 'react';
 import GlobalStyle from '../src/_shared/styles/GlobalStyle';
-import { transparentTable, spaceTable } from '@/_shared/styles/variables';
+import { transparentTable, spaceTable } from '@style/variables';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

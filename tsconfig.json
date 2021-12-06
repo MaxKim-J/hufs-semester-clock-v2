@@ -13,7 +13,10 @@
     "noImplicitAny": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@style/*": ["src/_shared/styles/*"],
+      "@components/*": ["src/_shared/components/*"],
+      "@shared/*": ["src/_shared/*"]
     },
     "typeRoots": ["node_modules/@types", "@types"],
     "allowSyntheticDefaultImports": true,

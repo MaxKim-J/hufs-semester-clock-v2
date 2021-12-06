@@ -1,11 +1,6 @@
 import { css } from '@emotion/react';
-import { TextInputType } from '@/_shared/components/fundamentals/Input/TextInput';
-import {
-  colorTable,
-  spaceTable,
-  textTable,
-  TextType,
-} from '@/_shared/styles/variables';
+import { colorTable, spaceTable, textTable, TextType } from '@style/variables';
+import { TextInputType } from '@components/fundamentals/Input/TextInput';
 import { Text } from '../Text';
 
 type WidthType = number;

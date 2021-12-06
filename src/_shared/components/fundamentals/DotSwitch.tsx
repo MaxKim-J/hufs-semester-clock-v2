@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
-import { colorTable } from '@/_shared/styles/variables';
+import { colorTable } from '@style/variables';
 import { Text } from './Text';
 import { appearFromRight } from '@/_shared/styles/animation';
 
