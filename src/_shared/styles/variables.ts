@@ -24,7 +24,7 @@ export type SpaceType = keyof typeof spaceTable;
 
 export const colorTable = {
   white: '#FFFFFF',
-  lightGray: '#e5e5e5',
+  lightGray: '#d3d3d3',
   gray: '#c4c4c4',
   darkGray: '#747474',
   black: '#000000',

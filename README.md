@@ -49,6 +49,7 @@
   - [x] SwitchInput
   - [x] Button
   - [x] DotSwitch
+  - [x] TextArea
 
 ### 기능 개발 작업
 

@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
 import { colorTable, TextType, textTable } from '@/_shared/styles/variables';
 
-type TextInputType = {
+export type TextInputType = {
   value: string;
   title: string;
   onChange: (value: string) => void;
   size?: TextType;
   maxLength?: number;
+  placeholder?: string;
 };
 
 function TextInput({
@@ -29,13 +30,16 @@ function TextInput({
 }
 
 const textInputStyle = (size: TextType) => css`
-  width: 80px;
+  width: calc(${textTable[size]} * 5);
   height: ${textTable[size]};
   font-size: ${textTable[size]};
   color: ${colorTable.white};
   border: none;
   border-bottom: 2px solid ${colorTable.white};
   background-color: transparent;
+  &::placeholder {
+    color: ${colorTable.lightGray};
+  }
 `;
 
 export default TextInput;

@@ -17,4 +17,5 @@ InputText.args = {
   value: '',
   maxLength: 5,
   title: '스크린리더가 이 텍스트를 읽어요',
+  placeholder: '입력하세요',
 };
