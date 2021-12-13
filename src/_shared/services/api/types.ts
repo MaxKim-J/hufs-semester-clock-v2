@@ -1,43 +1,45 @@
 /* eslint-disable camelcase */
 
-type SemesterAct = '종강' | '개강';
-type SemesterKey = 'current' | 'next' | 'seasonal';
-export type SemesterValue = {
-  act: SemesterAct;
+export interface SemesterValue {
+  act: '종강' | '개강';
   due: string;
   id: string;
-};
+}
 
-export type Semester = Record<SemesterKey, SemesterValue>;
+export interface Semester {
+  current: SemesterValue;
+  next: SemesterValue;
+  season: SemesterValue;
+}
 
-export type Weather = {
+export interface Weather {
   afternoon_icon: string;
   date: string;
   id: number;
   morning_icon: string;
   regional: 'seoul' | 'global';
   weatherId: number;
-};
+}
 
-type CoronaDataPerCity = {
+interface CoronaPerCity {
   rate: number;
   region: string;
-};
+}
 
-type CoronaDataPerDate = {
+interface CoronaPerDate {
   rate: number;
   day: string;
-};
+}
 
-export type Corona = {
-  city: CoronaDataPerCity[];
-  total: CoronaDataPerDate[];
+export interface Corona {
+  city: CoronaPerCity[];
+  total: CoronaPerDate[];
   cityTimeStatus: string;
-};
+}
 
-export type Notification = {
+export interface Notification {
   date: string;
   id: number;
   link: string;
   title: string;
-};
+}

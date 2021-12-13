@@ -21,6 +21,9 @@ module.exports = {
         alias: {
           ...config.resolve.alias,
           '@': path.resolve(__dirname, '../src/'),
+          '@style': path.resolve(__dirname, '../src/_shared/styles/'),
+          '@components': path.resolve(__dirname, '../src/_shared/components/'),
+          '@shared': path.resolve(__dirname, '../src/_shared/'),
         },
       },
     };

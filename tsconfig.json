@@ -18,7 +18,7 @@
       "@components/*": ["src/_shared/components/*"],
       "@shared/*": ["src/_shared/*"]
     },
-    "typeRoots": ["node_modules/@types", "@types"],
+    "typeRoots": ["node_modules/@types"],
     "allowSyntheticDefaultImports": true,
   },
   "include": ["src"],
