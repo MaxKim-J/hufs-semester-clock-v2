@@ -12,7 +12,7 @@ function BoxLayout({ title, children }: BoxLayoutProps) {
   return (
     <article css={boxContainerStyle}>
       <div css={boxHeaderStyle}>
-        <Heading tag="h2" color="black">
+        <Heading tag="h3" color="black">
           {title}
         </Heading>
       </div>
