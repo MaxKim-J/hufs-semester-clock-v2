@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
-import { textStyle } from './styles';
-import { TextCommonProps } from './types';
+import { textStyle } from '../styles';
+import { TextCommonProps } from '../types';
 
 export type TextProps = TextCommonProps & HTMLAttributes<HTMLParagraphElement>;
 

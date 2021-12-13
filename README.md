@@ -37,18 +37,18 @@
 - [x] Jest로 테스트 세팅
 - [x] CSS 변수, emotion 전역 세팅(폰트, 텍스트, 마진, 패딩, 색깔)
 - [x] fundamental 컴포넌트들과 story만들기
-  - [x] Text
+  - [x] Index
   - [x] LinkText
   - [x] HeadingText
-  - [x] Spacer
-  - [x] Divider
-  - [x] Tab
-  - [x] BoxLayout
-  - [x] TextInput
-  - [x] SelectInput
-  - [x] SwitchInput
-  - [x] Button
-  - [x] DotSwitch
+  - [x] Index
+  - [x] Index
+  - [x] Index
+  - [x] Index
+  - [x] Index
+  - [x] Index
+  - [x] Index
+  - [x] Index
+  - [x] Index
   - [x] TextArea
 
 ### 기능 개발 작업

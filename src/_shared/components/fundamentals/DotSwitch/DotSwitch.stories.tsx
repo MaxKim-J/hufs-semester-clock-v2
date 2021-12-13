@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import DotSwitch from '../_shared/components/fundamentals/DotSwitch';
+import DotSwitch from './index';
 
 export default {
   title: 'Fundamentals/DotSwitch',

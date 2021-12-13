@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { colorTable, spaceTable, textTable, TextType } from '@style/variables';
 import { TextInputType } from '@components/fundamentals/Input/TextInput';
-import { Text } from '../Text';
+import { Text } from '../../Text';
 
 type WidthType = number;
 
@@ -9,7 +9,7 @@ type TextAreaInputProps = {
   width?: WidthType;
 } & TextInputType;
 
-function TextAreaInput({
+function TextArea({
   onChange,
   size = 'normal',
   maxLength = 200,
@@ -64,4 +64,4 @@ const lengthCounterStyle = css`
   text-align: right;
 `;
 
-export default TextAreaInput;
+export default TextArea;

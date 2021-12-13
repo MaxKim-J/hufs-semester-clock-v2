@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes } from 'react';
-import { linkStyle } from './styles';
-import { TextCommonProps } from './types';
+import { linkStyle } from '../styles';
+import { TextCommonProps } from '../types';
 
 export type LinkProps = TextCommonProps &
   AnchorHTMLAttributes<HTMLAnchorElement>;

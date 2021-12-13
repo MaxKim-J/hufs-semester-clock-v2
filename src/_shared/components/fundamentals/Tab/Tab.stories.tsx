@@ -1,9 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Tab from '../_shared/components/fundamentals/Tab';
+import Tab from './index';
 
 export default {
-  title: 'Fundamentals/Tab',
+  title: 'Fundamentals/Index',
   component: Tab,
 } as ComponentMeta<typeof Tab>;
 

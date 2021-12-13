@@ -1,7 +1,6 @@
 import React from 'react';
-
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import TextArea from '../_shared/components/fundamentals/Input/TextAreaInput';
+import TextArea from './index';
 
 export default {
   title: 'Fundamentals/Input',

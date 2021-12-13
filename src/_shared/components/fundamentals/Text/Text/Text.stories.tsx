@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Text from '../_shared/components/fundamentals/Text/Text';
+import Text from './index';
 
 export default {
   title: 'Fundamentals/Text',

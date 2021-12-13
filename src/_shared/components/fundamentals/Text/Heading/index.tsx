@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { jsx as jsxWithEmotion } from '@emotion/react';
-import { headingStyle } from './styles';
-import { TextCommonProps } from './types';
+import { headingStyle } from '../styles';
+import { TextCommonProps } from '../types';
 
 type HeadingRange = 1 | 2 | 3 | 4 | 5 | 6;
 

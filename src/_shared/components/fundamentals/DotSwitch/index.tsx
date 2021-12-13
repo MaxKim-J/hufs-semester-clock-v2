@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { colorTable } from '@style/variables';
-import { Text } from './Text';
-import { appearFromRight } from '@/_shared/styles/animation';
+import { Text } from '../Text';
+import { appearFromRight } from '@style/animation';
 
 type DotSwitchProps = {
   id: number;

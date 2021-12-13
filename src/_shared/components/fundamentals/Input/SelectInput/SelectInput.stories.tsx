@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import SelectInput from '../_shared/components/fundamentals/Input/SelectInput';
+import SelectInput from './index';
 
 export default {
   title: 'Fundamentals/Input',
