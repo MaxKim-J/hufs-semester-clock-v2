@@ -1,6 +1,7 @@
 import { ReactChild, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CloseWhite from '@shared/images/close-white.svg';
+import { transparentTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
 import { css } from '@emotion/react';
 import { Text } from '../Text';
@@ -78,7 +79,7 @@ const dialogStyle = (direction: 'left' | 'right') => css`
   width: 25rem;
   padding: 1rem;
   border-radius: 16px;
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: ${transparentTable.black70};
 `;
 
 const closeImg = css`

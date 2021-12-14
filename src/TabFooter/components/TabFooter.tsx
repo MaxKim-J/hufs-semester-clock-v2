@@ -1,16 +1,16 @@
 import { css } from '@emotion/react';
 import Tab from '@components/fundamentals/Tab';
-import Index from './SettingTab';
-import Index from '@/TabFooter/components/DeveloperTab';
+import SettingTab from './SettingTab';
+import DeveloperTab from '@/TabFooter/components/DeveloperTab';
 
 function TabFooter() {
   return (
     <footer css={tabFooterStyle}>
       <Tab title="설정" direction="left">
-        <Index />
+        <SettingTab />
       </Tab>
       <Tab title="개발자 소개" direction="right">
-        <Index />
+        <DeveloperTab />
       </Tab>
     </footer>
   );

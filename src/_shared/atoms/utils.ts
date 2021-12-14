@@ -26,7 +26,3 @@ export const chromeStorageEffect = <AtomDataType>(key: string) => {
 
   return effect;
 };
-
-export const a = () => {
-  console.log('d');
-};

@@ -1,6 +1,6 @@
-import { ReactElement, useState } from 'react';
-
+import { ReactElement } from 'react';
 import TabFooter from '@/TabFooter/components/TabFooter';
+import Background from '@/Background/components';
 
 function App(): ReactElement {
   return (
@@ -8,10 +8,10 @@ function App(): ReactElement {
       css={{
         width: '100%',
         height: '100vh',
-        backgroundColor: 'green',
       }}
       aria-label="앱 매인!"
     >
+      <Background />
       <TabFooter />
     </main>
   );

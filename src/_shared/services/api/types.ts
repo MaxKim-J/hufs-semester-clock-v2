@@ -43,3 +43,10 @@ export interface Notification {
   link: string;
   title: string;
 }
+
+export type Campus = 'seoul' | 'global';
+
+export interface BackgroundImg {
+  dayImageUrl: string;
+  nightImageUrl: string;
+}
