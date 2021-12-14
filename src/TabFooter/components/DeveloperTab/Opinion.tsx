@@ -14,6 +14,7 @@ function Opinion() {
       <TextArea
         size="small"
         value={textValue}
+        placeholder="하루에 한번만 보낼 수 있어요. 200자 이내로 작성해주세요!"
         title="앱 개선사항 보내기"
         onChange={(value) => {
           setTextValue(value);
