@@ -36,7 +36,7 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
             {...fadeInAndOut}
           >
             <div css={dialogHeader}>
-              <Text weight="bold">{title}</Text>
+              <Text size="xLarge">{title}</Text>
               <button
                 type="button"
                 onClick={() => {
@@ -75,7 +75,7 @@ const dialogStyle = (direction: 'left' | 'right') => css`
   margin-left: ${direction === 'left' ? '0' : 'auto'};
   bottom: 3rem;
   border: none;
-  width: 20rem;
+  width: 25rem;
   padding: 1rem;
   border-radius: 16px;
   background-color: rgb(0, 0, 0, 0.5);

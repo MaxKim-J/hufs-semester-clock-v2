@@ -55,6 +55,7 @@ const textAreaStyle = (size: TextType) => css`
   background-color: transparent;
   padding: ${spaceTable.small};
   box-sizing: border-box;
+  font-family: 'netmarbleM', serif;
   &::placeholder {
     color: ${colorTable.lightGray};
   }

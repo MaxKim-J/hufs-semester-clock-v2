@@ -45,6 +45,16 @@ const globalStyle = css`
   dialog {
     margin: 0;
   }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+    list-style: none;
+  }
 `;
 
 export default GlobalStyle;
