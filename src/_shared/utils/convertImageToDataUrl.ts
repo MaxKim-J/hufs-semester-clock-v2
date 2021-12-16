@@ -12,6 +12,7 @@ const convertBackgroundImagesToDataUrl = async (
   );
 
   return {
+    campus: backgroundImageUrls.campus,
     dayImageUrl,
     nightImageUrl,
   };

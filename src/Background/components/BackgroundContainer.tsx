@@ -4,16 +4,21 @@ import { fadeInAndOut } from '@style/animation';
 import useBackgroundInitializeQuery from '@/Background/hooks/query/useBackgroundInitializeQuery';
 
 function BackgroundContent() {
-  const dataUrl = useBackgroundInitializeQuery();
+  const backgroundUrl = useBackgroundInitializeQuery();
 
-  if (dataUrl === undefined) {
+  // recoilvalue 바인딩
+  // 쿼리에 recoilvalue 삽입
+  // recoilvalue가 없는 경우 패칭해서 아톰에다가 넣음
+  // 여기서는 아톰을 참조
+
+  if (backgroundUrl === undefined) {
     return null;
   }
 
   return (
     <motion.div {...fadeInAndOut}>
       <div css={backgroundCoverStyle} />
-      <div css={backgroundImageStyle(dataUrl)} />
+      <div css={backgroundImageStyle(backgroundUrl)} />
     </motion.div>
   );
 }
@@ -25,8 +30,8 @@ const backgroundCoverStyle = css`
   position: absolute;
 `;
 
-const backgroundImageStyle = (dataUrl: string) => css`
-  background-image: url('${dataUrl}');
+const backgroundImageStyle = (backgroundUrl: string) => css`
+  background-image: url('${backgroundUrl}');
   width: 100vw;
   height: 100vh;
   background-size: cover;

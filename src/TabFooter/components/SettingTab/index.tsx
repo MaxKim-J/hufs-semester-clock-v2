@@ -1,9 +1,11 @@
-import { Text } from '@components/fundamentals/Text';
+import Spacer from '@components/fundamentals/Spacer';
+import BackgroundSetting from '@/TabFooter/components/SettingTab/BackgroundSetting';
 
 function SettingTab() {
   return (
     <>
-      <Text>설정 알맹이</Text>
+      <Spacer height="size16" />
+      <BackgroundSetting />
     </>
   );
 }

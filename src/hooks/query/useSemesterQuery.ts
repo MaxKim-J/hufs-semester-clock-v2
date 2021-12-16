@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
 import { useRecoilValue } from 'recoil';
+import { userSemesterInfo } from '@shared/atoms/userSemesterInfo';
 import { getSemester } from '@/_shared/services/api';
 import { Semester } from '@/_shared/services/api/types';
-import { userSemesterInfo } from '@/_shared/atoms';
 
 const useSemesterQuery = (): Semester | undefined => {
   const { status, value } = useRecoilValue(userSemesterInfo);

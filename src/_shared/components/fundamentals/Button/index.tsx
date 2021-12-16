@@ -1,21 +1,22 @@
 import { ButtonHTMLAttributes, ReactChild } from 'react';
 import { css } from '@emotion/react';
-import { colorTable, spaceTable } from '@style/variables';
+import { colorTable, spaceTable, textTable, TextType } from '@style/variables';
 
 type ButtonProps = {
   children: ReactChild;
-  onClick: () => void;
+  size?: TextType;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-function Button({ children, onClick, ...props }: ButtonProps) {
+function Button({ children, onClick, size = 'size16', ...props }: ButtonProps) {
   return (
-    <button css={buttonStyle} onClick={onClick} {...props}>
+    <button css={buttonStyle(size)} onClick={onClick} {...props}>
       {children}
     </button>
   );
 }
 
-const buttonStyle = css`
+const buttonStyle = (size: TextType) => css`
+  font-size: ${textTable[size]};
   border: 1px solid ${colorTable.white};
   color: ${colorTable.white};
   padding: ${spaceTable.size4};

@@ -44,9 +44,10 @@ export interface Notification {
   title: string;
 }
 
-export type Campus = 'seoul' | 'global';
+export type Campus = 'seoul' | 'global' | 'dddd';
 
 export interface BackgroundImg {
+  campus: Campus;
   dayImageUrl: string;
   nightImageUrl: string;
 }
