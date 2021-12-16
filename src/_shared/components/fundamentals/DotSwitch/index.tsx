@@ -39,7 +39,7 @@ function DotSwitch({ tooltip, onClick, activateId, id }: DotSwitchProps) {
     >
       {isShowTooltip && (
         <motion.div {...appearFromRight}>
-          <Text size="xSmall" css={tooltipStyle}>
+          <Text size="size12" css={tooltipStyle}>
             {tooltip}
           </Text>
         </motion.div>
@@ -56,7 +56,7 @@ const dotSwitchStyle = css`
 
 const tooltipStyle = css`
   position: absolute;
-  left: ${spaceTable.large};
+  left: 2rem;
 `;
 
 const dotStyle = (isActive: boolean) => css`

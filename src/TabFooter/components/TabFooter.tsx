@@ -18,7 +18,7 @@ function TabFooter() {
 }
 
 const tabFooterStyle = css`
-  padding: ${spaceTable.normal};
+  padding: ${spaceTable.size16};
   box-sizing: border-box;
   width: 100%;
   display: flex;

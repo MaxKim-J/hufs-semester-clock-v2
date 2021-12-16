@@ -16,5 +16,5 @@ LinkText.args = {
   href: '/',
   color: 'white',
   weight: 'normal',
-  size: 'normal',
+  size: 'size16',
 };

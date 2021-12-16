@@ -1,23 +1,21 @@
 export const textTable = {
-  xSmall: '0.75rem',
-  small: '0.875rem',
-  normal: '1rem',
-  large: '1.125rem',
-  xLarge: '1.5rem',
-  xxLarge: '2.25rem',
-  xxxLarge: '4.5rem',
+  size12: '0.75rem',
+  size14: '0.875rem',
+  size16: '1rem',
+  size20: '1.25rem',
+  size24: '1.5rem',
+  size32: '2rem',
 };
 
 export type TextType = keyof typeof textTable;
 
 export const spaceTable = {
-  xSmall: '0.25rem',
-  small: '0.5rem',
-  normal: '1rem',
-  large: '2rem',
-  xLarge: '3rem',
-  xxLarge: '4rem',
-  xxxLarge: '5rem',
+  size4: '0.25rem',
+  size8: '0.5rem',
+  size16: '1rem',
+  size32: '2rem',
+  size48: '3rem',
+  size64: '4rem',
 };
 
 export type SpaceType = keyof typeof spaceTable;

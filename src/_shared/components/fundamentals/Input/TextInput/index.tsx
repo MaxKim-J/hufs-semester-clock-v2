@@ -12,7 +12,7 @@ export type TextInputType = {
 
 function TextInput({
   onChange,
-  size = 'normal',
+  size = 'size16',
   maxLength = 10,
   ...props
 }: TextInputType) {

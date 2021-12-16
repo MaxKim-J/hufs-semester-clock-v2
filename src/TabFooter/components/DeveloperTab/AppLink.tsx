@@ -63,7 +63,7 @@ function AppLink() {
             <Link
               href={link.href}
               css={linkStyle}
-              size="xSmall"
+              size="size12"
               target="_blank"
             >
               {link.text}
@@ -83,16 +83,16 @@ const linkListStyle = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: ${spaceTable.normal};
+  margin-right: ${spaceTable.size16};
 `;
 
 const linkStyle = css`
-  margin-right: ${spaceTable.small};
+  margin-right: ${spaceTable.size8};
 `;
 
 const iconStyle = css`
-  width: ${spaceTable.large};
-  height: ${spaceTable.large};
+  width: 2rem;
+  height: 2rem;
 `;
 
 export default AppLink;

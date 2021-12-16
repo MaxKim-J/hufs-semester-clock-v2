@@ -11,7 +11,7 @@ type TextAreaInputProps = {
 
 function TextArea({
   onChange,
-  size = 'normal',
+  size = 'size16',
   maxLength = 200,
   title,
   width = 0,
@@ -22,7 +22,7 @@ function TextArea({
     <div css={textAreaContainerStyle(width)}>
       <Text
         css={lengthCounterStyle}
-        size="xSmall"
+        size="size12"
         aria-label="글자수 제한 표시"
       >
         {`${value.length}/${maxLength}`}
@@ -53,7 +53,7 @@ const textAreaStyle = (size: TextType) => css`
   color: ${colorTable.white};
   border: 2px solid ${colorTable.white};
   background-color: transparent;
-  padding: ${spaceTable.small};
+  padding: ${spaceTable.size8};
   box-sizing: border-box;
   font-family: 'netmarbleM', serif;
   &::placeholder {

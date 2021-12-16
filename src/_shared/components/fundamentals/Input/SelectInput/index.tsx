@@ -31,7 +31,7 @@ const selectStyle = css`
   background-color: transparent;
   color: ${colorTable.white};
   border: 2px solid ${colorTable.white};
-  padding: ${spaceTable.xSmall} ${spaceTable.small};
+  padding: ${spaceTable.size4} ${spaceTable.size8};
 `;
 
 export default SelectInput;

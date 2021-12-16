@@ -28,12 +28,12 @@ const boxContainerStyle = css`
 
 const boxHeaderStyle = css`
   background-color: ${transparentTable.white70};
-  padding: ${spaceTable.xSmall};
+  padding: ${spaceTable.size4};
 `;
 
 const boxContentStyle = css`
   background-color: ${transparentTable.white50};
-  padding: ${spaceTable.xSmall};
+  padding: ${spaceTable.size4};
 `;
 
 export default BoxLayout;

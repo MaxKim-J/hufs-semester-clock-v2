@@ -37,7 +37,7 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
             {...fadeInAndOut}
           >
             <div css={dialogHeader}>
-              <Text size="xLarge">{title}</Text>
+              <Text size="size24">{title}</Text>
               <button
                 type="button"
                 onClick={() => {
@@ -47,7 +47,7 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
                 <img css={closeImg} src={CloseWhite} alt="닫기" />
               </button>
             </div>
-            <Spacer height="small" />
+            <Spacer height="size8" />
             {children}
           </motion.dialog>
         )}
@@ -74,17 +74,17 @@ const dialogHeader = css`
 const dialogStyle = (direction: 'left' | 'right') => css`
   position: absolute;
   margin-left: ${direction === 'left' ? '0' : 'auto'};
-  bottom: ${spaceTable.xLarge};
+  bottom: 3rem;
   border: none;
   width: 25rem;
-  padding: ${spaceTable.normal};
-  border-radius: ${spaceTable.normal};
+  padding: ${spaceTable.size16};
+  border-radius: 1rem;
   background-color: ${transparentTable.black70};
 `;
 
 const closeImg = css`
-  width: ${spaceTable.normal};
-  height: ${spaceTable.normal};
+  width: 1rem;
+  height: 1rem;
 `;
 
 export default Tab;

@@ -7,14 +7,14 @@ import AppLink from './AppLink';
 function DeveloperTab() {
   return (
     <>
-      <Spacer height="normal" />
+      <Spacer height="size16" />
       <Introduce />
-      <Spacer height="large" />
+      <Spacer height="size32" />
       <Opinion />
-      <Spacer height="large" />
+      <Spacer height="size32" />
       <AppLink />
-      <Spacer height="normal" />
-      <Text size="xSmall">
+      <Spacer height="size16" />
+      <Text size="size12">
         외대종강시계 {process.env.VERSION} © Max Jonghyuk Kim. 2022
       </Text>
     </>

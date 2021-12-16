@@ -15,5 +15,5 @@ GeneralText.args = {
   children: '일반 텍스트',
   color: 'white',
   weight: 'normal',
-  size: 'normal',
+  size: 'size16',
 };

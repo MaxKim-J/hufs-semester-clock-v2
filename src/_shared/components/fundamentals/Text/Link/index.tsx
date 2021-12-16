@@ -6,7 +6,7 @@ export type LinkProps = TextCommonProps &
   AnchorHTMLAttributes<HTMLAnchorElement>;
 
 function Link({
-  size = 'normal',
+  size = 'size16',
   color = 'white',
   weight = 'normal',
   children,

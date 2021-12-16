@@ -11,9 +11,11 @@ function Opinion() {
 
   return (
     <>
-      <Text weight="bold">앱 개선사항 보내기</Text>
+      <Text weight="bold" size="size20">
+        앱 개선사항 보내기
+      </Text>
       <TextArea
-        size="small"
+        size="size14"
         value={textValue}
         placeholder="하루에 한번만 보낼 수 있어요. 200자 이내로 작성해주세요!"
         title="앱 개선사항 보내기"
@@ -21,7 +23,7 @@ function Opinion() {
           setTextValue(value);
         }}
       />
-      <Spacer height="xSmall" />
+      <Spacer height="size4" />
       <div css={buttonContainerStyle}>
         <Button
           onClick={() => {
@@ -30,7 +32,7 @@ function Opinion() {
         >
           보내기
         </Button>
-        <Text color="red" size="xSmall" css={errorMessageStyle}>
+        <Text color="red" size="size12" css={errorMessageStyle}>
           에러 메시지
         </Text>
       </div>
@@ -44,7 +46,7 @@ const buttonContainerStyle = css`
 `;
 
 const errorMessageStyle = css`
-  margin-left: ${spaceTable.normal};
+  margin-left: ${spaceTable.size16};
 `;
 
 export default Opinion;

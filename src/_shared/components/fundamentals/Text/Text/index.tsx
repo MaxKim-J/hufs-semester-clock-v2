@@ -5,7 +5,7 @@ import { TextCommonProps } from '../types';
 export type TextProps = TextCommonProps & HTMLAttributes<HTMLParagraphElement>;
 
 function Text({
-  size = 'normal',
+  size = 'size16',
   color = 'white',
   weight = 'normal',
   children,

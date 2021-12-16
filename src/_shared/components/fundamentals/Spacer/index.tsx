@@ -11,7 +11,7 @@ function Spacer({ height }: SpacerProps) {
 
 const spacerStyle = (height?: SpaceType) => css`
   width: 100%;
-  height: ${spaceTable[height ?? 'normal']};
+  height: ${spaceTable[height ?? 'size16']};
 `;
 
 export default Spacer;

@@ -19,7 +19,7 @@ const dividerStyle = (
   width: 100%;
   height: ${height ?? 1}px;
   background-color: ${colorTable[color ?? 'black']};
-  margin: ${spaceTable[margin ?? 'normal']} 0;
+  margin: ${spaceTable[margin ?? 'size16']} 0;
 `;
 
 export default Divider;
