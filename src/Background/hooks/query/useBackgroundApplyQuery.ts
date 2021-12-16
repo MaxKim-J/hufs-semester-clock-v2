@@ -12,7 +12,7 @@ const useBackgroundApplyQuery = () => {
   const { data: backgroundImgData } = useQuery({
     queryKey: [
       'background',
-      `apply-${status}${value !== null ? `-${value?.campus}` : ''}`,
+      `apply-${status}${value !== null ? `-${value?.name}` : ''}`,
     ],
     queryFn: async () => {
       if (value !== null) {

@@ -44,10 +44,10 @@ export interface Notification {
   title: string;
 }
 
-export type Campus = 'seoul' | 'global' | 'dddd';
+export type Campus = 'seoul' | 'global';
 
 export interface BackgroundImg {
-  campus: Campus;
+  name: string;
   dayImageUrl: string;
   nightImageUrl: string;
 }

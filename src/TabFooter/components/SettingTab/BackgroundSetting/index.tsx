@@ -9,9 +9,9 @@ function BackgroundSetting() {
       <Text weight="bold" size="size20">
         배경화면 설정
       </Text>
-      <Spacer />
+      <Spacer height="size32" />
       <UploadImage />
-      <Spacer />
+      <Spacer height="size32" />
       <DefaultImage />
     </>
   );

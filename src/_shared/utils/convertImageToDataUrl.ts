@@ -3,7 +3,7 @@ import { BackgroundImg } from '@shared/services/api/types';
 
 const convertBackgroundImagesToDataUrl = async (
   backgroundImageUrls: BackgroundImg
-) => {
+): Promise<BackgroundImg> => {
   const dayImageUrl = await convertImageToDataUrl(
     backgroundImageUrls.dayImageUrl
   );
@@ -12,7 +12,7 @@ const convertBackgroundImagesToDataUrl = async (
   );
 
   return {
-    campus: backgroundImageUrls.campus,
+    name: backgroundImageUrls.name,
     dayImageUrl,
     nightImageUrl,
   };
@@ -23,7 +23,7 @@ const convertImageToDataUrl = async (url: string): Promise<string> => {
   return convertBlobToDataUrl(blob);
 };
 
-const convertBlobToDataUrl = (file: Blob): Promise<string> =>
+export const convertBlobToDataUrl = (file: Blob): Promise<string> =>
   new Promise((resolve) => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);

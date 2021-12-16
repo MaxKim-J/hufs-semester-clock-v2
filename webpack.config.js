@@ -16,7 +16,7 @@ const constantKey = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 const config = {
   mode: process.env.NODE_ENV,
   entry: {
-    background: path.resolve(__dirname, 'src/assets/BackgroundContainer.js'),
+    background: path.resolve(__dirname, 'src/assets/background.js'),
     bundle: path.resolve(__dirname, 'src/index.tsx'),
   },
   output: {

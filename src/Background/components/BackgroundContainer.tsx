@@ -6,11 +6,6 @@ import useBackgroundApplyQuery from '@/Background/hooks/query/useBackgroundApply
 function BackgroundContent() {
   const backgroundUrl = useBackgroundApplyQuery();
 
-  // recoilvalue 바인딩
-  // 쿼리에 recoilvalue 삽입
-  // recoilvalue가 없는 경우 패칭해서 아톰에다가 넣음
-  // 여기서는 아톰을 참조
-
   if (backgroundUrl === undefined) {
     return null;
   }
