@@ -5,14 +5,14 @@ import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
 import convertBackgroundImagesToDataUrl from '@shared/utils/convertImageToDataUrl';
 import getBackgroundByTime from '@shared/utils/getBackgroundByTime';
 
-const useBackgroundInitializeQuery = () => {
+const useBackgroundApplyQuery = () => {
   const [{ status, value }, setBackgroundImage] =
     useRecoilState(userBackgroundImage);
 
   const { data: backgroundImgData } = useQuery({
     queryKey: [
       'background',
-      `initialize-${status}${value !== null ? `-${value?.campus}` : ''}`,
+      `apply-${status}${value !== null ? `-${value?.campus}` : ''}`,
     ],
     queryFn: async () => {
       if (value !== null) {
@@ -35,4 +35,4 @@ const useBackgroundInitializeQuery = () => {
   return backgroundImgData;
 };
 
-export default useBackgroundInitializeQuery;
+export default useBackgroundApplyQuery;

@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
-import useBackgroundInitializeQuery from '@/Background/hooks/query/useBackgroundInitializeQuery';
+import useBackgroundApplyQuery from '@/Background/hooks/query/useBackgroundApplyQuery';
 
 function BackgroundContent() {
-  const backgroundUrl = useBackgroundInitializeQuery();
+  const backgroundUrl = useBackgroundApplyQuery();
 
   // recoilvalue 바인딩
   // 쿼리에 recoilvalue 삽입
