@@ -43,7 +43,7 @@ function TextArea({
 }
 
 const textAreaContainerStyle = (width: WidthType) => css`
-  width: ${width ? `${width}px` : 'inherit'};
+  width: ${width ? `${width}px` : '100%'};
 `;
 
 const textAreaStyle = (size: TextType) => css`

@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colorTable } from '@style/variables';
+import { colorTable, spaceTable } from '@style/variables';
 
 type SelectInputProps = {
   items: string[];
@@ -31,7 +31,7 @@ const selectStyle = css`
   background-color: transparent;
   color: ${colorTable.white};
   border: 2px solid ${colorTable.white};
-  padding: 0.25rem 0.5rem;
+  padding: ${spaceTable.xSmall} ${spaceTable.small};
 `;
 
 export default SelectInput;

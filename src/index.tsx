@@ -33,7 +33,7 @@ ReactDOM.render(
       <App />
     </RecoilRoot>
     {process.env.ENV === 'development' ? (
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} position="top-right" />
     ) : null}
   </QueryClientProvider>,
   document.querySelector('#app')

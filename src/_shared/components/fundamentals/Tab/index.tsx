@@ -1,7 +1,7 @@
 import { ReactChild, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CloseWhite from '@shared/images/close-white.svg';
-import { transparentTable } from '@style/variables';
+import { spaceTable, transparentTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
 import { css } from '@emotion/react';
 import { Text } from '../Text';
@@ -74,17 +74,17 @@ const dialogHeader = css`
 const dialogStyle = (direction: 'left' | 'right') => css`
   position: absolute;
   margin-left: ${direction === 'left' ? '0' : 'auto'};
-  bottom: 3rem;
+  bottom: ${spaceTable.xLarge};
   border: none;
   width: 25rem;
-  padding: 1rem;
-  border-radius: 16px;
+  padding: ${spaceTable.normal};
+  border-radius: ${spaceTable.normal};
   background-color: ${transparentTable.black70};
 `;
 
 const closeImg = css`
-  width: 1rem;
-  height: 1rem;
+  width: ${spaceTable.normal};
+  height: ${spaceTable.normal};
 `;
 
 export default Tab;

@@ -18,7 +18,7 @@ function Button({ children, onClick, ...props }: ButtonProps) {
 const buttonStyle = css`
   border: 1px solid ${colorTable.white};
   color: ${colorTable.white};
-  padding: 0.25rem ${spaceTable.xSmall};
+  padding: ${spaceTable.xSmall};
   transition: color 0.25s, background-color 0.25s;
   &:hover {
     background-color: ${colorTable.white};

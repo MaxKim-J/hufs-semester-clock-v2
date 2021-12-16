@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { spaceTable } from '@style/variables';
 import Tab from '@components/fundamentals/Tab';
 import SettingTab from './SettingTab';
 import DeveloperTab from '@/TabFooter/components/DeveloperTab';
@@ -17,7 +18,7 @@ function TabFooter() {
 }
 
 const tabFooterStyle = css`
-  padding: 1rem;
+  padding: ${spaceTable.normal};
   box-sizing: border-box;
   width: 100%;
   display: flex;

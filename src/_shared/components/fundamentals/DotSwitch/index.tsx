@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
-import { colorTable } from '@style/variables';
-import { Text } from '../Text';
 import { appearFromRight } from '@style/animation';
+import { colorTable, spaceTable } from '@style/variables';
+import { Text } from '../Text';
 
 type DotSwitchProps = {
   id: number;
@@ -56,7 +56,7 @@ const dotSwitchStyle = css`
 
 const tooltipStyle = css`
   position: absolute;
-  left: 2rem;
+  left: ${spaceTable.large};
 `;
 
 const dotStyle = (isActive: boolean) => css`

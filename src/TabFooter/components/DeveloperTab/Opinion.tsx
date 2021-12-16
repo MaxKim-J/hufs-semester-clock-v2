@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Button from '@components/fundamentals/Button';
 import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
+import { spaceTable } from '@style/variables';
 
 function Opinion() {
   const [textValue, setTextValue] = useState('');
@@ -43,7 +44,7 @@ const buttonContainerStyle = css`
 `;
 
 const errorMessageStyle = css`
-  margin-left: 1rem;
+  margin-left: ${spaceTable.normal};
 `;
 
 export default Opinion;

@@ -4,6 +4,7 @@ import Mail from '@shared/images/mail.svg';
 import Article from '@shared/images/article.svg';
 import Github from '@shared/images/github.svg';
 import { Link } from '@components/fundamentals/Text';
+import { spaceTable } from '@style/variables';
 
 function AppLink() {
   const iconLinks = useRef([
@@ -82,16 +83,16 @@ const linkListStyle = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: 1rem;
+  margin-right: ${spaceTable.normal};
 `;
 
 const linkStyle = css`
-  margin-right: 0.5rem;
+  margin-right: ${spaceTable.small};
 `;
 
 const iconStyle = css`
-  width: 2rem;
-  height: 2rem;
+  width: ${spaceTable.large};
+  height: ${spaceTable.large};
 `;
 
 export default AppLink;
