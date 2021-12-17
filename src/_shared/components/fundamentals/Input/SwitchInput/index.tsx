@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, KeyboardEvent } from 'react';
 import { css } from '@emotion/react';
 import { colorTable } from '@style/variables';
 
@@ -23,6 +23,16 @@ function SwitchInput({
     onToggle(!checked);
   };
 
+  const handleEnterKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'enter') {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+      onToggle(!checked);
+    }
+  };
+
   return (
     <div
       role="checkbox"
@@ -30,6 +40,7 @@ function SwitchInput({
       aria-checked={checked}
       aria-label={title}
       onClick={handleChange}
+      onKeyDown={(e) => handleEnterKeyDown(e)}
     >
       <div
         css={

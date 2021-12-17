@@ -24,6 +24,7 @@
     "@typescript-eslint/no-unused-vars": ["error"],
     "no-confusing-arrow": "off",
     "import/prefer-default-export" : "off",
+    "jsx-a11y/interactive-supports-focus": "off",
     "react/jsx-filename-extension": [
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }

@@ -16,7 +16,11 @@ function AsyncRequestError({ error, reset }: RenderFallbackParams) {
       case 404:
       case 400:
       case 500:
-        return <div onClick={resetError}>오류, 재시도</div>;
+        return (
+          <button type="button" onClick={resetError}>
+            오류, 재시도
+          </button>
+        );
       default:
         return <div>알 수 없는 에러</div>;
     }
