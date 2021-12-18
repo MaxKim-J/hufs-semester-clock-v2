@@ -21,6 +21,7 @@ const globalStyle = css`
 
   body {
     font-family: 'netmarbleM', serif;
+    overscroll-behavior-y: none;
   }
 
   a {

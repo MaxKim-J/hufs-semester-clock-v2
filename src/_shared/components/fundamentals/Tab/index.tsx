@@ -67,8 +67,6 @@ const dialogHeader = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  opacity: 1;
-  z-index: 20;
 `;
 
 const dialogStyle = (direction: 'left' | 'right') => css`

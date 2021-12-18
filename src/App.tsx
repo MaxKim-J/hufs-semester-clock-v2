@@ -1,19 +1,13 @@
 import { ReactElement } from 'react';
 import TabFooter from '@/_layout/Footer';
-import Background from '@/Background/components';
+import AppMain from '@/_layout/AppMain';
 
 function App(): ReactElement {
   return (
-    <main
-      css={{
-        width: '100%',
-        height: '100vh',
-      }}
-      aria-label="앱 매인!"
-    >
-      <Background />
+    <>
+      <AppMain />
       <TabFooter />
-    </main>
+    </>
   );
 }
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { appearFromRight } from '@style/animation';
-import { colorTable, spaceTable } from '@style/variables';
+import { colorTable } from '@style/variables';
 import { Text } from '../Text';
 
 type DotSwitchProps = {
@@ -16,9 +16,7 @@ function DotSwitch({ tooltip, onClick, activateId, id }: DotSwitchProps) {
   const [isActive, setIsActive] = useState(id === activateId);
 
   useEffect(() => {
-    if (id !== activateId) {
-      setIsActive(id === activateId);
-    }
+    setIsActive(id === activateId);
   }, [activateId, id]);
 
   const activateDot = useCallback(() => {

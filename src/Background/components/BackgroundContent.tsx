@@ -11,22 +11,29 @@ function BackgroundContent() {
   const backgroundUrl = getBackgroundByTime(userBackgroundImage);
 
   return (
-    <motion.div {...fadeInAndOut}>
+    <motion.div {...fadeInAndOut} css={backgroundWrapperStyle}>
       <div css={backgroundCoverStyle} />
       <div css={backgroundImageStyle(backgroundUrl)} />
     </motion.div>
   );
 }
 
+const backgroundWrapperStyle = css`
+  position: fixed;
+  top: 0;
+`;
+
 const backgroundCoverStyle = css`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.35);
   position: absolute;
+  z-index: 1;
 `;
 
 const backgroundImageStyle = (backgroundUrl: string) => css`
   background-image: url('${backgroundUrl}');
+  position: absolute;
   width: 100vw;
   height: 100vh;
   background-size: cover;
