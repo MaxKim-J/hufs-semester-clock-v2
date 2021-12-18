@@ -7,6 +7,8 @@ import useCustomBackgroundUpload from '@/Background/hooks/useCustomBackgroundUpl
 function UploadImage() {
   const { status, uploadBackgroundImage } = useCustomBackgroundUpload();
 
+  console.log(status);
+
   return (
     <>
       <Text>이미지 업로드</Text>
@@ -38,13 +40,11 @@ const fileInputStyle = css`
 `;
 
 const fileInputWrapperStyle = css`
-  width: 70%;
   display: flex;
   align-items: center;
 `;
 
 const fileInputDescriptionStyle = css`
-  width: 30%;
   margin-left: ${spaceTable.size8};
 `;
 

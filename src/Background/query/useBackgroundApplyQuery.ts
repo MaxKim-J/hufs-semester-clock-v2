@@ -18,6 +18,7 @@ const useBackgroundApplyQuery = () => {
       if (value !== null) return value;
 
       const { data } = await getBackgroundImages('seoul');
+
       const convertResult = {
         ...data,
         dayImageUrl: await convertImageToDataUrl(data.dayImageUrl),

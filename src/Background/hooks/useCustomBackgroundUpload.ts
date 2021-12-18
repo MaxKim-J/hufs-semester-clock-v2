@@ -1,56 +1,22 @@
-import { useState, ChangeEvent } from 'react';
-import { useSetRecoilState } from 'recoil';
-import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
-import { convertBlobToDataUrl } from '@/Background/utils/convertImageToDataUrl';
+import useSingleFileInput from '@shared/hooks/useFileInput';
 
 const useCustomBackgroundUpload = () => {
-  const setBackgroundImage = useSetRecoilState(userBackgroundImage);
-  const [status, setStatus] = useState({
-    isLoading: false,
-    isError: false,
-    errorMessage: '',
-  });
+  const LIMIT_FILE_SIZE = 3_000_000;
+  const ALLOW_FILE_REGEX = /^.*\.(png|jpeg|jpg)/;
 
-  const uploadBackgroundImage = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files !== null) {
-      setStatus((state) => ({ ...state, isLoading: true, isError: false }));
-      const file = e.target.files[0];
-      try {
-        // TODO: Jpeg, Png 구분
-        if (file.size > 3_000_000) {
-          setStatus((state) => ({
-            ...state,
-            errorMessage: '파일 용량 초과',
-            isError: true,
-          }));
-          return;
-        }
-
-        const dataURL = await convertBlobToDataUrl(file);
-
-        setBackgroundImage((state) => ({
-          ...state,
-          value: {
-            name: file.name,
-            dayImageUrl: dataURL,
-            nightImageUrl: dataURL,
-          },
-        }));
-      } catch (error: unknown) {
-        setStatus((state) => ({
-          ...state,
-          isError: true,
-          errorMessage: '업로드 실패',
-        }));
-      } finally {
-        setStatus((state) => ({ ...state, isLoading: false }));
-      }
-    }
-  };
+  const fileInputHooks = useSingleFileInput([
+    {
+      validFunction: (file) => file.size <= LIMIT_FILE_SIZE,
+      errorMessage: '파일 용량이 초과되었어요!',
+    },
+    {
+      validFunction: (file) => ALLOW_FILE_REGEX.test(file.name),
+      errorMessage: 'JPG, PNG만 가능해요!',
+    },
+  ]);
 
   return {
-    status,
-    uploadBackgroundImage,
+    ...fileInputHooks,
   };
 };
 
