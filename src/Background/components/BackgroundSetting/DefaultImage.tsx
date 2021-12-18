@@ -5,7 +5,7 @@ import { Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import { Campus } from '@shared/services/api/types';
 import { spaceTable } from '@style/variables';
-import useUpdateBackgroundQuery from '@/Background/hooks/query/useBackgroundUpdateQuery';
+import useUpdateBackgroundQuery from '@/Background/query/useBackgroundUpdateQuery';
 
 function DefaultImage() {
   const [campusParameterForQuery, setCampusParameterForQuery] =

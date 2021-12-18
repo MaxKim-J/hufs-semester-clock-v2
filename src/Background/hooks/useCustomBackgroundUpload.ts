@@ -16,6 +16,7 @@ const useCustomBackgroundUpload = () => {
       setStatus((state) => ({ ...state, isLoading: true, isError: false }));
       const file = e.target.files[0];
       try {
+        // TODO: Jpeg, Png 구분
         if (file.size > 3_000_000) {
           setStatus((state) => ({
             ...state,

@@ -3,7 +3,7 @@ import { getBackgroundImages } from '@shared/services/api';
 import { useRecoilState } from 'recoil';
 import { BackgroundImg } from '@shared/services/api/types';
 import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
-import convertBackgroundImagesToDataUrl from '@/Background/utils/convertImageToDataUrl';
+import { convertImageToDataUrl } from '@/Background/utils/convertImageToDataUrl';
 
 const useBackgroundApplyQuery = () => {
   const [{ status, value }, setBackgroundImage] =
@@ -18,7 +18,11 @@ const useBackgroundApplyQuery = () => {
       if (value !== null) return value;
 
       const { data } = await getBackgroundImages('seoul');
-      const convertResult = await convertBackgroundImagesToDataUrl(data);
+      const convertResult = {
+        ...data,
+        dayImageUrl: await convertImageToDataUrl(data.dayImageUrl),
+        nightImageUrl: await convertImageToDataUrl(data.nightImageUrl),
+      };
 
       setBackgroundImage((state) => ({
         ...state,
