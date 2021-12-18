@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import { getBackgroundImages } from '@shared/services/api';
 import { useRecoilState } from 'recoil';
-import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
-import convertBackgroundImagesToDataUrl from '@shared/utils/convertImageToDataUrl';
 import { BackgroundImg } from '@shared/services/api/types';
+import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
+import convertBackgroundImagesToDataUrl from '@/Background/utils/convertImageToDataUrl';
 
 const useBackgroundApplyQuery = () => {
   const [{ status, value }, setBackgroundImage] =

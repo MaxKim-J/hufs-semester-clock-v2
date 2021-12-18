@@ -1,8 +1,8 @@
 import Spacer from '@components/fundamentals/Spacer';
 import { Text } from '@components/fundamentals/Text';
-import Introduce from './Introduce';
-import Opinion from './Opinion';
-import AppLink from './AppLink';
+import Introduce from '../../DeveloperIntroduce/components/Introduce';
+import Opinion from '../../DeveloperIntroduce/components/Opinion';
+import AppLink from '../../DeveloperIntroduce/components/AppLink';
 
 function DeveloperTab() {
   return (

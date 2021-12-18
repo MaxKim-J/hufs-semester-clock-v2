@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { getBackgroundImages } from '@shared/services/api';
 import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
 import { Campus } from '@shared/services/api/types';
-import convertBackgroundImagesToDataUrl from '@shared/utils/convertImageToDataUrl';
+import convertBackgroundImagesToDataUrl from '@/Background/utils/convertImageToDataUrl';
 
 const useBackgroundUpdateQuery = (campus: Campus | null) => {
   const setBackgroundImage = useSetRecoilState(userBackgroundImage);

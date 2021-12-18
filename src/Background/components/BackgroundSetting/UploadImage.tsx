@@ -2,7 +2,7 @@ import { Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import { css } from '@emotion/react';
 import { colorTable, spaceTable } from '@style/variables';
-import useCustomBackgroundUpload from '@/TabFooter/hooks/useCustomBackgroundUpload';
+import useCustomBackgroundUpload from '@/Background/hooks/useCustomBackgroundUpload';
 
 function UploadImage() {
   const { status, uploadBackgroundImage } = useCustomBackgroundUpload();

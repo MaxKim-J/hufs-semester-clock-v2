@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react';
-import { convertBlobToDataUrl } from '@shared/utils/convertImageToDataUrl';
 import { useSetRecoilState } from 'recoil';
 import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
+import { convertBlobToDataUrl } from '@/Background/utils/convertImageToDataUrl';
 
 const useCustomBackgroundUpload = () => {
   const setBackgroundImage = useSetRecoilState(userBackgroundImage);

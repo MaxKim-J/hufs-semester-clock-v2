@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
-import getBackgroundByTime from '@shared/utils/getBackgroundByTime';
+import getBackgroundByTime from '@/Background/utils/getBackgroundByTime';
 import useBackgroundApplyQuery from '@/Background/hooks/query/useBackgroundApplyQuery';
 
 function BackgroundContent() {

@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
 import Tab from '@components/fundamentals/Tab';
 import SettingTab from './SettingTab';
-import DeveloperTab from '@/TabFooter/components/DeveloperTab';
+import DeveloperTab from '@/_layout/Footer/DeveloperTab';
 
 function TabFooter() {
   return (

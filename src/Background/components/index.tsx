@@ -1,5 +1,5 @@
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
-import BackgroundContainer from '@/Background/components/BackgroundContainer';
+import BackgroundContainer from '@/Background/components/BackgroundContent';
 
 function Background() {
   return (

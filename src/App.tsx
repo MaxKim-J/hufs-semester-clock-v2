@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import TabFooter from '@/TabFooter/components/TabFooter';
+import TabFooter from '@/_layout/Footer';
 import Background from '@/Background/components';
 
 function App(): ReactElement {
