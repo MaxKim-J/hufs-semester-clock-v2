@@ -8,8 +8,12 @@ import { spaceTable } from '@style/variables';
 import useUpdateBackgroundQuery from '@/TabFooter/hooks/query/useUpdateBackgroundQuery';
 
 function DefaultImage() {
-  const [campus, setCampus] = useState<Campus | null>(null);
-  const { isFetching, isError } = useUpdateBackgroundQuery(campus);
+  const [campusParameterForQuery, setCampusParameterForQuery] =
+    useState<Campus | null>(null);
+
+  const { isFetching, isError } = useUpdateBackgroundQuery(
+    campusParameterForQuery
+  );
 
   return (
     <>
@@ -21,7 +25,7 @@ function DefaultImage() {
             type="button"
             size="size12"
             onClick={() => {
-              setCampus('seoul');
+              setCampusParameterForQuery('seoul');
             }}
           >
             서울
@@ -31,7 +35,7 @@ function DefaultImage() {
             type="button"
             size="size12"
             onClick={() => {
-              setCampus('global');
+              setCampusParameterForQuery('global');
             }}
           >
             글로벌

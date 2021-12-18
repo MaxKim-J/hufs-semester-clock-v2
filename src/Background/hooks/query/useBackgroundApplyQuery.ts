@@ -3,21 +3,19 @@ import { getBackgroundImages } from '@shared/services/api';
 import { useRecoilState } from 'recoil';
 import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
 import convertBackgroundImagesToDataUrl from '@shared/utils/convertImageToDataUrl';
-import getBackgroundByTime from '@shared/utils/getBackgroundByTime';
+import { BackgroundImg } from '@shared/services/api/types';
 
 const useBackgroundApplyQuery = () => {
   const [{ status, value }, setBackgroundImage] =
     useRecoilState(userBackgroundImage);
 
-  const { data: backgroundImgData } = useQuery({
+  const { data: backgroundImgData } = useQuery<BackgroundImg>({
     queryKey: [
       'background',
       `apply-${status}${value !== null ? `-${value?.name}` : ''}`,
     ],
     queryFn: async () => {
-      if (value !== null) {
-        return getBackgroundByTime(value);
-      }
+      if (value !== null) return value;
 
       const { data } = await getBackgroundImages('seoul');
       const convertResult = await convertBackgroundImagesToDataUrl(data);
@@ -27,7 +25,7 @@ const useBackgroundApplyQuery = () => {
         value: convertResult,
       }));
 
-      return getBackgroundByTime(convertResult);
+      return convertResult;
     },
     enabled: status === 'initialized',
   });

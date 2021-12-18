@@ -1,14 +1,14 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
+import getBackgroundByTime from '@shared/utils/getBackgroundByTime';
 import useBackgroundApplyQuery from '@/Background/hooks/query/useBackgroundApplyQuery';
 
 function BackgroundContent() {
-  const backgroundUrl = useBackgroundApplyQuery();
+  const userBackgroundImage = useBackgroundApplyQuery();
+  if (userBackgroundImage === undefined) return null;
 
-  if (backgroundUrl === undefined) {
-    return null;
-  }
+  const backgroundUrl = getBackgroundByTime(userBackgroundImage);
 
   return (
     <motion.div {...fadeInAndOut}>
