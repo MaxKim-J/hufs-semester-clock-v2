@@ -12,12 +12,32 @@ function AppMain() {
           {
             id: 0,
             name: '시계',
-            content: <Heading tag="h1">첫번째 레이아웃</Heading>,
+            content: (
+              <div
+                css={{
+                  width: '100vw',
+                  height: '100vh',
+                  backgroundColor: 'rgba(4, 123, 122, 0.7)',
+                }}
+              >
+                <Heading tag="h1">첫번째 레이아웃</Heading>
+              </div>
+            ),
           },
           {
             id: 1,
             name: '부가기능',
-            content: <Heading tag="h1">두번째 레이아웃</Heading>,
+            content: (
+              <div
+                css={{
+                  width: '100vw',
+                  height: '100vh',
+                  backgroundColor: 'rgba(142, 23, 12, 0.7)',
+                }}
+              >
+                <Heading tag="h1">두번째 레이아웃</Heading>
+              </div>
+            ),
           },
         ]}
       />

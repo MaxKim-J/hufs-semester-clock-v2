@@ -2,12 +2,19 @@ import { Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import { css } from '@emotion/react';
 import { colorTable, spaceTable } from '@style/variables';
-import useCustomBackgroundUpload from '@/Background/hooks/useCustomBackgroundUpload';
+import useSingleFileInput from '@shared/hooks/useSingleFileInput';
 
 function UploadImage() {
-  const { status, uploadBackgroundImage } = useCustomBackgroundUpload();
-
-  console.log(status);
+  const { status, uploadBackgroundImage } = useSingleFileInput([
+    {
+      validFunction: (file) => file.size <= 3_000_000,
+      errorMessage: '파일 용량이 초과되었어요!',
+    },
+    {
+      validFunction: (file) => /^.*\.(png|jpeg|jpg)/.test(file.name),
+      errorMessage: 'JPG, PNG만 가능해요!',
+    },
+  ]);
 
   return (
     <>
@@ -20,7 +27,6 @@ function UploadImage() {
           onChange={uploadBackgroundImage}
         />
         <div css={fileInputDescriptionStyle}>
-          {status.isLoading && <Text size="size12">변경 중...</Text>}
           {status.isError && (
             <Text size="size12" color="red">
               {status.errorMessage}
