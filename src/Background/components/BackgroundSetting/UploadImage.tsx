@@ -23,12 +23,13 @@ function UploadImage() {
       <div css={fileInputWrapperStyle}>
         <input
           type="file"
+          title="배경화면 파일 업로드"
           css={fileInputStyle}
           onChange={uploadBackgroundImage}
         />
         <div css={fileInputDescriptionStyle}>
           {status.isError && (
-            <Text size="size12" color="red">
+            <Text size="size12" color="red" data-testid="errorMessage">
               {status.errorMessage}
             </Text>
           )}
