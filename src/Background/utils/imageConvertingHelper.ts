@@ -1,7 +1,9 @@
-import { getBackgroundImagesBlob } from '@shared/services/api';
+import { getImageBlob } from '@shared/services/api';
 
-export const convertImageToDataUrl = async (url: string): Promise<string> => {
-  const { data: blob } = await getBackgroundImagesBlob(url);
+export const convertImageToDataUrl = async (
+  imageUrl: string
+): Promise<string> => {
+  const { data: blob } = await getImageBlob(imageUrl);
   return convertBlobToDataUrl(blob);
 };
 

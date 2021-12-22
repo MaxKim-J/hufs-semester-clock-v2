@@ -3,7 +3,7 @@ import { getBackgroundImages } from '@shared/services/api';
 import { useRecoilState } from 'recoil';
 import { BackgroundImg } from '@shared/services/api/types';
 import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
-import { convertImageToDataUrl } from '@/Background/utils/convertImageToDataUrl';
+import { convertImageToDataUrl } from '@/Background/utils/imageConvertingHelper';
 
 const useBackgroundApplyQuery = () => {
   const [{ status, value }, setBackgroundImage] =

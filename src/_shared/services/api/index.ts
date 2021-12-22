@@ -33,7 +33,5 @@ export const getBackgroundImages = (
     },
   });
 
-export const getBackgroundImagesBlob = (
-  url: string
-): Promise<AxiosResponse<Blob>> =>
+export const getImageBlob = (url: string): Promise<AxiosResponse<Blob>> =>
   axiosClient.get(url, { responseType: 'blob' });

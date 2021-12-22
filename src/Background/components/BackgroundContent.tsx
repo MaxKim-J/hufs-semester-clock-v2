@@ -13,7 +13,10 @@ function BackgroundContent() {
   return (
     <motion.div {...fadeInAndOut} css={backgroundWrapperStyle}>
       <div css={backgroundCoverStyle} />
-      <div css={backgroundImageStyle(backgroundUrl)} />
+      <div
+        data-testid="backgroundImage"
+        css={backgroundImageStyle(backgroundUrl)}
+      />
     </motion.div>
   );
 }
