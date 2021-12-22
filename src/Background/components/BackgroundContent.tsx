@@ -8,7 +8,7 @@ function BackgroundContent() {
   const userBackgroundImage = useBackgroundApplyQuery();
   if (userBackgroundImage === undefined) return null;
 
-  const backgroundUrl = getBackgroundByTime(userBackgroundImage);
+  const backgroundUrl = getBackgroundByTime(userBackgroundImage, new Date());
 
   return (
     <motion.div {...fadeInAndOut} css={backgroundWrapperStyle}>
