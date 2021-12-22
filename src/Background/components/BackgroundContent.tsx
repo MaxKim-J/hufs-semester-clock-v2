@@ -14,6 +14,7 @@ function BackgroundContent() {
     <motion.div {...fadeInAndOut} css={backgroundWrapperStyle}>
       <div css={backgroundCoverStyle} />
       <div
+        id={userBackgroundImage.name}
         data-testid="backgroundImage"
         css={backgroundImageStyle(backgroundUrl)}
       />

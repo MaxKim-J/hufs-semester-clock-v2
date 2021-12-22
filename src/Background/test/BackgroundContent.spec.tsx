@@ -5,7 +5,7 @@ import { MutableSnapshot } from 'recoil';
 import TestBoundary from '@components/boundries/TestBoundary';
 import BackgroundContent from '@/Background/components/BackgroundContent';
 
-describe('배경화면 초기값 설정', () => {
+describe('배경화면 설정', () => {
   const recoilState = ({ set }: MutableSnapshot) => {
     set(userBackgroundImage, {
       status: 'initialized',
@@ -17,15 +17,15 @@ describe('배경화면 초기값 설정', () => {
     });
   };
 
-  it('배경화면 초기값이 Recoil에 설정되어 있을 경우 현재 시간에 따라 적합한 배경화면이 나타난다', async () => {
-    const { findByTestId } = render(
-      <TestBoundary recoilState={recoilState}>
-        <BackgroundContent />
-      </TestBoundary>
-    );
+  const { getByTestId } = render(
+    <TestBoundary recoilState={recoilState}>
+      <BackgroundContent />
+    </TestBoundary>
+  );
 
-    await waitFor(async () => {
-      const backgroundElement = await findByTestId('backgroundImage');
+  it('배경화면이 Recoil에 설정되어 있을 경우 현재 시간에 따라 적합한 배경화면이 나타난다', async () => {
+    await waitFor(() => {
+      const backgroundElement = getByTestId('backgroundImage');
       const imageUrl =
         new Date().getHours() < 18 && new Date().getHours() > 5
           ? 'dayImageUrl'
