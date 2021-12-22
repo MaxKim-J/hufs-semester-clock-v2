@@ -1,4 +1,3 @@
-import React from 'react';
 import { waitFor, render } from '@testing-library/react';
 import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
 import { MutableSnapshot } from 'recoil';
