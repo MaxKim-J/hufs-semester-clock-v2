@@ -1,7 +1,6 @@
-import { ReactElement, lazy } from 'react';
+import { ReactElement } from 'react';
 import AppMain from '@/_layout/AppMain';
-
-const TabFooter = lazy(() => import('@/_layout/Footer'));
+import TabFooter from '@/_layout/Footer';
 
 function App(): ReactElement {
   return (

@@ -74,7 +74,7 @@ const navigationStyle = css`
   flex-direction: column;
   left: 1%;
   top: 45%;
-  button:first-child {
+  button:first-of-type {
     margin-bottom: ${spaceTable.size8};
   }
 `;
