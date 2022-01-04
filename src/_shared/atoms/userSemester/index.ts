@@ -4,7 +4,7 @@ import { chromeStorageEffect } from '../utils';
 import { StorageAtom } from '../types';
 
 export const userSemester = atom<StorageAtom<SemesterValue>>({
-  key: 'userSemesterInfo',
+  key: 'userSemester',
   default: {
     status: 'idle',
     value: null,
