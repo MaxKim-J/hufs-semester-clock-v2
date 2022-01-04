@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import {
-  Semester,
+  Semesters,
   Weather,
   Corona,
   Notification,
@@ -12,7 +12,7 @@ const axiosClient: AxiosInstance = axios.create({
   baseURL: process.env.BASE_URL,
 });
 
-export const getSemester = (): Promise<AxiosResponse<Semester>> =>
+export const getSemester = (): Promise<AxiosResponse<Semesters>> =>
   axiosClient.get('/semester');
 
 export const getWeather = (): Promise<AxiosResponse<Weather[]>> =>

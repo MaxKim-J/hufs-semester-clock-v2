@@ -1,13 +1,13 @@
 import { atom } from 'recoil';
+import { SemesterValue } from '@shared/services/api/types';
 import { chromeStorageEffect } from '../utils';
-import { Semester } from '@shared/services/api/types';
 import { StorageAtom } from '../types';
 
-export const userSemesterInfo = atom<StorageAtom<Semester>>({
+export const userSemester = atom<StorageAtom<SemesterValue>>({
   key: 'userSemesterInfo',
   default: {
     status: 'idle',
     value: null,
   },
-  effects_UNSTABLE: [chromeStorageEffect<Semester>('index')],
+  effects_UNSTABLE: [chromeStorageEffect<SemesterValue>('userSemester')],
 });
