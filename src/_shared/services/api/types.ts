@@ -1,15 +1,19 @@
 /* eslint-disable camelcase */
 
+export type SemesterType = 'current' | 'next' | 'seasonal' | 'nextCurrent';
+
 export interface SemesterValue {
+  id: SemesterType;
   act: '종강' | '개강';
   due: string;
-  id: string;
+  title: string;
 }
 
-export interface Semester {
+export interface Semesters {
   current: SemesterValue;
   next: SemesterValue;
-  season: SemesterValue;
+  seasonal: SemesterValue;
+  nextCurrent: SemesterValue;
 }
 
 export interface Weather {
