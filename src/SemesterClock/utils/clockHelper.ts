@@ -1,5 +1,5 @@
 import { SemesterValue } from '@shared/services/api/types';
-import { isBefore } from 'date-fns';
+import isBefore from 'date-fns/isBefore';
 
 type DurationKeys = 'days' | 'hours' | 'minutes' | 'seconds';
 type ClockInterval = `0${number}` | `${number}`;
@@ -15,7 +15,6 @@ export const getClockIntervals = (
   const intervalMs = +semesterDueDate - +date;
 
   // TODO : 이런 로직을 반복 줄여서 보기좋게 작성하는 방법이 더 없을까?
-  // 아니면 아싸리 배열로 리턴..?(..그건좀)
   return {
     days: getClockDigits(Math.floor(intervalMs / (1000 * 60 * 60 * 24))),
     hours: getClockDigits(Math.floor((intervalMs / (1000 * 60 * 60)) % 24)),
@@ -23,6 +22,8 @@ export const getClockIntervals = (
     seconds: getClockDigits(Math.floor((intervalMs / 1000) % 60)),
   };
 };
+
+export const isClockExpired = (date: Date) => isBefore(getNow(), date);
 
 const getClockDigits = (num: number): ClockInterval =>
   num < 10 ? `0${num}` : `${num}`;

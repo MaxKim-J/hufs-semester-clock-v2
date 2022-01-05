@@ -1,9 +1,9 @@
+import isBefore from 'date-fns/isBefore';
 import {
   Semesters,
   SemesterValue,
   SemesterType,
 } from '@shared/services/api/types';
-import { isBefore } from 'date-fns';
 import { getNow } from '@/SemesterClock/utils/clockHelper';
 
 export const getCurrentSemester = (
