@@ -15,6 +15,7 @@ const useSemesterQuery = () => {
       return data;
     },
     staleTime: Infinity,
+    suspense: true,
   });
 
   return { semesterData, refetch, isFetching };

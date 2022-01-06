@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { Heading } from '@components/fundamentals/Text';
 import ScrollSplitLayout from './ScrollSplitLayout';
 import Background from '@/Background/components';
+import ClockPage from '@/_layout/AppMain/pages/ClockPage';
 
 function AppMain() {
   return (
@@ -12,17 +13,7 @@ function AppMain() {
           {
             id: 0,
             name: '시계',
-            content: (
-              <div
-                css={{
-                  width: '100vw',
-                  height: '100vh',
-                  backgroundColor: 'rgba(4, 123, 122, 0.7)',
-                }}
-              >
-                <Heading tag="h1">첫번째 레이아웃</Heading>
-              </div>
-            ),
+            content: <ClockPage />,
           },
           {
             id: 1,

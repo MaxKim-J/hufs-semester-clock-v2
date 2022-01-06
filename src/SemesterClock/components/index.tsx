@@ -1,6 +1,6 @@
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
-import SemesterClockArticle from '@/SemesterClock/components/ClockSection/SemesterClockArticle';
-import TodayClockArticle from '@/SemesterClock/components/ClockSection/TodayClockArticle';
+import SemesterClockArticle from '@/SemesterClock/components/SemsterClockArticle';
+import TodayClockArticle from '@/SemesterClock/components/TodayClockArticle';
 
 function ClockSection() {
   return (
