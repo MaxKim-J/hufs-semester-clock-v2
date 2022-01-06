@@ -32,6 +32,7 @@ const useBackgroundApplyQuery = () => {
 
       return convertResult;
     },
+    suspense: true,
     enabled: status === 'initialized',
   });
 

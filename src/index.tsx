@@ -19,7 +19,6 @@ if (process.env.ENV === 'production') {
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      suspense: true,
       notifyOnChangeProps: ['data', 'error'],
       refetchOnWindowFocus: false,
     },

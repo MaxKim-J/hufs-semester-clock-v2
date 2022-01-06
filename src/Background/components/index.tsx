@@ -4,8 +4,18 @@ import BackgroundContainer from '@/Background/components/BackgroundContent';
 function Background() {
   return (
     <AsyncBoundaryWithQuery
-      pendingFallback={<div>로딩</div>}
-      rejectedFallback={() => <div>로딩</div>}
+      rejectedFallback={() => <div>reject</div>}
+      pendingFallback={
+        <div
+          css={{
+            position: 'absolute',
+            top: 0,
+            zIndex: 5,
+          }}
+        >
+          로딩이다
+        </div>
+      }
     >
       <BackgroundContainer />
     </AsyncBoundaryWithQuery>
