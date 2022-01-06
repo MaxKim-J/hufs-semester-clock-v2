@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import ClockSection from '@/SemesterClock/components';
+import ClockSection from '@/SemesterClock/components/ClockSection';
 
 function ClockPage() {
   return (

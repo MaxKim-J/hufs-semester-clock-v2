@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
 import { SemesterValue } from '@shared/services/api/types';
+import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
 
 const useMainClockInterval = (semester: SemesterValue) => {
   const [clockIntervals, setClockIntervals] = useState<ReturnType<

@@ -1,13 +1,17 @@
+import { useRecoilValue } from 'recoil';
 import { Semesters, SemesterValue } from '@shared/services/api/types';
+import { currentSemester } from '@shared/atoms/userSemester';
 import { Text } from '@components/fundamentals/Text';
 import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
-import useClockSemester from '@/SemesterClock/components/SemsterClockArticle/useClockSemester';
-import useMainClockInterval from '@/SemesterClock/components/SemsterClockArticle/useMainClockInterval';
+import useClockSemester from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useClockSemester';
+import useMainClockInterval from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useMainClockInterval';
 
 function SemesterClockArticle() {
   const { semesterData } = useSemesterQuery();
 
-  const semester = useClockSemester(semesterData as Semesters);
+  useClockSemester(semesterData as Semesters);
+  const semester = useRecoilValue(currentSemester);
+
   const intervals = useMainClockInterval(semester as SemesterValue);
 
   return (
