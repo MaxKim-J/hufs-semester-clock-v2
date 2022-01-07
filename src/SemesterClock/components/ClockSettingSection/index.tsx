@@ -1,7 +1,6 @@
 import { Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import SeasonalSettingArticle from '@/SemesterClock/components/ClockSettingSection/SeasonalSettingArticle';
-import SemesterSettingArticle from '@/SemesterClock/components/ClockSettingSection/SemesterSettingArticle';
 
 function ClockSettingSection() {
   return (
@@ -11,8 +10,6 @@ function ClockSettingSection() {
       </Text>
       <Spacer height="size16" />
       <SeasonalSettingArticle />
-      <Spacer height="size16" />
-      <SemesterSettingArticle />
       <Spacer height="size16" />
     </section>
   );

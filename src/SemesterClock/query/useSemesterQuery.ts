@@ -12,6 +12,7 @@ const useSemesterQuery = () => {
     queryKey: ['semester'],
     queryFn: async () => {
       const { data } = await getSemester();
+
       return data;
     },
     staleTime: Infinity,
