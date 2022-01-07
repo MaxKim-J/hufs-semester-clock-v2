@@ -1,4 +1,5 @@
 import { SemesterValue } from '@shared/services/api/types';
+import { getNow } from '@shared/utils/timeHelper';
 import isBefore from 'date-fns/isBefore';
 import isAfter from 'date-fns/isAfter';
 
@@ -26,8 +27,6 @@ export const getClockIntervals = (
 
 const getClockDigits = (num: number): ClockInterval =>
   num < 10 ? `0${num}` : `${num}`;
-
-export const getNow = () => new Date();
 
 export const isClockUnexpired = (date: Date) => isBefore(getNow(), date);
 export const isClockExpired = (date: Date) => isAfter(getNow(), date);

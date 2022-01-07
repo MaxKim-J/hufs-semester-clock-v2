@@ -4,7 +4,7 @@ import {
   SemesterValue,
   SemesterType,
 } from '@shared/services/api/types';
-import { getNow } from '@/SemesterClock/utils/clockHelper';
+import { getNow } from '@shared/utils/timeHelper';
 
 export const getCurrentSemester = (
   semesters: Semesters,

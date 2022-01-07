@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { spaceTable } from '@style/variables';
 import { css } from '@emotion/react';
 import { Text } from '@components/fundamentals/Text';
-import { getNow } from '@/SemesterClock/utils/clockHelper';
+import { getNow } from '@shared/utils/timeHelper';
 
 function TodayClockArticle() {
   const [now, setNow] = useState<Date>(getNow());
