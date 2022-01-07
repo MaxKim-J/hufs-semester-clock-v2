@@ -24,7 +24,7 @@ function SemesterClockArticle() {
           <MainClock semester={semester} evaluateSemester={evaluateSemester} />
         </article>
       ) : (
-        <div>Suspense랑 같은거</div>
+        <div css={{ height: '8rem' }}>Suspense랑 같은거</div>
       )}
     </>
   );

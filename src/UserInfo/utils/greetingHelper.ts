@@ -66,5 +66,5 @@ export function getGreetingMessage() {
     }
   });
 
-  return greetings[getRandomArrayIndex(greetings.length)];
+  return greetings[getRandomArrayIndex(greetings.length)].message;
 }

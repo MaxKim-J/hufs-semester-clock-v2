@@ -16,6 +16,11 @@ export interface Semesters {
   nextCurrent: SemesterValue;
 }
 
+export interface Admission {
+  key: string;
+  value: string;
+}
+
 export interface Weather {
   afternoon_icon: string;
   date: string;

@@ -7,7 +7,7 @@ function ClockSection() {
     <section>
       <AsyncBoundaryWithQuery
         rejectedFallback={() => <div>실패!</div>}
-        pendingFallback={<div>suspense 로딩</div>}
+        pendingFallback={<div css={{ height: '8rem' }}>suspense 로딩</div>}
       >
         <SemesterClockArticle />
       </AsyncBoundaryWithQuery>

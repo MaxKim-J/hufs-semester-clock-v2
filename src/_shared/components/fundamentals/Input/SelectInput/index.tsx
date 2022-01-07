@@ -1,26 +1,27 @@
 import { css } from '@emotion/react';
 import { colorTable, spaceTable } from '@style/variables';
+import { ChangeEvent } from 'react';
 
-type SelectInputProps = {
-  items: string[];
-  title: string;
-  onChange: (value: string) => void;
+type SelectInputItem = {
+  key: string | number;
+  value: string;
 };
 
-function SelectInput({ items, onChange, title }: SelectInputProps) {
+type SelectInputProps = {
+  items: SelectInputItem[];
+  title: string;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+};
+
+function SelectInput({ items, title, onChange }: SelectInputProps) {
   return (
-    <select
-      css={selectStyle}
-      onChange={(e) => {
-        onChange(e.target.value);
-      }}
-    >
-      <option disabled selected value={' '}>
+    <select css={selectStyle} onChange={onChange} defaultValue="">
+      <option disabled value="">
         {title}
       </option>
-      {items.map((item, idx) => (
-        <option value={item} key={`${item}-${idx}`}>
-          {item}
+      {items.map((item) => (
+        <option value={item.value} key={item.key}>
+          {item.value}
         </option>
       ))}
     </select>

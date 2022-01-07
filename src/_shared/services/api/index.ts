@@ -6,6 +6,7 @@ import {
   Notification,
   BackgroundImg,
   Campus,
+  Admission,
 } from './types';
 
 const axiosClient: AxiosInstance = axios.create({
@@ -23,6 +24,9 @@ export const getCorona = (): Promise<AxiosResponse<Corona>> =>
 
 export const getNotification = (): Promise<AxiosResponse<Notification[]>> =>
   axiosClient.get('/notification');
+
+export const getAdmission = (): Promise<AxiosResponse<Admission[]>> =>
+  axiosClient.get('/admission');
 
 export const getBackgroundImages = (
   campus: Campus

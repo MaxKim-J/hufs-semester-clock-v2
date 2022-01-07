@@ -38,7 +38,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
 
   return (
     <>
-      {intervals === null && <div>시계로딩</div>}
+      {intervals === null && <div css={{ height: '7rem' }}>시계로딩</div>}
       {intervals === 'expired' && (
         <motion.div css={clockDigitWrapperStyle} {...fadeInAndOut}>
           <div css={expiredSectionStyle}>
