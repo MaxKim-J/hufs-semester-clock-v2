@@ -9,7 +9,7 @@ import { getNow } from '@/SemesterClock/utils/clockHelper';
 export const getCurrentSemester = (
   semesters: Semesters,
   date: Date = getNow()
-): SemesterValue | null => {
+): SemesterValue => {
   const sortedSemesters = Object.entries(semesters)
     .map(([key, value]) => ({
       key,
@@ -24,5 +24,5 @@ export const getCurrentSemester = (
     }
   }
 
-  return null;
+  return semesters.current;
 };

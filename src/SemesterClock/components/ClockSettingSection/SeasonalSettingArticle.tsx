@@ -1,13 +1,12 @@
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import { Text } from '@components/fundamentals/Text';
-import { currentSemester } from '@shared/atoms/userSemester';
+import { currentSemester, isUserSeasonal } from '@shared/atoms/userSemester';
 import { SwitchInput } from '@components/fundamentals/Input';
-import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
 
 function SeasonalSettingArticle() {
-  const { semesterData } = useSemesterQuery();
-  const [semester, setSemester] = useRecoilState(currentSemester);
+  const semester = useRecoilValue(currentSemester);
+  const setIsSeasonal = useSetRecoilState(isUserSeasonal);
 
   const isSeasonalSelectable = () => {
     if (semester !== null) {
@@ -18,9 +17,11 @@ function SeasonalSettingArticle() {
   };
 
   const toggleSemester = () => {
-    if (semesterData && semester) {
-      const { seasonal, next } = semesterData;
-      setSemester(semester.id === 'next' ? seasonal : next);
+    if (semester) {
+      setIsSeasonal((state) => ({
+        ...state,
+        value: semester.id === 'next',
+      }));
     }
   };
 
