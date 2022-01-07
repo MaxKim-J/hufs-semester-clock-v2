@@ -16,8 +16,12 @@ function UserInfoSection() {
     }
   }, [userInfoStatus, userInfoValue]);
 
-  const changeInputSection = () => {
+  const changeToInput = () => {
     setIsInputSection(true);
+  };
+
+  const changeToDisplay = () => {
+    setIsInputSection(false);
   };
 
   return (
@@ -29,10 +33,10 @@ function UserInfoSection() {
               rejectedFallback={() => <div>실패!</div>}
               pendingFallback={<div css={{ height: '90px' }}>로딩</div>}
             >
-              <UserInfoInputArticle />
+              <UserInfoInputArticle changeSection={changeToDisplay} />
             </AsyncBoundaryWithQuery>
           ) : (
-            <UserInfoDisplayArticle changeSection={changeInputSection} />
+            <UserInfoDisplayArticle changeSection={changeToInput} />
           )}
         </>
       ) : (

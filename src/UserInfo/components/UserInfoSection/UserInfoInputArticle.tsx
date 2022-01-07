@@ -1,4 +1,5 @@
 import { ChangeEvent, useState, useRef } from 'react';
+import { useSetRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
 import { SelectInput, TextInput } from '@components/fundamentals/Input';
@@ -6,10 +7,13 @@ import { Admission } from '@shared/services/api/types';
 import { Text } from '@components/fundamentals/Text';
 import Button from '@components/fundamentals/Button';
 import useAdmissionQuery from '@/UserInfo/queries/useAdmissionQuery';
-import { useSetRecoilState } from 'recoil';
 import { userInfo } from '@/UserInfo/atoms';
 
-function UserInfoInputArticle() {
+type UserInfoInputArticleProps = {
+  changeSection: () => void;
+};
+
+function UserInfoInputArticle({ changeSection }: UserInfoInputArticleProps) {
   const admissions = useAdmissionQuery();
   const setUserInfo = useSetRecoilState(userInfo);
   const [nameInput, setNameInput] = useState('');
@@ -55,14 +59,24 @@ function UserInfoInputArticle() {
           />
         </div>
         <Spacer height="size8" />
-        <Button
-          type="submit"
-          size="size14"
-          css={submitButtonStyle}
-          onClick={submitInput}
-        >
-          입력하기
-        </Button>
+        <div css={buttonWrapperStyle}>
+          <Button
+            type="submit"
+            size="size14"
+            onClick={submitInput}
+            css={buttonStyle}
+          >
+            입력하기
+          </Button>
+          <Button
+            type="submit"
+            size="size14"
+            onClick={changeSection}
+            css={buttonStyle}
+          >
+            뒤로가기
+          </Button>
+        </div>
       </form>
     </article>
   );
@@ -80,9 +94,14 @@ const inputWrapperStyle = css`
   margin: 0 auto;
 `;
 
-const submitButtonStyle = css`
+const buttonWrapperStyle = css`
   margin: 0 auto;
-  display: block;
+  display: flex;
+  justify-content: center;
+`;
+
+const buttonStyle = css`
+  margin: 0 0.5rem;
 `;
 
 export default UserInfoInputArticle;
