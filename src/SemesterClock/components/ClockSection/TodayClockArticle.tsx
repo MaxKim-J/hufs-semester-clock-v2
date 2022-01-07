@@ -3,6 +3,7 @@ import { spaceTable } from '@style/variables';
 import { css } from '@emotion/react';
 import { Text } from '@components/fundamentals/Text';
 import { getNow } from '@shared/utils/timeHelper';
+import { formatDigits } from '@shared/utils/formatHelper';
 
 function TodayClockArticle() {
   const [now, setNow] = useState<Date>(getNow());
@@ -27,7 +28,7 @@ function TodayClockArticle() {
         <Text css={clockDigitStyle}>현재시간: </Text>
         {todayClockData.map((data) => (
           <Text css={clockDigitStyle} key={data.text}>
-            {data.value}
+            {formatDigits(data.value)}
             {data.text}
           </Text>
         ))}
