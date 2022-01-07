@@ -23,7 +23,7 @@ export const getClockIntervals = (
   };
 };
 
-export const isClockExpired = (date: Date) => isBefore(getNow(), date);
+export const isClockUnexpired = (date: Date) => isBefore(getNow(), date);
 
 const getClockDigits = (num: number): ClockInterval =>
   num < 10 ? `0${num}` : `${num}`;

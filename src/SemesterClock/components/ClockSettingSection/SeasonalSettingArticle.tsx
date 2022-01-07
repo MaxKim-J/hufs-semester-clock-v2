@@ -3,15 +3,17 @@ import { css } from '@emotion/react';
 import { Text } from '@components/fundamentals/Text';
 import { currentSemester, isUserSeasonal } from '@shared/atoms/userSemester';
 import { SwitchInput } from '@components/fundamentals/Input';
+import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
+import { isClockUnexpired } from '@/SemesterClock/utils/clockHelper';
 
 function SeasonalSettingArticle() {
+  const { semesterData } = useSemesterQuery();
   const semester = useRecoilValue(currentSemester);
   const setIsSeasonal = useSetRecoilState(isUserSeasonal);
 
   const isSeasonalSelectable = () => {
-    if (semester !== null) {
-      const { id } = semester;
-      return id === 'next' || id === 'seasonal';
+    if (semester !== null && semesterData) {
+      return isClockUnexpired(new Date(semesterData.seasonal.due));
     }
     return false;
   };
