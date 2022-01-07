@@ -4,22 +4,17 @@ import { getSemester } from '@shared/services/api';
 import { Semesters } from '@shared/services/api/types';
 
 const useSemesterQuery = () => {
-  const {
-    data: semesterData,
-    refetch,
-    isFetching,
-  } = useQuery<Semesters, AxiosError>({
+  const { data: semesterData } = useQuery<Semesters, AxiosError>({
     queryKey: ['semester'],
     queryFn: async () => {
       const { data } = await getSemester();
-
       return data;
     },
     staleTime: Infinity,
     suspense: true,
   });
 
-  return { semesterData, refetch, isFetching };
+  return { semesterData };
 };
 
 export default useSemesterQuery;

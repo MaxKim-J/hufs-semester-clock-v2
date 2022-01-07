@@ -9,9 +9,9 @@ type ClockIntervals = { [key in DurationKeys]: ClockInterval };
 export const getClockIntervals = (
   semester: SemesterValue,
   date: Date = getNow()
-): ClockIntervals | null => {
+): ClockIntervals | 'expired' => {
   const semesterDueDate = new Date(semester.due);
-  if (isClockExpired(semesterDueDate)) return null;
+  if (isBefore(semesterDueDate, date)) return 'expired';
 
   const intervalMs = +semesterDueDate - +date;
 
