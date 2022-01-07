@@ -1,5 +1,6 @@
 import { SemesterValue } from '@shared/services/api/types';
 import isBefore from 'date-fns/isBefore';
+import isAfter from 'date-fns/isAfter';
 
 type DurationKeys = 'days' | 'hours' | 'minutes' | 'seconds';
 type ClockInterval = `0${number}` | `${number}`;
@@ -10,7 +11,7 @@ export const getClockIntervals = (
   date: Date = getNow()
 ): ClockIntervals | null => {
   const semesterDueDate = new Date(semester.due);
-  if (isBefore(semesterDueDate, date)) return null;
+  if (isClockExpired(semesterDueDate)) return null;
 
   const intervalMs = +semesterDueDate - +date;
 
@@ -24,6 +25,7 @@ export const getClockIntervals = (
 };
 
 export const isClockUnexpired = (date: Date) => isBefore(getNow(), date);
+export const isClockExpired = (date: Date) => isAfter(getNow(), date);
 
 const getClockDigits = (num: number): ClockInterval =>
   num < 10 ? `0${num}` : `${num}`;
