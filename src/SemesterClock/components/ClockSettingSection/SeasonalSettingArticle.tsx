@@ -1,6 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import { Text } from '@components/fundamentals/Text';
+import { spaceTable } from '@style/variables';
 import { currentSemester, isUserSeasonal } from '@shared/atoms/userSemester';
 import { SwitchInput } from '@components/fundamentals/Input';
 import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
@@ -55,11 +56,11 @@ const seasonalSettingStyle = css`
 `;
 
 const seasonalTextStyle = css`
-  margin-right: 0.5rem;
+  margin-right: ${spaceTable.size8};
 `;
 
 const warningStyle = css`
-  margin-left: 1rem;
+  margin-left: ${spaceTable.size16};
 `;
 
 export default SeasonalSettingArticle;

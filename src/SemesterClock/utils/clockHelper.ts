@@ -2,7 +2,7 @@ import { SemesterValue } from '@shared/services/api/types';
 import isBefore from 'date-fns/isBefore';
 import isAfter from 'date-fns/isAfter';
 
-type DurationKeys = 'days' | 'hours' | 'minutes' | 'seconds';
+export type DurationKeys = 'days' | 'hours' | 'minutes' | 'seconds';
 type ClockInterval = `0${number}` | `${number}`;
 type ClockIntervals = { [key in DurationKeys]: ClockInterval };
 
@@ -24,10 +24,10 @@ export const getClockIntervals = (
   };
 };
 
-export const isClockUnexpired = (date: Date) => isBefore(getNow(), date);
-export const isClockExpired = (date: Date) => isAfter(getNow(), date);
-
 const getClockDigits = (num: number): ClockInterval =>
   num < 10 ? `0${num}` : `${num}`;
 
 export const getNow = () => new Date();
+
+export const isClockUnexpired = (date: Date) => isBefore(getNow(), date);
+export const isClockExpired = (date: Date) => isAfter(getNow(), date);

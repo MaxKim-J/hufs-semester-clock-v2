@@ -5,6 +5,7 @@ export const textTable = {
   size20: '1.25rem',
   size24: '1.5rem',
   size32: '2rem',
+  size96: '6rem',
 };
 
 export type TextType = keyof typeof textTable;
