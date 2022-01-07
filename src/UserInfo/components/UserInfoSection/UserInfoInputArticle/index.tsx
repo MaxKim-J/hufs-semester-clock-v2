@@ -1,5 +1,3 @@
-import { ChangeEvent, useState, useRef } from 'react';
-import { useSetRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
 import { SelectInput, TextInput } from '@components/fundamentals/Input';
@@ -7,7 +5,7 @@ import { Admission } from '@shared/services/api/types';
 import { Text } from '@components/fundamentals/Text';
 import Button from '@components/fundamentals/Button';
 import useAdmissionQuery from '@/UserInfo/queries/useAdmissionQuery';
-import { userInfo } from '@/UserInfo/atoms';
+import useUserInfoInputs from '@/UserInfo/components/UserInfoSection/UserInfoInputArticle/useUserInfoInputs';
 
 type UserInfoInputArticleProps = {
   changeSection: () => void;
@@ -15,27 +13,9 @@ type UserInfoInputArticleProps = {
 
 function UserInfoInputArticle({ changeSection }: UserInfoInputArticleProps) {
   const admissions = useAdmissionQuery();
-  const setUserInfo = useSetRecoilState(userInfo);
-  const [nameInput, setNameInput] = useState('');
-  const [admissionInput, setAdmissionInput] = useState('');
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setNameInput(e.target.value);
-  };
-
-  const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-    setAdmissionInput(e.target.value);
-  };
-
-  const submitInput = () => {
-    setUserInfo((state) => ({
-      ...state,
-      value: {
-        name: nameInput,
-        admission: admissionInput,
-      },
-    }));
-  };
+  const { admissionInput, nameInput, isAllInputsValid, submitInput } =
+    useUserInfoInputs();
 
   return (
     <article css={inputArticleStyle}>
@@ -45,17 +25,17 @@ function UserInfoInputArticle({ changeSection }: UserInfoInputArticleProps) {
         <div css={inputWrapperStyle}>
           <TextInput
             placeholder="이름"
-            value={nameInput}
+            value={nameInput.value}
             size="size16"
             maxLength={20}
             widthFigure={11}
             title="이름 입력"
-            onChange={handleInput}
+            onChange={nameInput.handleInput}
           />
           <SelectInput
             items={admissions as Admission[]}
             title="학번 선택"
-            onChange={handleSelect}
+            onChange={admissionInput.handleInput}
           />
         </div>
         <Spacer height="size8" />
@@ -65,6 +45,7 @@ function UserInfoInputArticle({ changeSection }: UserInfoInputArticleProps) {
             size="size14"
             onClick={submitInput}
             css={buttonStyle}
+            disabled={!isAllInputsValid}
           >
             입력하기
           </Button>

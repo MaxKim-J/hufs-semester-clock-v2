@@ -1,5 +1,4 @@
-import { ChangeEvent, useState, useEffect } from 'react';
-import applyDebounce from 'lodash.debounce';
+import { ChangeEvent, useState, useEffect, useRef } from 'react';
 
 type InputValidators = {
   validFunction: (value: string) => boolean;
@@ -7,44 +6,46 @@ type InputValidators = {
 };
 
 type UseInputParams = {
+  name: string;
   validators?: InputValidators[];
   initialValue?: string;
-  debounce?: boolean;
-  wait?: number;
 };
 
 const useInput = ({
+  name,
   validators = [],
   initialValue = '',
-  debounce = false,
-  wait = 100,
 }: UseInputParams) => {
-  const [value, setValue] = useState(initialValue);
+  const validatorsRef = useRef(validators).current;
+
   const [status, setStatus] = useState({
+    value: initialValue,
     isError: false,
     errorMessage: '',
   });
 
   useEffect(() => {
-    if (!validators.length) return;
-    for (let i = 0; i < validators.length; i += 1) {
-      const { validFunction, errorMessage } = validators[i];
-      if (!validFunction(value)) {
-        setStatus({ errorMessage, isError: true });
+    if (!validatorsRef.length) return;
+    for (let i = 0; i < validatorsRef.length; i += 1) {
+      const { validFunction, errorMessage } = validatorsRef[i];
+      if (!validFunction(status.value)) {
+        setStatus((state) => ({ ...state, errorMessage, isError: true }));
         return;
       }
     }
-    setStatus({ errorMessage: '', isError: false });
-  }, [value, validators]);
+    setStatus((state) => ({ ...state, errorMessage: '', isError: false }));
+  }, [status.value, validatorsRef]);
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  const handleInput = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setStatus((state) => ({ ...state, value: e.target.value }));
   };
 
   return {
-    handleInput: debounce ? applyDebounce(handleInput, wait) : handleInput,
-    status,
-    value,
+    name,
+    handleInput,
+    ...status,
   };
 };
 
