@@ -1,37 +1,27 @@
-import { useRecoilValue } from 'recoil';
 import { css } from '@emotion/react';
-import { Semesters } from '@shared/services/api/types';
-import { currentSemester } from '@shared/atoms/userSemester';
 import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
-import useClockSemester from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useClockSemester';
 import useCleanIsSeasonalStorageData from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useCleanIsSeasonalStorageData';
 import MainClock from '@/SemesterClock/components/ClockSection/SemsterClockArticle/MainClock';
 import SemesterInfo from '@/SemesterClock/components/ClockSection/SemsterClockArticle/SemesterInfo';
-import Skeleton from 'react-loading-skeleton';
-import ClockSectionSkeleton from '@/SemesterClock/components/Skeleton/ClockSectionSkeleton';
+import { Semesters } from '@shared/services/api/types';
+import useClockSemester from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useClockSemester';
 
 function SemesterClockArticle() {
-  const { semesterData } = useSemesterQuery();
-  const semester = useRecoilValue(currentSemester);
+  const semesterData = useSemesterQuery() as Semesters;
+  useCleanIsSeasonalStorageData(semesterData.seasonal);
 
-  const evaluateSemester = useClockSemester(semesterData as Semesters);
-
-  useCleanIsSeasonalStorageData(semesterData as Semesters);
+  const { restartClock, clockSemester } = useClockSemester(semesterData);
 
   return (
-    <>
-      {semester !== null ? (
-        <article css={mainClockStyle}>
-          <SemesterInfo semester={semester} />
-          <MainClock semester={semester} evaluateSemester={evaluateSemester} />
-        </article>
-      ) : (
-        <ClockSectionSkeleton />
-      )}
-    </>
+    <article css={mainClockStyle}>
+      <SemesterInfo semester={clockSemester} />
+      <MainClock semester={clockSemester} evaluateSemester={restartClock} />
+    </article>
   );
 }
 
-const mainClockStyle = css``;
+const mainClockStyle = css`
+  height: 8.75rem;
+`;
 
 export default SemesterClockArticle;

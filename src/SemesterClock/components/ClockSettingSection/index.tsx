@@ -1,6 +1,7 @@
 import { Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import SeasonalSettingArticle from '@/SemesterClock/components/ClockSettingSection/SeasonalSettingArticle';
+import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
 
 function ClockSettingSection() {
   return (
@@ -9,7 +10,12 @@ function ClockSettingSection() {
         종강시간 설정
       </Text>
       <Spacer height="size16" />
-      <SeasonalSettingArticle />
+      <AsyncBoundaryWithQuery
+        pendingFallback={<Text>로딩중..</Text>}
+        rejectedFallback={() => <div>실패</div>}
+      >
+        <SeasonalSettingArticle />
+      </AsyncBoundaryWithQuery>
       <Spacer height="size16" />
     </section>
   );

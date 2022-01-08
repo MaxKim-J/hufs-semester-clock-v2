@@ -74,7 +74,6 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
 
 const clockDigitWrapperStyle = css`
   display: flex;
-  height: 7rem;
   align-items: center;
   min-width: 42rem;
 `;

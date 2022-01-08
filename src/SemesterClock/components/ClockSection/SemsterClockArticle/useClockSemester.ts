@@ -1,33 +1,32 @@
-import { useEffect, useCallback } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { currentSemester, isUserSeasonal } from '@shared/atoms/userSemester';
+import { useCallback, useState, useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
 import { Semesters } from '@shared/services/api/types';
+import { isUserSeasonal } from '../../../atoms';
 import { getCurrentSemester } from '@/SemesterClock/utils/semesterHelper';
-import { isClockExpired } from '@/SemesterClock/utils/clockHelper';
 
-const useClockSemester = (semesterData: Semesters) => {
-  const setCurrentSemester = useSetRecoilState(currentSemester);
+const useClockSemester = (semesters: Semesters) => {
   const isSeasonal = useRecoilValue(isUserSeasonal);
 
   const evaluateSemester = useCallback(() => {
-    if (isSeasonal.status === 'initialized') {
-      if (isClockExpired(new Date(semesterData.seasonal.due))) {
-        setCurrentSemester(getCurrentSemester(semesterData as Semesters));
-      } else {
-        setCurrentSemester(
-          isSeasonal.value
-            ? semesterData.seasonal
-            : getCurrentSemester(semesterData as Semesters)
-        );
-      }
-    }
-  }, [semesterData, isSeasonal, setCurrentSemester]);
+    return isSeasonal.value === true
+      ? semesters.seasonal
+      : getCurrentSemester(semesters);
+  }, [isSeasonal.value, semesters]);
+
+  const [clockSemester, setClockSemester] = useState(evaluateSemester());
 
   useEffect(() => {
-    evaluateSemester();
-  }, [semesterData, isSeasonal, evaluateSemester]);
+    setClockSemester(evaluateSemester());
+  }, [evaluateSemester, setClockSemester]);
 
-  return evaluateSemester;
+  const restartClock = useCallback(() => {
+    setClockSemester(getCurrentSemester(semesters));
+  }, [setClockSemester, semesters]);
+
+  return {
+    restartClock,
+    clockSemester,
+  };
 };
 
 export default useClockSemester;

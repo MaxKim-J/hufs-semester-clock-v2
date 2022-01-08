@@ -5,6 +5,8 @@ function MainClockSkeleton() {
     <Skeleton
       style={{
         opacity: 0.5,
+        marginTop: '1rem',
+        borderRadius: '2rem',
       }}
       count={1}
       baseColor="#dddddd"

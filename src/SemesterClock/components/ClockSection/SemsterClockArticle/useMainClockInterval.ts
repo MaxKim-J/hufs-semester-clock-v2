@@ -5,7 +5,7 @@ import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
 const useMainClockInterval = (semester: SemesterValue) => {
   const [clockIntervals, setClockIntervals] = useState<ReturnType<
     typeof getClockIntervals
-  > | null>(null);
+  > | null>(getClockIntervals(semester));
 
   const tickClock = useCallback(() => {
     setClockIntervals(getClockIntervals(semester));
