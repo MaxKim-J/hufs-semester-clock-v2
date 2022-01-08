@@ -30,7 +30,7 @@ const backgroundWrapperStyle = css`
 const backgroundCoverStyle = css`
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   z-index: 1;
 `;

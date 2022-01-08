@@ -1,13 +1,13 @@
+import { ChangeEvent } from 'react';
 import { css } from '@emotion/react';
 import { colorTable, spaceTable, textTable, TextType } from '@style/variables';
 import { TextInputType } from '@components/fundamentals/Input/TextInput';
 import { Text } from '../../Text';
 
-type WidthType = number;
-
 type TextAreaInputProps = {
-  width?: WidthType;
-} & TextInputType;
+  width?: number;
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+} & Omit<TextInputType, 'onChange'>;
 
 function TextArea({
   onChange,
@@ -29,9 +29,7 @@ function TextArea({
       </Text>
       <textarea
         css={textAreaStyle(size)}
-        onChange={(e) => {
-          onChange(e.target.value);
-        }}
+        onChange={onChange}
         aria-multiline="true"
         aria-label={title}
         maxLength={maxLength}
@@ -42,7 +40,7 @@ function TextArea({
   );
 }
 
-const textAreaContainerStyle = (width: WidthType) => css`
+const textAreaContainerStyle = (width: number) => css`
   width: ${width ? `${width}px` : '100%'};
 `;
 

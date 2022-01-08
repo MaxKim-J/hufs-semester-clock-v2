@@ -4,6 +4,7 @@ import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery
 import UserInfoInputArticle from '@/UserInfo/components/UserInfoSection/UserInfoInputArticle';
 import UserInfoDisplayArticle from '@/UserInfo/components/UserInfoSection/UserInfoDisplayArticle';
 import { userInfo } from '@/UserInfo/atoms';
+import Skeleton from 'react-loading-skeleton';
 
 function UserInfoSection() {
   const { status: userInfoStatus, value: userInfoValue } =
@@ -25,7 +26,7 @@ function UserInfoSection() {
   };
 
   return (
-    <>
+    <div css={{ minHeight: '90px' }}>
       {isInputSection !== null ? (
         <>
           {isInputSection ? (
@@ -39,10 +40,8 @@ function UserInfoSection() {
             <UserInfoDisplayArticle changeSection={changeToInput} />
           )}
         </>
-      ) : (
-        <div css={{ height: '90px' }}>Suspense랑 똑같은거</div>
-      )}
-    </>
+      ) : null}
+    </div>
   );
 }
 
