@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { SemesterValue } from '@shared/services/api/types';
-import Skeleton from 'react-loading-skeleton';
 import Button from '@components/fundamentals/Button';
 import Spacer from '@components/fundamentals/Spacer';
 import { fadeInAndOut } from '@style/animation';
@@ -10,7 +9,6 @@ import { Text } from '@components/fundamentals/Text';
 import { DurationKeys } from '@/SemesterClock/utils/clockHelper';
 import useMainClockInterval from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useMainClockInterval';
 import 'react-loading-skeleton/dist/skeleton.css';
-import MainClockSkeleton from '@/SemesterClock/components/Skeleton/MainClockSkeleton';
 
 type MainClockProps = {
   semester: SemesterValue;
@@ -40,22 +38,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
   ]).current;
 
   return (
-    <>
-      {intervals === null && (
-        <div css={clockDigitWrapperStyle}>
-          <MainClockSkeleton />
-        </div>
-      )}
-      {intervals === 'expired' && (
-        <motion.div css={clockDigitWrapperStyle} {...fadeInAndOut}>
-          <div css={expiredSectionStyle}>
-            <Text>✨현재 시계의 시간이 만료되었습니다.✨</Text>
-            <Text> 버튼을 눌러 새로운 시계를 시작하세요!</Text>
-            <Spacer />
-            <Button onClick={evaluateSemester}>시계 재시작</Button>
-          </div>
-        </motion.div>
-      )}
+    <article>
       {intervals !== null && intervals !== 'expired' && (
         <motion.div css={clockDigitWrapperStyle} {...fadeInAndOut}>
           {clockDigitData.map((data) => (
@@ -68,7 +51,17 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
           ))}
         </motion.div>
       )}
-    </>
+      {intervals === 'expired' && (
+        <motion.div css={clockDigitWrapperStyle} {...fadeInAndOut}>
+          <div css={expiredSectionStyle}>
+            <Text>✨현재 시계의 시간이 만료되었습니다.✨</Text>
+            <Text> 버튼을 눌러 새로운 시계를 시작하세요!</Text>
+            <Spacer />
+            <Button onClick={evaluateSemester}>시계 재시작</Button>
+          </div>
+        </motion.div>
+      )}
+    </article>
   );
 }
 

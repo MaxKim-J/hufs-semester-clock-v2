@@ -4,6 +4,7 @@ import SemesterClockArticle from '@/SemesterClock/components/ClockSection/Semste
 import TodayClockArticle from '@/SemesterClock/components/ClockSection/TodayClockArticle';
 import { useRecoilValue } from 'recoil';
 import { isUserSeasonal } from '@/SemesterClock/atoms';
+import ClockSectionSkeleton from '@/SemesterClock/components/Skeleton/ClockSectionSkeleton';
 
 function ClockSection() {
   const { status: isSeasonalStatus } = useRecoilValue(isUserSeasonal);
@@ -13,13 +14,13 @@ function ClockSection() {
       {isSeasonalStatus === 'initialized' ? (
         <AsyncBoundaryWithQuery
           rejectedFallback={() => <div>실패!</div>}
-          pendingFallback={<div>로딩</div>}
+          pendingFallback={<ClockSectionSkeleton />}
         >
           <SemesterClockArticle />
           <TodayClockArticle />
         </AsyncBoundaryWithQuery>
       ) : (
-        <div>로딩</div>
+        <ClockSectionSkeleton />
       )}
     </section>
   );

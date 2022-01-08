@@ -11,6 +11,9 @@ function Background() {
             position: 'absolute',
             top: 0,
             zIndex: 5,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'black',
           }}
         >
           로딩이다

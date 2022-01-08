@@ -5,6 +5,7 @@ import UserInfoInputArticle from '@/UserInfo/components/UserInfoSection/UserInfo
 import UserInfoDisplayArticle from '@/UserInfo/components/UserInfoSection/UserInfoDisplayArticle';
 import { userInfo } from '@/UserInfo/atoms';
 import Skeleton from 'react-loading-skeleton';
+import UserInfoSectionSkeleton from '@/UserInfo/components/Skeleton/UserInfoSectionSkeleton';
 
 function UserInfoSection() {
   const { status: userInfoStatus, value: userInfoValue } =
@@ -26,13 +27,13 @@ function UserInfoSection() {
   };
 
   return (
-    <div css={{ minHeight: '90px' }}>
+    <section css={{ minHeight: '90px' }}>
       {isInputSection !== null ? (
         <>
           {isInputSection ? (
             <AsyncBoundaryWithQuery
               rejectedFallback={() => <div>실패!</div>}
-              pendingFallback={<div css={{ height: '90px' }}>로딩</div>}
+              pendingFallback={<UserInfoSectionSkeleton />}
             >
               <UserInfoInputArticle changeSection={changeToDisplay} />
             </AsyncBoundaryWithQuery>
@@ -40,8 +41,10 @@ function UserInfoSection() {
             <UserInfoDisplayArticle changeSection={changeToInput} />
           )}
         </>
-      ) : null}
-    </div>
+      ) : (
+        <UserInfoSectionSkeleton />
+      )}
+    </section>
   );
 }
 
