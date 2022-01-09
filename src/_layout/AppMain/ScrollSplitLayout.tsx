@@ -1,4 +1,4 @@
-import { ReactChild, useState, WheelEvent } from 'react';
+import { ReactChild, useState, WheelEvent, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { css } from '@emotion/react';
 import debounce from 'lodash.debounce';
@@ -16,15 +16,24 @@ type ScrollSplitLayoutProps = {
 };
 
 function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
-  const [sectionIndex, setSectionIndex] = useState<number>(0);
+  const [sectionIndex, setSectionIndex] = useState<{
+    current: number;
+    max: number;
+  }>({ current: 0, max: 0 });
 
   const handleWheel = debounce(
     (e: WheelEvent<HTMLElement>) => {
       const { deltaY, deltaX } = e;
       if (deltaX !== 0) return;
-      if (deltaY < 0 && sectionIndex === 0) return;
-      if (deltaY > 0 && sectionIndex === sections.length - 1) return;
-      setSectionIndex((s) => (deltaY < 0 ? s - 1 : s + 1));
+      if (deltaY < 0 && sectionIndex.current === 0) return;
+      if (deltaY > 0 && sectionIndex.current === sections.length - 1) return;
+      setSectionIndex((s) => {
+        const current = deltaY < 0 ? s.current - 1 : s.current + 1;
+        return {
+          current,
+          max: Math.max(s.max, current),
+        };
+      });
     },
     0,
     { leading: true }
@@ -33,15 +42,15 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
   return (
     <>
       <motion.section
-        onWheel={(e) => {
-          handleWheel(e);
-        }}
-        animate={{ y: `${-(sectionIndex * 100)}vh` }}
+        onWheel={handleWheel}
+        animate={{ y: `${-(sectionIndex.current * 100)}vh` }}
         transition={{ ease: 'easeOut', duration: 0.5 }}
       >
         {sections.map((section) => (
           <section key={section.id} css={splitSectionStyle}>
-            {section.content}
+            {sectionIndex.max >= section.id && (
+              <Suspense fallback={null}>{section.content}</Suspense>
+            )}
           </section>
         ))}
       </motion.section>
@@ -50,10 +59,10 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
           <DotSwitch
             key={section.id}
             id={section.id}
-            activateId={sectionIndex}
+            activateId={sectionIndex.current}
             tooltip={section.name}
             onClick={() => {
-              setSectionIndex(section.id);
+              setSectionIndex((state) => ({ ...state, current: section.id }));
             }}
           />
         ))}

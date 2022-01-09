@@ -1,8 +1,10 @@
+import { lazy } from 'react';
 import { css } from '@emotion/react';
-import { Heading } from '@components/fundamentals/Text';
 import ScrollSplitLayout from './ScrollSplitLayout';
 import Background from '@/Background/components';
-import ClockPage from '@/_layout/AppMain/pages/ClockPage';
+
+const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
+const ClockPage = lazy(() => import('@/_layout/AppMain/pages/ClockPage'));
 
 function AppMain() {
   return (
@@ -18,17 +20,7 @@ function AppMain() {
           {
             id: 1,
             name: '부가기능',
-            content: (
-              <div
-                css={{
-                  width: '100vw',
-                  height: '100vh',
-                  backgroundColor: 'rgba(142, 23, 12, 0.7)',
-                }}
-              >
-                <Heading tag="h1">두번째 레이아웃</Heading>
-              </div>
-            ),
+            content: <FeaturesPage />,
           },
         ]}
       />
