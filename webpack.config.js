@@ -26,11 +26,11 @@ const config = {
         return '[name].js';
       }
       return PRODUCTION
-        ? 'bundle/[name].[contenthash:8].js'
+        ? 'bundle/bundle.[contenthash:8].js'
         : 'bundle/[name].js';
     },
     chunkFilename: PRODUCTION
-      ? 'bundle/chunk.[name].[contenthash:8].js'
+      ? 'bundle/chunk.[contenthash:8].js'
       : 'bundle/chunk.[name].js',
   },
   optimization: {
@@ -64,8 +64,10 @@ const config = {
         },
         asyncChunk: {
           chunks: 'async',
+          test: /[\\/]node_modules[\\/]/,
           priority: 1,
           enforce: true,
+          minChunks: 2,
         },
       },
     },

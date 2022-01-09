@@ -3,8 +3,15 @@ import { css } from '@emotion/react';
 import ScrollSplitLayout from './ScrollSplitLayout';
 import Background from '@/Background/components';
 
-const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
-const ClockPage = lazy(() => import('@/_layout/AppMain/pages/ClockPage'));
+const FeaturesPage = lazy(
+  () => import(/* webpackChunkName: "featuresPage" */ './pages/FeaturesPage')
+);
+const ClockPage = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "clockPage" */ '@/_layout/AppMain/pages/ClockPage'
+    )
+);
 
 function AppMain() {
   return (
