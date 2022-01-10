@@ -46,6 +46,8 @@ const globalStyle = css`
 
   dialog {
     margin: 0;
+    border: none;
+    background-color: transparent;
   }
 
   ul {

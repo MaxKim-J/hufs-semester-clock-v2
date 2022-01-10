@@ -14,7 +14,7 @@ type BookMarkProps = {
   onClickClose?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-function BookMarkItem({
+function BookmarkItem({
   title,
   url,
   emoji = '🌐',
@@ -30,7 +30,7 @@ function BookMarkItem({
     >
       {onClickClose && (
         <button onClick={onClickClose} type="button">
-          <img css={closeImg} src={CloseBlack} alt="삭제하기" />
+          <img css={closeImg} src={CloseBlack} alt="삭제 아이콘" />
         </button>
       )}
       <a href={url} css={bookMarkItemStyle}>
@@ -71,4 +71,4 @@ const emojiWrapperStyle = css`
   align-items: center;
 `;
 
-export default BookMarkItem;
+export default BookmarkItem;

@@ -1,4 +1,4 @@
-const bookMarkContents = [
+const bookmarkContents = [
   {
     id: 0,
     title: '외대 홈페이지',
@@ -31,4 +31,4 @@ const bookMarkContents = [
   },
 ];
 
-export default bookMarkContents;
+export default bookmarkContents;

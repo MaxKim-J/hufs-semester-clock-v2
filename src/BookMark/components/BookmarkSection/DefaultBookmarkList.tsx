@@ -1,14 +1,14 @@
 import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
-import bookMarkContents from '@shared/data/bookMarkContents';
-import BookMarkItem from '@/BookMark/components/BookMarkSection/BookMarkItem';
+import bookmarkContents from '@shared/data/bookmarkContents';
+import BookmarkItem from '@/BookMark/components/BookmarkSection/BookmarkItem';
 
-function DefaultBookMarkList() {
+function DefaultBookmarkList() {
   return (
     <ul css={defaultBookMarksStyle}>
-      {bookMarkContents.map((content) => (
+      {bookmarkContents.map((content) => (
         <li css={bookMarkWrapperStyle}>
-          <BookMarkItem
+          <BookmarkItem
             title={content.title}
             url={content.url}
             emoji={content.emoji}
@@ -27,4 +27,4 @@ const bookMarkWrapperStyle = css`
   margin: 0 ${spaceTable.size16};
 `;
 
-export default DefaultBookMarkList;
+export default DefaultBookmarkList;
