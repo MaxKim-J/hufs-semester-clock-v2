@@ -2,7 +2,7 @@ import { ChangeEvent, useState, useEffect, useRef } from 'react';
 
 type InputValidators = {
   validFunction: (value: string) => boolean;
-  errorMessage: string;
+  errorMessage?: string;
 };
 
 type UseInputParams = {
@@ -29,7 +29,11 @@ const useInput = ({
     for (let i = 0; i < validatorsRef.length; i += 1) {
       const { validFunction, errorMessage } = validatorsRef[i];
       if (!validFunction(status.value)) {
-        setStatus((state) => ({ ...state, errorMessage, isError: true }));
+        setStatus((state) => ({
+          ...state,
+          errorMessage: errorMessage ?? '',
+          isError: true,
+        }));
         return;
       }
     }

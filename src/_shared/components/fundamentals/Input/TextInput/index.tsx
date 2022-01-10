@@ -14,17 +14,11 @@ export type TextInputType = {
 
 function TextInput({
   size = 'size16',
-  maxLength = 10,
   widthFigure = 5,
   ...props
 }: TextInputType) {
   return (
-    <input
-      type="text"
-      css={textInputStyle(size, widthFigure)}
-      maxLength={maxLength}
-      {...props}
-    />
+    <input type="text" css={textInputStyle(size, widthFigure)} {...props} />
   );
 }
 

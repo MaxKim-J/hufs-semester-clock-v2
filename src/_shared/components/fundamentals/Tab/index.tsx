@@ -15,7 +15,6 @@ type TabProps = {
 
 function Tab({ title, children, direction = 'left' }: TabProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const dialogRef = useRef(null);
 
   return (
     <div css={dialogContainerStyle}>
@@ -32,7 +31,6 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
           <motion.dialog
             aria-modal
             open
-            ref={dialogRef}
             css={dialogStyle(direction)}
             {...fadeInAndOut}
           >

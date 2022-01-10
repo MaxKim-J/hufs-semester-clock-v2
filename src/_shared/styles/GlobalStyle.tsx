@@ -39,6 +39,10 @@ const globalStyle = css`
     font-family: inherit;
   }
 
+  input {
+    font-family: 'netmarbleM', serif;
+  }
+
   img {
     width: auto;
     height: auto;

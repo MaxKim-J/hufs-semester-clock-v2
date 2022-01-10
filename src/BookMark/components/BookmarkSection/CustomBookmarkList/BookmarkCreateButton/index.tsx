@@ -4,6 +4,9 @@ import { Text } from '@components/fundamentals/Text';
 import plusGray from '@shared/images/plus-gray.svg';
 import { css } from '@emotion/react';
 import { transparentTable, colorTable } from '@style/variables';
+import BookmarkInputDialog from './BookmarkInputDialog';
+import { fadeInAndOut } from '@style/animation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function BookmarkCreateButton() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -24,11 +27,14 @@ function BookmarkCreateButton() {
         <Spacer height="size8" />
         <Text size="size12">즐겨찾기 추가</Text>
       </button>
-      {isDialogOpen && (
-        <dialog open css={{ position: 'absolute', bottom: '-3rem' }}>
-          인풋창
-        </dialog>
-      )}
+      <AnimatePresence>
+        {isDialogOpen && (
+          <motion.dialog {...fadeInAndOut} open css={inputDialogStyle}>
+            <div css={dialogArrowStyle} />
+            <BookmarkInputDialog />
+          </motion.dialog>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -57,6 +63,23 @@ const plusImgWrapperStyle = css`
 const plusImgStyle = css`
   width: 1.5rem;
   height: 1.5rem;
+`;
+
+const dialogArrowStyle = css`
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid ${transparentTable.black70};
+`;
+
+const inputDialogStyle = css`
+  position: absolute;
+  background-color: ${transparentTable.black70};
+  transform: translateY(1.5rem);
 `;
 
 export default BookmarkCreateButton;

@@ -3,6 +3,7 @@ import { StorageAtom } from '@shared/atoms/types';
 import { chromeStorageEffect } from '@shared/atoms/utils';
 
 export type Bookmark = {
+  id: string;
   title: string;
   url: string;
 };
