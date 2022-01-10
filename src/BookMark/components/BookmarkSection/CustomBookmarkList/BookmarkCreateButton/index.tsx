@@ -11,13 +11,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 function BookmarkCreateButton() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
   return (
     <div css={createButtonWrapperStyle}>
       <button
         css={createButtonStyle}
         type="button"
         onClick={() => {
-          console.log('dddd');
           setIsDialogOpen((prevState) => !prevState);
         }}
       >
@@ -31,7 +34,7 @@ function BookmarkCreateButton() {
         {isDialogOpen && (
           <motion.dialog {...fadeInAndOut} open css={inputDialogStyle}>
             <div css={dialogArrowStyle} />
-            <BookmarkInputDialog />
+            <BookmarkInputDialog closeDialog={closeDialog} />
           </motion.dialog>
         )}
       </AnimatePresence>
@@ -41,6 +44,7 @@ function BookmarkCreateButton() {
 
 const createButtonWrapperStyle = css`
   position: relative;
+  width: 5rem;
 `;
 
 const createButtonStyle = css`
@@ -54,6 +58,7 @@ const plusImgWrapperStyle = css`
   height: 3.5rem;
   box-sizing: border-box;
   border: 1px solid ${colorTable.white};
+  border-radius: 50%;
   display: flex;
   background-color: ${transparentTable.darkGray30};
   align-items: center;

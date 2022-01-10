@@ -7,7 +7,7 @@ function DefaultBookmarkList() {
   return (
     <ul css={defaultBookMarksStyle}>
       {bookmarkContents.map((content) => (
-        <li css={bookMarkWrapperStyle}>
+        <li css={bookMarkWrapperStyle} key={content.id}>
           <BookmarkItem
             title={content.title}
             url={content.url}

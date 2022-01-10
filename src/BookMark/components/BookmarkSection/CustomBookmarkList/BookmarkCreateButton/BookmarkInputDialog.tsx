@@ -1,16 +1,20 @@
-import { Text } from '@components/fundamentals/Text';
 import { css } from '@emotion/react';
-import { transparentTable } from '@style/variables';
 import useInput from '@shared/hooks/useInput';
 import { TextInput } from '@components/fundamentals/Input';
-import { useRecoilValue } from 'recoil';
-import { userBookmarks } from '@/BookMark/atoms';
+import { useSetRecoilState } from 'recoil';
 import Spacer from '@components/fundamentals/Spacer';
 import Button from '@components/fundamentals/Button';
+import { getRandomString } from '@shared/utils/mathHelper';
+import { userBookmarks } from '@/BookMark/atoms';
 
-function BookmarkInputDialog() {
-  const bookmarks = useRecoilValue(userBookmarks);
+type BookmarkInputDialogProps = {
+  closeDialog: () => void;
+};
 
+function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
+  const setUserBookmarks = useSetRecoilState(userBookmarks);
+
+  // 그래도 한번 들어가는 봐야 되지 않을까..?
   const urlInput = useInput({
     name: 'url',
     validators: [{ validFunction: (text: string) => !!text }],
@@ -21,12 +25,29 @@ function BookmarkInputDialog() {
     validators: [{ validFunction: (text: string) => !!text }],
   });
 
+  const submitBookmark = () => {
+    const newBookMark = [
+      {
+        id: getRandomString(),
+        title: titleInput.value,
+        url: urlInput.value,
+      },
+    ];
+    setUserBookmarks((state) => ({
+      ...state,
+      value:
+        state.value === null ? newBookMark : state.value.concat(newBookMark),
+    }));
+    closeDialog();
+  };
+
   return (
-    <form>
+    <>
       <TextInput
         size="size12"
         title="북마크 제목 입력"
         placeholder="북마크 제목"
+        maxLength={10}
         widthFigure={20}
         value={titleInput.value}
         onChange={titleInput.handleInput}
@@ -47,13 +68,13 @@ function BookmarkInputDialog() {
           type="submit"
           disabled={urlInput.isError || titleInput.isError}
           onClick={() => {
-            console.log('ddd');
+            submitBookmark();
           }}
         >
           입력하기
         </Button>
       </div>
-    </form>
+    </>
   );
 }
 

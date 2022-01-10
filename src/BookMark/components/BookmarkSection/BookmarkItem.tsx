@@ -11,7 +11,7 @@ type BookMarkProps = {
   title: string;
   url: string;
   emoji?: string;
-  onClickClose?: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClickClose?: () => void;
 };
 
 function BookmarkItem({
@@ -29,7 +29,7 @@ function BookmarkItem({
       css={bookMarkItemWrapperStyle}
     >
       {onClickClose && (
-        <button onClick={onClickClose} type="button">
+        <button onClick={onClickClose} css={closeButtonStyle} type="button">
           <img css={closeImg} src={CloseBlack} alt="삭제 아이콘" />
         </button>
       )}
@@ -46,11 +46,15 @@ function BookmarkItem({
 
 const bookMarkItemWrapperStyle = css`
   position: relative;
+  width: 5rem;
+`;
+
+const closeButtonStyle = css`
+  position: absolute;
+  right: 0;
 `;
 
 const closeImg = css`
-  position: absolute;
-  right: 0;
   width: 1rem;
   height: 1rem;
 `;
