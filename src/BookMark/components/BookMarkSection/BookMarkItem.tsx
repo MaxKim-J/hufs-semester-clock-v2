@@ -3,8 +3,9 @@ import Emoji from '@components/fundamentals/Emoji';
 import { Text } from '@components/fundamentals/Text';
 import CloseBlack from '@shared/images/close-black.svg';
 import { css } from '@emotion/react';
-import { colorTable } from '@style/variables';
+import { transparentTable } from '@style/variables';
 import Spacer from '@components/fundamentals/Spacer';
+import { motion } from 'framer-motion';
 
 type BookMarkProps = {
   title: string;
@@ -20,20 +21,26 @@ function BookMarkItem({
   onClickClose,
 }: BookMarkProps) {
   return (
-    <div css={bookMarkItemWrapperStyle}>
+    <motion.div
+      whileHover={{
+        scale: 1.2,
+        transition: { duration: 0.2 },
+      }}
+      css={bookMarkItemWrapperStyle}
+    >
       {onClickClose && (
         <button onClick={onClickClose} type="button">
           <img css={closeImg} src={CloseBlack} alt="삭제하기" />
         </button>
       )}
       <a href={url} css={bookMarkItemStyle}>
-        <div role="button" css={emojiWrapperStyle}>
-          <Emoji emoji={emoji} size="size32" />
+        <div css={emojiWrapperStyle}>
+          <Emoji emoji={emoji} size="size24" />
         </div>
         <Spacer height="size8" />
         <Text size="size12">{title}</Text>
       </a>
-    </div>
+    </motion.div>
   );
 }
 
@@ -55,9 +62,9 @@ const bookMarkItemStyle = css`
 `;
 
 const emojiWrapperStyle = css`
-  width: 3rem;
-  height: 3rem;
-  background-color: ${colorTable.gray};
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: ${transparentTable.darkGray30};
   border-radius: 50%;
   display: flex;
   justify-content: center;

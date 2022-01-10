@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
 import ClockSection from '@/SemesterClock/components/ClockSection';
 import UserInfoSection from '@/UserInfo/components/UserInfoSection';
+import BookMarkSection from '@/BookMark/components/BookMarkSection';
 
 function ClockPage() {
   return (
@@ -9,6 +10,8 @@ function ClockPage() {
       <ClockSection />
       <Spacer />
       <UserInfoSection />
+      <Spacer height="size32" />
+      <BookMarkSection />
     </section>
   );
 }
