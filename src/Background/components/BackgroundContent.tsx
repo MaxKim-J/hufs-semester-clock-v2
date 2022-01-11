@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
+import { transparentTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
 import getBackgroundByTime from '@/Background/utils/getBackgroundByTime';
 import useBackgroundApplyQuery from '@/Background/query/useBackgroundApplyQuery';
@@ -30,7 +31,7 @@ const backgroundWrapperStyle = css`
 const backgroundCoverStyle = css`
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${transparentTable.black50};
   position: absolute;
   z-index: 1;
 `;
