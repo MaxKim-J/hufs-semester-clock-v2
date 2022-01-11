@@ -26,13 +26,12 @@ function UserInfoInputSection() {
       ) : (
         <UserInfoInputSectionSkeleton />
       )}
-      <Spacer height="size16" />
     </section>
   );
 }
 
 const userInfoInputSectionStyle = css`
-  height: 7rem;
+  height: 6rem;
 `;
 
 export default UserInfoInputSection;

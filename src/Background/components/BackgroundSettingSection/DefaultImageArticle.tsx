@@ -7,7 +7,7 @@ import { Campus } from '@shared/services/api/types';
 import { spaceTable } from '@style/variables';
 import useUpdateBackgroundQuery from '@/Background/query/useBackgroundUpdateQuery';
 
-function DefaultImage() {
+function DefaultImageArticle() {
   const [campusParameterForQuery, setCampusParameterForQuery] =
     useState<Campus | null>(null);
 
@@ -16,7 +16,7 @@ function DefaultImage() {
   );
 
   return (
-    <>
+    <article>
       <div css={defaultImageTitleStyle}>
         <Text>기본 배경화면</Text>
         <span css={imageButtonWrapperStyle}>
@@ -54,7 +54,7 @@ function DefaultImage() {
         기본 배경화면을 선택하면, 낮/밤 다른 시간이 표시됩니다
       </Text>
       <Text size="size12">Photo By Kihyun Lim, Sangyoung Oh</Text>
-    </>
+    </article>
   );
 }
 
@@ -73,4 +73,4 @@ const imageButtonStyle = css`
   margin-right: ${spaceTable.size4};
 `;
 
-export default DefaultImage;
+export default DefaultImageArticle;

@@ -3,7 +3,7 @@ import { MutableSnapshot } from 'recoil';
 import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
 import TestBoundary from '@components/boundries/TestBoundary';
 import BackgroundContent from '@/Background/components/BackgroundContent';
-import UploadImage from '@/Background/components/BackgroundSetting/UploadImage';
+import UploadImageArticle from '@/Background/components/BackgroundSettingSection/UploadImageArticle';
 
 describe('커스텀 배경화면 업로드', () => {
   const recoilState = ({ set }: MutableSnapshot) => {
@@ -20,7 +20,7 @@ describe('커스텀 배경화면 업로드', () => {
   const { getByTestId, getByTitle } = render(
     <TestBoundary recoilState={recoilState}>
       <>
-        <UploadImage />
+        <UploadImageArticle />
         <BackgroundContent />
       </>
     </TestBoundary>

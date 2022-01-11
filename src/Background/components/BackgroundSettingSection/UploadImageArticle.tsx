@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { colorTable, spaceTable } from '@style/variables';
 import useSingleFileInput from '@shared/hooks/useSingleFileInput';
 
-function UploadImage() {
+function UploadImageArticle() {
   const { status, uploadBackgroundImage } = useSingleFileInput([
     {
       validFunction: (file) => file.size <= 3_000_000,
@@ -17,7 +17,7 @@ function UploadImage() {
   ]);
 
   return (
-    <>
+    <article>
       <Text>이미지 업로드</Text>
       <Spacer height="size8" />
       <div css={fileInputWrapperStyle}>
@@ -38,7 +38,7 @@ function UploadImage() {
       <Spacer height="size8" />
       <Text size="size12">3MB 이하의 JPEG, PNG 이미지 파일만 가능합니다.</Text>
       <Text size="size12">스크린 비율에 맞는 직사각형 사진을 권장해요!</Text>
-    </>
+    </article>
   );
 }
 
@@ -55,4 +55,4 @@ const fileInputDescriptionStyle = css`
   margin-left: ${spaceTable.size8};
 `;
 
-export default UploadImage;
+export default UploadImageArticle;

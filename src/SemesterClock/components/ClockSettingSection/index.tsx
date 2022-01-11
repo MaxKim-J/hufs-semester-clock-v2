@@ -16,7 +16,6 @@ function ClockSettingSection() {
       >
         <SeasonalSettingArticle />
       </AsyncBoundaryWithQuery>
-      <Spacer height="size16" />
     </section>
   );
 }
