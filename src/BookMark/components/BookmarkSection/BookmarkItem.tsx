@@ -1,10 +1,11 @@
+import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 import Emoji from '@components/fundamentals/Emoji';
 import { Text } from '@components/fundamentals/Text';
 import CloseBlack from '@shared/images/close-black.svg';
-import { css } from '@emotion/react';
 import { transparentTable } from '@style/variables';
 import Spacer from '@components/fundamentals/Spacer';
-import { motion } from 'framer-motion';
+import { formatEllipsis } from '@shared/utils/formatHelper';
 
 type BookMarkProps = {
   title: string;
@@ -22,7 +23,7 @@ function BookmarkItem({
   return (
     <motion.div
       whileHover={{
-        scale: 1.2,
+        scale: 1.1,
         transition: { duration: 0.2 },
       }}
       css={bookMarkItemWrapperStyle}
@@ -37,7 +38,9 @@ function BookmarkItem({
           <Emoji emoji={emoji} size="size24" />
         </div>
         <Spacer height="size8" />
-        <Text size="size12">{title}</Text>
+        <Text size="size12" css={bookmarkTitleStyle}>
+          {formatEllipsis(title, 7)}
+        </Text>
       </a>
     </motion.div>
   );
@@ -72,6 +75,10 @@ const emojiWrapperStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const bookmarkTitleStyle = css`
+  white-space: nowrap;
 `;
 
 export default BookmarkItem;
