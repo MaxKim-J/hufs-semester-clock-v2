@@ -51,6 +51,7 @@ const createButtonStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
 `;
 
 const plusImgWrapperStyle = css`

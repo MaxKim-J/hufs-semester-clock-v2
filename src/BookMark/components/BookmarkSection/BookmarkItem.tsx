@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react';
 import Emoji from '@components/fundamentals/Emoji';
 import { Text } from '@components/fundamentals/Text';
 import CloseBlack from '@shared/images/close-black.svg';
@@ -51,7 +50,7 @@ const bookMarkItemWrapperStyle = css`
 
 const closeButtonStyle = css`
   position: absolute;
-  right: 0;
+  right: 0.5rem;
 `;
 
 const closeImg = css`
