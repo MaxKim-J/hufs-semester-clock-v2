@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import { css } from '@emotion/react';
-import useInput from '@shared/hooks/useInput';
-import { TextInput } from '@components/fundamentals/Input';
 import { useSetRecoilState } from 'recoil';
+import useInput from '@shared/hooks/useInput';
+import { Text } from '@components/fundamentals/Text';
+import { TextInput } from '@components/fundamentals/Input';
 import Spacer from '@components/fundamentals/Spacer';
 import Button from '@components/fundamentals/Button';
 import { getRandomString } from '@shared/utils/mathHelper';
 import { userBookmarks } from '@/BookMark/atoms';
-import axios from 'axios';
-import { Text } from '@components/fundamentals/Text';
+import { addProtocol } from '@/BookMark/utils/urlHelper';
 
 type BookmarkInputDialogProps = {
   closeDialog: () => void;
@@ -32,7 +31,7 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
       {
         id: getRandomString(),
         title: titleInput.value,
-        url: urlInput.value,
+        url: addProtocol(urlInput.value),
       },
     ];
     setUserBookmarks((state) => ({

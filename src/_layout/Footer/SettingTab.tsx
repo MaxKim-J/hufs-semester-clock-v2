@@ -1,5 +1,4 @@
 import Spacer from '@components/fundamentals/Spacer';
-import Divider from '@components/fundamentals/Divider';
 import ClockSettingSection from '@/SemesterClock/components/ClockSettingSection';
 import UserInfoInputSection from '@/UserInfo/components/UserInfoInputSection';
 import BackgroundSettingSection from '@/Background/components/BackgroundSettingSection';
