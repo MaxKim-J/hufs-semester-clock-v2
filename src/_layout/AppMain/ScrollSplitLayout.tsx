@@ -21,19 +21,22 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
     max: number;
   }>({ current: 0, max: 0 });
 
+  const changeIndex = (index: number) => {
+    setSectionIndex((s) => ({
+      current: index,
+      max: Math.max(s.max, index),
+    }));
+  };
+
   const handleWheel = debounce(
     (e: WheelEvent<HTMLElement>) => {
       const { deltaY, deltaX } = e;
       if (deltaX !== 0) return;
       if (deltaY < 0 && sectionIndex.current === 0) return;
       if (deltaY > 0 && sectionIndex.current === sections.length - 1) return;
-      setSectionIndex((s) => {
-        const current = deltaY < 0 ? s.current - 1 : s.current + 1;
-        return {
-          current,
-          max: Math.max(s.max, current),
-        };
-      });
+      changeIndex(
+        deltaY < 0 ? sectionIndex.current - 1 : sectionIndex.current + 1
+      );
     },
     0,
     { leading: true }
@@ -62,7 +65,7 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
             activateId={sectionIndex.current}
             tooltip={section.name}
             onClick={() => {
-              setSectionIndex((state) => ({ ...state, current: section.id }));
+              changeIndex(section.id);
             }}
           />
         ))}
