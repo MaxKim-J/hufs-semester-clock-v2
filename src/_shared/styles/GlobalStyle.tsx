@@ -40,6 +40,7 @@ const globalStyle = css`
     font-family: inherit;
   }
 
+  select,
   input {
     font-family: 'netmarbleM', serif;
   }

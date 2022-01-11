@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { css } from '@emotion/react';
 import useInput from '@shared/hooks/useInput';
 import { TextInput } from '@components/fundamentals/Input';
@@ -6,6 +7,8 @@ import Spacer from '@components/fundamentals/Spacer';
 import Button from '@components/fundamentals/Button';
 import { getRandomString } from '@shared/utils/mathHelper';
 import { userBookmarks } from '@/BookMark/atoms';
+import axios from 'axios';
+import { Text } from '@components/fundamentals/Text';
 
 type BookmarkInputDialogProps = {
   closeDialog: () => void;
@@ -14,7 +17,6 @@ type BookmarkInputDialogProps = {
 function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
   const setUserBookmarks = useSetRecoilState(userBookmarks);
 
-  // 그래도 한번 들어가는 봐야 되지 않을까..?
   const urlInput = useInput({
     name: 'url',
     validators: [{ validFunction: (text: string) => !!text }],
@@ -25,7 +27,7 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
     validators: [{ validFunction: (text: string) => !!text }],
   });
 
-  const submitBookmark = () => {
+  const submitBookmark = async () => {
     const newBookMark = [
       {
         id: getRandomString(),
@@ -47,7 +49,7 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
         size="size12"
         title="북마크 제목 입력"
         placeholder="북마크 제목"
-        maxLength={10}
+        maxLength={20}
         widthFigure={20}
         value={titleInput.value}
         onChange={titleInput.handleInput}
@@ -63,13 +65,14 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
       />
       <Spacer />
       <div css={buttonWrapperStyle}>
+        <Text color="gray" size="size12" css={noticeTextStyle}>
+          ※ 접속 불가능한 주소를 입력하면 북마크가 작동하지 않아요!
+        </Text>
         <Button
           size="size12"
           type="submit"
           disabled={urlInput.isError || titleInput.isError}
-          onClick={() => {
-            submitBookmark();
-          }}
+          onClick={submitBookmark}
         >
           입력하기
         </Button>
@@ -80,7 +83,12 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
 
 const buttonWrapperStyle = css`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const noticeTextStyle = css`
+  width: 70%;
 `;
 
 export default BookmarkInputDialog;

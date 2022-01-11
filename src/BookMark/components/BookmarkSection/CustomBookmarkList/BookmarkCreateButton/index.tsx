@@ -74,7 +74,7 @@ const plusImgStyle = css`
 const dialogArrowStyle = css`
   position: absolute;
   top: -1rem;
-  left: 1rem;
+  left: 1.5rem;
   width: 0;
   height: 0;
   border-left: 1rem solid transparent;
