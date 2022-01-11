@@ -17,7 +17,7 @@ export interface Semesters {
 }
 
 export interface Admission {
-  key: string;
+  key: number;
   value: string;
 }
 

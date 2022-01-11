@@ -7,3 +7,6 @@ export const getAdmissionInterval = (admissionNum: string) => {
 
 const getAdmissionDate = (admissionNum: string) =>
   new Date(`20${admissionNum}-03-02`);
+
+export const getLatestAdmission = () =>
+  String(new Date().getFullYear()).slice(2);

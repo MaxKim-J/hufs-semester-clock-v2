@@ -11,11 +11,17 @@ type SelectInputProps = {
   items: SelectInputItem[];
   title: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  defaultValue?: string;
 };
 
-function SelectInput({ items, title, onChange }: SelectInputProps) {
+function SelectInput({
+  items,
+  title,
+  onChange,
+  defaultValue = '',
+}: SelectInputProps) {
   return (
-    <select css={selectStyle} onChange={onChange} defaultValue="">
+    <select css={selectStyle} onChange={onChange} defaultValue={defaultValue}>
       <option disabled value="">
         {title}
       </option>
