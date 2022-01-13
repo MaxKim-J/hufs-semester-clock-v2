@@ -10,5 +10,6 @@ module.exports = {
     '@shared/(.*)$': '<rootDir>/src/_shared/$1',
     '@style/(.*)$': '<rootDir>/src/_shared/styles/$1',
     '@components/(.*)$': '<rootDir>/src/_shared/components/$1',
+    '.(css)$': '<rootDir>/src/_shared/test/mock/fileMock.ts',
   },
 };
