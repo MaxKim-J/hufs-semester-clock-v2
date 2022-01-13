@@ -70,7 +70,7 @@ const bookMarkItemStyle = css`
 const emojiWrapperStyle = css`
   width: 3.5rem;
   height: 3.5rem;
-  background-color: ${transparentTable.darkGray30};
+  background-color: ${transparentTable.white50};
   border-radius: 50%;
   display: flex;
   justify-content: center;
