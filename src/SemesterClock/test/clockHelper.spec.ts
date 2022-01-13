@@ -38,7 +38,7 @@ describe('getClockIntervals 함수는 인자로 기준 학기 정보와 시간�
     });
   });
 
-  it('기준 시간보다 과거의 시간이 인자로 주어졌을 경우 null을 반환한다.', () => {
+  it('기준 시간보다 과거의 시간이 인자로 주어졌을 경우 expired 문자열을 반환한다.', () => {
     const semester: SemesterValue = {
       id: 'current',
       act: '종강',
@@ -48,6 +48,6 @@ describe('getClockIntervals 함수는 인자로 기준 학기 정보와 시간�
 
     const date = new Date('2022-01-04T10:58:58');
     const intervals = getClockIntervals(semester, date);
-    expect(intervals).toBe(null);
+    expect(intervals).toBe('expired');
   });
 });

@@ -39,7 +39,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
 
   return (
     <article>
-      {intervals !== null && intervals !== 'expired' && (
+      {intervals !== 'expired' && (
         <motion.div css={clockDigitWrapperStyle} {...fadeInAndOut}>
           {clockDigitData.map((data) => (
             <div css={clockDigitStyle} key={data.key}>

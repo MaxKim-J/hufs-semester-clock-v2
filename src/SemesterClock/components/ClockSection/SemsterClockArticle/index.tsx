@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
+import { Semesters } from '@shared/services/api/types';
 import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
 import useCleanIsSeasonalStorageData from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useCleanIsSeasonalStorageData';
 import MainClock from '@/SemesterClock/components/ClockSection/SemsterClockArticle/MainClock';
 import SemesterInfo from '@/SemesterClock/components/ClockSection/SemsterClockArticle/SemesterInfo';
-import { Semesters } from '@shared/services/api/types';
 import useClockSemester from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useClockSemester';
 
 function SemesterClockArticle() {

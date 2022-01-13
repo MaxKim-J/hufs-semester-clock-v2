@@ -3,9 +3,9 @@ import { SemesterValue } from '@shared/services/api/types';
 import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
 
 const useMainClockInterval = (semester: SemesterValue) => {
-  const [clockIntervals, setClockIntervals] = useState<ReturnType<
-    typeof getClockIntervals
-  > | null>(getClockIntervals(semester));
+  const [clockIntervals, setClockIntervals] = useState<
+    ReturnType<typeof getClockIntervals>
+  >(getClockIntervals(semester));
 
   const tickClock = useCallback(() => {
     setClockIntervals(getClockIntervals(semester));
