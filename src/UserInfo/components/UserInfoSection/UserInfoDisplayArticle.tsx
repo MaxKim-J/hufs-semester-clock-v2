@@ -3,17 +3,17 @@ import { css } from '@emotion/react';
 import { useRecoilValue } from 'recoil';
 import { formatNumber } from '@shared/utils/formatHelper';
 import { getGreetingMessage } from '@/UserInfo/utils/greetingHelper';
-import { UserInfo, userInfo } from '@/UserInfo/atoms';
+import { userInfo } from '@/UserInfo/atoms';
 import {
   getAdmissionInterval,
-  getLatestAdmission,
+  getAdmissionByDate,
 } from '@/UserInfo/utils/admissionDayHelper';
 
 function UserInfoDisplayArticle() {
   const { value: userInfoValue } = useRecoilValue(userInfo);
 
   const userAdmission =
-    userInfoValue === null ? getLatestAdmission() : userInfoValue.admission;
+    userInfoValue === null ? getAdmissionByDate() : userInfoValue.admission;
 
   return (
     <article css={articleStyle}>
