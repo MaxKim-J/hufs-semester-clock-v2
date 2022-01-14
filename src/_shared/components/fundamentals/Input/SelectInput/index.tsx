@@ -21,7 +21,12 @@ function SelectInput({
   defaultValue = '',
 }: SelectInputProps) {
   return (
-    <select css={selectStyle} onChange={onChange} defaultValue={defaultValue}>
+    <select
+      css={selectStyle}
+      onChange={onChange}
+      defaultValue={defaultValue}
+      title={title}
+    >
       <option disabled value="">
         {title}
       </option>

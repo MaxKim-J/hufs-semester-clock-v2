@@ -43,7 +43,8 @@ const useInput = ({
   const handleInput = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setStatus((state) => ({ ...state, value: e.target.value }));
+    const { value } = e.target;
+    setStatus((state) => ({ ...state, value }));
   };
 
   return {

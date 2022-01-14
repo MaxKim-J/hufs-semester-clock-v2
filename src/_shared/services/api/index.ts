@@ -1,4 +1,5 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import axiosClient from '@shared/services/api/axiosClient';
 import {
   Semesters,
   Weather,
@@ -8,10 +9,6 @@ import {
   Campus,
   Admission,
 } from './types';
-
-const axiosClient: AxiosInstance = axios.create({
-  baseURL: process.env.BASE_URL,
-});
 
 export const getSemester = (): Promise<AxiosResponse<Semesters>> =>
   axiosClient.get('/semester');
@@ -26,7 +23,7 @@ export const getNotification = (): Promise<AxiosResponse<Notification[]>> =>
   axiosClient.get('/notification');
 
 export const getAdmission = (): Promise<AxiosResponse<Admission[]>> =>
-  axiosClient.get('/admission');
+  axiosClient.get(`/admission`);
 
 export const getBackgroundImages = (
   campus: Campus

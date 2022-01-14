@@ -1,3 +1,8 @@
+process.env = Object.assign(process.env, {
+  BASE_URL: 'https://server-api.mock',
+  NODE_ENV: 'test',
+});
+
 module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   transform: {

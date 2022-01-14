@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { MutableSnapshot, RecoilRoot } from 'recoil';
 
 type TestRendererProps = {
-  children: ReactChild;
+  children: ReactChild | ReactChild[];
   queryClient?: QueryClient;
   recoilState?: (snapShot: MutableSnapshot) => void;
 };
