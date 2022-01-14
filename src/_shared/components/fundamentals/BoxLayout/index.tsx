@@ -13,7 +13,7 @@ function BoxLayout({ title, children }: BoxLayoutProps) {
   return (
     <article css={boxContainerStyle}>
       <div css={boxHeaderStyle}>
-        <Heading tag="h2" color="black">
+        <Heading tag="h3" color="black">
           {title}
         </Heading>
       </div>
@@ -29,7 +29,7 @@ const boxContainerStyle = css`
 `;
 
 const boxHeaderStyle = css`
-  background-color: ${colorTable.white};
+  background-color: ${transparentTable.white90};
   padding: ${spaceTable.size4};
 `;
 

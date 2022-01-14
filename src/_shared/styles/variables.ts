@@ -45,6 +45,7 @@ export const transparentTable = {
   white30: 'rgba(255, 255, 255, 0.3)',
   white50: 'rgba(255, 255, 255, 0.5)',
   white70: 'rgba(255, 255, 255, 0.7)',
+  white90: 'rgba(255, 255, 255, 0.9)',
   darkGray30: 'rgba(116, 116, 116, 0.3)',
   darkGray50: 'rgba(116, 116, 116, 0.5)',
   darkGray70: 'rgba(116, 116, 116, 0.7)',

@@ -1,5 +1,4 @@
 import { ReactChild, useState, WheelEvent, Suspense } from 'react';
-import { motion } from 'framer-motion';
 import { css } from '@emotion/react';
 import debounce from 'lodash.debounce';
 import DotSwitch from '@components/fundamentals/DotSwitch';
@@ -44,11 +43,7 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
 
   return (
     <>
-      <motion.div
-        onWheel={handleWheel}
-        animate={{ y: `${-(sectionIndex.current * 100)}vh` }}
-        transition={{ ease: 'easeOut', duration: 0.5 }}
-      >
+      <div onWheel={handleWheel} css={splitWrapperStyle(sectionIndex.current)}>
         {sections.map((section) => (
           <section key={section.id} css={splitSectionStyle}>
             {sectionIndex.max >= section.id && (
@@ -56,7 +51,7 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
             )}
           </section>
         ))}
-      </motion.div>
+      </div>
       <nav css={navigationStyle}>
         {sections.map((section) => (
           <DotSwitch
@@ -73,6 +68,11 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
     </>
   );
 }
+
+const splitWrapperStyle = (index: number) => css`
+  transform: translateY(${-index * 100}vh);
+  transition: transform 0.4s cubic-bezier(0.63, 0.35, 0.43, 0.99);
+`;
 
 const splitSectionStyle = css`
   position: relative;
