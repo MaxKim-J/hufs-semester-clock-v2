@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
-import { Weather } from '@/_shared/services/api/types';
-import { getWeather } from '@/_shared/services/api';
+import { Weather } from '@shared/services/api/types';
+import { getWeather } from '@shared/services/api';
 
 const useWeatherQuery = (): Weather[] | undefined => {
   const { data: weatherData } = useQuery<Weather[], AxiosError>({

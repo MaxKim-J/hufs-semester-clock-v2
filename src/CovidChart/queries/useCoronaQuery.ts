@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
-import { Corona } from '@/_shared/services/api/types';
-import { getCorona } from '@/_shared/services/api';
+import { Corona } from '@shared/services/api/types';
+import { getCorona } from '@shared/services/api';
 
 const useCoronaQuery = (): Corona | undefined => {
   const { data: coronaData } = useQuery<Corona, AxiosError>({

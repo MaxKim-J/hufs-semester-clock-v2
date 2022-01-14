@@ -19,6 +19,18 @@ const globalStyle = css`
     margin-inline-end: 0;
   }
 
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
   body {
     font-family: 'netmarbleM', serif;
     overscroll-behavior-y: none;

@@ -1,30 +1,59 @@
 import { css } from '@emotion/react';
-import { Text } from '@components/fundamentals/Text';
-import Skeleton from 'react-loading-skeleton';
+import TimerArticle from '@/Timer/components/TimerArticle';
+import WeatherArticle from '@/Weather/components/WeatherArticle';
+import TodayMenuArticle from '@/TodayMenu/components/TodayMenuArticle';
+import CovidChartArticle from '@/CovidChart/components/CovidChartArticle';
+import NotificationArticle from '@/Notification/components/NotificationArticle';
 
 function FeaturesPage() {
   return (
-    <section>
-      <div css={expStyle}>으앙</div>
-      <Text>기능 페이지</Text>
-      <Skeleton
-        style={{
-          opacity: 0.5,
-          marginBottom: '0.5rem',
-          borderRadius: '2rem',
-        }}
-        count={1}
-        baseColor="#dddddd"
-        highlightColor="#898989"
-        height="1rem"
-        width="20rem"
-      />
+    <section css={sectionStyle}>
+      <div css={featureGridStyle}>
+        <div css={gridAreaStyle('notification')}>
+          <NotificationArticle />
+        </div>
+        <div css={gridAreaStyle('weather')}>
+          <WeatherArticle />
+        </div>
+        <div css={gridAreaStyle('timer')}>
+          <TimerArticle />
+        </div>
+        <div css={gridAreaStyle('todayMenu')}>
+          <TodayMenuArticle />
+        </div>
+        <div css={gridAreaStyle('covidChart')}>
+          <CovidChartArticle />
+        </div>
+      </div>
     </section>
   );
 }
 
-const expStyle = css`
-  color: red;
+const sectionStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
+const gridAreaStyle = (area: string) => css`
+  width: 100%;
+  height: 100%;
+  grid-area: ${area};
+`;
+
+const featureGridStyle = css`
+  display: grid;
+  grid-template-columns: repeat(2, 30rem);
+  grid-template-rows: repeat(6, 6rem);
+  grid-template-areas:
+    'notification weather'
+    'notification weather'
+    'notification todayMenu'
+    'timer todayMenu'
+    'timer covidChart'
+    'timer covidChart';
+  grid-column-gap: 1rem;
 `;
 
 export default FeaturesPage;

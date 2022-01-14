@@ -44,7 +44,7 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
 
   return (
     <>
-      <motion.section
+      <motion.div
         onWheel={handleWheel}
         animate={{ y: `${-(sectionIndex.current * 100)}vh` }}
         transition={{ ease: 'easeOut', duration: 0.5 }}
@@ -56,7 +56,7 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
             )}
           </section>
         ))}
-      </motion.section>
+      </motion.div>
       <nav css={navigationStyle}>
         {sections.map((section) => (
           <DotSwitch
