@@ -17,7 +17,7 @@ function TodayClockArticle() {
   const todayClockData = [
     { text: '년', value: now.getFullYear() },
     { text: '월', value: now.getMonth() + 1 },
-    { text: '일', value: now.getDay() },
+    { text: '일', value: now.getDate() },
     { text: '시', value: now.getHours() },
     { text: '분', value: now.getMinutes() },
   ];
