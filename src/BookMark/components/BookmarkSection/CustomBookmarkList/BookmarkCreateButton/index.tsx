@@ -4,9 +4,9 @@ import { Text } from '@components/fundamentals/Text';
 import plusGray from '@shared/images/plus-gray.svg';
 import { css } from '@emotion/react';
 import { transparentTable, colorTable } from '@style/variables';
-import BookmarkInputDialog from './BookmarkInputDialog';
 import { fadeInAndOut } from '@style/animation';
 import { motion, AnimatePresence } from 'framer-motion';
+import BookmarkInputDialog from './BookmarkInputDialog';
 
 function BookmarkCreateButton() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);

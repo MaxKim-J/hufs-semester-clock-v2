@@ -6,20 +6,14 @@ import CloseBlack from '@shared/images/close-black.svg';
 import { transparentTable } from '@style/variables';
 import Spacer from '@components/fundamentals/Spacer';
 import { formatEllipsis } from '@shared/utils/formatHelper';
+import { Bookmark } from '@/BookMark/atoms';
 
 type BookMarkProps = {
-  title: string;
-  url: string;
-  emoji?: string;
+  bookmark: Bookmark;
   onClickClose?: () => void;
 };
 
-function BookmarkItem({
-  title,
-  url,
-  emoji = '🌐',
-  onClickClose,
-}: BookMarkProps) {
+function BookmarkItem({ bookmark, onClickClose }: BookMarkProps) {
   return (
     <motion.div
       whileHover={{
@@ -29,17 +23,22 @@ function BookmarkItem({
       css={bookMarkItemWrapperStyle}
     >
       {onClickClose && (
-        <button onClick={onClickClose} css={closeButtonStyle} type="button">
+        <button
+          onClick={onClickClose}
+          css={closeButtonStyle}
+          type="button"
+          data-testid={`remove-${bookmark.id}`}
+        >
           <img css={closeImg} src={CloseBlack} alt="삭제 아이콘" />
         </button>
       )}
-      <a href={url} css={bookMarkItemStyle}>
+      <a href={bookmark.url} css={bookMarkItemStyle}>
         <div css={emojiWrapperStyle}>
-          <Emoji emoji={emoji} size="size24" />
+          <Emoji emoji={bookmark.emoji ?? '🌐'} size="size24" />
         </div>
         <Spacer height="size8" />
         <Text size="size12" css={bookmarkTitleStyle}>
-          {formatEllipsis(title, 7)}
+          {formatEllipsis(bookmark.title, 7)}
         </Text>
       </a>
     </motion.div>

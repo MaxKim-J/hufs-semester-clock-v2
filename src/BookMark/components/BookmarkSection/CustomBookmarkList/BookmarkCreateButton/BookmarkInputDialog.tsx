@@ -1,21 +1,16 @@
 import { css } from '@emotion/react';
-import { useSetRecoilState } from 'recoil';
 import useInput from '@shared/hooks/useInput';
 import { Text } from '@components/fundamentals/Text';
 import { TextInput } from '@components/fundamentals/Input';
 import Spacer from '@components/fundamentals/Spacer';
 import Button from '@components/fundamentals/Button';
-import { getRandomString } from '@shared/utils/mathHelper';
-import { userBookmarks } from '@/BookMark/atoms';
-import { addProtocol } from '@/BookMark/utils/urlHelper';
+import useCreateBookmark from '@/BookMark/hooks/useCreateBookmark';
 
 type BookmarkInputDialogProps = {
   closeDialog: () => void;
 };
 
 function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
-  const setUserBookmarks = useSetRecoilState(userBookmarks);
-
   const urlInput = useInput({
     name: 'url',
     validators: [{ validFunction: (text: string) => !!text }],
@@ -26,19 +21,10 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
     validators: [{ validFunction: (text: string) => !!text }],
   });
 
-  const submitBookmark = async () => {
-    const newBookMark = [
-      {
-        id: getRandomString(),
-        title: titleInput.value,
-        url: addProtocol(urlInput.value),
-      },
-    ];
-    setUserBookmarks((state) => ({
-      ...state,
-      value:
-        state.value === null ? newBookMark : state.value.concat(newBookMark),
-    }));
+  const createBookmark = useCreateBookmark();
+
+  const submitBookmark = () => {
+    createBookmark(titleInput.value, urlInput.value);
     closeDialog();
   };
 
@@ -55,7 +41,7 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
       />
       <Spacer />
       <TextInput
-        title="주소 입력"
+        title="북마크 주소 입력"
         size="size12"
         placeholder="웹사이트 주소"
         widthFigure={20}

@@ -7,6 +7,8 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|svg)$':
+      'jest-transform-stub',
   },
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
@@ -15,6 +17,7 @@ module.exports = {
     '@shared/(.*)$': '<rootDir>/src/_shared/$1',
     '@style/(.*)$': '<rootDir>/src/_shared/styles/$1',
     '@components/(.*)$': '<rootDir>/src/_shared/components/$1',
-    '.(css)$': '<rootDir>/src/_shared/test/mock/fileMock.ts',
+    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|svg)$':
+      'jest-transform-stub',
   },
 };

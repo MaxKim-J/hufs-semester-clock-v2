@@ -6,13 +6,9 @@ import BookmarkItem from '@/BookMark/components/BookmarkSection/BookmarkItem';
 function DefaultBookmarkList() {
   return (
     <ul css={defaultBookMarksStyle}>
-      {bookmarkContents.map((content) => (
-        <li css={bookMarkWrapperStyle} key={content.id}>
-          <BookmarkItem
-            title={content.title}
-            url={content.url}
-            emoji={content.emoji}
-          />
+      {bookmarkContents.map((bookmark) => (
+        <li css={bookMarkWrapperStyle} key={bookmark.id}>
+          <BookmarkItem bookmark={bookmark} />
         </li>
       ))}
     </ul>

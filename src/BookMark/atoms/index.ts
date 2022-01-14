@@ -6,6 +6,7 @@ export type Bookmark = {
   id: string;
   title: string;
   url: string;
+  emoji?: string;
 };
 
 export const userBookmarks = atom<StorageAtom<Bookmark[]>>({

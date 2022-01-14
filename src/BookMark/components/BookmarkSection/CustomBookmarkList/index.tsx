@@ -1,24 +1,16 @@
 import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
-import { useRecoilState } from 'recoil';
-import { Bookmark, userBookmarks } from '@/BookMark/atoms';
+import { useRecoilValue } from 'recoil';
+import { userBookmarks } from '@/BookMark/atoms';
 import BookmarkItem from '@/BookMark/components/BookmarkSection/BookmarkItem';
 import BookmarkCreateButton from '@/BookMark/components/BookmarkSection/CustomBookmarkList/BookmarkCreateButton';
+import useRemoveBookmark from '@/BookMark/hooks/useRemoveBookmark';
 
 function CustomBookmarkList() {
-  const [
-    { status: userBookmarksStatus, value: userBookmarksValue },
-    setUserBookmarks,
-  ] = useRecoilState(userBookmarks);
+  const { status: userBookmarksStatus, value: userBookmarksValue } =
+    useRecoilValue(userBookmarks);
 
-  const removeBookmark = (id: string) => {
-    setUserBookmarks((state) => ({
-      ...state,
-      value: (state.value as Bookmark[]).filter(
-        (bookmark) => bookmark.id !== id
-      ),
-    }));
-  };
+  const removeBookmark = useRemoveBookmark();
 
   return (
     <ul css={customBookmarksStyle}>
@@ -28,8 +20,7 @@ function CustomBookmarkList() {
             userBookmarksValue.map((bookmark) => (
               <li css={bookMarkWrapperStyle} key={bookmark.id}>
                 <BookmarkItem
-                  title={bookmark.title}
-                  url={bookmark.url}
+                  bookmark={bookmark}
                   onClickClose={() => {
                     removeBookmark(bookmark.id);
                   }}

@@ -1,30 +1,32 @@
-const bookmarkContents = [
+import { Bookmark } from '@/BookMark/atoms';
+
+const bookmarkContents: Bookmark[] = [
   {
-    id: 0,
+    id: 'hufs-homepage',
     title: '외대 홈페이지',
     url: 'https://www.hufs.ac.kr/',
     emoji: '🎓',
   },
   {
-    id: 1,
+    id: 'e-class',
     title: 'e-class',
     url: 'https://eclass.hufs.ac.kr/',
     emoji: '📋',
   },
   {
-    id: 2,
+    id: 'hufs-library',
     title: '외대 도서관',
     url: 'https://library.hufs.ac.kr',
     emoji: '📖',
   },
   {
-    id: 3,
+    id: 'info-system',
     title: '종합정보시스템',
     url: 'https://wis.hufs.ac.kr/',
     emoji: 'ℹ️',
   },
   {
-    id: 4,
+    id: 'cafeteria',
     title: '학식 메뉴',
     url: 'https://wis.hufs.ac.kr/jsp/HUFS/cafeteria/frame_view.jsp',
     emoji: '🍽',
