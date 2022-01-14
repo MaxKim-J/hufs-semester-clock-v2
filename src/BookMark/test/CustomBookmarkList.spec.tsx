@@ -4,7 +4,7 @@ import TestBoundary from '@components/boundries/TestBoundary';
 import CustomBookmarkList from '@/BookMark/components/BookmarkSection/CustomBookmarkList';
 import { userBookmarks } from '@/BookMark/atoms';
 
-describe('유저는 북마크를 추가하거나 삭제할 수 있다.', () => {
+describe('User Interaction: 유저는 북마크를 추가하거나 삭제할 수 있다.', () => {
   const initialBookmarks = [
     { id: 'njokd1objg', title: '네이버', url: 'https://naver.com' },
     { id: 'wdn8z4libx', title: '구글', url: 'https://google.com' },

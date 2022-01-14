@@ -1,7 +1,7 @@
 import getBackgroundByTime from '@/Background/utils/getBackgroundByTime';
 import { BackgroundImg } from '@/_shared/services/api/types';
 
-describe('getBackgroundByTime:BackgroundImg 객체에서 현재 시간에 적합한 이미지를 선택한다', () => {
+describe('Unit: getBackgroundByTime 함수는 BackgroundImg 객체에서 현재 시간에 적합한 이미지를 선택한다', () => {
   const backgroundImage: BackgroundImg = {
     name: 'bgImg',
     dayImageUrl: 'dayImageUrl',

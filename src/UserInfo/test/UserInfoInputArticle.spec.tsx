@@ -8,7 +8,7 @@ import UserInfoDisplayArticle from '@/UserInfo/components/UserInfoSection/UserIn
 import UserInfoInputArticle from '@/UserInfo/components/UserInfoInputSection/UserInfoInputArticle';
 import { userInfo } from '@/UserInfo/atoms';
 
-describe('학번/이름 설정란에서 유저의 학번/이름 정보를 바꿀 수 있다.', () => {
+describe('User Interaction: 유저는 학번/이름 설정란에서 유저의 학번/이름 정보를 바꿀 수 있다.', () => {
   beforeAll(() => {
     const mockAxios = new MockAdapter(axiosClient, { delayResponse: 200 });
     mockAxios.onGet(`/admission`).reply(200, [

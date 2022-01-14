@@ -6,7 +6,7 @@ import TestBoundary from '@components/boundries/TestBoundary';
 import BackgroundContent from '@/Background/components/BackgroundContent';
 import UploadImageArticle from '@/Background/components/BackgroundSettingSection/UploadImageArticle';
 
-describe('커스텀 배경화면 업로드', () => {
+describe('User Interaction: 유저는 커스텀 배경화면을 업로드할 수 있다.', () => {
   beforeEach(() => {
     const recoilState = ({ set }: MutableSnapshot) => {
       set(userBackgroundImage, {

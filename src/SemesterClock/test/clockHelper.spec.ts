@@ -1,7 +1,7 @@
 import { SemesterValue } from '@shared/services/api/types';
 import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
 
-describe('getClockIntervals 함수는 인자로 기준 학기 정보와 시간을 받아 두 시간의 차이를 반환한다.', () => {
+describe('Unit: getClockIntervals 함수는 인자로 기준 학기 정보와 시간을 받아 두 시간의 차이를 반환한다.', () => {
   it('프로퍼티 숫자가 10 이하인 경우 0을 붙여 두 자리 수 문자열을 반환한다.', () => {
     const semester: SemesterValue = {
       id: 'current',
