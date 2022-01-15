@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
+import { useRecoilValue } from 'recoil';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
 import SemesterClockArticle from '@/SemesterClock/components/ClockSection/SemsterClockArticle';
 import TodayClockArticle from '@/SemesterClock/components/ClockSection/TodayClockArticle';
-import { useRecoilValue } from 'recoil';
 import { isUserSeasonal } from '@/SemesterClock/atoms';
 import ClockSectionSkeleton from '@/SemesterClock/components/Skeleton/ClockSectionSkeleton';
 

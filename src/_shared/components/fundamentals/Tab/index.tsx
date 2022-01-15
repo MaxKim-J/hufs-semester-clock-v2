@@ -1,4 +1,4 @@
-import { ReactChild, useState, useRef } from 'react';
+import { ReactChild, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CloseWhite from '@shared/images/close-white.svg';
 import { spaceTable, transparentTable } from '@style/variables';

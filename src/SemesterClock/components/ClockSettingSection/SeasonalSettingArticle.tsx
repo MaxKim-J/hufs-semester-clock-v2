@@ -2,9 +2,9 @@ import { useRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import { Text } from '@components/fundamentals/Text';
 import { spaceTable } from '@style/variables';
-import { isUserSeasonal } from '../../atoms';
 import { Semesters } from '@shared/services/api/types';
 import { SwitchInput } from '@components/fundamentals/Input';
+import { isUserSeasonal } from '../../atoms';
 import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
 import { isClockUnexpired } from '@/SemesterClock/utils/clockHelper';
 

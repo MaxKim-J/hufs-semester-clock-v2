@@ -7,11 +7,13 @@ import { getCurrentSemester } from '@/SemesterClock/utils/semesterHelper';
 const useClockSemester = (semesters: Semesters) => {
   const isSeasonal = useRecoilValue(isUserSeasonal);
 
-  const evaluateSemester = useCallback(() => {
-    return isSeasonal.value === true
-      ? semesters.seasonal
-      : getCurrentSemester(semesters);
-  }, [isSeasonal.value, semesters]);
+  const evaluateSemester = useCallback(
+    () =>
+      isSeasonal.value === true
+        ? semesters.seasonal
+        : getCurrentSemester(semesters),
+    [isSeasonal.value, semesters]
+  );
 
   const [clockSemester, setClockSemester] = useState(evaluateSemester());
 

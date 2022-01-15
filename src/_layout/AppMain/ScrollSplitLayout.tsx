@@ -1,6 +1,5 @@
-import { ReactChild, useState, WheelEvent, Suspense } from 'react';
+import { ReactChild, useState, WheelEvent, Suspense, useCallback } from 'react';
 import { css } from '@emotion/react';
-import debounce from 'lodash.debounce';
 import DotSwitch from '@components/fundamentals/DotSwitch';
 import { spaceTable } from '@style/variables';
 
@@ -20,30 +19,26 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
     max: number;
   }>({ current: 0, max: 0 });
 
-  const changeIndex = (index: number) => {
+  const changeIndex = useCallback((index: number) => {
     setSectionIndex((s) => ({
       current: index,
       max: Math.max(s.max, index),
     }));
-  };
+  }, []);
 
-  const handleWheel = debounce(
-    (e: WheelEvent<HTMLElement>) => {
-      const { deltaY, deltaX } = e;
-      if (deltaX !== 0) return;
-      if (deltaY < 0 && sectionIndex.current === 0) return;
-      if (deltaY > 0 && sectionIndex.current === sections.length - 1) return;
-      changeIndex(
-        deltaY < 0 ? sectionIndex.current - 1 : sectionIndex.current + 1
-      );
-    },
-    0,
-    { leading: true }
-  );
+  const wheelHandler = (e: WheelEvent<HTMLElement>) => {
+    const { deltaY, deltaX } = e;
+    if (deltaX !== 0) return;
+    if (deltaY < 0 && sectionIndex.current === 0) return;
+    if (deltaY > 0 && sectionIndex.current === sections.length - 1) return;
+    changeIndex(
+      deltaY < 0 ? sectionIndex.current - 1 : sectionIndex.current + 1
+    );
+  };
 
   return (
     <>
-      <div onWheel={handleWheel} css={splitWrapperStyle(sectionIndex.current)}>
+      <div onWheel={wheelHandler} css={splitWrapperStyle(sectionIndex.current)}>
         {sections.map((section) => (
           <section key={section.id} css={splitSectionStyle}>
             {sectionIndex.max >= section.id && (
@@ -71,7 +66,7 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
 
 const splitWrapperStyle = (index: number) => css`
   transform: translateY(${-index * 100}vh);
-  transition: transform 0.4s cubic-bezier(0.63, 0.35, 0.43, 0.99);
+  transition: transform 0.5s cubic-bezier(0.63, 0.35, 0.43, 0.99);
 `;
 
 const splitSectionStyle = css`

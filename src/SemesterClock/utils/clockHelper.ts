@@ -1,7 +1,6 @@
 import { SemesterValue } from '@shared/services/api/types';
 import { getNow } from '@shared/utils/timeHelper';
-import isBefore from 'date-fns/isBefore';
-import isAfter from 'date-fns/isAfter';
+import { isAfter, isBefore } from 'date-fns';
 import { ClockDigits, formatDigits } from '@shared/utils/formatHelper';
 
 export type DurationKeys = 'days' | 'hours' | 'minutes' | 'seconds';

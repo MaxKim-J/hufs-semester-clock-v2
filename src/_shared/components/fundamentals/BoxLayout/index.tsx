@@ -1,7 +1,7 @@
 import { ReactChild } from 'react';
 import { css } from '@emotion/react';
 import { Heading } from '@components/fundamentals/Text';
-import { transparentTable, spaceTable, colorTable } from '@style/variables';
+import { transparentTable, spaceTable } from '@style/variables';
 import Spacer from '@components/fundamentals/Spacer';
 
 type BoxLayoutProps = {

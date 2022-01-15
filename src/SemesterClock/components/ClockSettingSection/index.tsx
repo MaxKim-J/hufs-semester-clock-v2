@@ -1,7 +1,7 @@
 import { Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
-import SeasonalSettingArticle from '@/SemesterClock/components/ClockSettingSection/SeasonalSettingArticle';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
+import SeasonalSettingArticle from '@/SemesterClock/components/ClockSettingSection/SeasonalSettingArticle';
 
 function ClockSettingSection() {
   return (
