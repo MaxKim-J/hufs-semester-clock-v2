@@ -10,6 +10,7 @@ const useNotificationQuery = (): Notification[] | undefined => {
       const { data } = await getNotification();
       return data.notifications;
     },
+    staleTime: Infinity,
     suspense: true,
   });
 
