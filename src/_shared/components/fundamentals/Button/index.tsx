@@ -9,9 +9,10 @@ import {
 } from '@style/variables';
 
 type ButtonProps = {
-  children: ReactChild;
+  children: ReactChild | ReactChild[];
   size?: TextType;
   color?: ColorType;
+  noBorder?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 function Button({
@@ -19,25 +20,39 @@ function Button({
   onClick,
   size = 'size16',
   color = 'white',
+  noBorder = false,
   ...props
 }: ButtonProps) {
   return (
-    <button css={buttonStyle(size, color)} onClick={onClick} {...props}>
+    <button
+      css={buttonStyle(size, color, noBorder)}
+      onClick={onClick}
+      {...props}
+    >
       {children}
     </button>
   );
 }
 
-const buttonStyle = (size: TextType, color: ColorType) => css`
+const buttonStyle = (
+  size: TextType,
+  color: ColorType,
+  noBorder: boolean
+) => css`
   font-size: ${textTable[size]};
-  border: 1px solid ${colorTable[color]};
+  ${noBorder ? null : `border: 1px solid ${colorTable[color]}`};
   color: ${colorTable[color]};
-  padding: ${spaceTable.size4};
+  padding: ${noBorder ? 'none' : spaceTable.size4};
   transition: color 0.25s, background-color 0.25s;
+  text-decoration: ${noBorder ? 'underline' : 'none'};
+
   &:hover {
-    background-color: ${colorTable[color]};
-    color: ${colorTable[color === 'white' ? 'black' : 'white']};
+    background-color: ${noBorder ? 'transparent' : colorTable[color]};
+    color: ${noBorder
+      ? colorTable[color]
+      : colorTable[color === 'white' ? 'black' : 'white']};
   }
+
   &:disabled {
     pointer-events: none;
     background-color: ${colorTable.darkGray};

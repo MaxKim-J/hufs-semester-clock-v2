@@ -35,7 +35,7 @@ const boxHeaderStyle = css`
 
 const boxContentStyle = css`
   background-color: ${transparentTable.white70};
-  padding: ${spaceTable.size4};
+  padding: ${spaceTable.size8};
   height: calc(100% - 3.5rem);
 `;
 

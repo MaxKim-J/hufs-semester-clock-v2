@@ -8,8 +8,9 @@ const useWeatherQuery = (): Weather[] | undefined => {
     queryKey: 'weather',
     queryFn: async () => {
       const { data } = await getWeather();
-      return data as Weather[];
+      return data.weather as Weather[];
     },
+    suspense: true,
   });
   return weatherData;
 };

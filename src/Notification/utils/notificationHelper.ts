@@ -1,9 +1,9 @@
-import { formatEllipsis } from '@shared/utils/formatHelper';
+import { formatDigits, formatEllipsis } from '@shared/utils/formatHelper';
 import { Notification } from '@shared/services/api/types';
 import format from 'date-fns/format';
 
 export const getNotificationString = (notification: Notification) =>
-  `${notification.id + 1}.(${format(
+  `${formatDigits(notification.id + 1)}.(${format(
     new Date(notification.date),
     'MM-dd'
   )}) ${formatEllipsis(notification.title, 35)}`;

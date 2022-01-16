@@ -21,12 +21,15 @@ export interface Admission {
   value: string;
 }
 
+export type CampusWeather = { [key in Campus]: Weather[] };
+
 export interface Weather {
   afternoon_icon: string;
   date: string;
   id: number;
   morning_icon: string;
-  regional: 'seoul' | 'global';
+  reginal: 'seoul' | 'global';
+  temp: string;
   weatherId: number;
 }
 

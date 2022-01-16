@@ -13,7 +13,7 @@ import {
 export const getSemester = (): Promise<AxiosResponse<Semesters>> =>
   axiosClient.get('/semester');
 
-export const getWeather = (): Promise<AxiosResponse<Weather[]>> =>
+export const getWeather = (): Promise<AxiosResponse<{ weather: Weather[] }>> =>
   axiosClient.get('/weather');
 
 export const getCorona = (): Promise<AxiosResponse<Corona>> =>
