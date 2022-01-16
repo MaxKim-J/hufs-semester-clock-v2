@@ -6,6 +6,7 @@ import Button from '@components/fundamentals/Button';
 import useNotificationQuery from '@/Notification/queries/useNotificationQuery';
 import useNotificationSlice from '@/Notification/hooks/useNotificationSlice';
 import { getNotificationString } from '@/Notification/utils/notificationHelper';
+import { transparentTable } from '@style/variables';
 
 function NotificationList() {
   const notifications = useNotificationQuery() as Notification[];
@@ -23,7 +24,8 @@ function NotificationList() {
         ※ 최신 학사공지 15개를 보여드립니다.
       </Text>
       <Spacer />
-      <ol>
+      <ol css={notificationListStyle}>
+        <Spacer />
         {sliceNotifications(notifications).map((notification) => (
           <li css={notificationStyle} key={notification.id}>
             <Spacer height="size4" />
@@ -35,6 +37,7 @@ function NotificationList() {
             <Spacer height="size4" />
           </li>
         ))}
+        <Spacer />
       </ol>
       <Spacer />
       <div css={buttonWrapperStyle}>
@@ -52,8 +55,15 @@ function NotificationList() {
   );
 }
 
+const notificationListStyle = css`
+  padding: 0 2rem;
+  border-radius: 1rem;
+  background-color: ${transparentTable.white70};
+`;
+
 const notificationStyle = css`
   width: 100%;
+  list-style-type: circle;
 `;
 
 const buttonWrapperStyle = css`

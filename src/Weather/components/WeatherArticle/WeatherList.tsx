@@ -9,6 +9,7 @@ import { convertWeatherEmoji } from '@/Weather/utils/weatherHelper';
 import Emoji from '@components/fundamentals/Emoji';
 import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
+import { colorTable, transparentTable } from '@style/variables';
 
 function WeatherList() {
   const weathers = useWeatherQuery() as Weather[];
@@ -45,7 +46,7 @@ function WeatherList() {
         </Text>
         <Button
           noBorder
-          color="black"
+          color="darkGray"
           size="size12"
           onClick={toggleWeatherCampus}
         >
@@ -56,14 +57,20 @@ function WeatherList() {
       <ol css={weatherListStyle}>
         {campusWeather[weatherCampusValue ?? 'seoul'].map((weather) => (
           <li key={weather.id} css={weatherContentStyle}>
-            <Text color="black">{weather.date}</Text>
-            <Text color="black">
-              <Emoji
-                size="size32"
-                emoji={convertWeatherEmoji(weather.weatherId)}
-              />
+            <Text color="black" size="size14" css={weatherContentDateStyle}>
+              {weather.date}
             </Text>
-            <Text color="black">{weather.temp}</Text>
+            <Spacer height="size4" />
+            <Emoji
+              shadow
+              size="size32"
+              emoji={convertWeatherEmoji(weather.weatherId)}
+            />
+            <Spacer height="size4" />
+            <Text color="black" size="size12">
+              {weather.temp}
+            </Text>
+            <Spacer height="size8" />
           </li>
         ))}
       </ol>
@@ -82,10 +89,23 @@ const weatherListStyle = css`
   justify-content: space-between;
 `;
 
+const weatherContentDateStyle = css`
+  background-color: ${transparentTable.white90};
+  padding: 0.25rem 0.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 100%;
+  text-align: center;
+`;
+
 const weatherContentStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${transparentTable.white70};
+  border-radius: 1rem;
+  width: 4rem;
+  padding: 0 0.5rem;
 `;
 
 export default WeatherList;

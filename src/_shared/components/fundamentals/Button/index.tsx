@@ -42,14 +42,14 @@ const buttonStyle = (
   font-size: ${textTable[size]};
   ${noBorder ? null : `border: 1px solid ${colorTable[color]}`};
   color: ${colorTable[color]};
-  padding: ${noBorder ? 'none' : spaceTable.size4};
+  padding: ${noBorder ? null : spaceTable.size4};
   transition: color 0.25s, background-color 0.25s;
-  text-decoration: ${noBorder ? 'underline' : 'none'};
+  text-decoration: ${noBorder ? 'underline' : null};
 
   &:hover {
     background-color: ${noBorder ? 'transparent' : colorTable[color]};
     color: ${noBorder
-      ? colorTable[color]
+      ? colorTable.black
       : colorTable[color === 'white' ? 'black' : 'white']};
   }
 

@@ -45,7 +45,7 @@ const gridAreaStyle = (area: string) => css`
 const featureGridStyle = css`
   display: grid;
   grid-template-columns: repeat(2, 30rem);
-  grid-template-rows: repeat(6, 6rem);
+  grid-template-rows: repeat(6, 6.5rem);
   grid-template-areas:
     'notification weather'
     'notification weather'
