@@ -66,7 +66,7 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
 
 const splitWrapperStyle = (index: number) => css`
   transform: translateY(${-index * 100}vh);
-  transition: transform 0.5s cubic-bezier(0.63, 0.35, 0.43, 0.99);
+  transition: transform 0.5s cubic-bezier(0.23, 0.81, 0.12, 1.11);
 `;
 
 const splitSectionStyle = css`
