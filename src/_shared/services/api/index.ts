@@ -19,8 +19,9 @@ export const getWeather = (): Promise<AxiosResponse<Weather[]>> =>
 export const getCorona = (): Promise<AxiosResponse<Corona>> =>
   axiosClient.get('/corona');
 
-export const getNotification = (): Promise<AxiosResponse<Notification[]>> =>
-  axiosClient.get('/notification');
+export const getNotification = (): Promise<
+  AxiosResponse<{ notifications: Notification[] }>
+> => axiosClient.get('/notification');
 
 export const getAdmission = (): Promise<AxiosResponse<Admission[]>> =>
   axiosClient.get(`/admission`);

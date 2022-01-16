@@ -68,6 +68,7 @@ const globalStyle = css`
     background-color: transparent;
   }
 
+  ol,
   ul {
     margin: 0;
     padding: 0;

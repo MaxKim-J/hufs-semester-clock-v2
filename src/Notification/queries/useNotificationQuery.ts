@@ -5,12 +5,14 @@ import { getNotification } from '@shared/services/api';
 
 const useNotificationQuery = (): Notification[] | undefined => {
   const { data: notificationData } = useQuery<Notification[], AxiosError>({
-    queryKey: 'corona',
+    queryKey: 'notification',
     queryFn: async () => {
       const { data } = await getNotification();
-      return data as Notification[];
+      return data.notifications;
     },
+    suspense: true,
   });
+
   return notificationData;
 };
 
