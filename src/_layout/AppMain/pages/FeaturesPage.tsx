@@ -18,11 +18,11 @@ function FeaturesPage() {
         <div css={gridAreaStyle('timer')}>
           <TimerArticle />
         </div>
-        <div css={gridAreaStyle('todayMenu')}>
-          <TodayMenuArticle />
-        </div>
         <div css={gridAreaStyle('covidChart')}>
           <CovidChartArticle />
+        </div>
+        <div css={gridAreaStyle('todayMenu')}>
+          <TodayMenuArticle />
         </div>
       </div>
     </section>
@@ -49,10 +49,10 @@ const featureGridStyle = css`
   grid-template-areas:
     'notification weather'
     'notification weather'
-    'notification todayMenu'
-    'timer todayMenu'
+    'notification covidChart'
     'timer covidChart'
-    'timer covidChart';
+    'timer todayMenu'
+    'timer todayMenu';
   grid-column-gap: 1rem;
 `;
 
