@@ -29,6 +29,7 @@ export const colorTable = {
   black: '#000000',
   lightBlue: '#3899f4',
   red: '#FF0000',
+  blue: '#0074d9',
 };
 
 export type ColorType = keyof typeof colorTable;

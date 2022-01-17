@@ -38,7 +38,7 @@ interface CoronaPerCity {
   region: string;
 }
 
-interface CoronaPerDate {
+export interface CoronaPerDate {
   rate: number;
   day: string;
 }
