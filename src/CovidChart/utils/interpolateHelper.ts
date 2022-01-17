@@ -19,7 +19,7 @@ type InterpolateXOptions = {
 };
 
 export const interpolateX = ({ nums, width }: InterpolateXOptions) => {
-  const interval = Math.floor(width / nums.length + 1);
+  const interval = Math.floor(width / nums.length);
   const margin = Math.floor(interval / 2);
   return nums.map((_, idx) => idx * interval + margin);
 };

@@ -2,6 +2,7 @@ import { motion, MotionConfig } from 'framer-motion';
 import { CoronaPerDate } from '@shared/services/api/types';
 import { css } from '@emotion/react';
 import { colorTable } from '@style/variables';
+import { formatNumber } from '@shared/utils/formatHelper';
 import useCovidSvgChart from '@/CovidChart/hooks/useCovidSvgChart';
 
 type CovidSvgChartProps = {
@@ -21,16 +22,9 @@ function CovidSvgChart({ width, height, data }: CovidSvgChartProps) {
     });
 
   return (
-    <MotionConfig transition={{ duration: 0.5 }}>
+    <MotionConfig transition={{ duration: 0.5, ease: 'backOut' }}>
       <svg viewBox={`0 0 ${width} ${height}`} aria-hidden>
-        <line
-          x1="0"
-          y1="100"
-          x2="448"
-          y2="100"
-          stroke="black"
-          strokeWidth="2"
-        />
+        <line x1="0" y1={height} x2={width} y2={height} css={xAxisStyle} />
         <motion.polyline
           css={polylineStyle}
           initial={{ points: initialChartPolylineData }}
@@ -40,11 +34,13 @@ function CovidSvgChart({ width, height, data }: CovidSvgChartProps) {
           <g key={dot.day}>
             <motion.text
               x={dot.x}
+              y={dot.y - 10}
               css={dotLabelStyle}
-              initial={{ y: height, opacity: 0 }}
-              animate={{ y: dot.y - 10, opacity: 1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
-              {dot.rate}명
+              {formatNumber(dot.rate)}명
             </motion.text>
             <motion.line
               x1={dot.x}
@@ -67,6 +63,11 @@ function CovidSvgChart({ width, height, data }: CovidSvgChartProps) {
     </MotionConfig>
   );
 }
+
+const xAxisStyle = css`
+  stroke: black;
+  stroke-width: 2;
+`;
 
 const polylineStyle = css`
   stroke-width: 3;
