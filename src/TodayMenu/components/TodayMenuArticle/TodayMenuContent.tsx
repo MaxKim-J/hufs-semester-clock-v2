@@ -1,4 +1,4 @@
-import { Text } from '@components/fundamentals/Text';
+import { Link, Text } from '@components/fundamentals/Text';
 import Button from '@components/fundamentals/Button';
 import Emoji from '@components/fundamentals/Emoji';
 import Spacer from '@/_shared/components/fundamentals/Spacer';
@@ -38,9 +38,18 @@ function TodayMenuContent() {
         </Text>
       </div>
       <Spacer />
-      <Button color="black" onClick={pickMenu}>
-        <Emoji emoji="🔁" /> 메뉴 뽑기
-      </Button>
+      <div css={buttonWrapperStyle}>
+        <Button color="black" onClick={pickMenu} size="size14">
+          <Emoji emoji="🔁" size="size14" /> 메뉴 뽑기
+        </Button>
+        <Link
+          color="black"
+          size="size14"
+          href={`https://map.naver.com/v5/search/${menu.name}?c=14143166.3855666,4522706.9179674,14,0,0,0,dh`}
+        >
+          <Emoji emoji="🔎" /> 외대 주변 메뉴 검색
+        </Link>
+      </div>
     </>
   );
 }
@@ -62,7 +71,10 @@ const menuTextStyle = css`
 
 const buttonWrapperStyle = css`
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  button {
+    margin-right: 1rem;
+  }
 `;
 
 export default TodayMenuContent;
