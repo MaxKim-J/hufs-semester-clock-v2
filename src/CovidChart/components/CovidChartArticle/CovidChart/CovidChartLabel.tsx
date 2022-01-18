@@ -1,7 +1,7 @@
 import { CoronaPerDate } from '@shared/services/api/types';
-import { formatCovidDay } from '@/CovidChart/utils/covidChartHelper';
 import { Text } from '@components/fundamentals/Text';
 import { css } from '@emotion/react';
+import { formatMonthAndDay } from '@/_shared/utils/formatHelper';
 
 type CovidChartLabelProps = {
   data: CoronaPerDate[];
@@ -14,7 +14,7 @@ function CovidChartLabel({ data }: CovidChartLabelProps) {
         <li
           key={datum.day}
           css={listItemStyle}
-          aria-label={`${formatCovidDay(datum.day)}에 확진자 ${
+          aria-label={`${formatMonthAndDay(datum.day, '.')}에 확진자 ${
             datum.rate
           }명 발생`}
         >

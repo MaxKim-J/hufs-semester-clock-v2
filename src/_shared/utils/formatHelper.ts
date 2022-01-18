@@ -10,3 +10,8 @@ export const formatDigits = (num: number): ClockDigits =>
 
 export const formatEllipsis = (str: string, limit: number) =>
   str.length > limit ? `${str.slice(0, limit)}...` : str;
+
+export const formatMonthAndDay = (text: string, separator: string) => {
+  const [month, day] = text.split(separator);
+  return `${formatDigits(+month)}월 ${day}일`;
+};

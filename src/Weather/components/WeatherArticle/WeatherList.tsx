@@ -10,8 +10,10 @@ import { userWeatherCampus } from '@/Weather/atoms';
 import useWeatherQuery from '@/Weather/queries/useWeatherQuery';
 import {
   convertWeatherEmoji,
+  convertWeatherTemp,
   translateCampusText,
 } from '@/Weather/utils/weatherHelper';
+import { formatMonthAndDay } from '@/_shared/utils/formatHelper';
 
 function WeatherList() {
   const weathers = useWeatherQuery() as CampusWeather;
@@ -30,7 +32,7 @@ function WeatherList() {
     <>
       <Spacer height="size8" />
       <div css={weatherListHeaderStyle}>
-        <Text size="size14" color="black">
+        <Text size="size14" color="black" role="alert">
           5일간의 {translateCampusText(weatherCampusValue as Campus)} 날씨
         </Text>
         <Button
@@ -45,20 +47,40 @@ function WeatherList() {
       <Spacer />
       <ol css={weatherListStyle}>
         {weathers[weatherCampusValue ?? 'seoul'].map((weather) => (
-          <li key={weather.id} css={weatherContentStyle}>
-            <Text color="black" size="size14" css={weatherContentDateStyle}>
-              {weather.date}
+          <li
+            key={weather.id}
+            css={weatherContentStyle}
+            aria-label={`${formatMonthAndDay(
+              weather.date,
+              '/'
+            )}의 날씨와 최저, 최고기온`}
+          >
+            <Text
+              color="black"
+              size="size12"
+              weight="bold"
+              css={weatherContentDateStyle}
+            >
+              {formatMonthAndDay(weather.date, '/')}
             </Text>
             <Spacer height="size4" />
-            <Emoji
-              shadow
-              size="size32"
-              emoji={convertWeatherEmoji(weather.weatherId)}
-            />
+            {[convertWeatherEmoji(weather.weatherId)].map((emoji) => (
+              <Emoji
+                shadow
+                size="size32"
+                key={emoji.label}
+                emoji={emoji.value}
+                label={emoji.label}
+              />
+            ))}
             <Spacer height="size4" />
-            <Text color="black" size="size12">
-              {weather.temp}
-            </Text>
+            <div>
+              {convertWeatherTemp(weather.temp).map((temp) => (
+                <Text color="black" size="size12" key={temp}>
+                  {temp}
+                </Text>
+              ))}
+            </div>
             <Spacer height="size8" />
           </li>
         ))}
