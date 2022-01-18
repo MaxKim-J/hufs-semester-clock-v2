@@ -2,7 +2,7 @@ import { motion, MotionConfig } from 'framer-motion';
 import { CoronaPerDate } from '@shared/services/api/types';
 import { css } from '@emotion/react';
 import { colorTable } from '@style/variables';
-import { formatMonthAndDay, formatNumber } from '@shared/utils/formatHelper';
+import { formatNumber } from '@shared/utils/formatHelper';
 import useCovidSvgChart from '@/CovidChart/hooks/useCovidSvgChart';
 
 type CovidSvgChartProps = {

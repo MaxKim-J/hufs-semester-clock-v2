@@ -1,4 +1,4 @@
-import { ReactChild, useState, WheelEvent, Suspense, useCallback } from 'react';
+import { ReactChild, WheelEvent, Suspense, useCallback } from 'react';
 import { css } from '@emotion/react';
 import DotSwitch from '@components/fundamentals/DotSwitch';
 import { spaceTable } from '@style/variables';
