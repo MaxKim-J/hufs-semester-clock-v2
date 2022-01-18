@@ -40,7 +40,7 @@ function TimerDigits({
   operateTargetMs,
   isTimerOn,
 }: TimeDigitsProps) {
-  const { getTargetMsOperand, digits } = useTimerDigits(targetMs);
+  const { getTargetMsOperand, currentDigits } = useTimerDigits(targetMs);
 
   const modifyTargetMs = (type: DigitType, actions: ActionType) => {
     operateTargetMs(getTargetMsOperand(type, actions));
@@ -62,7 +62,7 @@ function TimerDigits({
               </button>
             )}
             <Text size="size80" color="black">
-              {formatDigits(digits[digit.id])}
+              {formatDigits(currentDigits[digit.id])}
             </Text>
             {!isTimerOn && (
               <button
