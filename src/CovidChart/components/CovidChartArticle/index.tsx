@@ -7,7 +7,7 @@ import CovidChartArticleSkeleton from '@/CovidChart/components/CovidChartArticle
 
 function CovidChartArticle() {
   return (
-    <BoxLayout title="코로나 현황">
+    <BoxLayout title="코로나 현황" labelId="covid-charts">
       <AsyncBoundaryWithQuery pendingFallback={<CovidChartArticleSkeleton />}>
         <Spacer height="size8" />
         <Text size="size12" color="darkGray">

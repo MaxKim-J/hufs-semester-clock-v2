@@ -47,12 +47,13 @@ function TimerDigits({
   };
 
   return (
-    <div css={{ display: 'flex', alignItems: 'center' }}>
+    <div css={digitWrapperStyle}>
       {digitData.map((digit, idx) => (
         <Fragment key={digit.id}>
           <div css={digitStyle}>
             {!isTimerOn && (
               <button
+                css={buttonStyle}
                 onClick={() => {
                   modifyTargetMs(digit.id, 'increase');
                 }}
@@ -69,6 +70,7 @@ function TimerDigits({
             </Text>
             {!isTimerOn && (
               <button
+                css={buttonStyle}
                 onClick={() => {
                   modifyTargetMs(digit.id, 'decrease');
                 }}
@@ -88,11 +90,20 @@ function TimerDigits({
   );
 }
 
+const digitWrapperStyle = css`
+  display: flex;
+  align-items: center;
+`;
+
 const digitStyle = css`
   height: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+`;
+
+const buttonStyle = css`
+  height: 2rem;
 `;
 
 export default TimerDigits;

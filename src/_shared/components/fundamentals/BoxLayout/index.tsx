@@ -6,13 +6,14 @@ import { transparentTable, spaceTable } from '@style/variables';
 type BoxLayoutProps = {
   children: ReactChild;
   title: string;
+  labelId: string;
 };
 
-function BoxLayout({ title, children }: BoxLayoutProps) {
+function BoxLayout({ title, children, labelId }: BoxLayoutProps) {
   return (
-    <article aria-labelledby={`heading-${title}`} css={boxContainerStyle}>
+    <article aria-labelledby={labelId} css={boxContainerStyle}>
       <div css={boxHeaderStyle}>
-        <Heading id={`heading-${title}`} tag="h3" color="black">
+        <Heading id={labelId} tag="h3" color="black">
           {title}
         </Heading>
       </div>

@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 function NotificationArticle() {
   return (
-    <BoxLayout title="학사공지">
+    <BoxLayout title="학사공지" labelId="hufs-notifications">
       <AsyncBoundaryWithQuery pendingFallback={<NotificationArticleSkeleton />}>
         <NotificationList />
       </AsyncBoundaryWithQuery>

@@ -3,7 +3,7 @@ import TodayMenuContent from '@/TodayMenu/components/TodayMenuArticle/TodayMenuC
 
 function TodayMenuArticle() {
   return (
-    <BoxLayout title="오늘 뭐먹지">
+    <BoxLayout title="오늘 뭐먹지" labelId="what-to-eat">
       <TodayMenuContent />
     </BoxLayout>
   );

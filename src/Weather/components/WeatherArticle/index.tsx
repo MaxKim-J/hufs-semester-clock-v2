@@ -9,7 +9,7 @@ function WeatherArticle() {
   const weatherCampus = useRecoilValue(userWeatherCampus);
 
   return (
-    <BoxLayout title="외대 날씨">
+    <BoxLayout title="외대 날씨" labelId="hufs-weather">
       {weatherCampus.status === 'initialized' ? (
         <AsyncBoundaryWithQuery pendingFallback={<WeatherArticleSkeleton />}>
           <WeatherList />
