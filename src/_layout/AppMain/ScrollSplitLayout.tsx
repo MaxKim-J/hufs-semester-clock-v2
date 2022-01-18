@@ -102,7 +102,7 @@ const navigationStyle = css`
 
 const scrollArrowStyle = css`
   position: absolute;
-  bottom: 2%;
+  bottom: 1%;
   left: 48.75%;
 `;
 
