@@ -2,7 +2,7 @@ import { motion, MotionConfig } from 'framer-motion';
 import { CoronaPerDate } from '@shared/services/api/types';
 import { css } from '@emotion/react';
 import { colorTable } from '@style/variables';
-import { formatNumber } from '@shared/utils/formatHelper';
+import { formatMonthAndDay, formatNumber } from '@shared/utils/formatHelper';
 import useCovidSvgChart from '@/CovidChart/hooks/useCovidSvgChart';
 
 type CovidSvgChartProps = {
@@ -47,14 +47,14 @@ function CovidSvgChart({ width, height, data }: CovidSvgChartProps) {
               y1={height}
               x2={dot.x}
               css={pointLineStyle}
-              initial={{ y2: 100 }}
+              initial={{ y2: height }}
               animate={{ y2: dot.y }}
             />
             <motion.circle
               cx={dot.x}
               r="5"
               css={dotStyle}
-              initial={{ cy: 100 }}
+              initial={{ cy: height }}
               animate={{ cy: dot.y }}
             />
           </g>

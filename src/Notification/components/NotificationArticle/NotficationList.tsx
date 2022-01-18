@@ -3,10 +3,10 @@ import { Link, Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import { css } from '@emotion/react';
 import Button from '@components/fundamentals/Button';
+import { transparentTable } from '@style/variables';
 import useNotificationQuery from '@/Notification/queries/useNotificationQuery';
 import useNotificationSlice from '@/Notification/hooks/useNotificationSlice';
 import { getNotificationString } from '@/Notification/utils/notificationHelper';
-import { transparentTable } from '@style/variables';
 
 function NotificationList() {
   const notifications = useNotificationQuery() as Notification[];
@@ -44,7 +44,13 @@ function NotificationList() {
         <Button size="size12" color="black" onClick={decreaseIndex}>
           이전
         </Button>
-        <Text size="size12" color="black">
+        <Text
+          size="size12"
+          color="black"
+          role="alert"
+          aria-live="polite"
+          aria-label={`${index + 1}번째 목록`}
+        >
           {index + 1}
         </Text>
         <Button size="size12" color="black" onClick={increaseIndex}>

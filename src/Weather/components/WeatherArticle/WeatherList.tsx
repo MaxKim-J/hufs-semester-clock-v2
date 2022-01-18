@@ -32,7 +32,7 @@ function WeatherList() {
     <>
       <Spacer height="size8" />
       <div css={weatherListHeaderStyle}>
-        <Text size="size14" color="black" role="alert">
+        <Text size="size12" color="darkGray" role="alert">
           5일간의 {translateCampusText(weatherCampusValue as Campus)} 날씨
         </Text>
         <Button

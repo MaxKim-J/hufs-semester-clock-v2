@@ -14,7 +14,7 @@ function CovidChartLabel({ data }: CovidChartLabelProps) {
         <li
           key={datum.day}
           css={listItemStyle}
-          aria-label={`${formatMonthAndDay(datum.day, '.')}에 확진자 ${
+          aria-label={`${formatMonthAndDay(datum.day, '.')}에 코로나 확진자 ${
             datum.rate
           }명 발생`}
         >

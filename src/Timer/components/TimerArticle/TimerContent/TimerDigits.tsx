@@ -53,20 +53,22 @@ function TimerDigits({
           <div css={digitStyle}>
             {!isTimerOn && (
               <button
-                aria-label={`타이머 ${digit.text} 올리기`}
                 onClick={() => {
                   modifyTargetMs(digit.id, 'increase');
                 }}
               >
-                <img src={upIcon} alt={`타이머 ${digit.text} 상승`} />
+                <img src={upIcon} alt={`타이머 ${digit.text} 올리기`} />
               </button>
             )}
-            <Text size="size80" color="black">
+            <Text
+              size="size80"
+              color="black"
+              aria-label={`타이머 ${digit.text}`}
+            >
               {formatDigits(currentDigits[digit.id])}
             </Text>
             {!isTimerOn && (
               <button
-                aria-label={`타이머 ${digit.text} 내리기`}
                 onClick={() => {
                   modifyTargetMs(digit.id, 'decrease');
                 }}
@@ -76,7 +78,7 @@ function TimerDigits({
             )}
           </div>
           {idx < digitData.length - 1 && (
-            <Text size="size80" color="black">
+            <Text size="size80" color="black" aria-hidden>
               :
             </Text>
           )}

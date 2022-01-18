@@ -10,9 +10,9 @@ type BoxLayoutProps = {
 
 function BoxLayout({ title, children }: BoxLayoutProps) {
   return (
-    <article css={boxContainerStyle}>
+    <article aria-labelledby={`heading-${title}`} css={boxContainerStyle}>
       <div css={boxHeaderStyle}>
-        <Heading tag="h3" color="black">
+        <Heading id={`heading-${title}`} tag="h3" color="black">
           {title}
         </Heading>
       </div>

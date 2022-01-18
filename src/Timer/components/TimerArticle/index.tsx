@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import BoxLayout from '@components/fundamentals/BoxLayout';
 import TimerContent from '@/Timer/components/TimerArticle/TimerContent';
 
