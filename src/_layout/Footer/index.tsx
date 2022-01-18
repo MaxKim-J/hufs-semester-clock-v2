@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
+import DoubleArrow from '@shared/images/double-down-arrow.svg';
 import Tab from '@components/fundamentals/Tab';
 import SettingTab from './SettingTab';
 import DeveloperTab from '@/_layout/Footer/DeveloperTab';

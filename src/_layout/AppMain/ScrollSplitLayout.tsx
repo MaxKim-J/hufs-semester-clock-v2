@@ -4,6 +4,8 @@ import DotSwitch from '@components/fundamentals/DotSwitch';
 import { spaceTable } from '@style/variables';
 import { useRecoilState } from 'recoil';
 import { sectionIndexAtom } from '@shared/atoms/common';
+import { motion } from 'framer-motion';
+import DoubleArrow from '@shared/images/double-down-arrow.svg';
 
 type Section = {
   id: number;
@@ -62,6 +64,16 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
           />
         ))}
       </nav>
+      {sectionIndex.current === 0 && (
+        <motion.img
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: 5 }}
+          transition={{ repeat: Infinity, repeatType: 'reverse', duration: 1 }}
+          css={scrollArrowStyle}
+          src={DoubleArrow}
+          alt="스크롤 화살표"
+        />
+      )}
     </>
   );
 }
@@ -86,6 +98,12 @@ const navigationStyle = css`
   button:first-of-type {
     margin-bottom: ${spaceTable.size8};
   }
+`;
+
+const scrollArrowStyle = css`
+  position: absolute;
+  bottom: 2%;
+  left: 48.75%;
 `;
 
 export default ScrollSplitLayout;
