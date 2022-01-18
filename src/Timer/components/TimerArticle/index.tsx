@@ -1,9 +1,11 @@
+import { css } from '@emotion/react';
 import BoxLayout from '@components/fundamentals/BoxLayout';
+import TimerContent from '@/Timer/components/TimerArticle/TimerContent';
 
 function TimerArticle() {
   return (
     <BoxLayout title="타이머">
-      <div>타이머</div>
+      <TimerContent />
     </BoxLayout>
   );
 }

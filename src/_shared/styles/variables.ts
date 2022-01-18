@@ -5,6 +5,7 @@ export const textTable = {
   size20: '1.25rem',
   size24: '1.5rem',
   size32: '2rem',
+  size80: '5rem',
   size96: '6rem',
 };
 
