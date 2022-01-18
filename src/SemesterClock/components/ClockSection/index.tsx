@@ -12,10 +12,7 @@ function ClockSection() {
   return (
     <section css={sectionStyle}>
       {isSeasonalStatus === 'initialized' ? (
-        <AsyncBoundaryWithQuery
-          rejectedFallback={() => <div>실패!</div>}
-          pendingFallback={<ClockSectionSkeleton />}
-        >
+        <AsyncBoundaryWithQuery pendingFallback={<ClockSectionSkeleton />}>
           <SemesterClockArticle />
           <TodayClockArticle />
         </AsyncBoundaryWithQuery>

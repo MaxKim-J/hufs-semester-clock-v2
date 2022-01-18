@@ -2,6 +2,8 @@ import { ReactChild, useState, WheelEvent, Suspense, useCallback } from 'react';
 import { css } from '@emotion/react';
 import DotSwitch from '@components/fundamentals/DotSwitch';
 import { spaceTable } from '@style/variables';
+import { useRecoilState } from 'recoil';
+import { sectionIndexAtom } from '@shared/atoms/common';
 
 type Section = {
   id: number;
@@ -14,17 +16,17 @@ type ScrollSplitLayoutProps = {
 };
 
 function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
-  const [sectionIndex, setSectionIndex] = useState<{
-    current: number;
-    max: number;
-  }>({ current: 0, max: 0 });
+  const [sectionIndex, setSectionIndex] = useRecoilState(sectionIndexAtom);
 
-  const changeIndex = useCallback((index: number) => {
-    setSectionIndex((s) => ({
-      current: index,
-      max: Math.max(s.max, index),
-    }));
-  }, []);
+  const changeIndex = useCallback(
+    (index: number) => {
+      setSectionIndex((s) => ({
+        current: index,
+        max: Math.max(s.max, index),
+      }));
+    },
+    [setSectionIndex]
+  );
 
   const wheelHandler = (e: WheelEvent<HTMLElement>) => {
     const { deltaY, deltaX } = e;

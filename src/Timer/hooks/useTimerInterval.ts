@@ -16,7 +16,6 @@ const useTimerInterval = (
     } else {
       clearInterval(intervalId.current);
     }
-    return () => clearInterval(intervalId.current);
   }, [isTimerOn, tickTimer]);
 
   useEffect(() => {

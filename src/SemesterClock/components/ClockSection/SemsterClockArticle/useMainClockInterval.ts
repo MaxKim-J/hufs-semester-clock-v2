@@ -1,8 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { SemesterValue } from '@shared/services/api/types';
+import { useRecoilValue } from 'recoil';
+import { sectionIndexAtom } from '@shared/atoms/common';
 import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
 
 const useMainClockInterval = (semester: SemesterValue) => {
+  const sectionIndex = useRecoilValue(sectionIndexAtom);
+
   const [clockIntervals, setClockIntervals] = useState<
     ReturnType<typeof getClockIntervals>
   >(getClockIntervals(semester));
@@ -11,13 +15,17 @@ const useMainClockInterval = (semester: SemesterValue) => {
     setClockIntervals(getClockIntervals(semester));
   }, [semester, setClockIntervals]);
 
+  const intervalId = useRef<number>(0);
+
   useEffect(() => {
-    if (semester !== null) {
-      const intervalId = setInterval(tickClock, 1000);
-      return () => clearInterval(intervalId);
+    if (sectionIndex.current !== 0 && intervalId.current) {
+      clearInterval(intervalId.current);
+      return;
     }
-    return undefined;
-  }, [semester, tickClock]);
+    if (semester !== null) {
+      intervalId.current = window.setInterval(tickClock, 1000);
+    }
+  }, [semester, tickClock, sectionIndex]);
 
   return clockIntervals;
 };
