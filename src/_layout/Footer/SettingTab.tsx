@@ -5,14 +5,14 @@ import BackgroundSettingSection from '@/Background/components/BackgroundSettingS
 
 function SettingTab() {
   return (
-    <>
+    <section>
       <Spacer height="size16" />
       <ClockSettingSection />
       <Spacer height="size32" />
       <UserInfoInputSection />
       <Spacer height="size32" />
       <BackgroundSettingSection />
-    </>
+    </section>
   );
 }
 

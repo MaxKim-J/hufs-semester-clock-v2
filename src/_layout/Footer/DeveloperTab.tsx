@@ -1,23 +1,23 @@
 import Spacer from '@components/fundamentals/Spacer';
 import { Text } from '@components/fundamentals/Text';
-import Introduce from '../../DeveloperIntroduce/components/Introduce';
-import Opinion from '../../DeveloperIntroduce/components/Opinion';
-import AppLink from '../../DeveloperIntroduce/components/AppLink';
+import IntroduceArticle from '../../DeveloperIntroduce/components/IntroduceArticle';
+import FeedbackInputArticle from '../../DeveloperIntroduce/components/FeedbackInputArticle';
+import AppLinkArticle from '../../DeveloperIntroduce/components/AppLinkArticle';
 
 function DeveloperTab() {
   return (
-    <>
+    <section>
       <Spacer height="size16" />
-      <Introduce />
+      <IntroduceArticle />
       <Spacer height="size32" />
-      <Opinion />
+      <FeedbackInputArticle />
       <Spacer height="size32" />
-      <AppLink />
+      <AppLinkArticle />
       <Spacer height="size16" />
       <Text size="size12">
         외대종강시계 {process.env.VERSION} © Max Jonghyuk Kim. 2022
       </Text>
-    </>
+    </section>
   );
 }
 

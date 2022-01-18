@@ -63,3 +63,8 @@ export interface BackgroundImg {
   dayImageUrl: string;
   nightImageUrl: string;
 }
+
+export interface FeedbackResponse {
+  feedback: string;
+  timeStamp: string;
+}

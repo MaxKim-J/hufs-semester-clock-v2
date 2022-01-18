@@ -8,6 +8,7 @@ import {
   BackgroundImg,
   Campus,
   Admission,
+  FeedbackResponse,
 } from './types';
 
 export const getSemester = (): Promise<AxiosResponse<Semesters>> =>
@@ -37,3 +38,8 @@ export const getBackgroundImages = (
 
 export const getImageBlob = (url: string): Promise<AxiosResponse<Blob>> =>
   axiosClient.get(url, { responseType: 'blob' });
+
+export const postFeedback = (
+  feedback: string
+): Promise<AxiosResponse<FeedbackResponse>> =>
+  axiosClient.post('/feedback', { feedback });

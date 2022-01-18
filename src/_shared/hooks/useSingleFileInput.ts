@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
+import { userBackgroundImage } from '@/Background/atoms';
 import { convertBlobToDataUrl } from '@/Background/utils/imageConvertingHelper';
 
 type FileInputValidators = {

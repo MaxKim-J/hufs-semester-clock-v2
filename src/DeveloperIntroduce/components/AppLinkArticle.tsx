@@ -6,7 +6,7 @@ import Github from '@shared/images/github.svg';
 import { Link } from '@components/fundamentals/Text';
 import { spaceTable } from '@style/variables';
 
-function AppLink() {
+function AppLinkArticle() {
   const iconLinks = useRef([
     {
       id: 0,
@@ -47,7 +47,7 @@ function AppLink() {
   ]).current;
 
   return (
-    <div css={appLinkStyle}>
+    <article css={appLinkStyle}>
       <ul aria-label="관련 링크 바로가기" css={linkListStyle}>
         {iconLinks.map((link) => (
           <li key={link.id}>
@@ -71,7 +71,7 @@ function AppLink() {
           </li>
         ))}
       </ul>
-    </div>
+    </article>
   );
 }
 
@@ -95,4 +95,4 @@ const iconStyle = css`
   height: 2rem;
 `;
 
-export default AppLink;
+export default AppLinkArticle;

@@ -1,7 +1,7 @@
 import { useSetRecoilState } from 'recoil';
 import { useQuery } from 'react-query';
 import { getBackgroundImages } from '@shared/services/api';
-import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
+import { userBackgroundImage } from '@/Background/atoms';
 import { Campus } from '@shared/services/api/types';
 import { convertImageToDataUrl } from '@/Background/utils/imageConvertingHelper';
 

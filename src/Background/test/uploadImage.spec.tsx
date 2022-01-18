@@ -1,8 +1,8 @@
 import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import TestBoundary from '@components/boundries/TestBoundary';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
 import { MutableSnapshot } from 'recoil';
-import { userBackgroundImage } from '@shared/atoms/userBackgroundImage';
-import TestBoundary from '@components/boundries/TestBoundary';
+import { userBackgroundImage } from '@/Background/atoms';
 import BackgroundContent from '@/Background/components/BackgroundContent';
 import UploadImageArticle from '@/Background/components/BackgroundSettingSection/UploadImageArticle';
 
