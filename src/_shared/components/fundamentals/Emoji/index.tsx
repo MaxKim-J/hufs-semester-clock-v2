@@ -20,7 +20,7 @@ function Emoji({
     <span
       role="img"
       css={emojiStyle(size, shadow)}
-      aria-label={label}
+      aria-label={label ?? emoji}
       aria-hidden={hidden}
     >
       {emoji}
