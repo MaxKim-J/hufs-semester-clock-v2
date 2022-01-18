@@ -8,6 +8,8 @@ import {
   getAdmissionInterval,
   getAdmissionByDate,
 } from '@/UserInfo/utils/admissionDayHelper';
+import { motion } from 'framer-motion';
+import { fadeInAndOut } from '@style/animation';
 
 function UserInfoDisplayArticle() {
   const { value: userInfoValue } = useRecoilValue(userInfo);

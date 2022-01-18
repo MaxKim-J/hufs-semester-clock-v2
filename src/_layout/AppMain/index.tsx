@@ -21,13 +21,13 @@ function AppMain() {
         sections={[
           {
             id: 0,
-            name: '부가기능',
-            content: <FeaturesPage />,
+            name: '시계',
+            content: <ClockPage />,
           },
           {
             id: 1,
-            name: '시계',
-            content: <ClockPage />,
+            name: '부가기능',
+            content: <FeaturesPage />,
           },
         ]}
       />
