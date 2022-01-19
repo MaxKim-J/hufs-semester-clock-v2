@@ -33,7 +33,7 @@ function SeasonalSettingArticle() {
           disabled={!isSeasonalSelectable()}
         />
         {!isSeasonalSelectable() && (
-          <Text css={warningStyle} size="size12" color="red">
+          <Text css={warningStyle} size="size12" color="gray">
             계절학기 수강 기간이 아닙니다.
           </Text>
         )}

@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 import ScrollSplitLayout from './ScrollSplitLayout';
 import Background from '@/Background/components';
 
-const FeaturesPage = lazy(
-  () => import(/* webpackChunkName: "featuresPage" */ './pages/FeaturesPage')
+const WidgetsPage = lazy(
+  () => import(/* webpackChunkName: "featuresPage" */ './pages/WidgetsPage')
 );
 const ClockPage = lazy(
   () =>
@@ -21,13 +21,13 @@ function AppMain() {
         sections={[
           {
             id: 0,
-            name: '시계',
+            name: '시계 페이지',
             content: <ClockPage />,
           },
           {
             id: 1,
-            name: '부가기능',
-            content: <FeaturesPage />,
+            name: '위젯 페이지',
+            content: <WidgetsPage />,
           },
         ]}
       />

@@ -3,6 +3,7 @@ import { spaceTable } from '@style/variables';
 import Tab from '@components/fundamentals/Tab';
 import SettingTab from './SettingTab';
 import DeveloperTab from '@/_layout/Footer/DeveloperTab';
+import ScrollNoticeText from '@/_layout/Footer/ScrollNoticeText';
 
 function TabFooter() {
   return (
@@ -10,6 +11,7 @@ function TabFooter() {
       <Tab title="설정" direction="left">
         <SettingTab />
       </Tab>
+      <ScrollNoticeText />
       <Tab title="개발자 소개" direction="right">
         <DeveloperTab />
       </Tab>
@@ -25,6 +27,7 @@ const tabFooterStyle = css`
   justify-content: space-between;
   position: fixed;
   bottom: 0;
+  align-items: center;
 `;
 
 export default TabFooter;

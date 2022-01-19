@@ -5,7 +5,7 @@ import TodayMenuArticle from '@/TodayMenu/components/TodayMenuArticle';
 import CovidChartArticle from '@/CovidChart/components/CovidChartArticle';
 import NotificationArticle from '@/Notification/components/NotificationArticle';
 
-function FeaturesPage() {
+function WidgetsPage() {
   return (
     <section css={sectionStyle}>
       <div css={featureGridStyle}>
@@ -56,4 +56,4 @@ const featureGridStyle = css`
   grid-column-gap: 1rem;
 `;
 
-export default FeaturesPage;
+export default WidgetsPage;
