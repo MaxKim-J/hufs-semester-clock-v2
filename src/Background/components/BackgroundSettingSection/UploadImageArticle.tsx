@@ -1,7 +1,7 @@
-import { Text } from '@components/fundamentals/Text';
+import { Heading, Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import { css } from '@emotion/react';
-import { colorTable, spaceTable } from '@style/variables';
+import { colorTable } from '@style/variables';
 import useSingleFileInput from '@shared/hooks/useSingleFileInput';
 
 function UploadImageArticle() {
@@ -17,23 +17,28 @@ function UploadImageArticle() {
   ]);
 
   return (
-    <article>
-      <Text>이미지 업로드</Text>
+    <article aria-labelledby="bgimg-upload-heading">
+      <Heading tag="h3" id="bgimg-upload-heading">
+        이미지 업로드
+      </Heading>
       <Spacer height="size8" />
       <div css={fileInputWrapperStyle}>
         <input
           type="file"
           title="배경화면 파일 업로드"
           css={fileInputStyle}
+          aria-invalid={status.isError}
+          aria-errormessage="upload-error-message"
           onChange={uploadBackgroundImage}
         />
-        <div css={fileInputDescriptionStyle}>
-          {status.isError && (
-            <Text size="size12" color="red" data-testid="errorMessage">
-              {status.errorMessage}
-            </Text>
-          )}
-        </div>
+        <Text
+          id="upload-error-message"
+          size="size12"
+          color="red"
+          data-testid="errorMessage"
+        >
+          {status.isError ? status.errorMessage : null}
+        </Text>
       </div>
       <Spacer height="size8" />
       <Text size="size12">3MB 이하의 JPEG, PNG 이미지 파일만 가능합니다.</Text>
@@ -44,15 +49,12 @@ function UploadImageArticle() {
 
 const fileInputStyle = css`
   color: ${colorTable.white};
+  min-width: 17rem;
 `;
 
 const fileInputWrapperStyle = css`
   display: flex;
   align-items: center;
-`;
-
-const fileInputDescriptionStyle = css`
-  margin-left: ${spaceTable.size8};
 `;
 
 export default UploadImageArticle;

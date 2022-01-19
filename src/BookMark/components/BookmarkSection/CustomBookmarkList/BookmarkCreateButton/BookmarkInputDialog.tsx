@@ -24,8 +24,8 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
   const createBookmark = useCreateBookmark();
 
   const submitBookmark = () => {
-    createBookmark(titleInput.value, urlInput.value);
     closeDialog();
+    createBookmark(titleInput.value, urlInput.value);
   };
 
   return (
@@ -59,7 +59,10 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
           disabled={urlInput.isError || titleInput.isError}
           onClick={submitBookmark}
         >
-          입력하기
+          입력
+        </Button>
+        <Button size="size12" type="submit" onClick={closeDialog}>
+          닫기
         </Button>
       </div>
     </>
@@ -68,8 +71,10 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
 
 const buttonWrapperStyle = css`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  > button {
+    margin: 0 0.125rem;
+  }
 `;
 
 const noticeTextStyle = css`

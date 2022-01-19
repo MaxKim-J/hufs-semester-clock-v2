@@ -37,8 +37,13 @@ function BookmarkCreateButton() {
       </button>
       <AnimatePresence>
         {isDialogOpen && (
-          <motion.dialog {...fadeInAndOut} open css={inputDialogStyle}>
-            <div css={dialogArrowStyle} />
+          <motion.dialog
+            {...fadeInAndOut}
+            transition={{ delay: 0.15 }}
+            aria-modal
+            open
+            css={inputDialogStyle}
+          >
             <BookmarkInputDialog closeDialog={closeDialog} />
           </motion.dialog>
         )}
@@ -76,21 +81,10 @@ const plusImgStyle = css`
   height: 1.5rem;
 `;
 
-const dialogArrowStyle = css`
-  position: absolute;
-  top: -1rem;
-  left: 1.5rem;
-  width: 0;
-  height: 0;
-  border-left: 1rem solid transparent;
-  border-right: 1rem solid transparent;
-  border-bottom: 1rem solid ${transparentTable.black70};
-`;
-
 const inputDialogStyle = css`
   position: absolute;
   background-color: ${transparentTable.black70};
-  transform: translateY(1.5rem);
+  transform: translateY(-5rem) translateX(5rem);
 `;
 
 export default BookmarkCreateButton;

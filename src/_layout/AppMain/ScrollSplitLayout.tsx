@@ -4,6 +4,8 @@ import DotSwitch from '@components/fundamentals/DotSwitch';
 import { spaceTable } from '@style/variables';
 import { useRecoilState } from 'recoil';
 import { sectionIndexAtom } from '@shared/atoms/common';
+import { Heading } from '@components/fundamentals/Text';
+import { readableHiddenHeading } from '@style/common';
 
 type Section = {
   id: number;
@@ -49,7 +51,17 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
           </section>
         ))}
       </div>
-      <nav css={navigationStyle}>
+      <nav
+        css={navigationStyle}
+        aria-labelledby="nav-heading"
+        aria-describedby="nav-describe"
+      >
+        <Heading tag="h1" id="nav-heading" css={readableHiddenHeading}>
+          페이지 네비게이션
+        </Heading>
+        <p id="nav-describe" css={readableHiddenHeading}>
+          다음에 위치한 버튼을 누르면 해당 페이지로 이동합니다.
+        </p>
         {sections.map((section) => (
           <DotSwitch
             key={section.id}

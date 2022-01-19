@@ -1,20 +1,23 @@
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
-import { Text } from '@components/fundamentals/Text';
+import { Heading } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import { css } from '@emotion/react';
 import { useRecoilValue } from 'recoil';
 import { userInfo } from '@/UserInfo/atoms';
-import UserInfoInputArticle from '@/UserInfo/components/UserInfoInputSection/UserInfoInputArticle';
+import UserInfoInputArticle from '@/UserInfo/components/UserInfoInputArticle/UserInfoInput';
 import UserInfoInputSectionSkeleton from '@/UserInfo/components/Skeleton/UserInfoInputSectionSkeleton';
 
 function UserInfoInputSection() {
   const { status: userInfoStatus } = useRecoilValue(userInfo);
 
   return (
-    <section css={userInfoInputSectionStyle}>
-      <Text weight="bold" size="size20">
+    <article
+      css={userInfoInputSectionStyle}
+      aria-labelledby="user-info-setting-heading"
+    >
+      <Heading tag="h2" id="user-info-setting-heading">
         학번/이름 설정
-      </Text>
+      </Heading>
       <Spacer height="size16" />
       {userInfoStatus === 'initialized' ? (
         <AsyncBoundaryWithQuery
@@ -26,7 +29,7 @@ function UserInfoInputSection() {
       ) : (
         <UserInfoInputSectionSkeleton />
       )}
-    </section>
+    </article>
   );
 }
 

@@ -8,7 +8,7 @@ import { isUserSeasonal } from '../../atoms';
 import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
 import { isClockUnexpired } from '@/SemesterClock/utils/clockHelper';
 
-function SeasonalSettingArticle() {
+function SeasonalSetting() {
   const semesters = useSemesterQuery() as Semesters;
   const [isSeasonal, setIsSeasonal] = useRecoilState(isUserSeasonal);
 
@@ -23,22 +23,20 @@ function SeasonalSettingArticle() {
   };
 
   return (
-    <article css={seasonalSettingStyle}>
-      <>
-        <Text css={seasonalTextStyle}>계절학기를 듣고 있어요!</Text>;
-        <SwitchInput
-          checked={isSeasonal.value as boolean}
-          onToggle={toggleSemester}
-          title="계절학기 전환 스위치"
-          disabled={!isSeasonalSelectable()}
-        />
-        {!isSeasonalSelectable() && (
-          <Text css={warningStyle} size="size12" color="gray">
-            계절학기 수강 기간이 아닙니다.
-          </Text>
-        )}
-      </>
-    </article>
+    <div css={seasonalSettingStyle}>
+      <Text css={seasonalTextStyle}>계절학기를 듣고 있어요!</Text>
+      <SwitchInput
+        checked={isSeasonal.value as boolean}
+        onToggle={toggleSemester}
+        title="계절학기 전환 스위치"
+        disabled={!isSeasonalSelectable()}
+      />
+      {!isSeasonalSelectable() && (
+        <Text css={warningStyle} size="size12" color="gray">
+          계절학기 수강 기간이 아닙니다.
+        </Text>
+      )}
+    </div>
   );
 }
 
@@ -55,4 +53,4 @@ const warningStyle = css`
   margin-left: ${spaceTable.size16};
 `;
 
-export default SeasonalSettingArticle;
+export default SeasonalSetting;

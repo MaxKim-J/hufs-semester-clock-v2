@@ -5,7 +5,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import TestBoundary from '@components/boundries/TestBoundary';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
 import UserInfoDisplay from '@/UserInfo/components/UserInfoArticle/UserInfoDisplay';
-import UserInfoInputArticle from '@/UserInfo/components/UserInfoInputSection/UserInfoInputArticle';
+import UserInfoInput from '@/UserInfo/components/UserInfoInputArticle/UserInfoInput';
 import { userInfo } from '@/UserInfo/atoms';
 
 describe('User Interaction: 유저는 학번/이름 설정란에서 유저의 학번/이름 정보를 바꿀 수 있다.', () => {
@@ -31,7 +31,7 @@ describe('User Interaction: 유저는 학번/이름 설정란에서 유저의 �
       <TestBoundary recoilState={recoilState}>
         <AsyncBoundaryWithQuery>
           <UserInfoDisplay />
-          <UserInfoInputArticle />
+          <UserInfoInput />
         </AsyncBoundaryWithQuery>
       </TestBoundary>
     );

@@ -28,7 +28,7 @@ function DotSwitch({ tooltip, onClick, activateId, id }: DotSwitchProps) {
 
   return (
     <button
-      aria-labelledby={tooltip}
+      aria-label={`${tooltip}로 이동하기`}
       type="button"
       css={dotSwitchStyle}
       onClick={activateDot}

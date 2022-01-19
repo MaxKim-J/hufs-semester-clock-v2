@@ -5,16 +5,16 @@ import { Admission } from '@shared/services/api/types';
 import { Text } from '@components/fundamentals/Text';
 import Button from '@components/fundamentals/Button';
 import useAdmissionQuery from '@/UserInfo/queries/useAdmissionQuery';
-import useUserInfoInputs from '@/UserInfo/components/UserInfoInputSection/UserInfoInputArticle/useUserInfoInputs';
+import useUserInfoInputs from '@/UserInfo/hooks/useUserInfoInputs';
 
-function UserInfoInputArticle() {
+function UserInfoInput() {
   const admissions = useAdmissionQuery();
 
   const { admissionInput, nameInput, isAllInputsValid, submitInput } =
     useUserInfoInputs();
 
   return (
-    <article>
+    <div>
       <Text size="size14">
         학번과 이름을 입력하시면 입학한지 며칠 째인지 볼 수 있어요!
       </Text>
@@ -45,7 +45,7 @@ function UserInfoInputArticle() {
           저장하기
         </Button>
       </div>
-    </article>
+    </div>
   );
 }
 
@@ -59,4 +59,4 @@ const buttonStyle = css`
   margin: 0 0.5rem;
 `;
 
-export default UserInfoInputArticle;
+export default UserInfoInput;

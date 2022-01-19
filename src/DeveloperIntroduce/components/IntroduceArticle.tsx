@@ -1,9 +1,13 @@
-import { Text } from '@components/fundamentals/Text';
+import { Heading, Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
+import { readableHiddenHeading } from '@shared/styles/common';
 
 function IntroduceArticle() {
   return (
-    <article>
+    <article aria-labelledby="introduce-heading">
+      <Heading tag="h2" id="introduce-heading" css={readableHiddenHeading}>
+        개발자 인사
+      </Heading>
       <Text>
         안녕하세요! 외대 종강시계를 개발, 유지보수하고있는
         김맥스(빅융소맨)입니다.

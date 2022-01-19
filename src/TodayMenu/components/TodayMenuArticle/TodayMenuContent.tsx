@@ -23,7 +23,7 @@ function TodayMenuContent() {
       <div css={menuSentenceStyle}>
         <Emoji size="size32" emoji="🍽" hidden shadow />
         <motion.div key={menu.name} css={menuTextStyle} {...fadeInAndOut}>
-          <Text role="alert" size="size32" color="black">
+          <Text size="size32" color="black">
             오늘 <strong>{menu.name}</strong> 어떠세요?
           </Text>
         </motion.div>

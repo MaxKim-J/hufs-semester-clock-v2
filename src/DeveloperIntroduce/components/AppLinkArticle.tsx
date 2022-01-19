@@ -3,8 +3,9 @@ import { css } from '@emotion/react';
 import Mail from '@shared/images/mail.svg';
 import Article from '@shared/images/article.svg';
 import Github from '@shared/images/github.svg';
-import { Link } from '@components/fundamentals/Text';
+import { Heading, Link } from '@components/fundamentals/Text';
 import { spaceTable } from '@style/variables';
+import { readableHiddenHeading } from '@/_shared/styles/common';
 
 function AppLinkArticle() {
   const iconLinks = useRef([
@@ -48,6 +49,9 @@ function AppLinkArticle() {
 
   return (
     <article css={appLinkStyle}>
+      <Heading tag="h2" id="feedback-heading" css={readableHiddenHeading}>
+        앱 관련 링크
+      </Heading>
       <ul aria-label="관련 링크 바로가기" css={linkListStyle}>
         {iconLinks.map((link) => (
           <li key={link.id}>

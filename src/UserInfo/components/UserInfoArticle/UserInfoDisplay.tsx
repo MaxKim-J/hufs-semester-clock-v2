@@ -4,11 +4,11 @@ import { useRecoilValue } from 'recoil';
 import { formatNumber } from '@shared/utils/formatHelper';
 import { getGreetingMessage } from '@/UserInfo/utils/greetingHelper';
 import { userInfo } from '@/UserInfo/atoms';
+import Emoji from '@components/fundamentals/Emoji';
 import {
   getAdmissionInterval,
   getAdmissionByDate,
 } from '@/UserInfo/utils/admissionDayHelper';
-import Emoji from '@components/fundamentals/Emoji';
 
 function UserInfoDisplay() {
   const { value: userInfoValue } = useRecoilValue(userInfo);

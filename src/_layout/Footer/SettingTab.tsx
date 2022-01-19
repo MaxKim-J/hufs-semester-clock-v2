@@ -1,18 +1,19 @@
 import Spacer from '@components/fundamentals/Spacer';
-import ClockSettingSection from '@/SemesterClock/components/ClockSettingSection';
-import UserInfoInputSection from '@/UserInfo/components/UserInfoInputSection';
+import Tab from '@components/fundamentals/Tab';
+import ClockSettingArticle from '@/SemesterClock/components/ClockSettingArticle';
+import UserInfoInputArticle from '@/UserInfo/components/UserInfoInputArticle';
 import BackgroundSettingSection from '@/Background/components/BackgroundSettingSection';
 
 function SettingTab() {
   return (
-    <section>
+    <Tab title="설정" direction="left">
       <Spacer height="size16" />
-      <ClockSettingSection />
+      <ClockSettingArticle />
       <Spacer height="size32" />
-      <UserInfoInputSection />
+      <UserInfoInputArticle />
       <Spacer height="size32" />
       <BackgroundSettingSection />
-    </section>
+    </Tab>
   );
 }
 

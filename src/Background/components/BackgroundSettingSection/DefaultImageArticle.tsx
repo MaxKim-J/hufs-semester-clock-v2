@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { css } from '@emotion/react';
 import Button from '@components/fundamentals/Button';
-import { Text } from '@components/fundamentals/Text';
+import { Heading, Text } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import { Campus } from '@shared/services/api/types';
 import { spaceTable } from '@style/variables';
@@ -16,9 +16,11 @@ function DefaultImageArticle() {
   );
 
   return (
-    <article>
+    <article aria-labelledby="bgimg-default-heading">
       <div css={defaultImageTitleStyle}>
-        <Text>기본 배경화면</Text>
+        <Heading tag="h3" id="bgimg-default-heading">
+          기본 배경화면으로 변경
+        </Heading>
         <span css={imageButtonWrapperStyle}>
           <Button
             css={imageButtonStyle}
