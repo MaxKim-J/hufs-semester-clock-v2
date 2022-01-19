@@ -22,7 +22,6 @@ function UserInfoInputSection() {
       {userInfoStatus === 'initialized' ? (
         <AsyncBoundaryWithQuery
           pendingFallback={<UserInfoInputSectionSkeleton />}
-          rejectedFallback={() => <div>실패</div>}
         >
           <UserInfoInputArticle />
         </AsyncBoundaryWithQuery>

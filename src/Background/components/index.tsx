@@ -3,10 +3,7 @@ import BackgroundContainer from '@/Background/components/BackgroundContent';
 
 function Background() {
   return (
-    <AsyncBoundaryWithQuery
-      rejectedFallback={() => <div>reject</div>}
-      pendingFallback={null}
-    >
+    <AsyncBoundaryWithQuery pendingFallback={null}>
       <BackgroundContainer />
     </AsyncBoundaryWithQuery>
   );

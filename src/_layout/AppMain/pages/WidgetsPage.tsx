@@ -45,6 +45,9 @@ const gridAreaStyle = (area: string) => css`
   width: 100%;
   height: 100%;
   grid-area: ${area};
+  h2 {
+    font-size: 1rem;
+  }
 `;
 
 const featureGridStyle = css`

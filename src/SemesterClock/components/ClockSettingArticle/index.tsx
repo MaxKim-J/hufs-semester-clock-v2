@@ -10,10 +10,7 @@ function ClockSettingArticle() {
         종강시간 설정
       </Heading>
       <Spacer height="size16" />
-      <AsyncBoundaryWithQuery
-        pendingFallback={<Text>로딩중..</Text>}
-        rejectedFallback={() => <div>실패</div>}
-      >
+      <AsyncBoundaryWithQuery pendingFallback={<Text>로딩중..</Text>}>
         <SeasonalSetting />
       </AsyncBoundaryWithQuery>
     </article>
