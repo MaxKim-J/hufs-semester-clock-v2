@@ -5,7 +5,7 @@ import { spaceTable } from '@style/variables';
 import { Semesters } from '@shared/services/api/types';
 import { SwitchInput } from '@components/fundamentals/Input';
 import { isUserSeasonal } from '../../atoms';
-import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
+import useSemesterQuery from '@/SemesterClock/queries/useSemesterQuery';
 import { isClockUnexpired } from '@/SemesterClock/utils/clockHelper';
 
 function SeasonalSetting() {

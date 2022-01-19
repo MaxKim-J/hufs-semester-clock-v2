@@ -31,11 +31,11 @@ describe('User Interaction: 유저는 북마크를 추가하거나 삭제할 수
   });
 
   it('북마크 추가 버튼을 누르고 북마크 제목, url을 입력해 북마크를 추가할 수 있다.', async () => {
-    const createButton = screen.getByText('즐겨찾기 추가');
+    const createButton = screen.getByText('북마크 추가');
     fireEvent.click(createButton);
     const titleInput = screen.getByTitle('북마크 제목 입력');
     const urlInput = screen.getByTitle('북마크 주소 입력');
-    const submitButton = screen.getByText('입력하기');
+    const submitButton = screen.getByText('입력');
 
     fireEvent.change(titleInput, { target: { value: '다음' } });
     fireEvent.change(urlInput, { target: { value: 'daum.net' } });

@@ -1,5 +1,8 @@
 import { render } from '@testing-library/react';
+import { MutableSnapshot } from 'recoil';
 import { SemesterValue } from '@shared/services/api/types';
+import { sectionIndexAtom } from '@shared/atoms/common';
+import TestBoundary from '@components/boundries/TestBoundary';
 import MainClock from '@/SemesterClock/components/ClockSection/SemsterClockArticle/MainClock';
 import SemesterInfo from '@/SemesterClock/components/ClockSection/SemsterClockArticle/SemesterInfo';
 
@@ -12,11 +15,15 @@ describe('Complex UI: 종강시계(MainClock)는 설정된 semester에 따라 �
       title: '2024-2',
     };
 
+    const recoilState = ({ set }: MutableSnapshot) => {
+      set(sectionIndexAtom, { current: 0, max: 0 });
+    };
+
     const { getByText } = render(
-      <>
+      <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={endSemester} />
         <MainClock semester={endSemester} evaluateSemester={() => {}} />
-      </>
+      </TestBoundary>
     );
 
     getByText('2024-2학기 종강(2024.11.21)까지');
@@ -34,11 +41,15 @@ describe('Complex UI: 종강시계(MainClock)는 설정된 semester에 따라 �
       title: '2024-2',
     };
 
+    const recoilState = ({ set }: MutableSnapshot) => {
+      set(sectionIndexAtom, { current: 0, max: 0 });
+    };
+
     const { getByText } = render(
-      <>
+      <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={startSemester} />
         <MainClock semester={startSemester} evaluateSemester={() => {}} />
-      </>
+      </TestBoundary>
     );
 
     getByText('2024-2학기 개강(2024.11.21)까지');
@@ -55,11 +66,16 @@ describe('Complex UI: 종강시계(MainClock)는 설정된 semester에 따라 �
       id: 'current',
       title: '2021-2',
     };
+
+    const recoilState = ({ set }: MutableSnapshot) => {
+      set(sectionIndexAtom, { current: 0, max: 0 });
+    };
+
     const { getByText } = render(
-      <>
+      <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={oldSemester} />
         <MainClock semester={oldSemester} evaluateSemester={() => {}} />
-      </>
+      </TestBoundary>
     );
 
     getByText('시계 재시작');

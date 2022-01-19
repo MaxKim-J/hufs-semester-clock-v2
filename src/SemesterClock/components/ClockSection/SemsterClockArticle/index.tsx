@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { Semesters } from '@shared/services/api/types';
 import { Heading } from '@components/fundamentals/Text';
 import { readableHiddenHeading } from '@style/common';
-import useSemesterQuery from '@/SemesterClock/query/useSemesterQuery';
+import useSemesterQuery from '@/SemesterClock/queries/useSemesterQuery';
 import useCleanIsSeasonalStorageData from '@/SemesterClock/hooks/useCleanIsSeasonalStorageData';
 import MainClock from '@/SemesterClock/components/ClockSection/SemsterClockArticle/MainClock';
 import SemesterInfo from '@/SemesterClock/components/ClockSection/SemsterClockArticle/SemesterInfo';
