@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+import { useRecoilValue } from 'recoil';
 import { css } from '@emotion/react';
 import { Semesters } from '@shared/services/api/types';
 import { Heading } from '@components/fundamentals/Text';
@@ -7,12 +9,27 @@ import useCleanIsSeasonalStorageData from '@/SemesterClock/hooks/useCleanIsSeaso
 import MainClock from '@/SemesterClock/components/ClockSection/SemsterClockArticle/MainClock';
 import SemesterInfo from '@/SemesterClock/components/ClockSection/SemsterClockArticle/SemesterInfo';
 import useClockSemester from '@/SemesterClock/hooks/useClockSemester';
+import { isUserSeasonal } from '@/SemesterClock/atoms';
+import { getCurrentSemester } from '@/SemesterClock/utils/semesterHelper';
 
 function SemesterClockArticle() {
   const semesterData = useSemesterQuery() as Semesters;
   useCleanIsSeasonalStorageData(semesterData.seasonal);
 
-  const { restartClock, clockSemester } = useClockSemester(semesterData);
+  const isSeasonal = useRecoilValue(isUserSeasonal);
+
+  const evaluateSemester = useCallback(
+    () =>
+      isSeasonal.value === true
+        ? semesterData.seasonal
+        : getCurrentSemester(semesterData),
+    [isSeasonal.value, semesterData]
+  );
+
+  const { restartClock, clockSemester } = useClockSemester({
+    semesters: semesterData,
+    evaluateSemester,
+  });
 
   return (
     <article

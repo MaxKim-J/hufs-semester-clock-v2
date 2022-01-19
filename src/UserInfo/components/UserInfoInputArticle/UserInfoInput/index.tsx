@@ -1,17 +1,56 @@
 import { css } from '@emotion/react';
+import { useRecoilState } from 'recoil';
 import Spacer from '@components/fundamentals/Spacer';
 import { SelectInput, TextInput } from '@components/fundamentals/Input';
+import useInput from '@shared/hooks/useInput';
 import { Admission } from '@shared/services/api/types';
 import { Text } from '@components/fundamentals/Text';
 import Button from '@components/fundamentals/Button';
 import useAdmissionQuery from '@/UserInfo/queries/useAdmissionQuery';
-import useUserInfoInputs from '@/UserInfo/hooks/useUserInfoInputs';
+import { userInfo } from '@/UserInfo/atoms';
 
 function UserInfoInput() {
   const admissions = useAdmissionQuery();
 
-  const { admissionInput, nameInput, isAllInputsValid, submitInput } =
-    useUserInfoInputs();
+  const [{ value: userInfoValue }, setUserInfo] = useRecoilState(userInfo);
+
+  const admissionInput = useInput({
+    name: 'admission',
+    initialValue: userInfoValue === null ? '' : userInfoValue.admission,
+    validators: [
+      {
+        validFunction: (text: string) => !!text,
+        errorMessage: '학번을 입력해 주세요.',
+      },
+    ],
+  });
+
+  const nameInput = useInput({
+    name: 'name',
+    initialValue: userInfoValue === null ? '' : userInfoValue.name,
+    validators: [
+      {
+        validFunction: (text: string) => !!text,
+        errorMessage: '이름을 입력해 주세요.',
+      },
+    ],
+  });
+
+  const isAllInputsValid = [nameInput, admissionInput].every(
+    (input) => !input.isError
+  );
+
+  const submitInput = () => {
+    if (isAllInputsValid) {
+      setUserInfo((state) => ({
+        ...state,
+        value: {
+          name: nameInput.value,
+          admission: admissionInput.value,
+        },
+      }));
+    }
+  };
 
   return (
     <div>

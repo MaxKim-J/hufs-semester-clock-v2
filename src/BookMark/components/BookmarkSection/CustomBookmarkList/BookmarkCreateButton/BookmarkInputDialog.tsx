@@ -4,7 +4,9 @@ import { Text } from '@components/fundamentals/Text';
 import { TextInput } from '@components/fundamentals/Input';
 import Spacer from '@components/fundamentals/Spacer';
 import Button from '@components/fundamentals/Button';
-import useCreateBookmark from '@/BookMark/hooks/useCreateBookmark';
+import { useSetRecoilState } from 'recoil';
+import { getNewBookmarks } from '@/BookMark/utils/bookmarkHelper';
+import { userBookmarks } from '@/BookMark/atoms';
 
 type BookmarkInputDialogProps = {
   closeDialog: () => void;
@@ -21,7 +23,16 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
     validators: [{ validFunction: (text: string) => !!text }],
   });
 
-  const createBookmark = useCreateBookmark();
+  const setUserBookmarks = useSetRecoilState(userBookmarks);
+
+  const createBookmark = (title: string, url: string) => {
+    const newBookMark = getNewBookmarks(title, url);
+    setUserBookmarks((state) => ({
+      ...state,
+      value:
+        state.value === null ? newBookMark : state.value.concat(newBookMark),
+    }));
+  };
 
   const submitBookmark = () => {
     closeDialog();

@@ -1,20 +1,16 @@
 import { useCallback, useState, useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
-import { Semesters } from '@shared/services/api/types';
-import { isUserSeasonal } from '../atoms';
+import { Semesters, SemesterValue } from '@shared/services/api/types';
 import { getCurrentSemester } from '@/SemesterClock/utils/semesterHelper';
 
-const useClockSemester = (semesters: Semesters) => {
-  const isSeasonal = useRecoilValue(isUserSeasonal);
+type useClockSemesterOptions = {
+  semesters: Semesters;
+  evaluateSemester: () => SemesterValue;
+};
 
-  const evaluateSemester = useCallback(
-    () =>
-      isSeasonal.value === true
-        ? semesters.seasonal
-        : getCurrentSemester(semesters),
-    [isSeasonal.value, semesters]
-  );
-
+const useClockSemester = ({
+  semesters,
+  evaluateSemester,
+}: useClockSemesterOptions) => {
   const [clockSemester, setClockSemester] = useState(evaluateSemester());
 
   useEffect(() => {

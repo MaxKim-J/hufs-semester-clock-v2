@@ -1,4 +1,4 @@
-import { ReactChild, useRef, useState } from 'react';
+import { ReactChild, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CloseWhite from '@shared/images/close-white.svg';
 import { spaceTable, transparentTable } from '@style/variables';
@@ -16,13 +16,10 @@ type TabProps = {
 function Tab({ title, children, direction = 'left' }: TabProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-
   return (
     <div css={dialogContainerStyle}>
       <button
         type="button"
-        ref={buttonRef}
         onClick={() => {
           setIsOpen((state) => !state);
         }}

@@ -1,20 +1,28 @@
 import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { motion } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
 import { Heading } from '@components/fundamentals/Text';
 import { readableHiddenHeading } from '@style/common';
 import BookmarkItem from '@/BookMark/components/BookmarkSection/BookmarkItem';
 import BookmarkCreateButton from '@/BookMark/components/BookmarkSection/CustomBookmarkList/BookmarkCreateButton';
-import useRemoveBookmark from '@/BookMark/hooks/useRemoveBookmark';
-import { userBookmarks } from '@/BookMark/atoms';
+import { Bookmark, userBookmarks } from '@/BookMark/atoms';
 
 function CustomBookmarkList() {
-  const { status: userBookmarksStatus, value: userBookmarksValue } =
-    useRecoilValue(userBookmarks);
+  const [
+    { status: userBookmarksStatus, value: userBookmarksValue },
+    setUserBookmarks,
+  ] = useRecoilState(userBookmarks);
 
-  const removeBookmark = useRemoveBookmark();
+  const removeBookmark = (id: string) => {
+    setUserBookmarks((state) => ({
+      ...state,
+      value: (state.value as Bookmark[]).filter(
+        (bookmark) => bookmark.id !== id
+      ),
+    }));
+  };
 
   return (
     <motion.article
