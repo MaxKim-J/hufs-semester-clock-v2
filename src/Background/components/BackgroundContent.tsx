@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { transparentTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
 import getBackgroundByTime from '@/Background/utils/getBackgroundByTime';
@@ -12,14 +12,14 @@ function BackgroundContent() {
   const backgroundUrl = getBackgroundByTime(userBackgroundImage, new Date());
 
   return (
-    <motion.div {...fadeInAndOut} css={backgroundWrapperStyle}>
+    <m.div {...fadeInAndOut} css={backgroundWrapperStyle}>
       <div css={backgroundCoverStyle} />
       <div
         id={userBackgroundImage.name}
         data-testid="backgroundImage"
         css={backgroundImageStyle(backgroundUrl)}
       />
-    </motion.div>
+    </m.div>
   );
 }
 

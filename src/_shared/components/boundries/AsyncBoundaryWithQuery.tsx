@@ -6,7 +6,7 @@ import { ErrorBoundaryProps } from './ErrorBoundary';
 
 type QueryBoundaryProps = {
   children: ReactNode;
-  pendingFallback?: ReactChild;
+  pendingFallback?: ReactChild | null;
   rejectedFallback?: ErrorBoundaryProps['renderFallback'];
 };
 

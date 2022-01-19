@@ -3,7 +3,7 @@ import ErrorBoundary, { ErrorBoundaryProps } from './ErrorBoundary';
 
 export type AsyncBoundaryProps = {
   children: ReactNode;
-  pendingFallback: ReactChild;
+  pendingFallback: ReactChild | null;
   rejectedFallback: ErrorBoundaryProps['renderFallback'];
 } & Omit<ErrorBoundaryProps, 'renderFallback'>;
 

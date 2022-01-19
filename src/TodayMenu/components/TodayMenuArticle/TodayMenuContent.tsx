@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
 import { Link, Text } from '@components/fundamentals/Text';
 import Button from '@components/fundamentals/Button';
@@ -22,11 +22,11 @@ function TodayMenuContent() {
       <Spacer />
       <div css={menuSentenceStyle}>
         <Emoji size="size32" emoji="🍽" hidden shadow />
-        <motion.div key={menu.name} css={menuTextStyle} {...fadeInAndOut}>
+        <m.div key={menu.name} css={menuTextStyle} {...fadeInAndOut}>
           <Text size="size32" color="black">
             오늘 <strong>{menu.name}</strong> 어떠세요?
           </Text>
-        </motion.div>
+        </m.div>
       </div>
       <Spacer />
       <div css={buttonWrapperStyle}>

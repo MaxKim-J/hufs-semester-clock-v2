@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
 import { useRecoilState } from 'recoil';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
 import { Heading } from '@components/fundamentals/Text';
 import { readableHiddenHeading } from '@style/common';
@@ -25,7 +25,7 @@ function CustomBookmarkList() {
   };
 
   return (
-    <motion.article
+    <m.article
       {...fadeInAndOut}
       aria-labelledby="custom-bookmark-list-heading"
       aria-describedby="custom-bookmark-list-describe"
@@ -63,7 +63,7 @@ function CustomBookmarkList() {
           </>
         ) : null}
       </ul>
-    </motion.article>
+    </m.article>
   );
 }
 

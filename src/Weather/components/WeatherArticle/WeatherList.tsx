@@ -5,7 +5,7 @@ import Button from '@components/fundamentals/Button';
 import Emoji from '@components/fundamentals/Emoji';
 import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
 import { transparentTable } from '@style/variables';
 import { userWeatherCampus } from '@/Weather/atoms';
@@ -31,7 +31,7 @@ function WeatherList() {
   };
 
   return (
-    <motion.div {...fadeInAndOut}>
+    <m.div {...fadeInAndOut}>
       <Spacer height="size8" />
       <div css={weatherListHeaderStyle}>
         <Text size="size12" color="darkGray" role="alert">
@@ -87,7 +87,7 @@ function WeatherList() {
           </li>
         ))}
       </ol>
-    </motion.div>
+    </m.div>
   );
 }
 

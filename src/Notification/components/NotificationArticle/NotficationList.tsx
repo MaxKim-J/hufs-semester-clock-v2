@@ -1,6 +1,6 @@
 import { Notification } from '@shared/services/api/types';
 import { Link, Text } from '@components/fundamentals/Text';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Spacer from '@components/fundamentals/Spacer';
 import { css } from '@emotion/react';
 import Button from '@components/fundamentals/Button';
@@ -20,7 +20,7 @@ function NotificationList() {
     });
 
   return (
-    <motion.div {...fadeInAndOut}>
+    <m.div {...fadeInAndOut}>
       <Spacer />
       <Text size="size12" color="darkGray">
         ※ 최신 학사공지 15개를 보여드립니다.
@@ -59,7 +59,7 @@ function NotificationList() {
           다음
         </Button>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

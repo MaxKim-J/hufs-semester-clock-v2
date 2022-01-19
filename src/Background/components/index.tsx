@@ -5,19 +5,7 @@ function Background() {
   return (
     <AsyncBoundaryWithQuery
       rejectedFallback={() => <div>reject</div>}
-      pendingFallback={
-        <div
-          css={{
-            position: 'absolute',
-            top: 0,
-            zIndex: 5,
-            width: '100vw',
-            height: '100vh',
-          }}
-        >
-          로딩이다
-        </div>
-      }
+      pendingFallback={null}
     >
       <BackgroundContainer />
     </AsyncBoundaryWithQuery>

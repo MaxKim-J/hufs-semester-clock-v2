@@ -85,17 +85,14 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: `assets/images/${
-                PRODUCTION ? '[hash].[ext]' : '[name].[ext]'
-              }`,
-            },
+        test: /\.(svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: '[name].[ext]?[hash]',
+            limit: 10000,
           },
-        ],
+        },
       },
       {
         test: /\.css$/i,
@@ -156,15 +153,16 @@ if (!PRODUCTION) {
       errors: true,
     },
   };
-  config.plugins = config.plugins.concat([
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-      analyzerMode: 'static',
-      reportFilename: '../analysis/bundle-analysis.html',
-      generateStatsFile: true,
-      statsFilename: '../analysis/bundle-stats.json',
-    }),
-  ]);
 }
+
+config.plugins = config.plugins.concat([
+  new BundleAnalyzerPlugin({
+    openAnalyzer: false,
+    analyzerMode: 'static',
+    reportFilename: '../analysis/bundle-analysis.html',
+    generateStatsFile: true,
+    statsFilename: '../analysis/bundle-stats.json',
+  }),
+]);
 
 module.exports = config;

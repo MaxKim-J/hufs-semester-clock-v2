@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { readableHiddenHeading } from '@style/common';
 import { transparentTable, colorTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import BookmarkInputDialog from './BookmarkInputDialog';
 
 function BookmarkCreateButton() {
@@ -37,7 +37,7 @@ function BookmarkCreateButton() {
       </button>
       <AnimatePresence>
         {isDialogOpen && (
-          <motion.dialog
+          <m.dialog
             {...fadeInAndOut}
             transition={{ delay: 0.15 }}
             aria-modal
@@ -45,7 +45,7 @@ function BookmarkCreateButton() {
             css={inputDialogStyle}
           >
             <BookmarkInputDialog closeDialog={closeDialog} />
-          </motion.dialog>
+          </m.dialog>
         )}
       </AnimatePresence>
     </div>

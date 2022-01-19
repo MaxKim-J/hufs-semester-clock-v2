@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Emoji from '@components/fundamentals/Emoji';
 import { Text } from '@components/fundamentals/Text';
 import CloseBlack from '@shared/images/close-black.svg';
@@ -15,7 +15,7 @@ type BookMarkProps = {
 
 function BookmarkItem({ bookmark, onClickClose }: BookMarkProps) {
   return (
-    <motion.div
+    <m.div
       whileHover={{
         scale: 1.1,
         transition: { duration: 0.2 },
@@ -42,7 +42,7 @@ function BookmarkItem({ bookmark, onClickClose }: BookMarkProps) {
           <img css={closeImg} src={CloseBlack} alt="" />
         </button>
       )}
-    </motion.div>
+    </m.div>
   );
 }
 

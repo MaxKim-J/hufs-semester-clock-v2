@@ -1,5 +1,5 @@
 import { ReactChild, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import CloseWhite from '@shared/images/close-white.svg';
 import { spaceTable, transparentTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
@@ -28,7 +28,7 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
       </button>
       <AnimatePresence>
         {isOpen && (
-          <motion.dialog
+          <m.dialog
             role="dialog"
             aria-modal
             open
@@ -48,7 +48,7 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
             </div>
             <Spacer height="size8" />
             {children}
-          </motion.dialog>
+          </m.dialog>
         )}
       </AnimatePresence>
     </div>

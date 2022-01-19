@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { appearFromRight } from '@style/animation';
 import { colorTable } from '@style/variables';
 import { Text } from '../Text';
@@ -36,11 +36,11 @@ function DotSwitch({ tooltip, onClick, activateId, id }: DotSwitchProps) {
       onMouseLeave={() => setIsShowTooltip(false)}
     >
       {isShowTooltip && (
-        <motion.div {...appearFromRight}>
+        <m.div {...appearFromRight}>
           <Text size="size12" css={tooltipStyle}>
             {tooltip}
           </Text>
-        </motion.div>
+        </m.div>
       )}
       <div css={dotStyle(isActive)} />
     </button>

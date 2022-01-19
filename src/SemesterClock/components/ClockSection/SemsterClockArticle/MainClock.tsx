@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { SemesterValue } from '@shared/services/api/types';
 import Button from '@components/fundamentals/Button';
 import Spacer from '@components/fundamentals/Spacer';
@@ -21,7 +21,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
   return (
     <>
       {intervals !== 'expired' && (
-        <motion.div
+        <m.div
           aria-label={getAccessibilityTextByInterval(intervals)}
           css={clockDigitWrapperStyle}
           {...fadeInAndOut}
@@ -34,10 +34,10 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
               </Text>
             </div>
           ))}
-        </motion.div>
+        </m.div>
       )}
       {intervals === 'expired' && (
-        <motion.div
+        <m.div
           css={clockDigitWrapperStyle}
           {...fadeInAndOut}
           aria-label="시계 시간 만료"
@@ -48,7 +48,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
             <Spacer />
             <Button onClick={evaluateSemester}>시계 재시작</Button>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </>
   );

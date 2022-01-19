@@ -1,10 +1,10 @@
 import { Text } from '@components/fundamentals/Text';
 import { css } from '@emotion/react';
 import { useRecoilValue } from 'recoil';
+import Emoji from '@components/fundamentals/Emoji';
 import { formatNumber } from '@shared/utils/formatHelper';
 import { getGreetingMessage } from '@/UserInfo/utils/greetingHelper';
 import { userInfo } from '@/UserInfo/atoms';
-import Emoji from '@components/fundamentals/Emoji';
 import {
   getAdmissionInterval,
   getAdmissionByDate,
