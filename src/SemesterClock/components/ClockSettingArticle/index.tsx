@@ -1,4 +1,4 @@
-import { Heading, Text } from '@components/fundamentals/Text';
+import { Heading } from '@components/fundamentals/Text';
 import Spacer from '@components/fundamentals/Spacer';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
 import SeasonalSetting from '@/SemesterClock/components/ClockSettingArticle/SeasonalSetting';

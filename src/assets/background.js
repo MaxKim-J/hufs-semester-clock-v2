@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 chrome.runtime.onInstalled.addListener(function (details) {
   if (details.reason == 'install') {
     alert(
@@ -11,9 +10,4 @@ chrome.runtime.onInstalled.addListener(function (details) {
       'Updated from ' + details.previousVersion + ' to ' + thisVersion + '!'
     );
   }
-});
-
-// 탭 오픈 기능 붙이기
-chrome.browserAction.onClicked.addListener(function (tab) {
-  chrome.tabs.create({}, function (tab) {});
 });
