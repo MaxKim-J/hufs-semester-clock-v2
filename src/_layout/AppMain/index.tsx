@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import { css } from '@emotion/react';
+import WifiFallback from '@components/error/WifiFallback';
 import ScrollSplitLayout from './ScrollSplitLayout';
 import Background from '@/Background/components';
 
@@ -17,20 +18,24 @@ function AppMain() {
   return (
     <main css={mainSectionStyle}>
       <Background />
-      <ScrollSplitLayout
-        sections={[
-          {
-            id: 0,
-            name: '시계 페이지',
-            content: <ClockPage />,
-          },
-          {
-            id: 1,
-            name: '위젯 페이지',
-            content: <WidgetsPage />,
-          },
-        ]}
-      />
+      {navigator.onLine ? (
+        <ScrollSplitLayout
+          sections={[
+            {
+              id: 0,
+              name: '시계 페이지',
+              content: <ClockPage />,
+            },
+            {
+              id: 1,
+              name: '위젯 페이지',
+              content: <WidgetsPage />,
+            },
+          ]}
+        />
+      ) : (
+        <WifiFallback />
+      )}
     </main>
   );
 }

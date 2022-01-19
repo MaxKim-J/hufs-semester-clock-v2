@@ -1,6 +1,6 @@
 import React, { ReactChild, ReactNode } from 'react';
 import { useQueryErrorResetBoundary } from 'react-query';
-import AsyncRequestError from '@components/error/AsyncRequestError';
+import DefaultFallback from '@components/error/DefaultFallback';
 import AsyncBoundary from './AsyncBoundary';
 import { ErrorBoundaryProps } from './ErrorBoundary';
 
@@ -14,7 +14,7 @@ function AsyncBoundaryWithQuery({
   children,
   pendingFallback = <div>로딩</div>,
   rejectedFallback = ({ error, reset }) => (
-    <AsyncRequestError error={error} reset={reset} />
+    <DefaultFallback error={error} reset={reset} />
   ),
 }: QueryBoundaryProps) {
   const { reset } = useQueryErrorResetBoundary();

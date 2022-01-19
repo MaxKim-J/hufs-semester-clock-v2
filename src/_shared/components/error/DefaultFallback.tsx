@@ -7,7 +7,7 @@ import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
 import { formatEllipsis } from '@shared/utils/formatHelper';
 
-function AsyncRequestError({ error, reset }: RenderFallbackParams) {
+function DefaultFallback({ error, reset }: RenderFallbackParams) {
   const resetError = () => {
     if (reset !== undefined) {
       reset();
@@ -41,4 +41,4 @@ const errorArticleStyle = css`
   align-items: center;
 `;
 
-export default AsyncRequestError;
+export default DefaultFallback;
