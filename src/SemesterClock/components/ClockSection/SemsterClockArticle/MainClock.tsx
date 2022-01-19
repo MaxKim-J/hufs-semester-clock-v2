@@ -1,12 +1,11 @@
-import { useRef } from 'react';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 import { SemesterValue } from '@shared/services/api/types';
 import Button from '@components/fundamentals/Button';
 import Spacer from '@components/fundamentals/Spacer';
 import { fadeInAndOut } from '@style/animation';
+import { clockDigitData } from '@shared/data/clockDigits';
 import { Text } from '@components/fundamentals/Text';
-import { DurationKeys } from '@/SemesterClock/utils/clockHelper';
 import useMainClockInterval from '@/SemesterClock/hooks/useMainClockInterval';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { getAccessibilityTextByInterval } from '@/SemesterClock/utils/semesterHelper';
@@ -18,25 +17,6 @@ type MainClockProps = {
 
 function MainClock({ semester, evaluateSemester }: MainClockProps) {
   const intervals = useMainClockInterval(semester);
-
-  const clockDigitData = useRef<{ key: DurationKeys; text: string }[]>([
-    {
-      key: 'days',
-      text: '일',
-    },
-    {
-      key: 'hours',
-      text: '시간',
-    },
-    {
-      key: 'minutes',
-      text: '분',
-    },
-    {
-      key: 'seconds',
-      text: '초',
-    },
-  ]).current;
 
   return (
     <>
