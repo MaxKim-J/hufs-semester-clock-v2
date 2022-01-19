@@ -11,7 +11,7 @@ import { ClockDigits, formatDigits } from '@shared/utils/formatHelper';
 
 export type DurationKeys = 'days' | 'hours' | 'minutes' | 'seconds';
 
-type ClockIntervals = { [key in DurationKeys]: ClockDigits };
+export type ClockIntervals = { [key in DurationKeys]: ClockDigits };
 
 export const getClockIntervals = (
   semester: SemesterValue,

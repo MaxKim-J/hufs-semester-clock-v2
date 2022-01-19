@@ -7,8 +7,9 @@ import Spacer from '@components/fundamentals/Spacer';
 import { fadeInAndOut } from '@style/animation';
 import { Text } from '@components/fundamentals/Text';
 import { DurationKeys } from '@/SemesterClock/utils/clockHelper';
-import useMainClockInterval from '@/SemesterClock/components/ClockSection/SemsterClockArticle/useMainClockInterval';
+import useMainClockInterval from '@/SemesterClock/hooks/useMainClockInterval';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { getAccessibilityTextByInterval } from '@/SemesterClock/utils/semesterHelper';
 
 type MainClockProps = {
   semester: SemesterValue;
@@ -38,9 +39,13 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
   ]).current;
 
   return (
-    <article>
+    <>
       {intervals !== 'expired' && (
-        <motion.div css={clockDigitWrapperStyle} {...fadeInAndOut}>
+        <motion.div
+          aria-label={getAccessibilityTextByInterval(intervals)}
+          css={clockDigitWrapperStyle}
+          {...fadeInAndOut}
+        >
           {clockDigitData.map((data) => (
             <div css={clockDigitStyle} key={data.key}>
               <Text size="size96">{intervals[data.key]}</Text>
@@ -52,7 +57,11 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
         </motion.div>
       )}
       {intervals === 'expired' && (
-        <motion.div css={clockDigitWrapperStyle} {...fadeInAndOut}>
+        <motion.div
+          css={clockDigitWrapperStyle}
+          {...fadeInAndOut}
+          aria-label="시계 시간 만료"
+        >
           <div css={expiredSectionStyle}>
             <Text>✨현재 시계의 시간이 만료되었습니다.✨</Text>
             <Text> 버튼을 눌러 새로운 시계를 시작하세요!</Text>
@@ -61,7 +70,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
           </div>
         </motion.div>
       )}
-    </article>
+    </>
   );
 }
 

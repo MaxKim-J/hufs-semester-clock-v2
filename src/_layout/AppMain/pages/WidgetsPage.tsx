@@ -1,4 +1,6 @@
 import { css } from '@emotion/react';
+import { readableHiddenHeading } from '@style/common';
+import { Heading } from '@components/fundamentals/Text';
 import TimerArticle from '@/Timer/components/TimerArticle';
 import WeatherArticle from '@/Weather/components/WeatherArticle';
 import TodayMenuArticle from '@/TodayMenu/components/TodayMenuArticle';
@@ -8,6 +10,9 @@ import NotificationArticle from '@/Notification/components/NotificationArticle';
 function WidgetsPage() {
   return (
     <section css={sectionStyle}>
+      <Heading tag="h1" css={readableHiddenHeading}>
+        위젯 기능 컨텐츠
+      </Heading>
       <div css={featureGridStyle}>
         <div css={gridAreaStyle('notification')}>
           <NotificationArticle />

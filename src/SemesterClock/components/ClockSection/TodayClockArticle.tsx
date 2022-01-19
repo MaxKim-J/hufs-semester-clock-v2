@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { spaceTable } from '@style/variables';
 import { css } from '@emotion/react';
-import { Text } from '@components/fundamentals/Text';
+import { Heading, Text } from '@components/fundamentals/Text';
 import { getNow } from '@shared/utils/timeHelper';
 import { formatDigits } from '@shared/utils/formatHelper';
+import { readableHiddenHeading } from '@style/common';
 
 function TodayClockArticle() {
   const [now, setNow] = useState<Date>(getNow());
@@ -23,7 +24,10 @@ function TodayClockArticle() {
   ];
 
   return (
-    <article>
+    <article aria-labelledby="today-clock-heading">
+      <Heading tag="h3" id="today-clock-heading" css={readableHiddenHeading}>
+        현재 시간 표시란
+      </Heading>
       <div css={todayClockStyle}>
         <Text css={clockDigitStyle}>현재시간: </Text>
         {todayClockData.map((data) => (

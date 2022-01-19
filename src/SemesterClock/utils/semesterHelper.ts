@@ -5,6 +5,7 @@ import {
   SemesterType,
 } from '@shared/services/api/types';
 import { getNow } from '@shared/utils/timeHelper';
+import { ClockIntervals } from '@/SemesterClock/utils/clockHelper';
 
 export const getCurrentSemester = (
   semesters: Semesters,
@@ -26,3 +27,6 @@ export const getCurrentSemester = (
 
   return semesters.current;
 };
+
+export const getAccessibilityTextByInterval = (intervals: ClockIntervals) =>
+  `종강까지 ${intervals.days}일, ${intervals.hours}시간,  ${intervals.minutes}분 ${intervals.seconds}초 남았습니다.`;

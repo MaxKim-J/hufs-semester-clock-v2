@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Semesters } from '@shared/services/api/types';
-import { isUserSeasonal } from '../../../atoms';
+import { isUserSeasonal } from '../atoms';
 import { getCurrentSemester } from '@/SemesterClock/utils/semesterHelper';
 
 const useClockSemester = (semesters: Semesters) => {

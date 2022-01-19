@@ -4,7 +4,7 @@ import { MutableSnapshot } from 'recoil';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import TestBoundary from '@components/boundries/TestBoundary';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
-import UserInfoDisplayArticle from '@/UserInfo/components/UserInfoSection/UserInfoDisplayArticle';
+import UserInfoDisplay from '@/UserInfo/components/UserInfoArticle/UserInfoDisplay';
 import UserInfoInputArticle from '@/UserInfo/components/UserInfoInputSection/UserInfoInputArticle';
 import { userInfo } from '@/UserInfo/atoms';
 
@@ -30,7 +30,7 @@ describe('User Interaction: 유저는 학번/이름 설정란에서 유저의 �
     render(
       <TestBoundary recoilState={recoilState}>
         <AsyncBoundaryWithQuery>
-          <UserInfoDisplayArticle />
+          <UserInfoDisplay />
           <UserInfoInputArticle />
         </AsyncBoundaryWithQuery>
       </TestBoundary>

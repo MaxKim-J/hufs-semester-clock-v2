@@ -15,7 +15,7 @@ const ClockPage = lazy(
 
 function AppMain() {
   return (
-    <main css={mainSectionStyle} aria-label="메인 정보">
+    <main css={mainSectionStyle}>
       <Background />
       <ScrollSplitLayout
         sections={[

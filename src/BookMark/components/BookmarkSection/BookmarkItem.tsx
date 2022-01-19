@@ -22,25 +22,26 @@ function BookmarkItem({ bookmark, onClickClose }: BookMarkProps) {
       }}
       css={bookMarkItemWrapperStyle}
     >
-      {onClickClose && (
-        <button
-          onClick={onClickClose}
-          css={closeButtonStyle}
-          type="button"
-          data-testid={`remove-${bookmark.id}`}
-        >
-          <img css={closeImg} src={CloseBlack} alt="삭제 아이콘" />
-        </button>
-      )}
       <a href={bookmark.url} css={bookMarkItemStyle}>
         <div css={emojiWrapperStyle}>
-          <Emoji emoji={bookmark.emoji ?? '🌐'} size="size24" />
+          <Emoji emoji={bookmark.emoji ?? '🌐'} size="size24" hidden />
         </div>
         <Spacer height="size8" />
         <Text size="size12" css={bookmarkTitleStyle}>
           {formatEllipsis(bookmark.title, 7)}
         </Text>
       </a>
+      {onClickClose && (
+        <button
+          aria-label={`${bookmark.title} 북마크 삭제`}
+          onClick={onClickClose}
+          css={closeButtonStyle}
+          type="button"
+          data-testid={`remove-${bookmark.id}`}
+        >
+          <img css={closeImg} src={CloseBlack} alt="" />
+        </button>
+      )}
     </motion.div>
   );
 }
@@ -52,6 +53,7 @@ const bookMarkItemWrapperStyle = css`
 
 const closeButtonStyle = css`
   position: absolute;
+  top: 0;
   right: 0.5rem;
 `;
 

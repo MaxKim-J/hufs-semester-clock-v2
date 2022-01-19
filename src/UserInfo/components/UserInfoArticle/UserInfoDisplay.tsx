@@ -8,24 +8,28 @@ import {
   getAdmissionInterval,
   getAdmissionByDate,
 } from '@/UserInfo/utils/admissionDayHelper';
+import Emoji from '@components/fundamentals/Emoji';
 
-function UserInfoDisplayArticle() {
+function UserInfoDisplay() {
   const { value: userInfoValue } = useRecoilValue(userInfo);
 
   const userAdmission =
     userInfoValue === null ? getAdmissionByDate() : userInfoValue.admission;
 
+  const greetingMessage = getGreetingMessage();
+
   return (
-    <article css={articleStyle}>
+    <div css={articleStyle}>
       <Text size="size24">
         {userAdmission}학번 외대 입학{' '}
         {formatNumber(getAdmissionInterval(userAdmission))}일째
       </Text>
       <Text size="size24">
         {userInfoValue === null ? '학우' : userInfoValue.name}님,{' '}
-        {getGreetingMessage()}
+        <Emoji size="size24" emoji={greetingMessage.emoji} hidden />{' '}
+        {greetingMessage.message}
       </Text>
-    </article>
+    </div>
   );
 }
 
@@ -33,4 +37,4 @@ const articleStyle = css`
   text-align: center;
 `;
 
-export default UserInfoDisplayArticle;
+export default UserInfoDisplay;

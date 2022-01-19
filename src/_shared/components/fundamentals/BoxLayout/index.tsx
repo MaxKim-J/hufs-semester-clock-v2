@@ -13,7 +13,7 @@ function BoxLayout({ title, children, labelId }: BoxLayoutProps) {
   return (
     <article aria-labelledby={labelId} css={boxContainerStyle}>
       <div css={boxHeaderStyle}>
-        <Heading id={labelId} tag="h3" color="black">
+        <Heading id={labelId} tag="h2" color="black">
           {title}
         </Heading>
       </div>

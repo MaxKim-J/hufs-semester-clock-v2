@@ -3,6 +3,7 @@ import Spacer from '@components/fundamentals/Spacer';
 import { Text } from '@components/fundamentals/Text';
 import plusGray from '@shared/images/plus-gray.svg';
 import { css } from '@emotion/react';
+import { readableHiddenHeading } from '@style/common';
 import { transparentTable, colorTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -23,12 +24,16 @@ function BookmarkCreateButton() {
         onClick={() => {
           setIsDialogOpen((prevState) => !prevState);
         }}
+        aria-describedby="bookmark-create-describe"
       >
         <div css={plusImgWrapperStyle}>
-          <img src={plusGray} css={plusImgStyle} alt="추가 아이콘" />
+          <img src={plusGray} css={plusImgStyle} alt="" />
         </div>
         <Spacer height="size8" />
-        <Text size="size12">즐겨찾기 추가</Text>
+        <Text size="size12">북마크 추가</Text>
+        <p id="bookmark-create-describe" css={readableHiddenHeading}>
+          이 버튼을 통해 리스트에 북마크를 추가할 수 있습니다.
+        </p>
       </button>
       <AnimatePresence>
         {isDialogOpen && (
