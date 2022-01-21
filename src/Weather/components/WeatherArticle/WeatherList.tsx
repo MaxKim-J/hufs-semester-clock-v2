@@ -1,4 +1,4 @@
-import { Campus, CampusWeather } from '@shared/services/api/types';
+import { CampusWeather } from '@shared/services/api/types';
 import { Text } from '@components/fundamentals/Text';
 import { useRecoilState } from 'recoil';
 import Button from '@components/fundamentals/Button';
