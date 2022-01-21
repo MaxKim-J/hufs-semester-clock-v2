@@ -1,13 +1,18 @@
 import { Fragment } from 'react';
 import { css } from '@emotion/react';
 import upIcon from '@shared/images/up.svg';
+import {
+  getHoursFromMs,
+  getMinutesFromMs,
+  getSecondsFromMs,
+} from '@shared/utils/timeHelper';
 import { Text } from '@components/fundamentals/Text';
 import { formatDigits } from '@shared/utils/formatHelper';
 import downIcon from '@shared/images/down.svg';
-import useTimerDigits, {
-  DigitType,
-  ActionType,
-} from '@/Timer/hooks/useTimerDigits';
+
+type DigitType = 'hours' | 'minutes' | 'seconds';
+type ActionType = 'increase' | 'decrease';
+type DigitTable = { [key in DigitType]: number };
 
 type DigitDataType = {
   id: DigitType;
@@ -29,6 +34,12 @@ const digitData: DigitDataType[] = [
   },
 ];
 
+const table: DigitTable = {
+  seconds: 1000,
+  minutes: 1000 * 60,
+  hours: 1000 * 60 * 60,
+};
+
 type TimeDigitsProps = {
   targetMs: number;
   operateTargetMs: (operand: number) => void;
@@ -40,7 +51,18 @@ function TimerDigits({
   operateTargetMs,
   isTimerOn,
 }: TimeDigitsProps) {
-  const { getTargetMsOperand, currentDigits } = useTimerDigits(targetMs);
+  const currentDigits: DigitTable = {
+    hours: getHoursFromMs(targetMs),
+    minutes: getMinutesFromMs(targetMs),
+    seconds: getSecondsFromMs(targetMs),
+  };
+
+  const getTargetMsOperand = (digit: DigitType, action: ActionType) => {
+    if (action === 'decrease' && currentDigits[digit] === 0) {
+      return table[digit] * (digit === 'hours' ? 23 : 59);
+    }
+    return table[digit] * (action === 'increase' ? 1 : -1);
+  };
 
   const modifyTargetMs = (type: DigitType, actions: ActionType) => {
     operateTargetMs(getTargetMsOperand(type, actions));

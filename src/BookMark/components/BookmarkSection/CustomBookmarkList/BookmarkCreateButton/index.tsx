@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Spacer from '@components/fundamentals/Spacer';
 import { Text } from '@components/fundamentals/Text';
 import plusGray from '@shared/images/plus-gray.svg';
@@ -12,9 +12,9 @@ import BookmarkInputDialog from './BookmarkInputDialog';
 function BookmarkCreateButton() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const closeDialog = () => {
+  const closeDialog = useCallback(() => {
     setIsDialogOpen(false);
-  };
+  }, [setIsDialogOpen]);
 
   return (
     <div css={createButtonWrapperStyle}>

@@ -21,18 +21,18 @@ function TimerContent() {
     setIsTimerOn(false);
   }, [setIsTimerOn]);
 
+  useTimerInterval(isTimerOn, targetMs, tickTimer, turnOffTimer);
+
+  const resetTimer = useCallback(() => {
+    setTargetMs(0);
+  }, [setTargetMs]);
+
   const operateTargetMs = useCallback(
     (operand: number) => {
       setTargetMs((prevState) => prevState + operand);
     },
     [setTargetMs]
   );
-
-  const resetTimer = useCallback(() => {
-    setTargetMs(0);
-  }, [setTargetMs]);
-
-  useTimerInterval(isTimerOn, targetMs, tickTimer, turnOffTimer);
 
   return (
     <div css={timerStyle}>

@@ -1,4 +1,4 @@
-import { ReactChild, WheelEvent, Suspense } from 'react';
+import { ReactChild, WheelEvent, Suspense, useCallback } from 'react';
 import { css } from '@emotion/react';
 import DotSwitch from '@components/fundamentals/DotSwitch';
 import { spaceTable } from '@style/variables';
@@ -20,12 +20,15 @@ type ScrollSplitLayoutProps = {
 function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
   const [sectionIndex, setSectionIndex] = useRecoilState(sectionIndexAtom);
 
-  const changeIndex = (index: number) => {
-    setSectionIndex((s) => ({
-      current: index,
-      max: Math.max(s.max, index),
-    }));
-  };
+  const changeIndex = useCallback(
+    (index: number) => {
+      setSectionIndex((s) => ({
+        current: index,
+        max: Math.max(s.max, index),
+      }));
+    },
+    [setSectionIndex]
+  );
 
   const wheelHandler = (e: WheelEvent<HTMLElement>) => {
     const { deltaY, deltaX } = e;

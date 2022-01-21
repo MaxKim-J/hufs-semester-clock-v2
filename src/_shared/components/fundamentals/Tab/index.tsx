@@ -1,4 +1,4 @@
-import { ReactChild, useState } from 'react';
+import { ReactChild, useState, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import CloseWhite from '@shared/images/close-white.svg';
 import { spaceTable, transparentTable } from '@style/variables';
@@ -16,14 +16,17 @@ type TabProps = {
 function Tab({ title, children, direction = 'left' }: TabProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const openTabDialog = useCallback(() => {
+    setIsOpen((state) => !state);
+  }, [setIsOpen]);
+
+  const closeTabDialog = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
   return (
     <div css={dialogContainerStyle}>
-      <button
-        type="button"
-        onClick={() => {
-          setIsOpen((state) => !state);
-        }}
-      >
+      <button type="button" onClick={openTabDialog}>
         <Text>{title}</Text>
       </button>
       <AnimatePresence>
@@ -37,12 +40,7 @@ function Tab({ title, children, direction = 'left' }: TabProps) {
           >
             <div css={dialogHeader}>
               <Heading tag="h1">{title}</Heading>
-              <button
-                type="button"
-                onClick={() => {
-                  setIsOpen(false);
-                }}
-              >
+              <button type="button" onClick={closeTabDialog}>
                 <img css={closeImg} src={CloseWhite} alt="닫기" />
               </button>
             </div>

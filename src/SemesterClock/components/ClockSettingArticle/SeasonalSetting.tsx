@@ -1,3 +1,4 @@
+import { useMemo, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import { Text } from '@components/fundamentals/Text';
@@ -12,15 +13,17 @@ function SeasonalSetting() {
   const semesters = useSemesterQuery() as Semesters;
   const [isSeasonal, setIsSeasonal] = useRecoilState(isUserSeasonal);
 
-  const isSeasonalSelectable = () =>
-    isClockUnexpired(new Date(semesters.seasonal.due));
+  const isSeasonalSelectable = useMemo(
+    () => isClockUnexpired(new Date(semesters.seasonal.due)),
+    [semesters]
+  );
 
-  const toggleSemester = async () => {
+  const toggleSemester = useCallback(() => {
     setIsSeasonal((state) => ({
       ...state,
       value: !state.value,
     }));
-  };
+  }, [setIsSeasonal]);
 
   return (
     <div css={seasonalSettingStyle}>
@@ -29,9 +32,9 @@ function SeasonalSetting() {
         checked={isSeasonal.value as boolean}
         onToggle={toggleSemester}
         title="계절학기 전환 스위치"
-        disabled={!isSeasonalSelectable()}
+        disabled={!isSeasonalSelectable}
       />
-      {!isSeasonalSelectable() && (
+      {!isSeasonalSelectable && (
         <Text css={warningStyle} size="size12" color="gray">
           계절학기 수강 기간이 아닙니다.
         </Text>
