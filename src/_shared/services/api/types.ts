@@ -24,10 +24,8 @@ export interface Admission {
 export type CampusWeather = { [key in Campus]: Weather[] };
 
 export interface Weather {
-  afternoon_icon: string;
-  date: string;
   id: number;
-  morning_icon: string;
+  date: string;
   reginal: 'seoul' | 'global';
   temp: string;
   weatherId: number;
