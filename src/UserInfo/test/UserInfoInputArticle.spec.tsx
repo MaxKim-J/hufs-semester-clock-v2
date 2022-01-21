@@ -11,7 +11,7 @@ import { userInfo } from '@/UserInfo/atoms';
 describe('User Interaction: 유저는 학번/이름 설정란에서 유저의 학번/이름 정보를 바꿀 수 있다.', () => {
   beforeAll(() => {
     const mockAxios = new MockAdapter(axiosClient, { delayResponse: 200 });
-    mockAxios.onGet(`/admission`).reply(200, [
+    mockAxios.onGet('/admission').reply(200, [
       { key: 2022, value: '22' },
       { key: 2021, value: '21' },
       { key: 2020, value: '20' },
