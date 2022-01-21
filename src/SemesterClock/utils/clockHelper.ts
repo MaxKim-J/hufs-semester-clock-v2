@@ -1,10 +1,10 @@
 import { SemesterValue } from '@shared/services/api/types';
 import {
-  getDaysFromMs,
-  getHoursFromMs,
-  getMinutesFromMs,
+  getHoursFromTimestamp,
+  getDaysFromTimestamp,
+  getMinutesFromTimestamp,
+  getSecondsFromTimestamp,
   getNow,
-  getSecondsFromMs,
 } from '@shared/utils/timeHelper';
 import { isAfter, isBefore } from 'date-fns';
 import { ClockDigits, formatDigits } from '@shared/utils/formatHelper';
@@ -23,10 +23,10 @@ export const getClockIntervals = (
   const intervalMs = +semesterDueDate - +date;
 
   return {
-    days: formatDigits(getDaysFromMs(intervalMs)),
-    hours: formatDigits(getHoursFromMs(intervalMs)),
-    minutes: formatDigits(getMinutesFromMs(intervalMs)),
-    seconds: formatDigits(getSecondsFromMs(intervalMs)),
+    days: formatDigits(getDaysFromTimestamp(intervalMs)),
+    hours: formatDigits(getHoursFromTimestamp(intervalMs)),
+    minutes: formatDigits(getMinutesFromTimestamp(intervalMs)),
+    seconds: formatDigits(getSecondsFromTimestamp(intervalMs)),
   };
 };
 

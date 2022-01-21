@@ -6,12 +6,8 @@ import TimerButtons from '@/Timer/components/TimerArticle/TimerContent/TimerButt
 import useTimerInterval from '@/Timer/hooks/useTimerInterval';
 
 function TimerContent() {
-  const [targetMs, setTargetMs] = useState(0);
+  const [targetTime, setTargetTime] = useState(0);
   const [isTimerOn, setIsTimerOn] = useState(false);
-
-  const tickTimer = useCallback(() => {
-    setTargetMs((prevState) => prevState - 1000);
-  }, [setTargetMs]);
 
   const turnOnTimer = useCallback(() => {
     setIsTimerOn(true);
@@ -21,24 +17,28 @@ function TimerContent() {
     setIsTimerOn(false);
   }, [setIsTimerOn]);
 
-  useTimerInterval(isTimerOn, targetMs, tickTimer, turnOffTimer);
+  const tickTimer = useCallback(() => {
+    setTargetTime((prevState) => prevState - 1000);
+  }, [setTargetTime]);
+
+  useTimerInterval(isTimerOn, targetTime, tickTimer, turnOffTimer);
 
   const resetTimer = useCallback(() => {
-    setTargetMs(0);
-  }, [setTargetMs]);
+    setTargetTime(0);
+  }, [setTargetTime]);
 
   const operateTargetMs = useCallback(
     (operand: number) => {
-      setTargetMs((prevState) => prevState + operand);
+      setTargetTime((prevState) => prevState + operand);
     },
-    [setTargetMs]
+    [setTargetTime]
   );
 
   return (
     <div css={timerStyle}>
       <Spacer />
       <TimerDigits
-        targetMs={targetMs}
+        targetTime={targetTime}
         isTimerOn={isTimerOn}
         operateTargetMs={operateTargetMs}
       />

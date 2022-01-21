@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 import { css } from '@emotion/react';
 import upIcon from '@shared/images/up.svg';
 import {
-  getHoursFromMs,
-  getMinutesFromMs,
-  getSecondsFromMs,
+  getHoursFromTimestamp,
+  getMinutesFromTimestamp,
+  getSecondsFromTimestamp,
 } from '@shared/utils/timeHelper';
 import { Text } from '@components/fundamentals/Text';
 import { formatDigits } from '@shared/utils/formatHelper';
@@ -41,20 +41,20 @@ const table: DigitTable = {
 };
 
 type TimeDigitsProps = {
-  targetMs: number;
+  targetTime: number;
   operateTargetMs: (operand: number) => void;
   isTimerOn: boolean;
 };
 
 function TimerDigits({
-  targetMs,
+  targetTime,
   operateTargetMs,
   isTimerOn,
 }: TimeDigitsProps) {
   const currentDigits: DigitTable = {
-    hours: getHoursFromMs(targetMs),
-    minutes: getMinutesFromMs(targetMs),
-    seconds: getSecondsFromMs(targetMs),
+    hours: getHoursFromTimestamp(targetTime),
+    minutes: getMinutesFromTimestamp(targetTime),
+    seconds: getSecondsFromTimestamp(targetTime),
   };
 
   const getTargetMsOperand = (digit: DigitType, action: ActionType) => {
