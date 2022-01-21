@@ -46,7 +46,7 @@ describe('User Interaction: 유저는 커스텀 배경화면을 업로드할 수
   it('이미지 확장자가 jpeg, png가 아닌 경우 에러 메시지를 노출한다.', () => {
     const fileInput = screen.getByTitle('배경화면 파일 업로드');
     const wrongExtFile = new File(['mockFile'], 'mock.pdf', {
-      type: 'text/plain',
+      type: 'test/plain',
     });
 
     fireEvent.change(fileInput, { target: { files: [wrongExtFile] } });
