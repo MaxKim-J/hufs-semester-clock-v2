@@ -3,7 +3,7 @@ import {
   interpolateY,
 } from '@/CovidChart/utils/interpolateHelper';
 
-describe('Unit: interpolate 함수는 주어진 width, height, margin값을 토대로 꺾은선 그래프 데이터의 SVG상 위치를 반환한다.', () => {
+describe('UNIT: interpolate 함수는 주어진 width, height, margin값을 토대로 꺾은선 그래프 데이터의 SVG상 위치를 반환한다.', () => {
   const irregularGiven = [123, 182, 185, 223, 252, 272];
   const regularGiven = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // 편의상 정렬된 배열 사용
 

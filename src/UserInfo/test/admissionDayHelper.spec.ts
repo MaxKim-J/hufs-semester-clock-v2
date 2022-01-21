@@ -3,7 +3,7 @@ import {
   getAdmissionInterval,
 } from '@/UserInfo/utils/admissionDayHelper';
 
-describe('Unit: getAdmissionInterval 함수는 현재 시간과 인자로 받은 입학년도와의 날짜 차이를 반환한다.', () => {
+describe('UNIT: getAdmissionInterval 함수는 현재 시간과 인자로 받은 입학년도와의 날짜 차이를 반환한다.', () => {
   it('인자로 주어진 입학 연도 인자가 과거일 경우 양수인 날짜 차이를 반환한다.', () => {
     expect(
       getAdmissionInterval('15', new Date('2021-11-21T23:59:59'))

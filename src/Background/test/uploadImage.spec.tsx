@@ -6,8 +6,8 @@ import { userBackgroundImage } from '@/Background/atoms';
 import BackgroundContent from '@/Background/components/BackgroundContent';
 import UploadImageArticle from '@/Background/components/BackgroundSettingSection/UploadImageArticle';
 
-describe('User Interaction: 유저는 커스텀 배경화면을 업로드할 수 있다.', () => {
-  beforeEach(() => {
+describe('USER INTERACTION: 유저는 커스텀 배경화면을 업로드할 수 있다.', () => {
+  beforeAll(() => {
     const recoilState = ({ set }: MutableSnapshot) => {
       set(userBackgroundImage, {
         status: 'initialized',

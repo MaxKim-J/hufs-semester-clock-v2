@@ -19,9 +19,7 @@ describe('USER INTERACTION: 유저는 캠퍼스별(서울/글로벌) 날씨를 �
   beforeAll(() => {
     const mockAxios = new MockAdapter(axiosClient);
     mockAxios.onGet('/weather').reply(200, { weather: weathers });
-  });
 
-  beforeEach(() => {
     const recoilState = ({ set }: MutableSnapshot) => {
       set(userWeatherCampus, {
         status: 'initialized',

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { MutableSnapshot } from 'recoil';
 import { SemesterValue } from '@shared/services/api/types';
 import { sectionIndexAtom } from '@shared/atoms/common';
@@ -6,7 +6,11 @@ import TestBoundary from '@components/boundries/TestBoundary';
 import MainClock from '@/SemesterClock/components/ClockSection/SemsterClockArticle/MainClock';
 import SemesterInfo from '@/SemesterClock/components/ClockSection/SemsterClockArticle/SemesterInfo';
 
-describe('Complex UI: 종강시계(MainClock)는 설정된 semester에 따라 시계가 동작하거나 멈춘다. ', () => {
+describe('COMPLEX UI: 종강시계(MainClock)는 설정된 semester에 따라 시계가 동작하거나 멈춘다. ', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('설정된 종강 시간이 현재 기준 미래일 경우 시계가 종강까지 남은 시간을 표시한다.', () => {
     const endSemester: SemesterValue = {
       act: '종강',

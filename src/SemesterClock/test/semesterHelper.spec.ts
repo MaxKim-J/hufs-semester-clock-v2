@@ -1,7 +1,7 @@
 import { Semesters } from '@shared/services/api/types';
 import { getCurrentSemester } from '@/SemesterClock/utils/semesterHelper';
 
-describe('Unit: getCurrentSemester 함수는 특정 시간에 해당하는 semester due date을 반환한다.', () => {
+describe('UNIT: getCurrentSemester 함수는 특정 시간에 해당하는 semester due date을 반환한다.', () => {
   const semesters: Semesters = {
     current: {
       act: '종강',

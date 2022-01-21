@@ -1,6 +1,6 @@
 import { convertBlobToDataUrl } from '@/Background/utils/imageConvertingHelper';
 
-describe('Unit: convertBlobToDataUrl 함수는 이미지 파일 blob을 DataUrl로 변환한다.', () => {
+describe('UNIT: convertBlobToDataUrl 함수는 이미지 파일 blob을 DataUrl로 변환한다.', () => {
   it('jpeg 이미지 파일을 Base64 DataURL로 변환한다.', async () => {
     const jpegFile = new File(['mockFile'], 'mock.jpeg', {
       type: 'image/jpeg',

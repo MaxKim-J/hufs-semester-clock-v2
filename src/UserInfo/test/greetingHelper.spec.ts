@@ -8,7 +8,7 @@ import {
   Greetings,
 } from '@/UserInfo/utils/greetingHelper';
 
-describe('Unit: getGreetingMessage 함수는 현재 시간대에 맞는 인사 메시지를 리턴한다.', () => {
+describe('UNIT: getGreetingMessage 함수는 현재 시간대에 맞는 인사 메시지를 리턴한다.', () => {
   const getGreetingMessages = (time: Greetings) => time.map((v) => v.message);
 
   it('오전 0시에는 새벽(DAWN) 인사 메시지를 리턴한다.', () => {

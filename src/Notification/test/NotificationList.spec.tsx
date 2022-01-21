@@ -17,9 +17,7 @@ describe('USER INTERACTION: 유저는 학사공지를 페이지네이션으로 �
   beforeAll(() => {
     const mockAxios = new MockAdapter(axiosClient);
     mockAxios.onGet('/notification').reply(200, { notifications });
-  });
 
-  beforeEach(() => {
     render(
       <TestBoundary>
         <AsyncBoundaryWithQuery>
@@ -46,9 +44,7 @@ describe('USER INTERACTION: 유저는 학사공지를 페이지네이션으로 �
   });
 
   it('이전 버튼을 누를 경우, 현재로부터 이전 5개의 학사공지가 표시된다.', async () => {
-    const nextButton = await screen.findByText('다음');
     const prevButton = await screen.findByText('이전');
-    fireEvent.click(nextButton);
     fireEvent.click(prevButton);
 
     const notificationElements = screen.getAllByText(/\d번째 공지사항/i);
@@ -64,6 +60,7 @@ describe('USER INTERACTION: 유저는 학사공지를 페이지네이션으로 �
   it('목록이 첫번째 페이징 인덱스에 있는 경우, 이전 버튼은 인덱스를 변경시키지 않는다.', async () => {
     const prevButton = await screen.findByText('이전');
     fireEvent.click(prevButton);
+
     const indexText = screen.getByRole('alert');
     expect(indexText.textContent).toBe('1');
   });
@@ -72,7 +69,7 @@ describe('USER INTERACTION: 유저는 학사공지를 페이지네이션으로 �
     const nextButton = await screen.findByText('다음');
     for (
       let i = 0;
-      i < Math.floor(notifications.length / NOTI_PER_INDEX);
+      i < Math.floor(notifications.length / NOTI_PER_INDEX) + 1;
       i += 1
     ) {
       fireEvent.click(nextButton);
