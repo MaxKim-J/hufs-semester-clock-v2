@@ -46,8 +46,7 @@ describe('USER INTERACTION: 유저는 캠퍼스별(서울/글로벌) 날씨를 �
   it('버튼을 클릭하면 캠퍼스와 캠퍼스별 날씨가 전환된다.', async () => {
     const changeButton = await screen.findByText('캠퍼스 바꾸기');
     fireEvent.click(changeButton);
-
-    const weatherDescription = screen.getByText(/글로벌 캠퍼스/i);
-    expect(weatherDescription).toBeInTheDocument();
+    const globalCampusWeather = await screen.findByText(/글로벌 캠퍼스/i);
+    expect(globalCampusWeather).toBeInTheDocument();
   });
 });

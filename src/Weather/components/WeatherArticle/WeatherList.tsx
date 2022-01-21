@@ -26,7 +26,8 @@ function WeatherList() {
   const toggleWeatherCampus = () => {
     setWeatherCampus((state) => ({
       ...state,
-      value: state.value === 'seoul' ? 'global' : 'seoul',
+      value:
+        state.value === null || state.value === 'seoul' ? 'global' : 'seoul',
     }));
   };
 
@@ -35,7 +36,7 @@ function WeatherList() {
       <Spacer height="size8" />
       <div css={weatherListHeaderStyle}>
         <Text size="size12" color="darkGray" role="alert">
-          5일간의 {translateCampusText(weatherCampusValue as Campus)} 날씨
+          5일간의 {translateCampusText(weatherCampusValue ?? 'seoul')} 날씨
         </Text>
         <Button
           noBorder
