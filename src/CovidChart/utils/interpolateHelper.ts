@@ -24,7 +24,7 @@ type InterpolateXOptions = {
 };
 
 export const interpolateX = ({ nums, width, xMargin }: InterpolateXOptions) => {
-  const interval = Math.floor(width / nums.length);
+  const interval = Math.floor((width - xMargin * 2) / (nums.length - 1));
   return nums.map((_, idx) => idx * interval + xMargin);
 };
 
