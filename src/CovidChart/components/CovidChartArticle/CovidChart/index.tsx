@@ -9,9 +9,11 @@ function CovidChart() {
   return (
     <>
       <CovidSvgChart
+        data={covidChartData as CoronaPerDate[]}
         width={448}
         height={100}
-        data={covidChartData as CoronaPerDate[]}
+        yMargin={20}
+        xMargin={32}
       />
       <CovidChartLabel data={covidChartData as CoronaPerDate[]} />
     </>

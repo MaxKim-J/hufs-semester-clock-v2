@@ -1,27 +1,31 @@
 import { CoronaPerDate } from '@shared/services/api/types';
 
 type InterpolateYOptions = {
-  maxY: number;
-  minY: number;
   nums: number[];
+  yMargin: number;
+  height: number;
 };
 
-export const interpolateY = ({ nums, maxY, minY }: InterpolateYOptions) => {
+export const interpolateY = ({
+  nums,
+  height,
+  yMargin,
+}: InterpolateYOptions) => {
   const maxValue = Math.max(...nums);
   const minValue = Math.min(...nums);
-  const rate = (maxValue - minValue) / (maxY - minY);
-  return nums.map((value) => maxY - (value - minValue) / rate);
+  const rate = (maxValue - minValue) / (height - 2 * yMargin);
+  return nums.map((value) => height - yMargin - (value - minValue) / rate);
 };
 
 type InterpolateXOptions = {
   nums: number[];
   width: number;
+  xMargin: number;
 };
 
-export const interpolateX = ({ nums, width }: InterpolateXOptions) => {
+export const interpolateX = ({ nums, width, xMargin }: InterpolateXOptions) => {
   const interval = Math.floor(width / nums.length);
-  const margin = Math.floor(interval / 2);
-  return nums.map((_, idx) => idx * interval + margin);
+  return nums.map((_, idx) => idx * interval + xMargin);
 };
 
 type getChartDataOptions = {
@@ -50,17 +54,3 @@ export const getChartPolylineData = ({
     (acc, cur, idx) => `${acc}${interpolatedX[idx]} ${interpolatedY[idx]} `,
     ''
   );
-
-type getInitialChartPolylineDataOptions = Omit<
-  getChartDataOptions,
-  'interpolatedY'
-> & {
-  floorY: number;
-};
-
-export const getInitialChartPolylineData = ({
-  data,
-  interpolatedX,
-  floorY,
-}: getInitialChartPolylineDataOptions) =>
-  data.reduce((acc, cur, idx) => `${acc}${interpolatedX[idx]} ${floorY} `, '');

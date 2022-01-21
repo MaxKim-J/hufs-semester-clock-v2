@@ -3,23 +3,59 @@ import { CoronaPerDate } from '@shared/services/api/types';
 import { css } from '@emotion/react';
 import { colorTable } from '@style/variables';
 import { formatNumber } from '@shared/utils/formatHelper';
-import useCovidSvgChart from '@/CovidChart/hooks/useCovidSvgChart';
+import {
+  getChartDotsData,
+  getChartPolylineData,
+  interpolateX,
+  interpolateY,
+} from '@/CovidChart/utils/interpolateHelper';
 
 type CovidSvgChartProps = {
   width: number;
   height: number;
+  xMargin: number;
+  yMargin: number;
   data: CoronaPerDate[];
 };
 
-function CovidSvgChart({ width, height, data }: CovidSvgChartProps) {
-  const { initialChartPolylineData, chartPolylineData, chartDotsData } =
-    useCovidSvgChart({
-      data,
-      width,
-      height,
-      maxY: 80,
-      minY: 20,
-    });
+function CovidSvgChart({
+  width,
+  height,
+  data,
+  xMargin,
+  yMargin,
+}: CovidSvgChartProps) {
+  const nums = data.map((value) => value.rate);
+
+  const interpolatedX = interpolateX({
+    nums,
+    width,
+    xMargin,
+  });
+
+  const interpolatedY = interpolateY({
+    nums,
+    height,
+    yMargin,
+  });
+
+  const chartPolylineData = getChartPolylineData({
+    data,
+    interpolatedX,
+    interpolatedY,
+  });
+
+  const initialChartPolylineData = getChartPolylineData({
+    data,
+    interpolatedX,
+    interpolatedY: Array(nums.length).fill(height),
+  });
+
+  const chartDotsData = getChartDotsData({
+    data,
+    interpolatedX,
+    interpolatedY,
+  });
 
   return (
     <MotionConfig transition={{ duration: 0.5, ease: 'backOut' }}>
