@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    "target": "esnext",
     "module": "ES2020",
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
+    "jsx": "preserve",
     "moduleResolution": "node",
     "allowJs": true,
     "checkJs": true,

@@ -10,10 +10,12 @@
     "dev": "NODE_ENV=development webpack --watch --config webpack.config.js",
     "build": "NODE_ENV=production webpack --config webpack.config.js",
     "test": "jest",
+    "type-check": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.16.7",
     "@emotion/react": "^11.6.0",
     "@storybook/react": "^6.3.12",
     "@testing-library/jest-dom": "^5.16.1",
@@ -38,6 +40,9 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.7",
+    "@emotion/babel-plugin": "^11.7.2",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
