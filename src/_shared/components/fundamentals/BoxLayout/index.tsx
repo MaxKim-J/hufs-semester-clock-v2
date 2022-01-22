@@ -32,11 +32,11 @@ const boxContainerStyle = css`
 `;
 
 const boxHeaderStyle = css`
+  width: calc(100% + 0.5rem);
   background-color: ${transparentTable.white90};
   padding: ${spaceTable.size4};
   position: relative;
   left: -0.5rem;
-  width: 29.5rem;
 `;
 
 export default BoxLayout;

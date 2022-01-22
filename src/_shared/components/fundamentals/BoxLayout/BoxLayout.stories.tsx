@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import BoxLayout from './index';
 
@@ -8,16 +7,18 @@ export default {
 } as ComponentMeta<typeof BoxLayout>;
 
 const Template: ComponentStory<typeof BoxLayout> = (args) => (
-  <BoxLayout {...args}>
-    <div
-      css={{
-        width: '300px',
-        height: '150px',
-      }}
-    >
-      content
-    </div>
-  </BoxLayout>
+  <div css={{ width: '500px' }}>
+    <BoxLayout {...args}>
+      <div
+        css={{
+          width: '300px',
+          height: '150px',
+        }}
+      >
+        content
+      </div>
+    </BoxLayout>
+  </div>
 );
 
 export const GeneralBoxLayout = Template.bind({});
