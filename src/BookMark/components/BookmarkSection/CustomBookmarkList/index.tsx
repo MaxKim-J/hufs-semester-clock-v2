@@ -55,7 +55,8 @@ function CustomBookmarkList() {
                   />
                 </li>
               ))}
-            {userBookmarksValue !== null && userBookmarksValue.length < 5 && (
+            {(userBookmarksValue === null ||
+              userBookmarksValue?.length < 5) && (
               <li css={bookMarkWrapperStyle}>
                 <BookmarkCreateButton />
               </li>

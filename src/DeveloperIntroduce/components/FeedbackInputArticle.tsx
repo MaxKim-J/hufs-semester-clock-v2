@@ -7,7 +7,7 @@ import { css } from '@emotion/react';
 import Spacer from '@components/fundamentals/Spacer';
 import { spaceTable } from '@style/variables';
 import useInput from '@shared/hooks/useInput';
-import { getHoursFromTimestamp, getNow } from '@shared/utils/timeHelper';
+import { getDaysFromTimestamp, getNow } from '@shared/utils/timeHelper';
 import useFeedbackMutation from '@/DeveloperIntroduce/queries/useFeedbackMutation';
 import { userLatestFeedbackDate } from '@/DeveloperIntroduce/atoms';
 
@@ -21,7 +21,7 @@ function FeedbackInputArticle() {
   const isFeedbackWritable = useMemo(
     () =>
       latestFeedbackDate.value === null ||
-      getHoursFromTimestamp(+getNow() - latestFeedbackDate.value) > 24,
+      getDaysFromTimestamp(+getNow() - latestFeedbackDate.value) > 0,
     [latestFeedbackDate]
   );
 
