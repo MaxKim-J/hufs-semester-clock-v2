@@ -11,7 +11,9 @@ type UseInputParams = {
   initialValue?: string;
 };
 
-const useInput = ({
+const useInput = <
+  InputType extends HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+>({
   name,
   validators = [],
   initialValue = '',
@@ -40,15 +42,10 @@ const useInput = ({
     setStatus((state) => ({ ...state, errorMessage: '', isError: false }));
   }, [status.value, validatorsRef]);
 
-  const handleInput = useCallback(
-    (
-      e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-    ) => {
-      const { value } = e.target;
-      setStatus((state) => ({ ...state, value }));
-    },
-    []
-  );
+  const handleInput = useCallback((e: ChangeEvent<InputType>) => {
+    const { value } = e.target;
+    setStatus((state) => ({ ...state, value }));
+  }, []);
 
   const resetInput = useCallback(() => {
     setStatus((state) => ({ ...state, value: '' }));

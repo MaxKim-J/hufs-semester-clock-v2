@@ -1,16 +1,14 @@
-import { ChangeEvent } from 'react';
+import { HTMLAttributes } from 'react';
 import { css } from '@emotion/react';
 import { colorTable, TextType, textTable } from '@style/variables';
 
 export type TextInputType = {
   value: string;
-  title: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   size?: TextType;
-  maxLength?: number;
-  placeholder?: string;
   widthFigure?: number;
-};
+  maxLength?: number;
+  autoFocus?: boolean;
+} & HTMLAttributes<HTMLInputElement>;
 
 function TextInput({
   size = 'size16',

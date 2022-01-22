@@ -14,7 +14,7 @@ function UserInfoInput() {
 
   const [{ value: userInfoValue }, setUserInfo] = useRecoilState(userInfo);
 
-  const admissionInput = useInput({
+  const admissionInput = useInput<HTMLSelectElement>({
     name: 'admission',
     initialValue: userInfoValue === null ? '' : userInfoValue.admission,
     validators: [
@@ -25,7 +25,7 @@ function UserInfoInput() {
     ],
   });
 
-  const nameInput = useInput({
+  const nameInput = useInput<HTMLInputElement>({
     name: 'name',
     initialValue: userInfoValue === null ? '' : userInfoValue.name,
     validators: [

@@ -25,7 +25,7 @@ function FeedbackInputArticle() {
     [latestFeedbackDate]
   );
 
-  const feedbackInput = useInput({
+  const feedbackInput = useInput<HTMLTextAreaElement>({
     name: 'feedback',
   });
 

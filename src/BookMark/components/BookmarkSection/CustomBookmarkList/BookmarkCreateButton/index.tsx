@@ -16,14 +16,16 @@ function BookmarkCreateButton() {
     setIsDialogOpen(false);
   }, [setIsDialogOpen]);
 
+  const toggleDialog = useCallback(() => {
+    setIsDialogOpen((prevState) => !prevState);
+  }, [setIsDialogOpen]);
+
   return (
     <div css={createButtonWrapperStyle}>
       <button
         css={createButtonStyle}
         type="button"
-        onClick={() => {
-          setIsDialogOpen((prevState) => !prevState);
-        }}
+        onClick={toggleDialog}
         aria-describedby="bookmark-create-describe"
       >
         <div css={plusImgWrapperStyle}>

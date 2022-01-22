@@ -1,13 +1,14 @@
-import { ChangeEvent } from 'react';
+import { HTMLAttributes } from 'react';
 import { css } from '@emotion/react';
 import { colorTable, spaceTable, textTable, TextType } from '@style/variables';
-import { TextInputType } from '@components/fundamentals/Input/TextInput';
 import { Text } from '../../Text';
 
 type TextAreaInputProps = {
+  value: string;
   width?: number;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-} & Omit<TextInputType, 'onChange'>;
+  size?: TextType;
+  maxLength?: number;
+} & HTMLAttributes<HTMLTextAreaElement>;
 
 function TextArea({
   onChange,

@@ -13,12 +13,12 @@ type BookmarkInputDialogProps = {
 };
 
 function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
-  const urlInput = useInput({
+  const urlInput = useInput<HTMLInputElement>({
     name: 'url',
     validators: [{ validFunction: (text: string) => !!text }],
   });
 
-  const titleInput = useInput({
+  const titleInput = useInput<HTMLInputElement>({
     name: 'title',
     validators: [{ validFunction: (text: string) => !!text }],
   });
@@ -49,6 +49,7 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
         widthFigure={20}
         value={titleInput.value}
         onChange={titleInput.handleInput}
+        autoFocus
       />
       <Spacer />
       <TextInput
