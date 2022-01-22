@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { m } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import Emoji from '@components/fundamentals/Emoji';
 import { Text } from '@components/fundamentals/Text';
 import CloseBlack from '@shared/images/close-black.svg';
@@ -7,6 +7,7 @@ import { transparentTable } from '@style/variables';
 import Spacer from '@components/fundamentals/Spacer';
 import { formatEllipsis } from '@shared/utils/formatHelper';
 import { Bookmark } from '@/BookMark/atoms';
+import { fadeInAndOut } from '@style/animation';
 
 type BookMarkProps = {
   bookmark: Bookmark;
@@ -22,26 +23,28 @@ function BookmarkItem({ bookmark, onClickClose }: BookMarkProps) {
       }}
       css={bookMarkItemWrapperStyle}
     >
-      <a href={bookmark.url} css={bookMarkItemStyle}>
-        <div css={emojiWrapperStyle}>
-          <Emoji emoji={bookmark.emoji ?? '🌐'} size="size24" hidden />
-        </div>
-        <Spacer height="size8" />
-        <Text size="size12" css={bookmarkTitleStyle}>
-          {formatEllipsis(bookmark.title, 7)}
-        </Text>
-      </a>
-      {onClickClose && (
-        <button
-          aria-label={`${bookmark.title} 북마크 삭제`}
-          onClick={onClickClose}
-          css={closeButtonStyle}
-          type="button"
-          data-testid={`remove-${bookmark.id}`}
-        >
-          <img css={closeImg} src={CloseBlack} alt="" />
-        </button>
-      )}
+      <m.div {...fadeInAndOut} transition={{ delay: 0.25 }}>
+        <a href={bookmark.url} css={bookMarkItemStyle}>
+          <div css={emojiWrapperStyle}>
+            <Emoji emoji={bookmark.emoji ?? '🌐'} size="size24" hidden />
+          </div>
+          <Spacer height="size8" />
+          <Text size="size12" css={bookmarkTitleStyle}>
+            {formatEllipsis(bookmark.title, 7)}
+          </Text>
+        </a>
+        {onClickClose && (
+          <button
+            aria-label={`${bookmark.title} 북마크 삭제`}
+            onClick={onClickClose}
+            css={closeButtonStyle}
+            type="button"
+            data-testid={`remove-${bookmark.id}`}
+          >
+            <img css={closeImg} src={CloseBlack} alt="" />
+          </button>
+        )}
+      </m.div>
     </m.div>
   );
 }

@@ -39,13 +39,7 @@ function BookmarkCreateButton() {
       </button>
       <AnimatePresence>
         {isDialogOpen && (
-          <m.dialog
-            {...fadeInAndOut}
-            transition={{ delay: 0.15 }}
-            aria-modal
-            open
-            css={inputDialogStyle}
-          >
+          <m.dialog {...fadeInAndOut} aria-modal open css={inputDialogStyle}>
             <BookmarkInputDialog closeDialog={closeDialog} />
           </m.dialog>
         )}
