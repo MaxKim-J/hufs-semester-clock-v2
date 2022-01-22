@@ -16,19 +16,13 @@ const constantKey = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 const config = {
   mode: process.env.NODE_ENV,
   entry: {
-    background: path.resolve(__dirname, 'src/assets/background.js'),
     bundle: path.resolve(__dirname, 'src/index.tsx'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: (pathData) => {
-      if (pathData.chunk.name === 'background') {
-        return '[name].js';
-      }
-      return PRODUCTION
-        ? 'bundle/bundle.[contenthash:8].js'
-        : 'bundle/[name].js';
-    },
+    filename: PRODUCTION
+      ? 'bundle/bundle.[contenthash:8].js'
+      : 'bundle/[name].js',
     chunkFilename: PRODUCTION
       ? 'bundle/chunk.[contenthash:8].js'
       : 'bundle/chunk.[name].js',
@@ -75,11 +69,6 @@ const config = {
   module: {
     rules: [
       {
-        test: /background\.js$/i,
-        use: ['babel-loader'],
-        exclude: /node_modules/,
-      },
-      {
         test: /\.tsx?$/i,
         use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
@@ -90,7 +79,7 @@ const config = {
           loader: 'url-loader',
           options: {
             name: '[name].[ext]?[hash]',
-            limit: 10000,
+            limit: 20000,
           },
         },
       },
@@ -106,7 +95,7 @@ const config = {
       patterns: [
         {
           from: path.resolve(__dirname, 'src/assets/icons'),
-          to: 'assets/icons',
+          to: 'icons',
           toType: 'dir',
         },
         {
@@ -119,7 +108,6 @@ const config = {
       ...constants[constantKey],
     }),
     new HtmlWebpackPlugin({
-      excludeChunks: ['background'],
       template: './src/assets/index.html',
       minify: {
         collapseWhitespace: true,

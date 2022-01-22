@@ -4,17 +4,11 @@
   "version": "2.0.0",
   "manifest_version": 3,
   "icons": {
-    "48": "assets/icons/icon_48.png",
-    "128": "assets/icons/icon_128.png"
-  },
-  "background": {
-    "service_worker": "background.js"
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
   },
   "chrome_url_overrides": {
-    "PAGE_TO_OVERRIDE": "index.html"
+    "newtab": "index.html"
   },
-  "permissions": ["background", "storage", "tabs"],
-  "host_permissions": [
-    "https://us-central1-hufssemesterclockfirebase.cloudfunctions.net/"
-  ]
+  "permissions": ["storage"]
 }

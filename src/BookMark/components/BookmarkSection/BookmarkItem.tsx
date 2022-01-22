@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
-import { AnimatePresence, m } from 'framer-motion';
+import { m } from 'framer-motion';
 import Emoji from '@components/fundamentals/Emoji';
 import { Text } from '@components/fundamentals/Text';
+import { fadeInAndOut } from '@style/animation';
 import CloseBlack from '@shared/images/close-black.svg';
 import { transparentTable } from '@style/variables';
 import Spacer from '@components/fundamentals/Spacer';
 import { formatEllipsis } from '@shared/utils/formatHelper';
 import { Bookmark } from '@/BookMark/atoms';
-import { fadeInAndOut } from '@style/animation';
 
 type BookMarkProps = {
   bookmark: Bookmark;
