@@ -18,11 +18,14 @@ function UserInfoDisplay() {
 
   const greetingMessage = getGreetingMessage();
 
+  const admissionInterval = getAdmissionInterval(userAdmission);
+
   return (
     <div css={articleStyle}>
       <Text size="size24">
         {userAdmission}학번 외대 입학{' '}
-        {formatNumber(getAdmissionInterval(userAdmission))}일째
+        {formatNumber(Math.abs(admissionInterval))}
+        {admissionInterval < 0 ? '일 전' : '일째'}
       </Text>
       <Text size="size24">
         {userInfoValue === null ? '학우' : userInfoValue.name}님,{' '}
