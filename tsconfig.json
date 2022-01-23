@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "ES2020",
-    "jsx": "preserve",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "moduleResolution": "node",
-    "allowJs": true,
-    "checkJs": true,
     "sourceMap": true,
     "isolatedModules": true,
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
+    "noEmit":true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],

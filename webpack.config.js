@@ -70,8 +70,8 @@ const config = {
     rules: [
       {
         test: /\.tsx?$/i,
-        use: ['babel-loader'],
-        exclude: /node_modules/,
+        loader: 'babel-loader',
+        exclude: '/node_modules/',
       },
       {
         test: /\.(svg)$/,

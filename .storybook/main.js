@@ -7,7 +7,6 @@ module.exports = {
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   babel: async (options) => {
-    console.log(options);
     options.presets.push('@emotion/babel-preset-css-prop');
     return options;
   },
