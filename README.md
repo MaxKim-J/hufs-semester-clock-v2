@@ -1,53 +1,51 @@
 # 외대 종강시계 V2
 
-12월까지 천천히 해보자구
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/MaxKim-J/HUFS-Semester-Clock-Extension/master) ![Chrome Web Store](https://img.shields.io/chrome-web-store/users/jadlpknbgnmmelikpcaogikohieafaem?hl=ko) ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/jadlpknbgnmmelikpcaogikohieafaem)
 
-## 고민들 정리
+**HUFS Semester Clock V2**  
+외대생을 위한, 종강까지 얼마나 남았는지 보여주는 크롬 익스텐션
 
-앱을 만들면서 한 고민들은 [여기에](./README_decisions.md) 정리합니다.
+![첫번째](./img1.png)![두번째](./img2.png)
 
-## TODO
+- 🧩 [크롬 웹 스토어](https://chrome.google.com/webstore/detail/%EC%99%B8%EB%8C%80-%EC%A2%85%EA%B0%95%EC%8B%9C%EA%B3%84/jadlpknbgnmmelikpcaogikohieafaem?hl=ko)
+- 🧩 [웨일 웹 스토어](https://store.whale.naver.com/detail/mckjnmgioalpnggjipjkmadnandhomei)
 
-### 개발 전 작업
+## ✅ 주요 기능
 
-- [x] figma로 디자인하기
+- 새로운 탭을 생성하면 크롬의 디폴트 배경화면 대신, 익스텐션이 제공하는 배경 이미지와 기능이 제공됩니다.
+- 학기 중에는 종강까지 남은 시간을 보여줍니다.
+- 방학 중에는 계절학기 종강까지 or 다음학기 개강까지 남은 시간을 보여줍니다.
+- 학번과 이름을 입력하면 시간에 따른 랜덤 멘트와 입학한 날짜로부터 얼마나 지났는지 볼 수 있습니다.
+- 배경화면을 유저가 업로드한 파일을 통해 커스텀 가능합니다.
+- 학사 공지 조회와 이문동 날씨 조회, 사용자 커스텀 북마크, 코로나 현황, 오늘 뭐먹지 등 시계 외의 여러 유용한 부가 기능을 사용하실 수 있습니다.
 
-### 크롬 익스텐션 보일러플레이트 세팅 작업
+## v2.0.0에서의 개선점
 
-- [x] Rollup으로 세팅해보기
-- [x] Webpack으로 세팅해보기 => 웹팩으로 간다!
-- [x] typescript(tsc)
-- [x] eslint, prettier
+### 기능적 관점
 
-### 백엔드 작업(firebase)
+- 최소한의 인터랙션으로 모든 부가기능을 쉽게 사용할 수 있는 새로운 디자인, UX 적용
+- 각 기능들에 대해 새로운 디자인 적용
+- 타이머, 커스텀 북마크 추가, 개발자에게 피드백 보내기 기능 새로 구현
+- 애니메이션, 스켈레톤 UI 추가하여 사용자 반응성 향상
+### 기술적 관점
 
-- [x] REST API로 전환
-- [x] 크롤러 정상 작동하도록 손보기(날씨)
+- Vue+Javascript로 구현되었던 V1 코드를 React+Typescript로 리라이팅
+- 기존에 Firebase SDK에 직접 의존하는 쿼리를 REST API로 대체하고 Firebase SDK를 번들에서 제거
+- Suspense for Data Fetching, React Query, Error Boundary를 이용한 선언적 비동기 구현
+- 스크린 리더 디버깅을 병행하며, 웹표준과 웹 접근성을 준수한 마크업 작성
+- Jest, react-testing-library 이용한 68개의 유닛, 통합 테스트 코드 작성
+- Webpack 크롬 익스텐션 보일러 플레이트 직접 처음부터 구현
+- 코드 스플리팅을 이용한 번들 크기 축소
+- 앱 전체 번들 크기 축소(290KiB -> 180KiB, 기능은 더 많아졌는데 번들은 더 작아짐)
+- Manifest 3로 업데이트
 
-### 기능 개발 전 세팅 작업
+## 앞으로
 
-- [x] 디렉토리 구조 잡기
-- [x] Chrome Storage 접근 함수 만들기(일단 대충 만들기)
-- [x] Firebase API 엔드포인트로 axios 요청 함수 만들기
-- [x] React Query 세팅하고 커스텀 훅 만들기
-- [x] Suspense+ErrorBoundary 추상화 컴포넌트 만들기
-- [x] Sentry 연동해서 에러 모니터링 세팅 - 추후 Error 처리법 좀 더 연구하기
-- [x] Recoil 세팅과 chrome.storage와의 Interaction 구현
-- [x] Storybook 세팅
-- [x] Jest로 테스트 세팅
-- [x] CSS 변수, emotion 전역 세팅(폰트, 텍스트, 마진, 패딩, 색깔)
-- [x] fundamental 컴포넌트들과 story만들기
+- preact 도입 고려하기 : 더 작은 React 라이브러리로 대체해 번들 크기 더 효율화
+- 테스트 환경 및 빌드 속도 개선
+- 모니터링 환경 만들기 : 피드백, firebase functions 함수 호출 모니터링 환경 만들기
+- 기능 추가 : 위젯 위치 커스텀, 새로운 위젯 계속해서 추가
 
-### 기능 개발 작업
+## 버전
 
-text -> util -> query -> component
-
-- [x] 배경화면 - 배경화면 설정, 커스텀 배경화면 바꾸기, 개발자 소개
-- [x] 레이아웃 - 스크롤 화면전환 구현
-- [x] 종강시계 - 적합한 종강시간 표시, 종강시간 변경, 학번이름 입력
-- [x] 즐겨찾기 - 기본 북마크 표시, 즐겨찾기 추가 기능
-- [x] 탭기능/학사공지 - 학사공지 표시
-- [x] 탭기능/오늘 뭐먹지 - 오늘 뭐먹지 표시, 애니메이션
-- [x] 탭기능/타이머 - 타이머, 스탑워치 구현
-- [x] 탭기능/날씨 - 날씨 표시, 캠퍼스간 날씨전환 버튼 구현
-- [x] 탭기능/코로나 현황 - 코로나 현황 차트 구현 : **기능개발 완료 2021.1.20**
+- [릴리즈 노트](https://github.com/MaxKim-J/hufs-semester-clock-v2/releases)
