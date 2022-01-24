@@ -20,4 +20,5 @@ module.exports = {
     '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2|svg)$':
       'jest-transform-stub',
   },
+  coverageReporters: ['json-summary', 'text', 'lcov'],
 };
