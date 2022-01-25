@@ -10,5 +10,9 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
+  "web_accessible_resources":[{
+    "resources": ["netmarbleM.woff"],
+    "matches": ["https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/*"]
+  }],
   "permissions": ["storage"]
 }
