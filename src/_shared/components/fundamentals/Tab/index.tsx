@@ -74,7 +74,7 @@ const dialogStyle = (direction: 'left' | 'right') => css`
   width: 25rem;
   padding: ${spaceTable.size16};
   border-radius: 1rem;
-  background-color: ${transparentTable.black70};
+  background-color: ${transparentTable.black90};
 `;
 
 const closeImg = css`

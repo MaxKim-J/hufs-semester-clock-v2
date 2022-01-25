@@ -21,7 +21,7 @@ function NotificationArticleSkeleton() {
         count={1}
         baseColor="#afafaf"
         highlightColor="#dbdbdb"
-        height="10rem"
+        height="9rem"
         width="29rem"
       />
       <Skeleton

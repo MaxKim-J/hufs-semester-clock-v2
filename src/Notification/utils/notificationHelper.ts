@@ -5,5 +5,5 @@ import format from 'date-fns/format';
 export const getNotificationString = (notification: Notification) =>
   `(${format(new Date(notification.date), 'MM-dd')}) ${formatEllipsis(
     notification.title,
-    32
+    35
   )}`;

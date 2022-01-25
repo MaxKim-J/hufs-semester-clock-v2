@@ -39,6 +39,9 @@ const sectionStyle = css`
   justify-content: center;
   align-items: center;
   height: 100%;
+  @media (max-height: 580px) {
+    align-items: flex-start;
+  }
 `;
 
 const gridAreaStyle = (area: string) => css`
@@ -53,7 +56,7 @@ const gridAreaStyle = (area: string) => css`
 const featureGridStyle = css`
   display: grid;
   grid-template-columns: repeat(2, 30rem);
-  grid-template-rows: repeat(6, 6.5rem);
+  grid-template-rows: repeat(6, 6rem);
   grid-template-areas:
     'notification weather'
     'notification weather'

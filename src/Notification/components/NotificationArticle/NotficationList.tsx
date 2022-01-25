@@ -23,7 +23,7 @@ function NotificationList() {
     <m.div {...fadeInAndOut}>
       <Spacer />
       <Text size="size12" color="darkGray">
-        ※ 최신 학사공지 15개를 보여드립니다.
+        최신 학사공지 15개를 보여드립니다.
       </Text>
       <Spacer />
       <ol css={notificationListStyle}>
@@ -32,7 +32,7 @@ function NotificationList() {
           <li css={notificationStyle} key={notification.id}>
             <Spacer height="size4" />
             <Link color="black" href={notification.link} target="_blank">
-              <Text color="black" size="size14">
+              <Text color="black" size="size12">
                 {getNotificationString(notification)}
               </Text>
             </Link>

@@ -13,7 +13,6 @@ function CovidChartArticle() {
         <Text size="size12" color="darkGray">
           7일간의 전국 코로나 확진자수 그래프입니다.
         </Text>
-        <Spacer height="size8" />
         <CovidChart />
       </AsyncBoundaryWithQuery>
     </BoxLayout>

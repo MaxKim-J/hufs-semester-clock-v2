@@ -47,7 +47,7 @@ function WeatherList() {
           캠퍼스 바꾸기
         </Button>
       </div>
-      <Spacer />
+      <Spacer height="size8" />
       <ol css={weatherListStyle}>
         {weathers[weatherCampusValue ?? 'seoul'].map((weather) => (
           <li

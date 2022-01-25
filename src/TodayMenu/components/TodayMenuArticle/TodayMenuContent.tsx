@@ -18,12 +18,14 @@ function TodayMenuContent() {
   return (
     <>
       <Spacer />
-      <Text color="black">뭘 드셔야 할지 모르겠다고요? 딱! 정해드립니다.</Text>
+      <Text size="size14" color="black">
+        뭘 드셔야 할지 모르겠다고요? 딱! 정해드립니다.
+      </Text>
       <Spacer />
       <div css={menuSentenceStyle}>
-        <Emoji size="size32" emoji="🍽" hidden shadow />
+        <Emoji size="size24" emoji="🍴" hidden shadow />
         <m.div key={menu.name} css={menuTextStyle} {...fadeInAndOut}>
-          <Text size="size32" color="black">
+          <Text size="size24" color="black">
             오늘 <strong>{menu.name}</strong> 어떠세요?
           </Text>
         </m.div>
@@ -31,11 +33,11 @@ function TodayMenuContent() {
       <Spacer />
       <div css={buttonWrapperStyle}>
         <Button color="black" onClick={pickMenu} size="size14">
-          <Emoji emoji="🔁" size="size14" hidden /> 메뉴 바꾸기
+          <Emoji emoji="🔁" size="size12" hidden /> 메뉴 바꾸기
         </Button>
         <Link
           color="black"
-          size="size14"
+          size="size12"
           href={`https://map.naver.com/v5/search/${menu.name}?c=14143166.3855666,4522706.9179674,14,0,0,0,dh`}
         >
           <Emoji emoji="🔎" hidden /> 외대 주변 메뉴 검색

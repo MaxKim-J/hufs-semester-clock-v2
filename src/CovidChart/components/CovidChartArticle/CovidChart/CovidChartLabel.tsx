@@ -18,7 +18,7 @@ function CovidChartLabel({ data }: CovidChartLabelProps) {
             datum.rate
           }명 발생`}
         >
-          <Text color="black" size="size14" aria-hidden>
+          <Text color="black" size="size12" aria-hidden>
             {datum.day}
           </Text>
         </li>
@@ -32,7 +32,7 @@ const listStyle = css`
 `;
 
 const listItemStyle = css`
-  margin: 0 calc(1rem + 1.25px);
+  margin: 0 1.25rem;
 `;
 
 export default CovidChartLabel;

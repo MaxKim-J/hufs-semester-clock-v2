@@ -39,7 +39,7 @@ function WeatherArticleSkeleton() {
         count={1}
         baseColor="#afafaf"
         highlightColor="#dbdbdb"
-        height="7.2rem"
+        height="6.6rem"
         width="29rem"
       />
     </div>

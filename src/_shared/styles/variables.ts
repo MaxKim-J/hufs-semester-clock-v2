@@ -55,4 +55,5 @@ export const transparentTable = {
   black30: 'rgba(0, 0, 0, 0.3)',
   black50: 'rgba(0, 0, 0, 0.5)',
   black70: 'rgba(0, 0, 0, 0.7)',
+  black90: 'rgba(0, 0, 0, 0.9)',
 };

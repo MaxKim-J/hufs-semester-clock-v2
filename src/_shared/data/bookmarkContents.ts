@@ -29,7 +29,7 @@ const bookmarkContents: Bookmark[] = [
     id: 'cafeteria',
     title: '학식 메뉴',
     url: 'https://wis.hufs.ac.kr/jsp/HUFS/cafeteria/frame_view.jsp',
-    emoji: '🍽',
+    emoji: '🍳',
   },
 ];
 

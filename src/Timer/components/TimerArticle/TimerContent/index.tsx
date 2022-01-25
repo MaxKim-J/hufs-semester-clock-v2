@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import { css } from '@emotion/react';
-import Spacer from '@components/fundamentals/Spacer';
 import TimerDigits from '@/Timer/components/TimerArticle/TimerContent/TimerDigits';
 import TimerButtons from '@/Timer/components/TimerArticle/TimerContent/TimerButtons';
 import useTimerInterval from '@/Timer/hooks/useTimerInterval';
@@ -36,7 +35,6 @@ function TimerContent() {
 
   return (
     <div css={timerStyle}>
-      <Spacer />
       <TimerDigits
         targetTime={targetTime}
         isTimerOn={isTimerOn}
