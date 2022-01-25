@@ -10,9 +10,9 @@ function DeveloperTab() {
     <Tab title="개발자 소개" direction="right">
       <Spacer height="size16" />
       <IntroduceArticle />
-      <Spacer height="size32" />
+      <Spacer height="size16" />
       <FeedbackInputArticle />
-      <Spacer height="size32" />
+      <Spacer height="size16" />
       <AppLinkArticle />
       <Spacer height="size16" />
       <Text size="size12">

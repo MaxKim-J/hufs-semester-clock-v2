@@ -9,9 +9,9 @@ function SettingTab() {
     <Tab title="설정" direction="left">
       <Spacer height="size16" />
       <ClockSettingArticle />
-      <Spacer height="size32" />
+      <Spacer height="size16" />
       <UserInfoInputArticle />
-      <Spacer height="size32" />
+      <Spacer height="size16" />
       <BackgroundSettingSection />
     </Tab>
   );
