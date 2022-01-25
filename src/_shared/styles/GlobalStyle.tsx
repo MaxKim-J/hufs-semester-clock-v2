@@ -32,7 +32,6 @@ const globalStyle = css`
   }
 
   body {
-    font-family: 'netmarbleM', serif;
     overscroll-behavior-y: none;
     background-color: rgba(0, 0, 0, 0.5);
   }

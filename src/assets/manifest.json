@@ -12,7 +12,7 @@
   },
   "web_accessible_resources":[{
     "resources": ["netmarbleM.woff"],
-    "matches": ["https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/*"]
+    "matches": ["https://cdn.jsdelivr.net/*"]
   }],
   "permissions": ["storage"]
 }
