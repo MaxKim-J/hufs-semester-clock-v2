@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhufs_semester_clock_2=self.webpackChunkhufs_semester_clock_2||[]).push([[341],{9341:(e,s,c)=>{var u=c(7293);e.exports=function(e,s){var c=[][e];return!!c&&u((function(){c.call(null,s||function(){throw 1},1)}))}}}]);
