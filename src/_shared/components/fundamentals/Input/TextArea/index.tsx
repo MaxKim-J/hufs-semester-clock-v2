@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { TextareaHTMLAttributes } from 'react';
 import { css } from '@emotion/react';
 import { colorTable, spaceTable, textTable, TextType } from '@style/variables';
 import { Text } from '../../Text';
@@ -6,13 +6,12 @@ import { Text } from '../../Text';
 type TextAreaInputProps = {
   value: string;
   width?: number;
-  size?: TextType;
-  maxLength?: number;
-} & HTMLAttributes<HTMLTextAreaElement>;
+  fontSize?: TextType;
+} & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 function TextArea({
   onChange,
-  size = 'size16',
+  fontSize = 'size16',
   maxLength = 200,
   title,
   width = 0,
@@ -29,7 +28,7 @@ function TextArea({
         {`${value.length}/${maxLength}`}
       </Text>
       <textarea
-        css={textAreaStyle(size)}
+        css={textAreaStyle(fontSize)}
         onChange={onChange}
         aria-multiline="true"
         aria-label={title}

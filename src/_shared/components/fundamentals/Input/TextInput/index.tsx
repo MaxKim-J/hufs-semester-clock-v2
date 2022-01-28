@@ -1,22 +1,19 @@
-import { HTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 import { css } from '@emotion/react';
 import { colorTable, TextType, textTable } from '@style/variables';
 
 export type TextInputType = {
-  value: string;
-  size?: TextType;
-  widthFigure?: number;
-  maxLength?: number;
-  autoFocus?: boolean;
-} & HTMLAttributes<HTMLInputElement>;
+  fontSize?: TextType;
+  figureWidth?: number;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 function TextInput({
-  size = 'size16',
-  widthFigure = 5,
+  fontSize = 'size16',
+  figureWidth = 5,
   ...props
 }: TextInputType) {
   return (
-    <input type="text" css={textInputStyle(size, widthFigure)} {...props} />
+    <input type="text" css={textInputStyle(fontSize, figureWidth)} {...props} />
   );
 }
 

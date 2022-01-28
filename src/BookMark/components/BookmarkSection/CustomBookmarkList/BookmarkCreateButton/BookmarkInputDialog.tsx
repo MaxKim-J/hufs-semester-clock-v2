@@ -42,11 +42,11 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
   return (
     <>
       <TextInput
-        size="size12"
+        fontSize="size12"
         title="북마크 제목 입력"
         placeholder="북마크 제목"
         maxLength={20}
-        widthFigure={20}
+        figureWidth={20}
         value={titleInput.value}
         onChange={titleInput.handleInput}
         autoFocus
@@ -54,9 +54,9 @@ function BookmarkInputDialog({ closeDialog }: BookmarkInputDialogProps) {
       <Spacer />
       <TextInput
         title="북마크 주소 입력"
-        size="size12"
+        fontSize="size12"
         placeholder="웹사이트 주소"
-        widthFigure={20}
+        figureWidth={20}
         value={urlInput.value}
         onChange={urlInput.handleInput}
       />

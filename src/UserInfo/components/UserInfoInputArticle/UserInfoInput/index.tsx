@@ -62,9 +62,9 @@ function UserInfoInput() {
         <TextInput
           placeholder="이름"
           value={nameInput.value}
-          size="size16"
+          fontSize="size16"
           maxLength={20}
-          widthFigure={12}
+          figureWidth={12}
           title="이름 입력"
           onChange={nameInput.handleInput}
         />
