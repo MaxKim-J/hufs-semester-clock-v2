@@ -5,24 +5,24 @@ module.exports = (api) => {
   return {
     presets: [
       [
-        "@babel/preset-env",
+        '@babel/preset-env',
         {
-          targets: {"chrome": "58"},
-          modules: isTest ? "commonjs": false,
+          targets: { chrome: '80' },
+          modules: isTest ? 'commonjs' : false,
           loose: true,
           corejs: 3,
-          useBuiltIns: "usage"
-        }
+          useBuiltIns: 'usage',
+        },
       ],
-      ["@babel/preset-react", {
-        runtime: "automatic",
-        importSource: "@emotion/react"
-      }],
-      "@babel/preset-typescript"
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+          importSource: '@emotion/react',
+        },
+      ],
+      '@babel/preset-typescript',
     ],
-    plugins: ["@emotion"]
-  }
-}
-
-
-
+    plugins: ['@emotion'],
+  };
+};
