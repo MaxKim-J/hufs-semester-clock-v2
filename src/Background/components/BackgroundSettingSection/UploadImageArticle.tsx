@@ -34,8 +34,9 @@ function UploadImageArticle() {
         <Text
           id="upload-error-message"
           size="size12"
+          role="alert"
+          aria-live="polite"
           color="red"
-          data-testid="errorMessage"
         >
           {status.isError ? status.errorMessage : null}
         </Text>

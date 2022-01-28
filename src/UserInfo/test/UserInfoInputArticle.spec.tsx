@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import axiosClient from '@shared/services/api/axiosClient';
 import { MutableSnapshot } from 'recoil';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import TestBoundary from '@components/boundries/TestBoundary';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
 import UserInfoDisplay from '@/UserInfo/components/UserInfoArticle/UserInfoDisplay';
@@ -36,24 +36,19 @@ describe('USER INTERACTION: 유저는 학번/이름 설정란에서 유저의 �
   });
 
   it('브라우저에 저장된 정보가 없을 경우, 기본 이름(학우님)을 사용한다.', async () => {
-    screen.getByText(/학우/i);
+    expect(screen.queryByText(/학우/i)).toBeInTheDocument();
   });
 
   it('설정 탭을 통해 이름과 학번을 입력할 경우, 시계 화면의 학번, 이름, 입학 경과일이 변경된다.', async () => {
-    await waitFor(
-      () => {
-        const nameInput = screen.getByTitle('이름 입력');
-        const selectInput = screen.getByTitle('학번 선택');
-        const submitButton = screen.getByText('저장하기');
+    const nameInput = await screen.findByTitle('이름 입력');
+    const selectInput = await screen.findByTitle('학번 선택');
+    const submitButton = await screen.findByText('저장하기');
 
-        fireEvent.change(nameInput, { target: { value: '김맥스' } });
-        fireEvent.change(selectInput, { target: { value: '19' } });
-        fireEvent.click(submitButton);
+    fireEvent.change(nameInput, { target: { value: '김맥스' } });
+    fireEvent.change(selectInput, { target: { value: '19' } });
+    fireEvent.click(submitButton);
 
-        screen.getByText(/김맥스/i);
-        screen.getByText(/19학번/i);
-      },
-      { timeout: 4500 }
-    );
+    expect(screen.queryByText(/김맥스/i)).toBeInTheDocument();
+    expect(screen.queryByText(/19학번/i)).toBeInTheDocument();
   });
 });

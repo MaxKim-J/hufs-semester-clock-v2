@@ -39,7 +39,7 @@ function BookmarkItem({ bookmark, onClickClose }: BookMarkProps) {
             onClick={onClickClose}
             css={closeButtonStyle}
             type="button"
-            data-testid={`remove-${bookmark.id}`}
+            data-testid={`remove-bookmark-${bookmark.id}`}
           >
             <img css={closeImg} src={CloseBlack} alt="" />
           </button>

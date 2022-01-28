@@ -11,7 +11,7 @@ describe('USER INTERACTION: 유저는 캠퍼스별(서울/글로벌) 날씨를 �
   const weathers = Array.from({ length: 10 }, (_, i) => ({
     id: i + 1,
     date: '01/21',
-    reginal: i % 2 == 0 ? 'seoul' : 'global',
+    reginal: i % 2 === 0 ? 'seoul' : 'global',
     temp: '-11/2',
     weatherId: 800,
   }));

@@ -39,7 +39,7 @@ describe('USER INTERACTION: 유저는 커스텀 배경화면을 업로드할 수
     });
     Object.defineProperty(sizeOverFile, 'size', { value: 30000000 });
     fireEvent.change(fileInput, { target: { files: [sizeOverFile] } });
-    const errorMessage = screen.getByTestId('errorMessage');
+    const errorMessage = screen.getByRole('alert');
     expect(errorMessage).toBeTruthy();
   });
 
@@ -50,7 +50,7 @@ describe('USER INTERACTION: 유저는 커스텀 배경화면을 업로드할 수
     });
 
     fireEvent.change(fileInput, { target: { files: [wrongExtFile] } });
-    const errorMessage = screen.getByTestId('errorMessage');
+    const errorMessage = screen.getByRole('alert');
     expect(errorMessage).toBeTruthy();
   });
 
@@ -62,9 +62,10 @@ describe('USER INTERACTION: 유저는 커스텀 배경화면을 업로드할 수
 
     Object.defineProperty(normalFile, 'size', { value: 2000000 });
     fireEvent.change(fileInput, { target: { files: [normalFile] } });
+
     await waitFor(() => {
-      const backgroundImage = screen.getByTestId('backgroundImage');
-      expect(backgroundImage.id).toEqual('mock.jpeg');
+      const backgroundImage = screen.getByRole('img');
+      expect(backgroundImage).toHaveAttribute('id', 'mock.jpeg');
     });
   });
 });

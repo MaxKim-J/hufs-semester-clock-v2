@@ -16,7 +16,7 @@ describe('UNIT: getAdmissionInterval 함수는 현재 시간과 인자로 받은
   });
 });
 
-describe('Unit: getAdmissionByDate 함수는 현재 연도를 바탕으로 가장 최근 입학년도 문자열을 반환한다.', () => {
+describe('UNIT: getAdmissionByDate 함수는 현재 연도를 바탕으로 가장 최근 입학년도 문자열을 반환한다.', () => {
   it('인자로 주어진 날짜에 맞는 입학 연도 문자열을 반환한다.', () => {
     expect(getAdmissionByDate(new Date('2022-01-21T23:59:59'))).toBe('22');
   });

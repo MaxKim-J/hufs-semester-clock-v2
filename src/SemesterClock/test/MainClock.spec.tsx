@@ -1,4 +1,4 @@
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import { MutableSnapshot } from 'recoil';
 import { SemesterValue } from '@shared/services/api/types';
 import { sectionIndexAtom } from '@shared/atoms/common';
@@ -23,18 +23,20 @@ describe('COMPLEX UI: 종강시계(MainClock)는 설정된 semester에 따라 �
       set(sectionIndexAtom, { current: 0, max: 0 });
     };
 
-    const { getByText } = render(
+    render(
       <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={endSemester} />
         <MainClock semester={endSemester} restartClock={() => {}} />
       </TestBoundary>
     );
 
-    getByText('2024-2학기 종강(2024.11.21)까지');
-    getByText('일');
-    getByText('시간');
-    getByText('분');
-    getByText('초');
+    expect(
+      screen.queryByText('2024-2학기 종강(2024.11.21)까지')
+    ).toBeInTheDocument();
+    expect(screen.queryByText('일')).toBeInTheDocument();
+    expect(screen.queryByText('시간')).toBeInTheDocument();
+    expect(screen.queryByText('분')).toBeInTheDocument();
+    expect(screen.queryByText('초')).toBeInTheDocument();
   });
 
   it('설정된 개강 시간이 현재 기준 미래일 경우 시계가 개강까지 남은 시간을 표시한다.', () => {
@@ -49,18 +51,20 @@ describe('COMPLEX UI: 종강시계(MainClock)는 설정된 semester에 따라 �
       set(sectionIndexAtom, { current: 0, max: 0 });
     };
 
-    const { getByText } = render(
+    render(
       <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={startSemester} />
         <MainClock semester={startSemester} restartClock={() => {}} />
       </TestBoundary>
     );
 
-    getByText('2024-2학기 개강(2024.11.21)까지');
-    getByText('일');
-    getByText('시간');
-    getByText('분');
-    getByText('초');
+    expect(
+      screen.queryByText('2024-2학기 개강(2024.11.21)까지')
+    ).toBeInTheDocument();
+    expect(screen.queryByText('일')).toBeInTheDocument();
+    expect(screen.queryByText('시간')).toBeInTheDocument();
+    expect(screen.queryByText('분')).toBeInTheDocument();
+    expect(screen.queryByText('초')).toBeInTheDocument();
   });
 
   it('설정된 종강 시간이 이미 끝난 경우 시간이 만료되었음을 알린다.', () => {
@@ -75,13 +79,13 @@ describe('COMPLEX UI: 종강시계(MainClock)는 설정된 semester에 따라 �
       set(sectionIndexAtom, { current: 0, max: 0 });
     };
 
-    const { getByText } = render(
+    render(
       <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={oldSemester} />
         <MainClock semester={oldSemester} restartClock={() => {}} />
       </TestBoundary>
     );
 
-    getByText('시계 재시작');
+    expect(screen.queryByText('시계 재시작')).toBeInTheDocument();
   });
 });

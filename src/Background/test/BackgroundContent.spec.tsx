@@ -1,4 +1,4 @@
-import { waitFor, render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import AsyncBoundaryWithQuery from '@components/boundries/AsyncBoundaryWithQuery';
 import { MutableSnapshot } from 'recoil';
 import TestBoundary from '@components/boundries/TestBoundary';
@@ -18,7 +18,7 @@ describe('COMPLEX UI: 미리 설정되어 있는 배경화면을 초기 화면�
       });
     };
 
-    const { getByTestId } = render(
+    render(
       <TestBoundary recoilState={recoilState}>
         <AsyncBoundaryWithQuery
           rejectedFallback={() => null}
@@ -29,16 +29,12 @@ describe('COMPLEX UI: 미리 설정되어 있는 배경화면을 초기 화면�
       </TestBoundary>
     );
 
-    await waitFor(() => {
-      const backgroundElement = getByTestId('backgroundImage');
-      const imageUrl =
-        new Date().getHours() < 18 && new Date().getHours() > 5
-          ? 'dayImageUrl'
-          : 'nightImageUrl';
+    const imageUrl =
+      new Date().getHours() < 18 && new Date().getHours() > 5
+        ? 'dayImageUrl'
+        : 'nightImageUrl';
 
-      expect(backgroundElement).toHaveStyle(
-        `background-image: url(${imageUrl})`
-      );
-    });
+    const backgroundElement = await screen.findByRole('img');
+    expect(backgroundElement).toHaveStyle(`background-image: url(${imageUrl})`);
   });
 });

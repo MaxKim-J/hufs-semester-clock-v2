@@ -31,8 +31,8 @@ describe('USER INTERACTION: 유저는 북마크를 추가하거나 삭제할 수
     });
 
     it('브라우저에 북마크가 저장되어 있을 경우, 초기화면에 북마크를 표시한다.', () => {
-      screen.getByText(/네이버/i);
-      screen.getByText(/구글/i);
+      expect(screen.queryByText(/네이버/i)).toBeInTheDocument();
+      expect(screen.queryByText(/구글/i)).toBeInTheDocument();
     });
 
     it('북마크 추가 버튼을 누르고 북마크 제목, url을 입력해 북마크를 추가할 수 있다.', async () => {
@@ -46,16 +46,17 @@ describe('USER INTERACTION: 유저는 북마크를 추가하거나 삭제할 수
       fireEvent.change(urlInput, { target: { value: 'daum.net' } });
       fireEvent.click(submitButton);
 
-      screen.getByText(/다음/i);
+      const newBookmarkElement = screen.queryByText(/다음/i);
+      expect(newBookmarkElement).toBeInTheDocument();
     });
 
     it('북마크 삭제 버튼을 눌러 북마크를 삭제할 수 있다', () => {
       const removeId = initialBookmarks.filter(
         (bookmark) => bookmark.title === '네이버'
       )[0].id;
-      const removeButton = screen.getByTestId(`remove-${removeId}`);
+      const removeButton = screen.getByTestId(`remove-bookmark-${removeId}`);
       fireEvent.click(removeButton);
-      expect(screen.queryByText(/네이버/i)).toBeNull();
+      expect(screen.queryByText(/네이버/i)).not.toBeInTheDocument();
     });
   });
 

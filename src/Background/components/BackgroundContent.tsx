@@ -15,8 +15,9 @@ function BackgroundContent() {
     <m.div {...fadeInAndOut} css={backgroundWrapperStyle}>
       <div css={backgroundCoverStyle} />
       <div
+        role="img"
+        aria-label="배경 화면"
         id={userBackgroundImage.name}
-        data-testid="backgroundImage"
         css={backgroundImageStyle(backgroundUrl)}
       />
     </m.div>
