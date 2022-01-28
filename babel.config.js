@@ -7,7 +7,7 @@ module.exports = (api) => {
       [
         '@babel/preset-env',
         {
-          targets: { chrome: '80' },
+          targets: isTest ? undefined : { chrome: '80' },
           modules: isTest ? 'commonjs' : false,
           loose: true,
           corejs: 3,

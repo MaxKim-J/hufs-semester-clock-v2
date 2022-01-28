@@ -26,7 +26,7 @@ describe('COMPLEX UI: 종강시계(MainClock)는 설정된 semester에 따라 �
     const { getByText } = render(
       <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={endSemester} />
-        <MainClock semester={endSemester} evaluateSemester={() => {}} />
+        <MainClock semester={endSemester} restartClock={() => {}} />
       </TestBoundary>
     );
 
@@ -52,7 +52,7 @@ describe('COMPLEX UI: 종강시계(MainClock)는 설정된 semester에 따라 �
     const { getByText } = render(
       <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={startSemester} />
-        <MainClock semester={startSemester} evaluateSemester={() => {}} />
+        <MainClock semester={startSemester} restartClock={() => {}} />
       </TestBoundary>
     );
 
@@ -78,7 +78,7 @@ describe('COMPLEX UI: 종강시계(MainClock)는 설정된 semester에 따라 �
     const { getByText } = render(
       <TestBoundary recoilState={recoilState}>
         <SemesterInfo semester={oldSemester} />
-        <MainClock semester={oldSemester} evaluateSemester={() => {}} />
+        <MainClock semester={oldSemester} restartClock={() => {}} />
       </TestBoundary>
     );
 
