@@ -1,12 +1,9 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { css } from '@emotion/react';
 import WifiFallback from '@components/error/WifiFallback';
 import ScrollSplitLayout from './ScrollSplitLayout';
 import Background from '@/Background/components';
 
-const WidgetsPage = lazy(
-  () => import(/* webpackChunkName: "featuresPage" */ './pages/WidgetsPage')
-);
 const ClockPage = lazy(
   () =>
     import(
@@ -14,7 +11,15 @@ const ClockPage = lazy(
     )
 );
 
+const WidgetsPage = lazy(
+  () => import(/* webpackChunkName: "widgetsPage" */ './pages/WidgetsPage')
+);
+
 function AppMain() {
+  useEffect(() => {
+    import('./pages/WidgetsPage');
+  }, []);
+
   return (
     <main css={mainSectionStyle}>
       <Background />
