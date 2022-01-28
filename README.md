@@ -48,6 +48,12 @@
 
 2022.01.29 기준
 
+- [가성비 React 테스트 전략](https://maxkim-j.github.io/posts/effective-react-test-strategy)
+- Tag를 통해 테스트케이스 종류를 구분합니다.
+  - COMPLEX UI : 컴포넌트의 동작이 테스트해봐야 할 정도로 복잡한 경우
+  - USER INTERACTION : 유저와 상호작용 하는 경우
+  - UNIT : 앱의 Core 로직 순수함수들에 대한 유닛 테스트
+
 ![1](images/test1.png)![2](images/test2.png)![3](images/test3.png)
 
 ## 앞으로
