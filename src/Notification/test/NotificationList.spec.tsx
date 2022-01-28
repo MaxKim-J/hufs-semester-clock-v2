@@ -21,7 +21,7 @@ describe('USER INTERACTION: 유저는 학사공지를 페이지네이션으로 �
     render(
       <TestBoundary>
         <AsyncBoundaryWithQuery>
-          <NotificationList />
+          <NotificationList notificationsPerIndex={NOTI_PER_INDEX} />
         </AsyncBoundaryWithQuery>
       </TestBoundary>
     );

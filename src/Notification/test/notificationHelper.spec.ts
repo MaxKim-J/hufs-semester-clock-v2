@@ -1,7 +1,7 @@
 import { getNotificationString } from '@/Notification/utils/notificationHelper';
 
 describe('UNIT: getNotificationString 함수는 공지사항 객체를 날짜와 함께 일정한 크기로 잘라 목록에 적합한 문자열로 변환한다.', () => {
-  it('title 속성이 35자가 넘는 경우, 32자까지 자르고, elipsis(...)를 붙여 리턴한다.', () => {
+  it('title 속성이 38자가 넘는 경우, 35자까지 자르고, elipsis(...)를 붙여 리턴한다.', () => {
     const given = {
       date: '01-17',
       id: 1,
@@ -12,7 +12,7 @@ describe('UNIT: getNotificationString 함수는 공지사항 객체를 날짜와
 
     const when = getNotificationString(given);
 
-    expect(when.slice(8).length).toBe(35);
+    expect(when.slice(8).length).toBe(38);
     expect(when).toMatch(/\.{3}$/);
   });
 
