@@ -7,10 +7,31 @@ import { SemesterValue } from '@shared/services/api/types';
 import Button from '@components/fundamentals/Button';
 import Spacer from '@components/fundamentals/Spacer';
 import { fadeInAndOut } from '@style/animation';
-import { clockDigitData } from '@shared/data/clockDigits';
 import { Text } from '@components/fundamentals/Text';
 import { getAccessibilityTextByInterval } from '@/SemesterClock/utils/semesterHelper';
-import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
+import {
+  DurationKeys,
+  getClockIntervals,
+} from '@/SemesterClock/utils/clockHelper';
+
+const clockDigitData: { key: DurationKeys; text: string }[] = [
+  {
+    key: 'days',
+    text: '일',
+  },
+  {
+    key: 'hours',
+    text: '시간',
+  },
+  {
+    key: 'minutes',
+    text: '분',
+  },
+  {
+    key: 'seconds',
+    text: '초',
+  },
+];
 
 type MainClockProps = {
   semester: SemesterValue;
