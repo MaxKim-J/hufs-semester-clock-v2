@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 import GlobalStyle from '@/_shared/styles/GlobalStyle';
 import App from './App';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {
