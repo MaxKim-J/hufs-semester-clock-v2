@@ -7,7 +7,7 @@ import { isClockExpired } from '@/SemesterClock/utils/clockHelper';
 /*
  * 현재 시점이 계절학기 중이 아닌 경우 storage에서 isSeasonal을 false로 돌려놓는 effect입니다.
  * */
-const useCleanIsSeasonalStorageData = (seasonalSemester: SemesterValue) => {
+const useCleanIsSeasonalEffect = (seasonalSemester: SemesterValue) => {
   const [isSeasonal, setIsSeasonal] = useRecoilState(isUserSeasonal);
   useEffect(() => {
     if (isClockExpired(new Date(seasonalSemester.due))) {
@@ -19,4 +19,4 @@ const useCleanIsSeasonalStorageData = (seasonalSemester: SemesterValue) => {
   }, [setIsSeasonal, isSeasonal.status, seasonalSemester]);
 };
 
-export default useCleanIsSeasonalStorageData;
+export default useCleanIsSeasonalEffect;

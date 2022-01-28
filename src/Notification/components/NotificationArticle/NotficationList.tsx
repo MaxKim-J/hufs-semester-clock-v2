@@ -1,23 +1,39 @@
+import { useState } from 'react';
+import { m } from 'framer-motion';
+import { css } from '@emotion/react';
 import { Notification } from '@shared/services/api/types';
 import { Link, Text } from '@components/fundamentals/Text';
-import { m } from 'framer-motion';
 import Spacer from '@components/fundamentals/Spacer';
-import { css } from '@emotion/react';
 import Button from '@components/fundamentals/Button';
 import { fadeInAndOut } from '@style/animation';
 import { transparentTable } from '@style/variables';
 import useNotificationQuery from '@/Notification/queries/useNotificationQuery';
-import useNotificationSlice from '@/Notification/hooks/useNotificationSlice';
 import { getNotificationString } from '@/Notification/utils/notificationHelper';
 
-function NotificationList() {
+type NotificationListProps = {
+  notificationsPerIndex: number;
+};
+
+function NotificationList({ notificationsPerIndex }: NotificationListProps) {
   const notifications = useNotificationQuery() as Notification[];
 
-  const { index, increaseIndex, decreaseIndex, sliceNotifications } =
-    useNotificationSlice({
-      notiPerIndex: 5,
-      notiLength: notifications.length,
-    });
+  const [index, setIndex] = useState(0);
+
+  const increaseIndex = () => {
+    if (index >= Math.floor(notifications.length / notificationsPerIndex) - 1)
+      return;
+    setIndex((s) => s + 1);
+  };
+
+  const decreaseIndex = () => {
+    if (index <= 0) return;
+    setIndex((s) => s - 1);
+  };
+
+  const slicedNotifications = notifications.slice(
+    notificationsPerIndex * index,
+    notificationsPerIndex * (index + 1)
+  );
 
   return (
     <m.div {...fadeInAndOut}>
@@ -28,7 +44,7 @@ function NotificationList() {
       <Spacer />
       <ol css={notificationListStyle}>
         <Spacer />
-        {sliceNotifications(notifications).map((notification) => (
+        {slicedNotifications.map((notification) => (
           <li css={notificationStyle} key={notification.id}>
             <Spacer height="size4" />
             <Link color="black" href={notification.link} target="_blank">

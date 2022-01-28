@@ -7,7 +7,7 @@ function NotificationArticle() {
   return (
     <BoxLayout title="학사공지" labelId="hufs-notifications">
       <AsyncBoundaryWithQuery pendingFallback={<NotificationArticleSkeleton />}>
-        <NotificationList />
+        <NotificationList notificationsPerIndex={5} />
       </AsyncBoundaryWithQuery>
     </BoxLayout>
   );

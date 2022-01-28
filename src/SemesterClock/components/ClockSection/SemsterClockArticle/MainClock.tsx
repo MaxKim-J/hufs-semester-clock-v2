@@ -1,3 +1,6 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { sectionIndexAtom } from '@shared/atoms/common';
 import { css } from '@emotion/react';
 import { m } from 'framer-motion';
 import { SemesterValue } from '@shared/services/api/types';
@@ -6,29 +9,49 @@ import Spacer from '@components/fundamentals/Spacer';
 import { fadeInAndOut } from '@style/animation';
 import { clockDigitData } from '@shared/data/clockDigits';
 import { Text } from '@components/fundamentals/Text';
-import useMainClockInterval from '@/SemesterClock/hooks/useMainClockInterval';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { getAccessibilityTextByInterval } from '@/SemesterClock/utils/semesterHelper';
+import { getClockIntervals } from '@/SemesterClock/utils/clockHelper';
 
 type MainClockProps = {
   semester: SemesterValue;
-  evaluateSemester: () => void;
+  restartClock: () => void;
 };
 
-function MainClock({ semester, evaluateSemester }: MainClockProps) {
-  const intervals = useMainClockInterval(semester);
+function MainClock({ semester, restartClock }: MainClockProps) {
+  const [clockIntervals, setClockIntervals] = useState<
+    ReturnType<typeof getClockIntervals>
+  >(getClockIntervals(semester));
+  const sectionIndex = useRecoilValue(sectionIndexAtom);
+
+  const intervalId = useRef<number>(0);
+
+  const tickClock = useCallback(() => {
+    setClockIntervals(getClockIntervals(semester));
+  }, [semester, setClockIntervals]);
+
+  const operateClock = useCallback(() => {
+    if (sectionIndex.current !== 0 && intervalId.current) {
+      clearInterval(intervalId.current);
+      return;
+    }
+    if (semester !== null) {
+      intervalId.current = window.setInterval(tickClock, 1000);
+    }
+  }, [semester, tickClock, sectionIndex]);
+
+  useEffect(operateClock, [operateClock]);
 
   return (
     <>
-      {intervals !== 'expired' && (
+      {clockIntervals !== 'expired' && (
         <m.div
-          aria-label={getAccessibilityTextByInterval(intervals)}
+          aria-label={getAccessibilityTextByInterval(clockIntervals)}
           css={clockDigitWrapperStyle}
           {...fadeInAndOut}
         >
           {clockDigitData.map((data) => (
             <div css={clockDigitStyle} key={data.key}>
-              <Text size="size96">{intervals[data.key]}</Text>
+              <Text size="size96">{clockIntervals[data.key]}</Text>
               <Text size="size32" css={clockDigitFigureStyle}>
                 {data.text}
               </Text>
@@ -36,7 +59,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
           ))}
         </m.div>
       )}
-      {intervals === 'expired' && (
+      {clockIntervals === 'expired' && (
         <m.div
           css={clockDigitWrapperStyle}
           {...fadeInAndOut}
@@ -46,7 +69,7 @@ function MainClock({ semester, evaluateSemester }: MainClockProps) {
             <Text>✨현재 시계의 시간이 만료되었습니다.✨</Text>
             <Text> 버튼을 눌러 새로운 시계를 시작하세요!</Text>
             <Spacer />
-            <Button onClick={evaluateSemester}>시계 재시작</Button>
+            <Button onClick={restartClock}>시계 재시작</Button>
           </div>
         </m.div>
       )}
