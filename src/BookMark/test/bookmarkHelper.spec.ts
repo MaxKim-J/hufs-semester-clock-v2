@@ -11,8 +11,8 @@ describe('UNIT: getNewBookmarks 함수는 새롭게 생성된 북마크가 들�
     expect(given[0].url).toEqual('https://naver.com');
   });
 
-  it('id 속성은 10자 길이의 문자열이다.', () => {
+  it('id 속성은 9, 혹은 10자 길이의 문자열이다.', () => {
     const given = getNewBookmarks('네이버', 'https://naver.com');
-    expect(given[0].id).toEqual(expect.stringMatching(/[a-z0-9]{10}/));
+    expect(given[0].id).toEqual(expect.stringMatching(/[a-z0-9]{9,10}/));
   });
 });
