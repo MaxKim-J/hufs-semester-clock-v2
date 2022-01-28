@@ -7,7 +7,7 @@
 > **HUFS Semester Clock V2**  
 외대생을 위한, 종강까지 얼마나 남았는지 보여주는 크롬 익스텐션
 
-![첫번째](./img1.png)![두번째](./img2.png)
+![첫번째](images/img1.png)![두번째](images/img2.png)
 
 - 🧩 [크롬 웹 스토어](https://chrome.google.com/webstore/detail/%EC%99%B8%EB%8C%80-%EC%A2%85%EA%B0%95%EC%8B%9C%EA%B3%84/jadlpknbgnmmelikpcaogikohieafaem?hl=ko)
 - 🧩 [웨일 웹 스토어](https://store.whale.naver.com/detail/mckjnmgioalpnggjipjkmadnandhomei)
@@ -29,25 +29,36 @@
 - 각 기능들에 대해 새로운 디자인 적용
 - 타이머, 커스텀 북마크 추가, 개발자에게 피드백 보내기 기능 새로 구현
 - 애니메이션, 스켈레톤 UI 추가하여 사용자 반응성 향상
+- 유저 인풋에 에러, 로딩 텍스트 추가하여 반응성 향상
+- 멈추지 않는 시계 : v1.x.x 에서는 종강 시점 시간이 지나면 시계 숫자들이 음수로 표시되어 새로고침이 필요했지만, 시계 만료 UI 구현해 유저가 시계를 재시작할 수 있도록 함
+
 ### 기술적 관점
 
 - Vue+Javascript로 구현되었던 V1 코드를 React+Typescript로 리라이팅
 - 기존에 Firebase SDK에 직접 의존하는 쿼리를 REST API로 대체하고 Firebase SDK를 번들에서 제거
 - Suspense for Data Fetching, React Query, Error Boundary를 이용한 선언적 비동기 구현
 - 스크린 리더 디버깅을 병행하며, 웹표준과 웹 접근성을 준수한 마크업 작성
-- Jest, react-testing-library 이용한 68개의 유닛, 통합 테스트 코드 작성
+- Jest, react-testing-library 이용한 72개의 유닛, 통합 테스트 코드 작성
 - Webpack 크롬 익스텐션 보일러 플레이트 직접 처음부터 구현
 - 코드 스플리팅을 이용한 번들 크기 축소
 - 앱 전체 번들 크기 축소(290KiB -> 180KiB, 기능은 더 많아졌는데 번들은 더 작아짐)
 - Manifest 3로 업데이트
 
+### 테스트 케이스
+
+2022.01.29 기준
+
+![1](images/test1.png)![2](images/test2.png)![3](images/test3.png)
+
 ## 앞으로
 
-- preact 도입 고려하기 : 더 작은 React 라이브러리로 대체해 번들 크기 더 효율화
-- 웨일 스토어는 manifest v3 아직 지원 안함 : 빌드를 두 번 하지 않고 번들을 따로 2개 만드는 빌드 환경 구축
-- 테스트 환경 및 빌드 속도 개선
-- 모니터링 환경 만들기 : 피드백, firebase functions 함수 호출 모니터링 환경 만들기
-- 기능 추가 : 위젯 위치 커스텀, 새로운 위젯 계속해서 추가
+- [ ] preact 도입 고려하기 : 더 작은 React 라이브러리로 대체해 번들 크기 더 효율화
+- [ ] 웨일 스토어는 manifest v3 아직 지원 안함 : 빌드를 두 번 하지 않고 번들을 따로 2개 만드는 빌드 환경 구축
+- [x] 테스트 리팩토링 및 테스팅 속도 개선
+- [x] 모니터링 환경 만들기 : 피드백, firebase functions 함수 호출 모니터링 환경 만들기
+- 기능 추가 : 위젯 위치 커스텀 기능, 새로운 위젯 계속해서 추가
+- (장기적으로) 백엔드 엔드포인트만 바꿔서 다른 학교 지원하기..?
+- (장기적으로) 크롬 익스텐션 원격 코드 환경 알아보기
 
 ## 버전
 
