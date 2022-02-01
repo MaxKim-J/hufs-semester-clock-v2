@@ -1,4 +1,5 @@
 import { m, MotionConfig } from 'framer-motion';
+import { Text } from '@components/fundamentals/Text';
 import { CoronaPerDate } from '@shared/services/api/types';
 import { css } from '@emotion/react';
 import { colorTable } from '@style/variables';
@@ -59,6 +60,24 @@ function CovidSvgChart({
 
   return (
     <MotionConfig transition={{ duration: 0.5, ease: 'backOut' }}>
+      {chartDotsData.map((dot) => (
+        <m.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          key={dot.day}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <Text
+            color="black"
+            size="size8"
+            weight="bold"
+            css={dotLabelStyle(dot.x, dot.y)}
+          >
+            {formatNumber(dot.rate)}명
+          </Text>
+        </m.div>
+      ))}
+
       <svg viewBox={`0 0 ${width} ${height}`} aria-hidden>
         <line x1="0" y1={height} x2={width} y2={height} css={xAxisStyle} />
         <m.polyline
@@ -68,16 +87,6 @@ function CovidSvgChart({
         />
         {chartDotsData.map((dot) => (
           <g key={dot.day}>
-            <m.text
-              x={dot.x}
-              y={dot.y - 10}
-              css={dotLabelStyle}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              {formatNumber(dot.rate)}명
-            </m.text>
             <m.line
               x1={dot.x}
               y1={height}
@@ -111,10 +120,9 @@ const polylineStyle = css`
   fill: none;
 `;
 
-const dotLabelStyle = css`
-  text-anchor: middle;
-  fill: ${colorTable.black};
-  font: bold 10px sans-serif;
+const dotLabelStyle = (x: number, y: number) => css`
+  transform: translate(${x - 16}px, ${Math.floor(y) - 20}px);
+  position: absolute;
 `;
 
 const pointLineStyle = css`
