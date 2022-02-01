@@ -1,22 +1,26 @@
 import { useState, ChangeEvent } from 'react';
-import { useSetRecoilState } from 'recoil';
-import { userBackgroundImage } from '@/Background/atoms';
-import { convertBlobToDataUrl } from '@/Background/utils/imageConvertingHelper';
 
 type FileInputValidators = {
   validFunction: (file: File) => boolean;
   errorMessage: string;
 };
 
-const useSingleFileInput = (validators: FileInputValidators[]) => {
-  const setBackgroundImage = useSetRecoilState(userBackgroundImage);
+type UseSingleFileInputOptions = {
+  onChange: (file: File) => void;
+  validators: FileInputValidators[];
+};
+
+const useSingleFileInput = ({
+  onChange,
+  validators,
+}: UseSingleFileInputOptions) => {
   const [status, setStatus] = useState({
     isLoading: false,
     isError: false,
     errorMessage: '',
   });
 
-  const uploadBackgroundImage = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
       setStatus((state) => ({ ...state, isLoading: true, isError: false }));
       const file = e.target.files[0];
@@ -30,17 +34,7 @@ const useSingleFileInput = (validators: FileInputValidators[]) => {
             return;
           }
         }
-
-        const dataURL = await convertBlobToDataUrl(file);
-
-        setBackgroundImage((state) => ({
-          ...state,
-          value: {
-            name: file.name,
-            dayImageUrl: dataURL,
-            nightImageUrl: dataURL,
-          },
-        }));
+        onChange(file);
       } catch (error: unknown) {
         setStatus((state) => ({
           ...state,
@@ -55,7 +49,7 @@ const useSingleFileInput = (validators: FileInputValidators[]) => {
 
   return {
     status,
-    uploadBackgroundImage,
+    handleChange,
   };
 };
 

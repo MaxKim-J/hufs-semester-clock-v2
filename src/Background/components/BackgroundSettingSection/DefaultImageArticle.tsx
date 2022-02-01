@@ -42,7 +42,6 @@ function DefaultImageArticle() {
           >
             글로벌
           </Button>
-          {/* TODO: 이거 다이얼로그 반응 ROLL 처리하기 */}
           {isFetching ? <Text size="size12">변경 중...</Text> : null}
           {isError ? (
             <Text size="size12" color="red">

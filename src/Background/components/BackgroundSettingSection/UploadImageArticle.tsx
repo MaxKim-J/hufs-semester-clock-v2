@@ -3,18 +3,38 @@ import Spacer from '@components/fundamentals/Spacer';
 import { css } from '@emotion/react';
 import { colorTable } from '@style/variables';
 import useSingleFileInput from '@shared/hooks/useSingleFileInput';
+import { useSetRecoilState } from 'recoil';
+import { userBackgroundImage } from '@/Background/atoms';
+import { convertBlobToDataUrl } from '@/Background/utils/imageConvertingHelper';
 
 function UploadImageArticle() {
-  const { status, uploadBackgroundImage } = useSingleFileInput([
-    {
-      validFunction: (file) => file.size <= 3_000_000,
-      errorMessage: '파일 용량이 초과되었어요!',
-    },
-    {
-      validFunction: (file) => /^.*\.(png|jpeg|jpg)/.test(file.name),
-      errorMessage: 'JPG, PNG만 가능해요!',
-    },
-  ]);
+  const setBackgroundImage = useSetRecoilState(userBackgroundImage);
+
+  const onChange = async (file: File) => {
+    const dataURL = await convertBlobToDataUrl(file);
+    setBackgroundImage((state) => ({
+      ...state,
+      value: {
+        name: file.name,
+        dayImageUrl: dataURL,
+        nightImageUrl: dataURL,
+      },
+    }));
+  };
+
+  const { status, handleChange } = useSingleFileInput({
+    onChange,
+    validators: [
+      {
+        validFunction: (file) => file.size <= 3_000_000,
+        errorMessage: '파일 용량이 초과되었어요!',
+      },
+      {
+        validFunction: (file) => /^.*\.(png|jpeg|jpg)/.test(file.name),
+        errorMessage: 'JPG, PNG만 가능해요!',
+      },
+    ],
+  });
 
   return (
     <article aria-labelledby="bgimg-upload-heading">
@@ -29,7 +49,7 @@ function UploadImageArticle() {
           css={fileInputStyle}
           aria-invalid={status.isError}
           aria-errormessage="upload-error-message"
-          onChange={uploadBackgroundImage}
+          onChange={handleChange}
         />
         <Text
           id="upload-error-message"
