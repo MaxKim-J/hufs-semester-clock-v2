@@ -7,6 +7,7 @@ const useNotificationQuery = (): Notification[] | undefined => {
   const { data: notificationData } = useQuery<Notification[], AxiosError>({
     queryKey: 'notification',
     queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 600));
       const { data } = await getNotification();
       return data.notifications;
     },

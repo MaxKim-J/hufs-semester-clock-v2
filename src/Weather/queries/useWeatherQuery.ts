@@ -7,6 +7,7 @@ const useWeatherQuery = (): CampusWeather | undefined => {
   const { data: weatherData } = useQuery({
     queryKey: 'weather',
     queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 600));
       const { data } = await getWeather();
       return data.weather;
     },

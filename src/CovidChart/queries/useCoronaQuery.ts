@@ -7,6 +7,7 @@ const useCoronaQuery = (): CoronaPerDate[] | undefined => {
   const { data: coronaData } = useQuery<CoronaPerDate[], AxiosError>({
     queryKey: 'corona',
     queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 600));
       const { data } = await getCorona();
       return data.total;
     },
