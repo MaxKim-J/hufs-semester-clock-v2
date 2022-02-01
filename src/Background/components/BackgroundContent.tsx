@@ -1,14 +1,13 @@
 import { css } from '@emotion/react';
 import { m } from 'framer-motion';
+import { BackgroundImg } from '@shared/services/api/types';
 import { transparentTable } from '@style/variables';
 import { fadeInAndOut } from '@style/animation';
 import getBackgroundByTime from '@/Background/utils/getBackgroundByTime';
 import useBackgroundApplyQuery from '@/Background/queries/useBackgroundApplyQuery';
 
 function BackgroundContent() {
-  const userBackgroundImage = useBackgroundApplyQuery();
-  if (userBackgroundImage === undefined) return null;
-
+  const userBackgroundImage = useBackgroundApplyQuery() as BackgroundImg;
   const backgroundUrl = getBackgroundByTime(userBackgroundImage, new Date());
 
   return (

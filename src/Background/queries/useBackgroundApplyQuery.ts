@@ -6,14 +6,10 @@ import { userBackgroundImage } from '@/Background/atoms';
 import { convertImageToDataUrl } from '@/Background/utils/imageConvertingHelper';
 
 const useBackgroundApplyQuery = () => {
-  const [{ status, value }, setBackgroundImage] =
-    useRecoilState(userBackgroundImage);
+  const [{ value }, setBackgroundImage] = useRecoilState(userBackgroundImage);
 
   const { data: backgroundImgData } = useQuery<BackgroundImg>({
-    queryKey: [
-      'background',
-      `apply-${status}${value !== null ? `-${value?.name}` : ''}`,
-    ],
+    queryKey: ['background', `apply-${value?.name ?? 'seoul'}`],
     queryFn: async () => {
       if (value !== null) return value;
 
@@ -33,7 +29,6 @@ const useBackgroundApplyQuery = () => {
       return convertResult;
     },
     suspense: true,
-    enabled: status === 'initialized',
   });
 
   return backgroundImgData;

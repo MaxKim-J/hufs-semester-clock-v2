@@ -25,7 +25,6 @@ const useBackgroundUpdateQuery = (campus: Campus | null) => {
       }));
       return convertResult;
     },
-    cacheTime: 0,
     enabled: campus !== null,
   });
 
