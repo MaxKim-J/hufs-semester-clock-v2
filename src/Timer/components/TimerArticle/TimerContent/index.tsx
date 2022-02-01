@@ -1,10 +1,18 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
+import useContentFocusable from '@shared/hooks/useContentFocusable';
 import { css } from '@emotion/react';
 import TimerDigits from '@/Timer/components/TimerArticle/TimerContent/TimerDigits';
 import TimerButtons from '@/Timer/components/TimerArticle/TimerContent/TimerButtons';
 import useTimerInterval from '@/Timer/hooks/useTimerInterval';
 
 function TimerContent() {
+  const timerRef = useRef<HTMLDivElement>(null);
+
+  useContentFocusable({
+    searchRef: timerRef,
+    focusableIndex: 1,
+  });
+
   const [targetTime, setTargetTime] = useState(0);
   const [isTimerOn, setIsTimerOn] = useState(false);
 
@@ -34,7 +42,7 @@ function TimerContent() {
   );
 
   return (
-    <div css={timerStyle}>
+    <div css={timerStyle} ref={timerRef}>
       <TimerDigits
         targetTime={targetTime}
         isTimerOn={isTimerOn}

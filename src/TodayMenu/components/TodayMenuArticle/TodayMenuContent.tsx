@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import useContentFocusable from '@shared/hooks/useContentFocusable';
 import { css } from '@emotion/react';
 import { m } from 'framer-motion';
 import { fadeInAndOut } from '@style/animation';
@@ -15,8 +16,15 @@ function TodayMenuContent() {
     setMenu(pickRandomMenu());
   };
 
+  const todayMenuRef = useRef<HTMLDivElement>(null);
+
+  useContentFocusable({
+    searchRef: todayMenuRef,
+    focusableIndex: 1,
+  });
+
   return (
-    <>
+    <div ref={todayMenuRef}>
       <Spacer />
       <Text size="size14" color="black">
         뭘 드셔야 할지 모르겠다고요? 딱! 정해드립니다.
@@ -43,7 +51,7 @@ function TodayMenuContent() {
           <Emoji emoji="🔎" hidden /> 외대 주변 메뉴 검색
         </Link>
       </div>
-    </>
+    </div>
   );
 }
 

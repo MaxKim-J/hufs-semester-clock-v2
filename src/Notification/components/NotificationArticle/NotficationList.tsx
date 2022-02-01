@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import useContentFocusable from '@shared/hooks/useContentFocusable';
 import { m } from 'framer-motion';
 import { css } from '@emotion/react';
 import { Notification } from '@shared/services/api/types';
@@ -15,6 +16,13 @@ type NotificationListProps = {
 };
 
 function NotificationList({ notificationsPerIndex }: NotificationListProps) {
+  const notificationListRef = useRef<HTMLDivElement>(null);
+
+  useContentFocusable({
+    searchRef: notificationListRef,
+    focusableIndex: 1,
+  });
+
   const notifications = useNotificationQuery() as Notification[];
 
   const [index, setIndex] = useState(0);
@@ -36,7 +44,7 @@ function NotificationList({ notificationsPerIndex }: NotificationListProps) {
   );
 
   return (
-    <m.div {...fadeInAndOut}>
+    <m.div {...fadeInAndOut} ref={notificationListRef}>
       <Spacer />
       <Text size="size12" color="darkGray">
         최신 학사공지 15개를 보여드립니다.

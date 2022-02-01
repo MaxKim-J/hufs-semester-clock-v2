@@ -4,6 +4,8 @@ import { Heading } from '@components/fundamentals/Text';
 import { readableHiddenHeading } from '@style/common';
 import BookmarkItem from '@/BookMark/components/BookmarkSection/BookmarkItem';
 import { Bookmark } from '@/BookMark/atoms';
+import { useRef } from 'react';
+import useContentFocusable from '@shared/hooks/useContentFocusable';
 
 const bookmarkContents: Bookmark[] = [
   {
@@ -39,8 +41,18 @@ const bookmarkContents: Bookmark[] = [
 ];
 
 function DefaultBookmarkList() {
+  const defaultBookmarkRef = useRef<HTMLElement>(null);
+
+  useContentFocusable({
+    searchRef: defaultBookmarkRef,
+    focusableIndex: 0,
+  });
+
   return (
-    <article aria-labelledby="default-bookmark-heading">
+    <article
+      aria-labelledby="default-bookmark-heading"
+      ref={defaultBookmarkRef}
+    >
       <Heading
         id="default-bookmark-heading"
         tag="h3"

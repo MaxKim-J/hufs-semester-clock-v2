@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import useContentFocusable from '@shared/hooks/useContentFocusable';
 import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
 import { useRecoilState } from 'recoil';
@@ -10,6 +12,13 @@ import BookmarkCreateButton from '@/BookMark/components/BookmarkSection/CustomBo
 import { Bookmark, userBookmarks } from '@/BookMark/atoms';
 
 function CustomBookmarkList() {
+  const customBookmarkRef = useRef<HTMLElement>(null);
+
+  useContentFocusable({
+    searchRef: customBookmarkRef,
+    focusableIndex: 0,
+  });
+
   const [
     { status: userBookmarksStatus, value: userBookmarksValue },
     setUserBookmarks,
@@ -29,6 +38,7 @@ function CustomBookmarkList() {
       {...fadeInAndOut}
       aria-labelledby="custom-bookmark-list-heading"
       aria-describedby="custom-bookmark-list-describe"
+      ref={customBookmarkRef}
     >
       <Heading
         tag="h2"

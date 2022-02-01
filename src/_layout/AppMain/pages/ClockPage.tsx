@@ -1,4 +1,7 @@
 import { css } from '@emotion/react';
+import { useEffect, useRef } from 'react';
+import { sectionIndexAtom } from '@shared/atoms/common';
+import { useRecoilValue } from 'recoil';
 import Spacer from '@components/fundamentals/Spacer';
 import { Heading } from '@components/fundamentals/Text';
 import { readableHiddenHeading } from '@style/common';

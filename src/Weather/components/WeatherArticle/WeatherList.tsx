@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import useContentFocusable from '@shared/hooks/useContentFocusable';
 import { CampusWeather } from '@shared/services/api/types';
 import { Text } from '@components/fundamentals/Text';
 import { useRecoilState } from 'recoil';
@@ -18,6 +20,13 @@ import {
 import { formatMonthAndDay } from '@/_shared/utils/formatHelper';
 
 function WeatherList() {
+  const weatherListRef = useRef<HTMLDivElement>(null);
+
+  useContentFocusable({
+    searchRef: weatherListRef,
+    focusableIndex: 1,
+  });
+
   const weathers = useWeatherQuery() as CampusWeather;
 
   const [{ value: weatherCampusValue }, setWeatherCampus] =
@@ -32,7 +41,7 @@ function WeatherList() {
   };
 
   return (
-    <m.div {...fadeInAndOut}>
+    <m.div {...fadeInAndOut} ref={weatherListRef}>
       <Spacer height="size8" />
       <div css={weatherListHeaderStyle}>
         <Text size="size12" color="darkGray" role="alert">
