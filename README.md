@@ -11,6 +11,7 @@
 
 - 🧩 [크롬 웹 스토어](https://chrome.google.com/webstore/detail/%EC%99%B8%EB%8C%80-%EC%A2%85%EA%B0%95%EC%8B%9C%EA%B3%84/jadlpknbgnmmelikpcaogikohieafaem?hl=ko)
 - 🧩 [웨일 웹 스토어](https://store.whale.naver.com/detail/mckjnmgioalpnggjipjkmadnandhomei)
+- 🌐 [웹 버전](http://hufs-semester-clock-web.s3-website.ap-northeast-2.amazonaws.com/)
 
 ## ✅ 주요 기능
 
@@ -37,12 +38,16 @@
 - Vue+Javascript로 구현되었던 V1 코드를 React+Typescript로 리라이팅
 - 기존에 Firebase SDK에 직접 의존하는 쿼리를 REST API로 대체하고 Firebase SDK를 번들에서 제거
 - Suspense for Data Fetching, React Query, Error Boundary를 이용한 선언적 비동기 구현
-- 스크린 리더 디버깅을 병행하며, 웹표준과 웹 접근성을 준수한 마크업 작성
 - Jest, react-testing-library 이용한 72개의 유닛, 통합 테스트 코드 작성
 - Webpack 크롬 익스텐션 보일러 플레이트 직접 처음부터 구현
-- 코드 스플리팅을 이용한 번들 크기 축소
-- 앱 전체 번들 크기 축소(290KiB -> 180KiB, 기능은 더 많아졌는데 번들은 더 작아짐)
+  - 웹 배포용 번들, 익스텐션 배포용 번들 모두 만들 수 있는 환경과 웹팩 설정 구현
+- 코드 스플리팅을 이용한 번들 크기 축소, 앱 전체 번들 크기 축소(290KiB -> 180KiB, 기능은 더 많아졌는데 번들은 더 작아짐)
 - Manifest 3로 업데이트
+- FCP(First Contentful Paint) 기존 1.5.x버전 1.1초에서 0.3초로 단축
+- 스크린 리더 디버깅을 병행하며, 웹표준과 웹 접근성을 준수한 마크업 작성
+  - LightHouse 기준 접근성 100점
+
+![매트릭](images/metric.png)
 
 ### 테스트 케이스와 테스트 전략
 
@@ -62,10 +67,10 @@
 
 ## 앞으로
 
-- [ ] preact 도입 고려하기 : 더 작은 React 라이브러리로 대체해 번들 크기 더 효율화
-- [ ] 웨일 스토어는 manifest v3 아직 지원 안함 : 번들을 2개씩 만드는 빌드 환경 구축
-- [x] 테스트 리팩토링 및 테스팅 속도 개선(vitest 써보기?)
-- [x] 모니터링 환경 만들기 : 피드백, firebase functions 함수 호출 모니터링 환경 만들기
+- preact 도입 고려하기 : 더 작은 React 라이브러리로 대체해 번들 크기 더 효율화
+- 화면 전환시 보이지 않는 요소 focus할 수 없게 만들어 키보드 사용성 향상
+- 빌드 환경 개선 : 웨일, 크롬 스토어가 다른 Manifest 버전을 지원하므로, 한번 빌드로 번들을 2개씩, 압축해서 만드는 빌드 환경 구축
+- 모니터링 환경 만들기 : firebase functions 함수 호출 모니터링 환경 만들기
 - 기능 추가 : 위젯 위치 커스텀 기능, 새로운 위젯 계속해서 추가
 - (장기적으로) 백엔드 엔드포인트만 바꿔서 다른 학교 지원하기..?
 - (장기적으로) 크롬 익스텐션 원격 코드 환경 알아보기
