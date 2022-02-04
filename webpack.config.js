@@ -10,10 +10,10 @@ const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const constants = require('./constants.cjs');
 
-const PRODUCTION = process.env.NODE_ENV === 'production';
-const constantKey = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+const webpackConfig = ({ target, env }) => {
+  const PRODUCTION = env === 'production';
+  const constantKey = env === 'production' ? 'prod' : 'dev';
 
-const webpackConfig = ({ target }) => {
   const plugins = [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -31,13 +31,6 @@ const webpackConfig = ({ target }) => {
     }),
     new ESLintPlugin({
       extensions: ['ts', 'tsx'],
-    }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-      analyzerMode: 'static',
-      reportFilename: '../analysis/bundle-analysis.html',
-      generateStatsFile: true,
-      statsFilename: '../analysis/bundle-stats.json',
     }),
   ];
 
@@ -59,10 +52,20 @@ const webpackConfig = ({ target }) => {
     );
   }
 
-  console.log(plugins.length);
+  if (!(target === 'web' && !PRODUCTION)) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+        analyzerMode: 'static',
+        reportFilename: '../analysis/bundle-analysis.html',
+        generateStatsFile: true,
+        statsFilename: '../analysis/bundle-stats.json',
+      })
+    );
+  }
 
   const config = {
-    mode: process.env.NODE_ENV,
+    mode: env,
     entry: {
       bundle: path.resolve(__dirname, 'src/index.tsx'),
     },

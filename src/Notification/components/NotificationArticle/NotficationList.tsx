@@ -46,7 +46,6 @@ function NotificationList({ notificationsPerIndex }: NotificationListProps) {
         <Spacer />
         {slicedNotifications.map((notification) => (
           <li css={notificationStyle} key={notification.id}>
-            <Spacer height="size4" />
             <Link color="black" href={notification.link} target="_blank">
               <Text color="black" size="size12">
                 {getNotificationString(notification)}
