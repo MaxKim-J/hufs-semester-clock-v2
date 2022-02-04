@@ -3,16 +3,16 @@ import { css } from '@emotion/react';
 import Emoji from '@components/fundamentals/Emoji';
 import React from 'react';
 
-function WifiFallback() {
+function MobileFallback() {
   return (
-    <article css={wifiFallbackStyle}>
-      <Emoji emoji="📶" size="size80" />
-      <Text>와이파이 연결을 확인하시고, 새로고침 해주세요!</Text>
+    <article css={mobileFallbackStyle}>
+      <Emoji emoji="🙅🏻" size="size80" />
+      <Text>모바일 UI를 지원하지 않습니다. PC로 접속해주세요!</Text>
     </article>
   );
 }
 
-const wifiFallbackStyle = css`
+const mobileFallbackStyle = css`
   position: relative;
   z-index: 2;
   width: 100%;
@@ -23,4 +23,4 @@ const wifiFallbackStyle = css`
   align-items: center;
 `;
 
-export default WifiFallback;
+export default MobileFallback;
