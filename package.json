@@ -10,7 +10,7 @@
     "extension:dev": "webpack --watch --config webpack.config.js --env=env='development' --env=target='extension'",
     "extension:build": "webpack --config webpack.config.js --env=env='production' --env=target='extension'",
     "web:dev": "webpack serve --config webpack.config.js --env=env='development' --env=target='web'",
-    "web:build": "webpack --config --env=env='production' --env=target='web'",
+    "web:build": "webpack --config webpack.config.js --env=env='production' --env=target='web'",
     "test": "jest",
     "check-type": "tsc",
     "storybook": "start-storybook -p 6006",
