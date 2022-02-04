@@ -17,7 +17,10 @@ const webpackConfig = ({ target, env }) => {
   const plugins = [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/assets/index.html',
+      template:
+        target === 'web' && PRODUCTION
+          ? './src/assets/index.web.production.html'
+          : './src/assets/index.html',
       favicon: target === 'web' ? './src/assets/icons/icon_48.png' : undefined,
       minify: {
         collapseWhitespace: true,
