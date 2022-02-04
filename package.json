@@ -7,8 +7,10 @@
   "author": "Max Jonghyuk Kim",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "NODE_ENV=development webpack --watch --config webpack.config.js",
-    "build": "NODE_ENV=production webpack --config webpack.config.js",
+    "extension:dev": "NODE_ENV=development webpack --watch --config webpack.config.js --env=target='extension'",
+    "extension:build": "NODE_ENV=production webpack --config webpack.config.js --env=target='extension'",
+    "web:dev": "NODE_ENV=development webpack serve --config webpack.config.js --env=target='web'",
+    "web:build": "NODE_ENV=production webpack --config webpack.config.js --env=target='web'",
     "test": "jest",
     "check-type": "tsc",
     "storybook": "start-storybook -p 6006",
@@ -74,6 +76,7 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.56.0",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.7.4"
   }
 }

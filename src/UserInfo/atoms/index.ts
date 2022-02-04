@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 import { StorageAtom } from '@shared/atoms/types';
-import { chromeStorageEffect } from '@shared/atoms/utils';
+import storageEffect from '@shared/atoms/effect';
 
 export type UserInfo = {
   name: string;
@@ -13,5 +13,5 @@ export const userInfo = atom<StorageAtom<UserInfo>>({
     status: 'idle',
     value: null,
   },
-  effects_UNSTABLE: [chromeStorageEffect<UserInfo>('userInfo')],
+  effects_UNSTABLE: [storageEffect<UserInfo>('userInfo')],
 });

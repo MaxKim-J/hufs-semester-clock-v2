@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { StorageClientGetItemResult, StorageClientResult } from './types';
 
-export const getItem = <ValueType>(key: string) =>
+export const getChormeStorageItem = <ValueType>(key: string) =>
   new Promise<StorageClientGetItemResult<ValueType>>((resolve, reject) => {
     chrome.storage.local.get([key], (result) => {
       if (result[key] === undefined) {
@@ -21,7 +21,7 @@ export const getItem = <ValueType>(key: string) =>
     error: error.message ?? 'unknown error',
   }));
 
-export const setItem = async (
+export const setChromeStorageItem = async (
   obj: Record<string, any>
 ): Promise<StorageClientResult> => {
   try {
@@ -36,7 +36,9 @@ export const setItem = async (
   }
 };
 
-export const removeItem = async (key: string): Promise<StorageClientResult> => {
+export const removeChromeStorageItem = async (
+  key: string
+): Promise<StorageClientResult> => {
   try {
     await chrome.storage.local.remove(key);
     return { operation: 'remove', result: 'success' };

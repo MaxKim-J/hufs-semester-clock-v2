@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 import { StorageAtom } from '@shared/atoms/types';
-import { chromeStorageEffect } from '@shared/atoms/utils';
+import storageEffect from '@shared/atoms/effect';
 
 export type Bookmark = {
   id: string;
@@ -15,5 +15,5 @@ export const userBookmarks = atom<StorageAtom<Bookmark[]>>({
     status: 'idle',
     value: null,
   },
-  effects_UNSTABLE: [chromeStorageEffect<Bookmark[]>('userBookmarks')],
+  effects_UNSTABLE: [storageEffect<Bookmark[]>('userBookmarks')],
 });

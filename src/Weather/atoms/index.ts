@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 import { StorageAtom } from '@shared/atoms/types';
-import { chromeStorageEffect } from '@shared/atoms/utils';
+import storageEffect from '@shared/atoms/effect';
 import { Campus } from '@shared/services/api/types';
 
 export const userWeatherCampus = atom<StorageAtom<Campus>>({
@@ -9,5 +9,5 @@ export const userWeatherCampus = atom<StorageAtom<Campus>>({
     status: 'idle',
     value: null,
   },
-  effects_UNSTABLE: [chromeStorageEffect<Campus>('userWeatherCampus')],
+  effects_UNSTABLE: [storageEffect<Campus>('userWeatherCampus')],
 });

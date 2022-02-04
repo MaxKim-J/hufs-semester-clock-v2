@@ -8,5 +8,5 @@ export type StorageClientResult = {
 };
 
 export type StorageClientGetItemResult<ValueType> = {
-  value?: ValueType | null;
+  value: ValueType | null;
 } & StorageClientResult;

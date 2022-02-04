@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 import { Semesters } from '@shared/services/api/types';
 import { StorageAtom } from '@shared/atoms/types';
-import { chromeStorageEffect } from '@shared/atoms/utils';
+import storageEffect from '@shared/atoms/effect';
 
 export const semesters = atom<Semesters | null>({
   key: 'semesters',
@@ -14,5 +14,5 @@ export const isUserSeasonal = atom<StorageAtom<boolean>>({
     status: 'idle',
     value: null,
   },
-  effects_UNSTABLE: [chromeStorageEffect<boolean>('isUserSeasonal')],
+  effects_UNSTABLE: [storageEffect<boolean>('isUserSeasonal')],
 });

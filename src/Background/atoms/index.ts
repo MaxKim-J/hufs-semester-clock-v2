@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 import { StorageAtom } from '@shared/atoms/types';
 import { BackgroundImg } from '@shared/services/api/types';
-import { chromeStorageEffect } from '@shared/atoms/utils';
+import storageEffect from '@shared/atoms/effect';
 
 export const userBackgroundImage = atom<StorageAtom<BackgroundImg>>({
   key: 'userBackgroundImage',
@@ -9,7 +9,5 @@ export const userBackgroundImage = atom<StorageAtom<BackgroundImg>>({
     status: 'idle',
     value: null,
   },
-  effects_UNSTABLE: [
-    chromeStorageEffect<BackgroundImg>('userBackgroundImgInfo'),
-  ],
+  effects_UNSTABLE: [storageEffect<BackgroundImg>('userBackgroundImgInfo')],
 });
