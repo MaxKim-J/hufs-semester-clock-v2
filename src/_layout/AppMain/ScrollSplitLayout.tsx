@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil';
 import { sectionIndexAtom } from '@shared/atoms/common';
 import { Heading } from '@components/fundamentals/Text';
 import { readableHiddenHeading } from '@style/common';
+import debounce from 'lodash.debounce';
 
 type Section = {
   id: number;
@@ -30,15 +31,19 @@ function ScrollSplitLayout({ sections }: ScrollSplitLayoutProps) {
     [setSectionIndex]
   );
 
-  const wheelHandler = (e: WheelEvent<HTMLElement>) => {
-    const { deltaY, deltaX } = e;
-    if (deltaX !== 0) return;
-    if (deltaY < 0 && sectionIndex.current === 0) return;
-    if (deltaY > 0 && sectionIndex.current === sections.length - 1) return;
-    changeIndex(
-      deltaY < 0 ? sectionIndex.current - 1 : sectionIndex.current + 1
-    );
-  };
+  const wheelHandler = debounce(
+    (e: WheelEvent<HTMLElement>) => {
+      const { deltaY, deltaX } = e;
+      if (deltaX !== 0) return;
+      if (deltaY < 0 && sectionIndex.current === 0) return;
+      if (deltaY > 0 && sectionIndex.current === sections.length - 1) return;
+      changeIndex(
+        deltaY < 0 ? sectionIndex.current - 1 : sectionIndex.current + 1
+      );
+    },
+    100,
+    { leading: true }
+  );
 
   return (
     <>
