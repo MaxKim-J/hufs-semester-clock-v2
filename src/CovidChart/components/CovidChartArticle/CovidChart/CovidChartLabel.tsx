@@ -33,6 +33,8 @@ const listStyle = css`
 
 const listItemStyle = css`
   margin: 0 1.25rem;
+  width: 2rem;
+  text-align: center;
 `;
 
 export default CovidChartLabel;
