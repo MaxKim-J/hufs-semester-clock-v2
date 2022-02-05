@@ -1,6 +1,6 @@
 {
   "name": "hufs-semester-clock-2",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "hufs semester clock v2",
   "main": "index.js",
   "repository": "https://github.com/MaxKim-J/hufs-semester-clock-v2",
