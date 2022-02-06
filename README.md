@@ -12,6 +12,7 @@
 - 🧩 [크롬 웹 스토어](https://chrome.google.com/webstore/detail/%EC%99%B8%EB%8C%80-%EC%A2%85%EA%B0%95%EC%8B%9C%EA%B3%84/jadlpknbgnmmelikpcaogikohieafaem?hl=ko)
 - 🧩 [웨일 웹 스토어](https://store.whale.naver.com/detail/mckjnmgioalpnggjipjkmadnandhomei)
 - 🌐 [웹 버전](https://hufs-semester-clock-v2.vercel.app/)
+- 웹스토어는 업로드 이후 검토, 승인 과정을 거쳐야 업데이트되기 때문에 릴리즈까지 시간이 걸릴 수 있습니다. 웹 버전에 가장 최신 버전이 올라와있어요!
 
 ## ✅ 주요 기능
 
@@ -47,7 +48,7 @@
 - 스크린 리더 디버깅을 병행하며, 웹표준과 웹 접근성을 준수한 마크업 작성
   - LightHouse 기준 접근성 100점
 
-![매트릭](images/metric.png)
+![매트릭](images/metric_new.png)
 
 ### 테스트 케이스와 테스트 전략
 
@@ -71,7 +72,6 @@
 
 - 위젯 위치 커스텀 기능, 새로운 위젯 고안
 - 타이머 위젯에 알림 기능(서비스 워커, 소리 알림 기능) 붙이기
-- 웹 버전 고도화 :  웹 버전에 HTTPS 붙이기, 메타태그 붙이기
 - 화면 전환시 보이지 않는 요소 focus할 수 없게 만들어 키보드 사용성 향상
 
 ### 기술적 개선
