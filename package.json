@@ -11,7 +11,6 @@
     "extension:build": "webpack --config webpack.config.js --env=env='production' --env=target='extension'",
     "web:dev": "webpack serve --config webpack.config.js --env=env='development' --env=target='web'",
     "web:build": "webpack --config webpack.config.js --env=env='production' --env=target='web'",
-    "web:deploy": "aws s3 sync dist_web s3://hufs-semester-clock-web --delete --acl public-read",
     "test": "jest",
     "check-type": "tsc",
     "storybook": "start-storybook -p 6006",

@@ -11,7 +11,7 @@
 
 - 🧩 [크롬 웹 스토어](https://chrome.google.com/webstore/detail/%EC%99%B8%EB%8C%80-%EC%A2%85%EA%B0%95%EC%8B%9C%EA%B3%84/jadlpknbgnmmelikpcaogikohieafaem?hl=ko)
 - 🧩 [웨일 웹 스토어](https://store.whale.naver.com/detail/mckjnmgioalpnggjipjkmadnandhomei)
-- 🌐 [웹 버전](http://hufs-semester-clock-web.s3-website.ap-northeast-2.amazonaws.com/)
+- 🌐 [웹 버전](https://hufs-semester-clock-v2.vercel.app/)
 
 ## ✅ 주요 기능
 
