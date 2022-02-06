@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(chunk|bundle|framework)(.*)",
+      "headers" : [
+        {
+          "key" : "Cache-Control",
+          "value" : "private, max-age=31536000"
+        }
+      ]
+    }
+  ]
+}
