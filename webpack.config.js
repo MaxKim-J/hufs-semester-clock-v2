@@ -14,6 +14,26 @@ const webpackConfig = ({ target, env }) => {
   const PRODUCTION = env === 'production';
   const constantKey = env === 'production' ? 'prod' : 'dev';
 
+  const assets =
+    target === 'web'
+      ? [
+          {
+            from: path.resolve(__dirname, 'src/assets/icons/icon_48.png'),
+            to: 'favicon.png',
+          },
+        ]
+      : [
+          {
+            from: path.resolve(__dirname, 'src/assets/icons'),
+            to: 'icons',
+            toType: 'dir',
+          },
+          {
+            from: path.resolve(__dirname, 'src/assets/manifest.json'),
+            to: 'manifest.json',
+          },
+        ];
+
   const plugins = [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -21,7 +41,6 @@ const webpackConfig = ({ target, env }) => {
         target === 'web' && PRODUCTION
           ? './src/assets/index.web.production.html'
           : './src/assets/index.html',
-      favicon: target === 'web' ? './src/assets/icons/icon_48.png' : undefined,
       minify: {
         collapseWhitespace: true,
         removeComments: true,
@@ -33,25 +52,15 @@ const webpackConfig = ({ target, env }) => {
       ...constants[constantKey],
       'process.env.IS_WEB': JSON.stringify(target === 'web'),
     }),
-    new ESLintPlugin({
-      extensions: ['ts', 'tsx'],
+    new CopyWebpackPlugin({
+      patterns: assets,
     }),
   ];
 
-  if (target !== 'web') {
+  if (!PRODUCTION) {
     plugins.push(
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, 'src/assets/icons'),
-            to: 'icons',
-            toType: 'dir',
-          },
-          {
-            from: path.resolve(__dirname, 'src/assets/manifest.json'),
-            to: 'manifest.json',
-          },
-        ],
+      new ESLintPlugin({
+        extensions: ['ts', 'tsx'],
       })
     );
   }
