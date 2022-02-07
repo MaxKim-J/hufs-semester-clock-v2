@@ -50,7 +50,7 @@
 
 ![매트릭](images/metric_new.png)
 
-### 테스트 케이스와 테스트 전략
+## 테스트 케이스와 테스트 전략
 
 2022.01.29 기준  
 
@@ -65,6 +65,14 @@
   - UNIT : 앱의 Core를 이루는 로직들에 대한 유닛 테스트(Jest)
 
 ![1](images/test1.png)![2](images/test2.png)![3](images/test3.png)
+
+## 주요 기술 스택
+
+- React, TypeScript
+- React Query, Recoil
+- Jest, Storybook, React-Testing-Library
+- Framer-motion, Emotion
+- Webpack, Babel
 
 ## 앞으로
 
