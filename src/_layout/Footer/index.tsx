@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import { spaceTable } from '@style/variables';
-import SettingTab from './SettingTab';
 import DeveloperTab from '@/_layout/Footer/DeveloperTab';
 import ScrollNoticeText from '@/_layout/Footer/ScrollNoticeText';
+import SettingTab from './SettingTab';
 
 function TabFooter() {
   return (

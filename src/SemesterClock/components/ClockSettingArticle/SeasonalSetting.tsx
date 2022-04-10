@@ -5,9 +5,9 @@ import { Text } from '@components/fundamentals/Text';
 import { spaceTable } from '@style/variables';
 import { Semesters } from '@shared/services/api/types';
 import { SwitchInput } from '@components/fundamentals/Input';
-import { isUserSeasonal } from '../../atoms';
 import useSemesterQuery from '@/SemesterClock/queries/useSemesterQuery';
 import { isClockUnexpired } from '@/SemesterClock/utils/clockHelper';
+import { isUserSeasonal } from '../../atoms';
 
 function SeasonalSetting() {
   const semesters = useSemesterQuery() as Semesters;

@@ -95,16 +95,9 @@ const webpackConfig = ({ target, env }) => {
       minimize: true,
       minimizer: [
         new TerserPlugin({
+          minify: TerserPlugin.swcMinify,
           extractComments: false,
-          terserOptions: {
-            keep_classnames: !PRODUCTION,
-            keep_fnames: !PRODUCTION,
-            output: {
-              ecma: 5,
-              comments: false,
-              ascii_only: true,
-            },
-          },
+          terserOptions: {},
         }),
       ],
       splitChunks: {
@@ -134,8 +127,26 @@ const webpackConfig = ({ target, env }) => {
       rules: [
         {
           test: /\.tsx?$/i,
-          loader: 'babel-loader',
-          exclude: '/node_modules/',
+          use: {
+            loader: 'swc-loader',
+            options: {
+              jsc: {
+                parser: {
+                  syntax:"typescript",
+                  tsx: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  react: {
+                    runtime: "automatic",
+                    importSource: "@emotion/react"
+                  }
+                },
+                target: "es2017",
+                loose: true,
+              },
+            },
+          },
         },
         {
           test: /\.(svg)$/,
